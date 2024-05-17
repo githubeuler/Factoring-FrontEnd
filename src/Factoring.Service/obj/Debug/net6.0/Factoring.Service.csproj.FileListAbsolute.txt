@@ -1,0 +1,15 @@
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\bin\Debug\net6.0\Factoring.Service.deps.json
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\bin\Debug\net6.0\Factoring.Service.dll
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\bin\Debug\net6.0\Factoring.Service.pdb
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\bin\Debug\net6.0\Factoring.Model.dll
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\bin\Debug\net6.0\Factoring.Model.pdb
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\obj\Debug\net6.0\Factoring.Service.csproj.AssemblyReference.cache
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\obj\Debug\net6.0\Factoring.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\obj\Debug\net6.0\Factoring.Service.AssemblyInfoInputs.cache
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\obj\Debug\net6.0\Factoring.Service.AssemblyInfo.cs
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\obj\Debug\net6.0\Factoring.Service.csproj.CoreCompileInputs.cache
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\obj\Debug\net6.0\Factoring.Service.csproj.CopyComplete
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\obj\Debug\net6.0\Factoring.Service.dll
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\obj\Debug\net6.0\refint\Factoring.Service.dll
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\obj\Debug\net6.0\Factoring.Service.pdb
+C:\Rafael\FuenteFactoring\RamaDesarrollo\FrontEnd\src\Factoring.Service\obj\Debug\net6.0\ref\Factoring.Service.dll

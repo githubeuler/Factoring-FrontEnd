@@ -1,0 +1,75 @@
+﻿@using Factoring.WebMvc.Helpers;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Security.Claims;
+@{
+    string BaseURL = Url.Content("~/");
+    ViewData["BaseURL"] = BaseURL;
+    ViewData["usuarioNombre"] = User.FindFirst(ClaimTypes.Name).Value;
+    ViewData["usuarioPais"] = User.FindFirst("country_claim").Value;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Factoring + Perú | @ViewData["Title"]</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="@(BaseURL + "assets/plugins/plugins.bundle.css")" />
+    <link rel="stylesheet" type="text/css" href="@(BaseURL + "assets/css/style.bundle.css")" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link rel="shortcut icon" href="@(BaseURL + "assets/images/logos/favicon.ico")" />
+    @await RenderSectionAsync("Styles", required: false)
+    <base href="@BaseURL">
+</head>
+<body id="kt_body" class="page-loading-enabled header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+    <div class="page-loader flex-column">
+        <img alt="Logo" class="h-40px" src="@(BaseURL + "assets/images/logos/logo.png")">
+        <div class="d-flex align-items-center mt-5">
+            <span class="spinner-border text-primary" role="status"></span>
+            <span class="text-muted fs-6 fw-bold ms-5">Cargando...</span>
+        </div>
+    </div>
+    <div class="d-flex flex-column flex-root">
+        <div class="page d-flex flex-row flex-column-fluid">
+            <div id="kt_aside" class="aside aside-dark aside-hoverable" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_mobile_toggle">
+                <partial name="_Aside" />
+            </div>
+            <div id="kt_wrapper" class="wrapper d-flex flex-column flex-row-fluid">
+                <div id="kt_header" class="header align-items-stretch">
+                    <partial name="_Header" />
+                </div>
+                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                    <div id="kt_toolbar" class="toolbar">
+                        <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+                            <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+                                <h1 class="d-flex align-items-center text-white fw-bolder fs-3 my-1">@ViewData["Title"]</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="kt_post" class="post d-flex flex-column-fluid">
+                        <div id="kt_content_container" class="container-xxl">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+                <div id="kt_footer" class="footer py-4 d-flex flex-lg-column">
+                    <partial name="_Footer" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+        <span class="svg-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black" />
+                <path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black" />
+            </svg>
+        </span>
+    </div>
+    <script>var hostUrl = '@(BaseURL + "assets/")';</script>
+    <script src="@(BaseURL + "assets/plugins/plugins.bundle.js")"></script>
+    <script src="@(BaseURL + "assets/js/scripts.bundle.js")"></script>
+    <script src="@(BaseURL + "assets/js/app.js")"></script>
+    <script src="@(BaseURL + "assets/js/common.js")"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

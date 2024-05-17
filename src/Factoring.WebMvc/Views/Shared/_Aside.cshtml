@@ -1,0 +1,100 @@
+﻿@using Factoring.WebMvc.Helpers;
+@using Microsoft.AspNetCore.Http
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var menu = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<List<MenuResponse>>("ApplicationMenu");
+}
+<div id="kt_aside_logo" class="aside-logo flex-column-auto">
+    <a asp-controller="Home" asp-action="Index">
+        <img src="@(ViewData["BaseURL"] + "assets/images/logos/logo-white.png")" class="h-30px logo" alt="" />
+    </a>
+    <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
+        <span class="svg-icon svg-icon-1 rotate-180">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path opacity="0.5" d="M14.2657 11.4343L18.45 7.25C18.8642 6.83579 18.8642 6.16421 18.45 5.75C18.0358 5.33579 17.3642 5.33579 16.95 5.75L11.4071 11.2929C11.0166 11.6834 11.0166 12.3166 11.4071 12.7071L16.95 18.25C17.3642 18.6642 18.0358 18.6642 18.45 18.25C18.8642 17.8358 18.8642 17.1642 18.45 16.75L14.2657 12.5657C13.9533 12.2533 13.9533 11.7467 14.2657 11.4343Z" fill="black" />
+                <path d="M8.2657 11.4343L12.45 7.25C12.8642 6.83579 12.8642 6.16421 12.45 5.75C12.0358 5.33579 11.3642 5.33579 10.95 5.75L5.40712 11.2929C5.01659 11.6834 5.01659 12.3166 5.40712 12.7071L10.95 18.25C11.3642 18.6642 12.0358 18.6642 12.45 18.25C12.8642 17.8358 12.8642 17.1642 12.45 16.75L8.2657 12.5657C7.95328 12.2533 7.95328 11.7467 8.2657 11.4343Z" fill="black" />
+            </svg>
+        </span>
+    </div>
+</div>
+<input type="hidden" id="idMenu" value="@Json.Serialize(menu).ToString()">
+<div class="aside-menu flex-column-fluid">
+    <div id="kt_aside_menu_wrapper" class="hover-scroll-overlay-y my-4 my-lg-4" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="0">
+        <div id="kt_aside_menu" class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" data-kt-menu="true">
+            <div class="menu-item">
+                <div class="menu-content pb-4">
+                    <span class="menu-section text-muted text-uppercase fs-8 ls-1">Menú de Aplicación</span>
+                </div>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link @Html.IsActive("Home", "Index")" asp-controller="Home" asp-action="Index">
+                    <span class="menu-icon">
+                        <i class="las la-home fs-1"></i>
+                    </span>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </div>
+            @*@foreach (var item in menu.Where(x => x.nVisible.Equals("1")))*@
+            @foreach (var item in menu)
+            {
+                if (item.nNivel == "0")
+                {
+                    if (!string.IsNullOrWhiteSpace(item.cUrl))
+                    {
+                        string[] actionMenu = item.cUrl.Split("/");
+                        <div class="menu-item">
+                            <a class="menu-link @Html.IsActive(actionMenu[0], "Index")" asp-controller="@actionMenu[0]" asp-action="@actionMenu[1]">
+                                <span class="menu-icon">
+                                    <i class="@item.cIcono fs-1"></i>
+                                </span>
+                                <span class="menu-title">@item.cNombreMenu</span>
+                            </a>
+                        </div>
+                    }
+                    var children = menu.Where(x => x.nNivel == item.nIdMenu).ToList();
+                    if (children.Count != 0)
+                    {
+                        List<string> addListController = new List<string>();
+                        foreach (var itmUrl in children)
+                        {
+                            string[] controllerName = itmUrl.cUrl.Split("/");
+                            addListController.Add(controllerName[0].ToString());
+                        }
+                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion @Html.IsCollapse(string.Join(",", addListController))">
+                            <span class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="@item.cIcono fs-1"></i>
+                                </span>
+                                <span class="menu-title">@item.cNombreMenu</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                @foreach (var itm in children)
+                                {
+                                    string[] actionMenuChildren = itm.cUrl.Split("/");
+                                    <div class="menu-item">
+                                        <a class="menu-link @Html.IsActive(actionMenuChildren[0], actionMenuChildren[1])" data-menupermisos="@itm.cMenuPermisos" asp-controller="@actionMenuChildren[0]" asp-action="@actionMenuChildren[1]">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title">@itm.cNombreMenu</span>
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>
+<div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
+    <a href="javascript:;" class="btn btn-custom btn-primary w-100">
+        <span class="menu-icon">
+            <i class="las la-code"></i>
+        </span>
+        <span class="btn-label">Versión App v1.0.0</span>
+    </a>
+</div>

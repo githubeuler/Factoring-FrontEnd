@@ -1,0 +1,88 @@
+﻿@model LoginViewModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Login";
+    string BaseURL = Url.Content("~/");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Factoring + Perú | @ViewData["Title"]</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="@(BaseURL + "assets/plugins/plugins.bundle.css")" />
+    <link rel="stylesheet" type="text/css" href="@(BaseURL + "assets/css/style.bundle.css")" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link rel="shortcut icon" href="@(BaseURL + "assets/images/logos/favicon.ico")" />
+    <base href="@BaseURL">
+</head>
+<body id="kt_body" class="bg-body">
+    <div class="d-flex flex-column flex-root">
+        <div class="d-flex flex-column flex-lg-row flex-column-fluid">
+            <div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative d-none d-xl-block" style="background-color:rgb(51, 107, 209)">
+                <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
+                    <div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20 bgi-no-repeat bgi-position-x-center bgi-position-y-bottom" style="background-image: url(@(BaseURL + "assets/images/misc/people.png"))">
+                        <a asp-controller="Account" asp-action="Login" class="py-9 mb-5">
+                            <img alt="Logo" src="@(BaseURL + "assets/images/logos/logo.png")" class="h-60px" />
+                        </a>
+                        <p class="fw-bold fs-2" style="color: white;">
+                            Obtén liquidez inmediata con Factoring + Perú.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-lg-row-fluid py-10">
+                <div class="d-flex flex-center flex-column flex-column-fluid">
+                    <div class="w-lg-500px p-10 p-lg-15 mx-auto">
+                        <div class="text-center mb-10 d-xl-none d-xxl-none">
+                            <a asp-controller="Account" asp-action="Login" asp-route-returnurl="@Model.ReturnUrl" class="mb-12">
+                                <img alt="Logo" src="@(BaseURL + "assets/images/logos/logo-color.png")" class="h-60px" />
+                            </a>
+                        </div>
+                        <form id="kt_sign_in_form" class="form w-100" asp-controller="Account" asp-action="Login" method="post" novalidate="novalidate">
+                            <div class="text-center mb-10">
+                                <h1 class="text-dark mb-3">Iniciar Sesión</h1>
+                            </div>
+                            <div class="fv-row mb-10">
+                                <label class="form-label fs-6 fw-bolder text-dark">Usuario</label>
+                                <div class="position-relative">
+                                    <input class="form-control form-control-lg form-control-solid" type="text" asp-for="Username" autocomplete="off" />
+                                    <span class="position-absolute translate-middle-y top-50 end-0 me-3">
+                                        <i class="bi bi-person-fill fs-2"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="fv-row mb-10">
+                                <label class="form-label fw-bolder text-dark fs-6 mb-0">Contraseña</label>
+                                <div class="position-relative" data-kt-password-meter="true">
+                                    <input class="form-control form-control-lg form-control-solid" type="password" asp-for="Password" autocomplete="off" />
+                                    <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
+                                        <i class="bi bi-eye-slash fs-2"></i>
+                                        <i class="bi bi-eye fs-2 d-none"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button id="kt_sign_in_submit" type="submit" class="btn btn-lg btn-primary w-100 mb-5">
+                                    <span class="indicator-label">Ingresar</span>
+                                    <span class="indicator-progress">Espere un momento... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
+                    <div class="d-flex flex-center fw-bold fs-6">
+                        <a href="javascript:;" class="text-muted text-hover-primary px-2">Acerca de Nosotros</a>
+                        <a href="javascript:;" class="text-muted text-hover-primary px-2">Soporte</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>var hostUrl = 'assets/';</script>
+    <script src="@(BaseURL + "assets/plugins/plugins.bundle.js")"></script>
+    <script src="@(BaseURL + "assets/js/scripts.bundle.js")"></script>
+    <script src="@(BaseURL + "assets/js/login.js")"></script>
+</body>
+</html>
