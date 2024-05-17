@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5KPh/yXlJNlaO+IhEbiyp9jQJ9HZkt/7D/NA7hrPz+sOkvM0F+KdLWGZ9q7t6/CRkYBBz4HXLfbQvanuMpfTpg==",
+  "dgSpecHash": "IrhOYaFJTOgg73xB/tZwb3Z97U8/I3VXVJLOSu4+2ZY3qFNzAPuTZNbJ6y2WKH9QKpopUkab7bgXmuhOo1Yr3Q==",
   "success": true,
-  "projectFilePath": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.Service\\Factoring.Service.csproj",
+  "projectFilePath": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.Service\\Factoring.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chanc\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\chanc\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",

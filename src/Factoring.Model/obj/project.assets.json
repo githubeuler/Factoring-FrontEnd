@@ -127,11 +127,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.Model\\Factoring.Model.csproj",
+      "projectUniqueName": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.Model\\Factoring.Model.csproj",
       "projectName": "Factoring.Model",
-      "projectPath": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.Model\\Factoring.Model.csproj",
+      "projectPath": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.Model\\Factoring.Model.csproj",
       "packagesPath": "C:\\Users\\chanc\\.nuget\\packages\\",
-      "outputPath": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.Model\\obj\\",
+      "outputPath": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\chanc\\AppData\\Roaming\\NuGet\\NuGet.Config",

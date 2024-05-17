@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FEY0ObaTFmH8y6TzoGI2DVqkLW3EbMuSLVN3Pnhxr0U=",
+  "Hash": "jcieaa+dMmAhE6OoCGa0j9NDn7DrI93jX9OUmsI8N5c=",
   "Source": "Factoring.WebMvc",
   "BasePath": "_content/Factoring.WebMvc",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Factoring.WebMvc\\wwwroot",
       "Source": "Factoring.WebMvc",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Factoring.WebMvc.styles.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Factoring.WebMvc.styles.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "Factoring.WebMvc.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Factoring.WebMvc.styles.css"
+      "OriginalItemSpec": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Factoring.WebMvc.styles.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Factoring.WebMvc.bundle.scp.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Factoring.WebMvc.bundle.scp.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "Factoring.WebMvc.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Factoring.WebMvc.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Factoring.WebMvc.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\css\\site_1.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\css\\site_1.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/css/site_1.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\css\\site_1.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\css\\style.bundle.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\css\\style.bundle.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/css/style.bundle.css",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\css\\style.bundle.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\bg\\1.jpg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\bg\\1.jpg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/bg/1.jpg",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\bg\\1.jpg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\bg\\bg_slide@2x.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\bg\\bg_slide@2x.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/bg/bg_slide@2x.png",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\bg\\bg_slide@2x.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\favicon.ico",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\favicon.ico",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/favicon.ico",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\favicon.ico"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\LOGO FINAL (1).png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\LOGO FINAL (1).png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/LOGO FINAL (1).png",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\LOGO FINAL (1).png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/logo.png",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\logo.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo_1.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo_1.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/logo_1.png",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\logo_1.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo_8.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo_8.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/logo_8.png",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\logo_8.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo32.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo32.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/logo32.png",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\logo32.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo4.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo4.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/logo4.png",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\logo4.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo5.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo5.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/logo5.png",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\logo5.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo67.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo67.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/logo67.png",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\logo67.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo7.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo7.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/logo7.png",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\logo7.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo-color.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo-color.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/logo-color.png",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\logo-color.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo-small.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo-small.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/logo-small.png",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\logo-small.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo-white.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo-white.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/logos/logo-white.png",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\logo-white.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\misc\\people.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\misc\\people.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/misc/people.png",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\misc\\people.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\misc\\people-backup.png",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\misc\\people-backup.png",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/misc/people-backup.png",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\misc\\people-backup.png"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-1.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-1.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/svg/shapes/abstract-1.svg",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\svg\\shapes\\abstract-1.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-10.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-10.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/svg/shapes/abstract-10.svg",
       "AssetKind": "All",
@@ -408,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\svg\\shapes\\abstract-10.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-2.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-2.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/svg/shapes/abstract-2.svg",
       "AssetKind": "All",
@@ -425,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\svg\\shapes\\abstract-2.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-3.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-3.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/svg/shapes/abstract-3.svg",
       "AssetKind": "All",
@@ -442,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\svg\\shapes\\abstract-3.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-4.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-4.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/svg/shapes/abstract-4.svg",
       "AssetKind": "All",
@@ -459,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\svg\\shapes\\abstract-4.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-5.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-5.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/svg/shapes/abstract-5.svg",
       "AssetKind": "All",
@@ -476,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\svg\\shapes\\abstract-5.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-6.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-6.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/svg/shapes/abstract-6.svg",
       "AssetKind": "All",
@@ -493,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\svg\\shapes\\abstract-6.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-7.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-7.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/svg/shapes/abstract-7.svg",
       "AssetKind": "All",
@@ -510,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\svg\\shapes\\abstract-7.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-8.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-8.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/svg/shapes/abstract-8.svg",
       "AssetKind": "All",
@@ -527,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\svg\\shapes\\abstract-8.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-9.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\svg\\shapes\\abstract-9.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/svg/shapes/abstract-9.svg",
       "AssetKind": "All",
@@ -544,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\svg\\shapes\\abstract-9.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\users\\1.jpg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\users\\1.jpg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/images/users/1.jpg",
       "AssetKind": "All",
@@ -561,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\users\\1.jpg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\app.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\app.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/js/app.js",
       "AssetKind": "All",
@@ -578,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\app.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\common.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\common.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/js/common.js",
       "AssetKind": "All",
@@ -595,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\common.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\login.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\login.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/js/login.js",
       "AssetKind": "All",
@@ -612,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\login.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\scripts.bundle.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\scripts.bundle.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/js/scripts.bundle.js",
       "AssetKind": "All",
@@ -629,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\scripts.bundle.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\scripts.bundle.js.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\scripts.bundle.js.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/js/scripts.bundle.js.map",
       "AssetKind": "All",
@@ -646,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\scripts.bundle.js.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\site.jss",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\site.jss",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/js/site.jss",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\site.jss"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -680,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -697,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -714,10 +714,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -748,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -765,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -782,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -799,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -816,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -833,10 +833,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -850,10 +850,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -867,10 +867,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -884,10 +884,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -901,10 +901,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -918,10 +918,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -935,10 +935,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -952,10 +952,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -969,10 +969,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -986,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -1003,10 +1003,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -1020,10 +1020,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -1037,10 +1037,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -1054,10 +1054,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -1071,10 +1071,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -1088,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -1105,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -1122,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -1139,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -1156,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -1173,10 +1173,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -1190,10 +1190,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -1224,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -1241,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -1258,10 +1258,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -1275,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -1292,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -1326,10 +1326,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -1343,10 +1343,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -1360,10 +1360,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -1377,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -1394,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -1411,10 +1411,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\LICENSE",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\LICENSE",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -1428,10 +1428,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -1445,10 +1445,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -1462,10 +1462,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -1479,10 +1479,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery\\LICENSE.txt",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -1496,10 +1496,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -1513,10 +1513,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -1530,10 +1530,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -1547,10 +1547,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -1564,10 +1564,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -1581,10 +1581,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -1598,10 +1598,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -1615,10 +1615,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -1632,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\datatables\\datatables.bundle.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\datatables\\datatables.bundle.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/datatables/datatables.bundle.css",
       "AssetKind": "All",
@@ -1649,10 +1649,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\datatables\\datatables.bundle.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\datatables\\datatables.bundle.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\datatables\\datatables.bundle.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/datatables/datatables.bundle.js",
       "AssetKind": "All",
@@ -1666,10 +1666,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\datatables\\datatables.bundle.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\datatables\\datatables.bundle.rtl.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\datatables\\datatables.bundle.rtl.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/datatables/datatables.bundle.rtl.css",
       "AssetKind": "All",
@@ -1683,10 +1683,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\datatables\\datatables.bundle.rtl.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\datatables\\datatables.dark.bundle.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\datatables\\datatables.dark.bundle.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/datatables/datatables.dark.bundle.css",
       "AssetKind": "All",
@@ -1700,10 +1700,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\datatables\\datatables.dark.bundle.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\datatables\\datatables.dark.bundle.rtl.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\datatables\\datatables.dark.bundle.rtl.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/datatables/datatables.dark.bundle.rtl.css",
       "AssetKind": "All",
@@ -1717,10 +1717,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\datatables\\datatables.dark.bundle.rtl.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\datatables\\pdfmake.min.js.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\datatables\\pdfmake.min.js.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/datatables/pdfmake.min.js.map",
       "AssetKind": "All",
@@ -1734,10 +1734,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\datatables\\pdfmake.min.js.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.eot",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.eot",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-brands-400.eot",
       "AssetKind": "All",
@@ -1751,10 +1751,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.eot"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-brands-400.svg",
       "AssetKind": "All",
@@ -1768,10 +1768,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.ttf",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.ttf",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-brands-400.ttf",
       "AssetKind": "All",
@@ -1785,10 +1785,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.ttf"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-brands-400.woff",
       "AssetKind": "All",
@@ -1802,10 +1802,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-brands-400.woff2",
       "AssetKind": "All",
@@ -1819,10 +1819,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-brands-400.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.eot",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.eot",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-regular-400.eot",
       "AssetKind": "All",
@@ -1836,10 +1836,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.eot"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-regular-400.svg",
       "AssetKind": "All",
@@ -1853,10 +1853,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.ttf",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.ttf",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-regular-400.ttf",
       "AssetKind": "All",
@@ -1870,10 +1870,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.ttf"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-regular-400.woff",
       "AssetKind": "All",
@@ -1887,10 +1887,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-regular-400.woff2",
       "AssetKind": "All",
@@ -1904,10 +1904,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-regular-400.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.eot",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.eot",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-solid-900.eot",
       "AssetKind": "All",
@@ -1921,10 +1921,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.eot"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-solid-900.svg",
       "AssetKind": "All",
@@ -1938,10 +1938,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.ttf",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.ttf",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-solid-900.ttf",
       "AssetKind": "All",
@@ -1955,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.ttf"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-solid-900.woff",
       "AssetKind": "All",
@@ -1972,10 +1972,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/@fortawesome/fa-solid-900.woff2",
       "AssetKind": "All",
@@ -1989,10 +1989,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\@fortawesome\\fa-solid-900.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\bootstrap-icons.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\bootstrap-icons.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/bootstrap-icons.woff",
       "AssetKind": "All",
@@ -2006,10 +2006,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\bootstrap-icons.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\bootstrap-icons.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\bootstrap-icons.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/bootstrap-icons.woff2",
       "AssetKind": "All",
@@ -2023,10 +2023,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\bootstrap-icons.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\bootstrap-icons\\bootstrap-icons.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\bootstrap-icons\\bootstrap-icons.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/bootstrap-icons/bootstrap-icons.woff",
       "AssetKind": "All",
@@ -2040,10 +2040,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\bootstrap-icons\\bootstrap-icons.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\bootstrap-icons\\bootstrap-icons.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\bootstrap-icons\\bootstrap-icons.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/bootstrap-icons/bootstrap-icons.woff2",
       "AssetKind": "All",
@@ -2057,10 +2057,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\bootstrap-icons\\bootstrap-icons.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-brands-400.eot",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-brands-400.eot",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-brands-400.eot",
       "AssetKind": "All",
@@ -2074,10 +2074,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-brands-400.eot"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-brands-400.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-brands-400.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-brands-400.svg",
       "AssetKind": "All",
@@ -2091,10 +2091,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-brands-400.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-brands-400.ttf",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-brands-400.ttf",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-brands-400.ttf",
       "AssetKind": "All",
@@ -2108,10 +2108,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-brands-400.ttf"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-brands-400.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-brands-400.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-brands-400.woff",
       "AssetKind": "All",
@@ -2125,10 +2125,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-brands-400.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-brands-400.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-brands-400.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-brands-400.woff2",
       "AssetKind": "All",
@@ -2142,10 +2142,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-brands-400.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-regular-400.eot",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-regular-400.eot",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-regular-400.eot",
       "AssetKind": "All",
@@ -2159,10 +2159,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-regular-400.eot"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-regular-400.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-regular-400.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-regular-400.svg",
       "AssetKind": "All",
@@ -2176,10 +2176,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-regular-400.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-regular-400.ttf",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-regular-400.ttf",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-regular-400.ttf",
       "AssetKind": "All",
@@ -2193,10 +2193,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-regular-400.ttf"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-regular-400.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-regular-400.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-regular-400.woff",
       "AssetKind": "All",
@@ -2210,10 +2210,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-regular-400.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-regular-400.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-regular-400.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-regular-400.woff2",
       "AssetKind": "All",
@@ -2227,10 +2227,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-regular-400.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-solid-900.eot",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-solid-900.eot",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-solid-900.eot",
       "AssetKind": "All",
@@ -2244,10 +2244,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-solid-900.eot"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-solid-900.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-solid-900.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-solid-900.svg",
       "AssetKind": "All",
@@ -2261,10 +2261,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-solid-900.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-solid-900.ttf",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-solid-900.ttf",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-solid-900.ttf",
       "AssetKind": "All",
@@ -2278,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-solid-900.ttf"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-solid-900.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-solid-900.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-solid-900.woff",
       "AssetKind": "All",
@@ -2295,10 +2295,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-solid-900.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-solid-900.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\fa-solid-900.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/fa-solid-900.woff2",
       "AssetKind": "All",
@@ -2312,10 +2312,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\fa-solid-900.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-brands-400.eot",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-brands-400.eot",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-brands-400.eot",
       "AssetKind": "All",
@@ -2329,10 +2329,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-brands-400.eot"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-brands-400.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-brands-400.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-brands-400.svg",
       "AssetKind": "All",
@@ -2346,10 +2346,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-brands-400.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-brands-400.ttf",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-brands-400.ttf",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-brands-400.ttf",
       "AssetKind": "All",
@@ -2363,10 +2363,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-brands-400.ttf"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-brands-400.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-brands-400.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-brands-400.woff",
       "AssetKind": "All",
@@ -2380,10 +2380,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-brands-400.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-brands-400.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-brands-400.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-brands-400.woff2",
       "AssetKind": "All",
@@ -2397,10 +2397,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-brands-400.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-regular-400.eot",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-regular-400.eot",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-regular-400.eot",
       "AssetKind": "All",
@@ -2414,10 +2414,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-regular-400.eot"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-regular-400.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-regular-400.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-regular-400.svg",
       "AssetKind": "All",
@@ -2431,10 +2431,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-regular-400.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-regular-400.ttf",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-regular-400.ttf",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-regular-400.ttf",
       "AssetKind": "All",
@@ -2448,10 +2448,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-regular-400.ttf"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-regular-400.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-regular-400.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-regular-400.woff",
       "AssetKind": "All",
@@ -2465,10 +2465,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-regular-400.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-regular-400.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-regular-400.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-regular-400.woff2",
       "AssetKind": "All",
@@ -2482,10 +2482,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-regular-400.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-solid-900.eot",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-solid-900.eot",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-solid-900.eot",
       "AssetKind": "All",
@@ -2499,10 +2499,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-solid-900.eot"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-solid-900.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-solid-900.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-solid-900.svg",
       "AssetKind": "All",
@@ -2516,10 +2516,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-solid-900.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-solid-900.ttf",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-solid-900.ttf",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-solid-900.ttf",
       "AssetKind": "All",
@@ -2533,10 +2533,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-solid-900.ttf"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-solid-900.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-solid-900.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-solid-900.woff",
       "AssetKind": "All",
@@ -2550,10 +2550,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-solid-900.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-solid-900.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\la-solid-900.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/la-solid-900.woff2",
       "AssetKind": "All",
@@ -2567,10 +2567,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\la-solid-900.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.eot",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.eot",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-brands-400.eot",
       "AssetKind": "All",
@@ -2584,10 +2584,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.eot"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-brands-400.svg",
       "AssetKind": "All",
@@ -2601,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.ttf",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.ttf",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-brands-400.ttf",
       "AssetKind": "All",
@@ -2618,10 +2618,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.ttf"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-brands-400.woff",
       "AssetKind": "All",
@@ -2635,10 +2635,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-brands-400.woff2",
       "AssetKind": "All",
@@ -2652,10 +2652,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-brands-400.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.eot",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.eot",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-regular-400.eot",
       "AssetKind": "All",
@@ -2669,10 +2669,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.eot"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-regular-400.svg",
       "AssetKind": "All",
@@ -2686,10 +2686,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.ttf",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.ttf",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-regular-400.ttf",
       "AssetKind": "All",
@@ -2703,10 +2703,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.ttf"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-regular-400.woff",
       "AssetKind": "All",
@@ -2720,10 +2720,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-regular-400.woff2",
       "AssetKind": "All",
@@ -2737,10 +2737,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-regular-400.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.eot",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.eot",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-solid-900.eot",
       "AssetKind": "All",
@@ -2754,10 +2754,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.eot"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.svg",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.svg",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-solid-900.svg",
       "AssetKind": "All",
@@ -2771,10 +2771,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.svg"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.ttf",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.ttf",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-solid-900.ttf",
       "AssetKind": "All",
@@ -2788,10 +2788,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.ttf"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.woff",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.woff",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-solid-900.woff",
       "AssetKind": "All",
@@ -2805,10 +2805,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.woff"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.woff2",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.woff2",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/fonts/line-awesome/la-solid-900.woff2",
       "AssetKind": "All",
@@ -2822,10 +2822,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\fonts\\line-awesome\\la-solid-900.woff2"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\plugins.bundle.css",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\plugins.bundle.css",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/plugins.bundle.css",
       "AssetKind": "All",
@@ -2839,10 +2839,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\plugins.bundle.css"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\plugins.bundle.css.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\plugins.bundle.css.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/plugins.bundle.css.map",
       "AssetKind": "All",
@@ -2856,10 +2856,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\plugins.bundle.css.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\plugins.bundle.js",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\plugins.bundle.js",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/plugins.bundle.js",
       "AssetKind": "All",
@@ -2873,10 +2873,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\plugins.bundle.js"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\plugins.bundle.js.map",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\plugins\\plugins.bundle.js.map",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "assets/plugins/plugins.bundle.js.map",
       "AssetKind": "All",
@@ -2890,10 +2890,10 @@
       "OriginalItemSpec": "wwwroot\\assets\\plugins\\plugins.bundle.js.map"
     },
     {
-      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\favicon.ico",
       "SourceId": "Factoring.WebMvc",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "ContentRoot": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
       "BasePath": "_content/Factoring.WebMvc",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lJHjdsLJEFR+DAijA+jF4+RE8kj3KTjMC/mqcGJL6BhmqW9IJFU+do8+1HFr/KjeiLt3BV8H20e0Zyhkktphvg==",
+  "dgSpecHash": "oQPRu8VM764pA9EIzsQwMrKwJaiZUk+NJ1qjNs8XbwDvgBDE3ELva3ufaaFH4Y3GHHAx7X6M/oOoktyQMF1VYw==",
   "success": true,
-  "projectFilePath": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\FrontEnd\\src\\Factoring.Model\\Factoring.Model.csproj",
+  "projectFilePath": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.Model\\Factoring.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chanc\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\chanc\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
