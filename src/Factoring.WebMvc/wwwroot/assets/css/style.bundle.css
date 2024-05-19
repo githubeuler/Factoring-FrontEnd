@@ -20351,7 +20351,8 @@ textarea.form-control-lg {
     }
 
     .flex-lg-grow-1 {
-        flex-grow: 1 !important
+        flex-grow: 1 !important;
+        background-color: #ffffff
     }
 
     .flex-lg-shrink-0 {
@@ -33303,7 +33304,7 @@ textarea.form-control-lg {
         }
 
 .text-muted {
-    color: #a1a5b7 !important
+    color: #ffffff !important
 }
 
 .text-hover-muted {
@@ -42068,7 +42069,8 @@ code:not([class*=language-]) {
     .table.table-row-bordered tr {
         border-bottom-width: 1px;
         border-bottom-style: solid;
-        border-bottom-color: #eff2f5
+        border-bottom-color: #eff2f5;
+        background-color: #001540;
     }
 
     .table.table-row-bordered tfoot td, .table.table-row-bordered tfoot th {
@@ -50226,7 +50228,7 @@ body {
         right: 0;
         left: 0;
         z-index: 100;
-        background-color: rgb(51, 107, 209);
+        background-color: #ffffff;
         height: 65px;
         padding: 0;
         box-shadow: 0 10px 30px 0 rgba(82,63,105,.05)
@@ -50393,7 +50395,7 @@ body {
     }
 
         .aside.aside-dark .aside-logo {
-            background-color: rgb(51, 107, 209)
+            background-color: #ffffff
         }
 
         .aside.aside-dark .aside-toggle svg [fill]:not(.permanent):not(g) {

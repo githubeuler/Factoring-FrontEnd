@@ -30,6 +30,7 @@ builder.Services.AddSession(options =>
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<ProxyHttpClient>();
 builder.Services.AddTransient<IAuthProxy, AuthProxy>();
+builder.Services.AddTransient<ICatalogoProxy, CatalogoProxy>();
 var app = builder.Build();
 
 // Configuración de la aplicación

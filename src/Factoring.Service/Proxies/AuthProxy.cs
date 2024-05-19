@@ -33,7 +33,7 @@ namespace Factoring.Service.Proxies
                 var client = _proxyHttpClient.GetHttp();
                 var us = JsonConvert.SerializeObject(model);
                 var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
-                var response = await client.PostAsync("account", requestContent);
+                var response = await client.PostAsync("Account", requestContent);
                 var json = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<ResponseData<AccessTokenAuthModel>>(json);
             }

@@ -1,0 +1,231 @@
+﻿@model OperacionViewModel
+@{
+    ViewData["Title"] = "Bandeja de Operaciones";
+}
+<div class="card">
+    <div class="card-header border-0 pt-6">
+        <div class="card-title">
+            <h2 class="fw-bolder">Bandeja Operaciones</h2>
+        </div>
+        <div class="card-toolbar">
+            <div class="d-flex justify-content-end" data-kt-operaciones-table-toolbar="base">
+                <button type="button" class="btn btn-sm btn-light-primary me-3 open-masivo-operacion p-car" data-bs-toggle="modal" data-bs-target="#kt_operaciones_carga_masiva">
+                    <i class="las la-upload fs-3"></i> Carga Masiva
+                </button>
+                <a asp-controller="Operacion" asp-action="Registro" class="btn btn-sm btn-primary me-3 p-ins">
+                    <i class="las la-plus fs-3"></i> Nuevo Registro
+                </a>
+                <button id="kt_export_button" type="button" class="btn btn-sm btn-primary p-exp-exc">Exportar Registros</button>
+            </div>
+            <div class="d-flex justify-content-end align-items-center d-none" data-kt-operaciones-table-toolbar="selected">
+                <div class="fw-bolder me-5">
+                    <span class="me-2" data-kt-operaciones-table-select="selected_count"></span>Seleccionados
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body pt-5">
+        <form id="kt_search_form" class="form w-100 mt-5 mb-15 align-items-center">
+            <div class="row g-9 mb-7">
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="NroOperacion" class="form-control form-control-solid ps-10" maxlength="11" placeholder="Buscar por Nro Operación">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="RazonGirador" class="form-control form-control-solid ps-10" maxlength="200" placeholder="Buscar por Girador">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="RazonAdquiriente" class="form-control form-control-solid ps-10" maxlength="200" placeholder="Buscar por Adquirente">
+                    </div>
+                </div>
+            </div>
+            <div class="row g-9 mb-7">
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="FechaCreacion" class="form-control form-control-solid ps-10" placeholder="Buscar por Fecha de Registro">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <select asp-for="Estado" asp-items="@(new SelectList(ViewBag.Estados, "nId", "cNombre"))" data-control="select2" aria-label="Estados" data-placeholder="Estados" class="form-select form-select-solid fw-bolder">
+                        <option value="">Seleccionar</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <button id="kt_search_button" type="button" class="btn btn-warning p-con">
+                        <span class="indicator-label">Buscar</span>
+                        <span class="indicator-progress">Buscando... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                    <button id="kt_search_clear" type="button" class="btn btn-light">
+                        <span>Limpiar</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="row g-8">
+            <div class="col-lg-12">
+                <table id="kt_operaciones_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+                    <thead>
+                        <tr class="text-center text-muted fw-bolder fs-7 text-uppercase gs-0">
+                            <th class="text-center">
+                                <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                    <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_operaciones_table .form-check-input" value="1" />
+                                </div>
+                            </th>
+                            <th class="text-center">Operación</th>
+                            <th class="text-center">Girador</th>
+                            <th class="text-center">Adquiriente</th>
+                            <th class="text-center">Fecha Registro</th>
+                            <th class="text-center">Estado Operación</th>
+                            <th class="text-center">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div id="kt_operaciones_carga_masiva" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_modal_masivo_form" class="form" asp-controller="Operacion" asp-action="CargaMasiva" novalidate="novalidate">
+                <div class="modal-header">
+                    <h2>Carga Masiva de Operaciones</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <div class="flex-row-fluid">
+                        <div class="w-100">
+                            <div class="fv-row mb-5">
+                                <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary">
+                                    <i class="fas fa-info-circle fs-2x text-primary me-2"></i>
+                                    <div class="text-gray-700 fw-bold fs-6">
+                                        Los archivos de carga masiva permitidos son Excel en los formatos .xlsx o .xls
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fv-row mb-5">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Seleccionar Archivo Excel</span>
+                                </label>
+                                <input type="file" id="fileExcelMasivo" name="fileExcelMasivo" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control form-control-solid" />
+                            </div>
+                            <div class="separator separator-dotted opacity-80 mb-5"></div>
+                            <div class="fv-row">
+                                <div class="text-dark">
+                                    En el siguiente enlace puede descargar la <a href="javascript:;" class="fw-bolder me-1 text-uppercase">plantilla de carga masiva</a>, por favor tener en cuenta que la plantilla <strong>no puede ser modificada en estructura</strong> para evitar errores al momento de importarla a la aplicación.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_upload_button" type="submit" class="btn btn-primary">
+                        <span class="indicator-label">Cargar</span>
+                        <span class="indicator-progress">Cargando registros... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="kt_facturas_carga_masiva" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_modal_masivo_facturas_form" class="form" novalidate="novalidate">
+                <div class="modal-header">
+                    <h2>Carga Masiva de Facturas</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <input type="hidden" id="operacionId" name="operacionId" />
+                    <div class="flex-row-fluid">
+                        <div class="w-100">
+                            <div class="fv-row mb-5">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Seleccionar Archivo Excel de Facturas</span>
+                                </label>
+                                <input type="file" id="fileExcelFacturasMasivo" name="fileExcelFacturasMasivo" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control form-control-solid" />
+                            </div>
+
+                            <div class="fv-row mb-5">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Adjuntar Archivos XML</span>
+                                </label>
+                                <div id="kt_dropzonejs_facturas_xml" class="dropzone dropzone-queue mb-2">
+                                    <div class="dropzone-panel mb-lg-0 mb-2">
+                                        <a class="dropzone-select btn btn-sm btn-primary me-2">Adjuntar Facturas XML</a>
+                                        <a class="dropzone-remove-all btn btn-sm btn-light-primary">Quitar Todo</a>
+                                    </div>
+                                    <div class="dropzone-items wm-200px">
+                                        <div class="dropzone-item" style="display:none">
+                                            <div class="dropzone-file">
+                                                <div class="dropzone-filename" title="some_image_file_name.jpg">
+                                                    <span data-dz-name>demo_1.xml</span>
+                                                    <strong>(<span data-dz-size>450kb</span>)</strong>
+                                                </div>
+                                                <div class="dropzone-error" data-dz-errormessage></div>
+                                            </div>
+                                            <div class="dropzone-progress">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-primary"
+                                                         role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="dropzone-toolbar">
+                                                <span class="dropzone-cancel" data-dz-remove style="display: none;"><i class="bi bi-x fs-3"></i></span>
+                                                <span class="dropzone-delete" data-dz-remove><i class="bi bi-x fs-1"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="form-text text-muted">El tamaño permitido de cada archivo XML es de 2MB.</span>
+                            </div>
+                            <div class="separator separator-dotted opacity-80 mb-5"></div>
+                            <div class="fv-row">
+                                <div class="text-dark">
+                                    En el siguiente enlace puede descargar la <a href="javascript:;" class="fw-bolder me-1 text-uppercase">plantilla de carga masiva de facturas</a>, por favor tener en cuenta que la plantilla <strong>no puede ser modificada en estructura</strong> para evitar errores al momento de importarla a la aplicación.
+                                    Tambien tener en cuenta que la carga de archivos XML de las facturas debe coincidir el nombre del archivo con el ingresado en el excel.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_upload_button_factura" type="submit" class="btn btn-primary">
+                        <span class="indicator-label">Cargar</span>
+                        <span class="indicator-progress">Cargando registros... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>*@
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    @*    <script src="~/assets/js/registro-operacion.js"></script>*@
+}
