@@ -20351,8 +20351,7 @@ textarea.form-control-lg {
     }
 
     .flex-lg-grow-1 {
-        flex-grow: 1 !important;
-        background-color: #ffffff
+        flex-grow: 1 !important
     }
 
     .flex-lg-shrink-0 {
@@ -33304,7 +33303,7 @@ textarea.form-control-lg {
         }
 
 .text-muted {
-    color: #ffffff !important
+    color: #a1a5b7 !important
 }
 
 .text-hover-muted {
@@ -42069,8 +42068,7 @@ code:not([class*=language-]) {
     .table.table-row-bordered tr {
         border-bottom-width: 1px;
         border-bottom-style: solid;
-        border-bottom-color: #eff2f5;
-        background-color: #001540;
+        border-bottom-color: #eff2f5
     }
 
     .table.table-row-bordered tfoot td, .table.table-row-bordered tfoot th {

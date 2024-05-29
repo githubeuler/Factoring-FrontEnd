@@ -55,6 +55,7 @@ namespace Factoring.Model.ViewModels
 
     public class OperacionCreateModel
     {
+        public string nNroOperacion { get; set; }
         public int IdOperacion { get; set; }
         [Required]
         public int IdGirador { get; set; }

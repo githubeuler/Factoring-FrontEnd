@@ -1,0 +1,240 @@
+﻿@model OperacionCreateModel
+@{
+    ViewData["Action"] = "Editar";
+}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="fw-bolder mb-0">Datos Básicos</h3>
+        </div>
+        <div class="card-toolbar">
+            <a asp-controller="Operacion" asp-action="Index" class="btn btn-sm btn-flex btn-light btn-active-primary me-2">
+                <i class="las la-arrow-left fs-3"></i> Regresar
+            </a>
+            <button id="kt_save_button" type="submit" class="btn btn-sm btn-primary me-2 p-ins">
+                <span class="indicator-label">Guardar</span>
+                <span class="indicator-progress">Guardando Registro... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            </button>
+        </div>
+    </div>
+    <div class="card-body pt-5">
+
+
+        <form id="kt_form_registro" class="form" asp-controller="Operacion" asp-action="RegistroProceso" method="post" novalidate="novalidate">
+
+            <div class="card-body pt-5">
+                <div class="card-title">
+                    <h3 class="fw-bolder mb-0">Datos Operación</h3>
+                </div>
+                <br />
+
+                @if (@ViewBag.IsEdit)
+                {
+                    <input type="hidden" asp-for="IdOperacion" />
+                   @* <div class="row g-9 mb-7">
+                        <div class="col-md-4 offset-8 fv-row">
+                            <label class="fs-6 fw-bold mb-2">Estado</label>
+                            <p class="form-control-static">@Model.NombreEstado</p>
+                        </div>
+                    </div>*@
+                }
+                <div class="row g-9 mb-7">
+
+                    <div class="col-md-2 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Nro Operación</label>
+                        <input type="text" asp-for="nNroOperacion" class="form-control form-control-solid"  readonly disabled/>
+                    </div>
+                    <div class="col-md-4 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Girador</label>
+                        <select asp-for="IdGirador" asp-items="@(new SelectList(ViewBag.ListGirador, "nIdGirador", "cRazonSocial"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                            <option value="">Seleccionar</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Aceptante</label>
+                        <select asp-for="IdAdquiriente" asp-items="@(new SelectList(ViewBag.ListAdquiriente, "nIdAdquiriente", "cRazonSocial"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                            <option value="">Seleccionar</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 fv-row">
+                        <label class="fs-6 fw-bold mb-2">Estado</label>
+                        <p class="form-control-static">@Model.NombreEstado</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body pt-5">
+                <div class="card-title">
+                    <h3 class="fw-bolder mb-0">Datos Operación - Financiamiento</h3>
+                </div>
+                <br />
+
+                <div class="modal-body py-lg-10 px-lg-10" data-select2-id="select2-data-9-6j32">
+                    <div class="row g-9 mb-7" data-select2-id="select2-data-8-p7oz">
+                        <div class="col-md-4 fv-row">
+                            <label class="required fs-6 fw-bold mb-2">% Financiamiento</label>
+                            <input type="text" asp-for="PorcentajeFinanciamiento" class="form-control form-control-solid" placeholder="0%" maxlength="3" />
+                        </div>
+
+                        <div class="col-md-4 fv-row">
+                            <label class="required fs-6 fw-bold mb-2">Monto total operación</label>
+                            <input type="text" asp-for="MontoOperacion" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                            <input type="hidden" id="HiddenMontoOperacion" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                        </div>
+
+                        <div class="col-md-4 fv-row">
+                            <label class="required fs-6 fw-bold mb-2">% Comisión</label>
+                            <input type="text" asp-for="DescCobranza" class="form-control form-control-solid" placeholder="0%" maxlength="5" />
+                        </div>
+                    </div>
+
+                    <div class="row g-9 mb-7">
+                        <div class="col-md-4 fv-row">
+                            <label class="required fs-6 fw-bold mb-2">Moneda</label>
+                            <select asp-for="IdTipoMoneda" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                                <option value="">Seleccionar</option>
+                                <option value="2">DOLARES</option>
+                                <option value="1">SOLES</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4 fv-row">
+                            <label class="required fs-6 fw-bold mb-2">Tasa Moratoria</label>
+                            <input type="text" asp-for="InteresMoratorio" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                        </div>
+
+                        <div class="col-md-4 fv-row">
+                            <label class="required fs-6 fw-bold mb-2">TEM</label>
+                            <input type="text" asp-for="TEM" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                        </div>
+
+                    </div>
+
+                    <div class="row g-9 mb-7">
+                        <div class="col-md-4 fv-row">
+                            <label class="required fs-6 fw-bold mb-2">Plazo</label>
+                            <input type="text" asp-for="Plazo" class="form-control form-control-solid" placeholder="0" maxlength="10" />
+                        </div>
+                        <div id="box-retencion" class="col-md-4 fv-row">
+                            <label class="fs-6 fw-bold mb-2">% Retención</label>
+                            <input type="text" asp-for="PorcentajeRetencion" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                        </div>
+                        <div class="col-md-4 fv-row">
+                            <label class="required fs-6 fw-bold mb-2">Tipo de Fondeo</label>
+                            <select asp-for="IdCategoria" asp-items="@(new SelectList(ViewBag.Categoria, "nId", "cNombre"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                                <option value="">Seleccionar</option>
+                            </select>
+                        </div>
+                    </div>
+                   
+
+                </div>
+            </div>
+
+        </form>
+
+        @if (@ViewBag.IsEdit)
+        {
+            @*<ul class="nav nav-tabs nav-line-tabs mb-5 fs-6 fw-bold pt-8 mb-8">
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#tab_facturas">
+                        Datos Operación - Documentos
+                    </a>
+                </li>
+            </ul>*@
+          @*  <div id="tabContentDetalle" class="tab-content">
+                <div id="tab_Documentos" class="tab-pane fade show active" role="tabpanel">
+                    <partial name="TabsDetalle/_SolicitudDocumentos" view-data="ViewData" />
+                </div>
+            </div>*@
+
+
+            <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6 fw-bold pt-8 mb-8">
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#tab_facturas">
+                        Facturas
+                    </a>
+                </li>
+               @* <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_cavali">
+                        Cavali
+                    </a>
+                </li>*@
+            </ul>
+            <div id="tabContentDetalle" class="tab-content">
+                <div id="tab_facturas" class="tab-pane fade show active" role="tabpanel">
+                    <partial name="TabsDetalle/_Facturas" view-data="ViewData" />
+                </div>
+              @*  <div id="tab_cavali" class="tab-pane fade show" role="tabpanel">
+                    <partial name="TabsDetalle/_Cavali" view-data="ViewData" />
+                </div>*@
+            </div>
+        }
+
+
+    </div>
+</div>
+@if (@ViewBag.IsEdit)
+{
+    @if (Model.Estado == 19 || Model.Estado == 41 || Model.Estado == 43)
+    {
+        <div id="kt_modal_levantar_observacion" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form id="kt_modal_resultado_form" class="form" asp-controller="Operacion" asp-action="LevantarObservacion" novalidate="novalidate">
+                        <div class="modal-header">
+                            <h2>Levantar Observación Operaciones</h2>
+                            <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal"><i class="las la-times"></i></div>
+                        </div>
+                        <div class="modal-body py-lg-5 px-lg-5">
+                            <div class="flex-row-fluid">
+                                <div class="w-100">
+                                    <div class="fv-row">
+                                        <input type="hidden" id="IdOperacion" name="IdOperacion" value=@Model.IdOperacion />
+                                        <input type="hidden" id="Estado" name="Estado" value=@Model.Estado />
+
+                                        <textarea id="ComentarioOperaciones" name="ComentarioOperaciones" required="required" class="form-control form-control-solid" rows="5" maxlength="3000" data-fv-not-empty___message="The username is required" placeholder="Ingresar Comentario..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                            <button id="kt_save_button_observado" type="submit" class="btn btn-primary">
+                                <span class="indicator-label">Guardar</span>
+                                <span class="indicator-progress">Guardando Información... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+    @*<div class="engage-toolbar d-flex position-fixed px-5 fw-bolder zindex-2 top-50 end-0 transform-90 mt-20 gap-2">
+        <button id="kt_help_toggle" class="engage-help-toggle btn btn-flex h-35px bg-body btn-color-gray-700 btn-active-color-gray-900 shadow-sm px-5 rounded-top-0">Comentarios</button>
+    </div>*@
+    <div id="kt_help" class="bg-body drawer drawer-end" data-kt-drawer="true" data-kt-drawer-name="help" data-kt-drawer-activate="true" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'350px', 'md': '525px'}" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_help_toggle" data-kt-drawer-close="#kt_help_close" style="width: 525px !important;">
+        <div class="card shadow-none rounded-0 w-100">
+            <div class="card-header" id="kt_help_header">
+                <h5 class="card-title fw-bold text-gray-600">Listado de Comentarios</h5>
+                <div class="card-toolbar">
+                    <button type="button" class="btn btn-sm btn-icon explore-btn-dismiss me-n5" id="kt_help_close">
+                        <i class="las la-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body" id="kt_help_body">
+                <div id="kt_help_scroll" class="hover-scroll-overlay-y" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_help_body" data-kt-scroll-dependencies="#kt_help_header" data-kt-scroll-offset="5px" style="height: 247px;">
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    @if (@ViewBag.IsEdit)
+    {
+        @*<script type="text/javascript">var countUbigeo = @ViewBag.UbigeoPaisCount;</script>*@
+    }
+    <script src="~/assets/js/registro-operacion.js"></script>
+}

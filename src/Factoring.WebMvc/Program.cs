@@ -31,6 +31,10 @@ builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<ProxyHttpClient>();
 builder.Services.AddTransient<IAuthProxy, AuthProxy>();
 builder.Services.AddTransient<ICatalogoProxy, CatalogoProxy>();
+builder.Services.AddTransient<IOperacionProxy, OperacionProxy>();
+builder.Services.AddTransient<IAdquirienteProxy, AdquirienteProxy>();
+builder.Services.AddTransient<IGiradorProxy, GiradorProxy>();
+builder.Services.AddTransient<IFacturaOperacionesProxy, FacturaOperacionesProxy>();
 var app = builder.Build();
 
 // Configuración de la aplicación

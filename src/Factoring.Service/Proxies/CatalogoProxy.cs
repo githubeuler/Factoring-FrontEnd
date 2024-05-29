@@ -10,6 +10,7 @@ namespace Factoring.Service.Proxies
     public interface ICatalogoProxy
     {
         Task<ResponseData<List<CatalogoResponseListDto>>> GetCatalogoList(CatalogoListDto model);
+        Task<ResponseData<List<CatalogoResponseListDto>>> GetGategoriaGirador(CatalogoListDto model);
     }
     public class CatalogoProxy : ICatalogoProxy
     {
@@ -28,6 +29,15 @@ namespace Factoring.Service.Proxies
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<ResponseData<List<CatalogoResponseListDto>>>(json);
             return data;
+        }
+        public async Task<ResponseData<List<CatalogoResponseListDto>>> GetGategoriaGirador(CatalogoListDto model)
+        {
+            var client = _proxyHttpClient.GetHttp();
+            var response = await client.GetAsync($"Catalogo/get-catogoria-girador?Codigo={model.Codigo}");
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<ResponseData<List<CatalogoResponseListDto>>>(json);
+            return data;
+
         }
 
     }

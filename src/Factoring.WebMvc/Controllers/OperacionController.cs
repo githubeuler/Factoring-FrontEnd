@@ -25,6 +25,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Factoring.Model.Models.Operaciones;
 
 namespace Factoring.WebMvc.Controllers
 {
@@ -36,12 +37,12 @@ namespace Factoring.WebMvc.Controllers
         private readonly ILogger<OperacionController> _logger;
         private readonly ICatalogoProxy _catalogoProxy;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        //private readonly IOperacionProxy _operacionProxy;
-        //private readonly IGiradorProxy _giradorProxy;
-        //private readonly IAdquirienteProxy _adquirienteProxy;
+        private readonly IOperacionProxy _operacionProxy;
+        private readonly IGiradorProxy _giradorProxy;
+        private readonly IAdquirienteProxy _adquirienteProxy;
         //private readonly IAdquirienteUbicacionProxy _adquirienteUbicacion;
         //private readonly IGiradorUbicacionProxy _giradorUbicacionProxy;
-        //private readonly IFacturaOperacionesProxy _facturaOperacionesProxy;
+        private readonly IFacturaOperacionesProxy _facturaOperacionesProxy;
         //private readonly IDivisoExternProxy _divisoExternProxy;
         //private readonly IFilesProxy _filesProxy;
         //private readonly IEvaluacionOperacionesProxy _evaluacionOperacionesProxy;
@@ -56,12 +57,12 @@ namespace Factoring.WebMvc.Controllers
             ILogger<OperacionController> logger,
             ICatalogoProxy catalogoProxy,
             IHttpContextAccessor httpContextAccessor,
-            //IOperacionProxy operacionProxy,
-            //IGiradorProxy giradorProxy,
-            //IAdquirienteProxy adquirienteProxy,
+            IOperacionProxy operacionProxy,
+            IGiradorProxy giradorProxy,
+            IAdquirienteProxy adquirienteProxy,
             //IAdquirienteUbicacionProxy adquirienteUbicacionProxy,
             //IGiradorUbicacionProxy giradorUbicacionProxy,
-            //IFacturaOperacionesProxy facturaOperacionesProxy,
+            IFacturaOperacionesProxy facturaOperacionesProxy,
             //IDivisoExternProxy divisoExternProxy,
             //IFilesProxy filesProxy,
             //IEvaluacionOperacionesProxy evaluacionOperacionesProxy,
@@ -74,12 +75,12 @@ namespace Factoring.WebMvc.Controllers
             _logger = logger;
             _catalogoProxy = catalogoProxy;
             _httpContextAccessor = httpContextAccessor;
-            //_operacionProxy = operacionProxy;
-            //_giradorProxy = giradorProxy;
-            //_adquirienteProxy = adquirienteProxy;
+            _operacionProxy = operacionProxy;
+            _giradorProxy = giradorProxy;
+            _adquirienteProxy = adquirienteProxy;
             //_adquirienteUbicacion = adquirienteUbicacionProxy;
             //_giradorUbicacionProxy = giradorUbicacionProxy;
-            //_facturaOperacionesProxy = facturaOperacionesProxy;
+            _facturaOperacionesProxy = facturaOperacionesProxy;
             //_divisoExternProxy = divisoExternProxy;
             //_filesProxy = filesProxy;
             //_evaluacionOperacionesProxy = evaluacionOperacionesProxy;
@@ -105,20 +106,20 @@ namespace Factoring.WebMvc.Controllers
         {
             try
             {
-                //var requestData = new OperacionesRequestDataTableDto();
-                //requestData.Pageno = (Convert.ToInt32(Request.Form["start"].FirstOrDefault()));
-                //requestData.PageSize = (Convert.ToInt32(Request.Form["length"].FirstOrDefault())) == 0 ? 10 : (Convert.ToInt32(Request.Form["length"].FirstOrDefault()));
-                //requestData.Sorting = "nIdOperaciones";
-                //requestData.SortOrder = "asc";
-                //requestData.FilterNroOperacion = model.NroOperacion;
-                //requestData.FilterRazonGirador = model.RazonGirador;
-                //requestData.FilterRazonAdquiriente = model.RazonAdquiriente;
-                //requestData.FilterFecCrea = model.FechaCreacion;
-                //requestData.Estado = model.Estado;
+                var requestData = new OperacionesRequestDataTableDto();
+                requestData.Pageno = (Convert.ToInt32(Request.Form["start"].FirstOrDefault()));
+                requestData.PageSize = (Convert.ToInt32(Request.Form["length"].FirstOrDefault())) == 0 ? 10 : (Convert.ToInt32(Request.Form["length"].FirstOrDefault()));
+                requestData.Sorting = "nIdOperaciones";
+                requestData.SortOrder = "asc";
+                requestData.FilterNroOperacion = model.NroOperacion;
+                requestData.FilterRazonGirador = model.RazonGirador;
+                requestData.FilterRazonAdquiriente = model.RazonAdquiriente;
+                requestData.FilterFecCrea = model.FechaCreacion;
+                requestData.Estado = model.Estado;
 
-                //var data = await _operacionProxy.GetAllListOperaciones(requestData);
-                //var recordsTotal = data.Data.Count > 0 ? data.Data[0].TotalRecords : 0;
-                return Json(new { data = "", recordsTotal = 0, recordsFiltered = 0 });
+                var data = await _operacionProxy.GetAllListOperaciones(requestData);
+                var recordsTotal = data.Data.Count > 0 ? data.Data[0].TotalRecords : 0;
+                return Json(new { data = data.Data, recordsTotal = recordsTotal, recordsFiltered = recordsTotal });
             }
             catch (Exception)
             {
@@ -159,12 +160,12 @@ namespace Factoring.WebMvc.Controllers
         {
             ViewBag.Title = "Registro Operación: " + ((operacionId == null) ? "Nueva Operación" : "Editar Operación");
             ViewBag.IsEdit = operacionId != null;
-            ViewBag.ListGirador = null; //await _giradorProxy.GetAllListGiradorlista();
-            ViewBag.ListAdquiriente = null;// await _adquirienteProxy.GetAllListAdquirientelista();
-            ViewBag.ListInversionista = null; //await _divisoExternProxy.GetAllListFondeadoreslista();
+            ViewBag.ListGirador = await _giradorProxy.GetAllListGiradorlista();
+            ViewBag.ListAdquiriente = await _adquirienteProxy.GetAllListAdquirientelista();
+            //ViewBag.ListInversionista = await _divisoExternProxy.GetAllListFondeadoreslista();
 
             //var _TipoDocumento = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 118 });
-            ViewBag.TipoDocumento = null;//_TipoDocumento.Data.ToList();
+            //ViewBag.TipoDocumento = _TipoDocumento.Data.ToList();
             //var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 103 });
             //ViewBag.Estados = _Estados.Data.ToList();
             if (operacionId == null)
@@ -176,52 +177,49 @@ namespace Factoring.WebMvc.Controllers
             }
             else
             {
-                //var operacionDetalle = await _operacionProxy.GetOperaciones((int)operacionId);
-                //if (operacionDetalle.Succeeded == false)
-                //{
-                //    return Redirect("~/Operacion/Index");
-                //}
+                var operacionDetalle = await _operacionProxy.GetOperaciones((int)operacionId);
+                if (operacionDetalle.Succeeded == false)
+                {
+                    return Redirect("~/Operacion/Index");
+                }
 
                 //var direccionGirador = await _giradorUbicacionProxy.GetAllListDireccionGirador(operacionDetalle.Data.nIdGirador);
-                ViewBag.DireccionGirador = null;//direccionGirador.Data;
+                //ViewBag.DireccionGirador = direccionGirador.Data;
 
                 //var direccionAdquiriente = await _adquirienteUbicacion.GetAllListDireccionAdquiriente(operacionDetalle.Data.nIdAdquiriente);
-                ViewBag.DireccionAdquiriente = null;//direccionAdquiriente.Data;
+                //ViewBag.DireccionAdquiriente = direccionAdquiriente.Data;
 
-                ViewBag.FormatoDocumento = null;//operacionDetalle.Data.SerieDocumentoPais;
+                //ViewBag.FormatoDocumento = operacionDetalle.Data.SerieDocumentoPais;
 
-                //var _Categoria = await _catalogoProxy.GetGategoriaGirador(new Model.Models.Catalogo.CatalogoListDto { Codigo = operacionDetalle.Data.nIdGirador });
-
-                ViewBag.Categoria = null;//_Categoria.Data;
+               var _Categoria = await _catalogoProxy.GetGategoriaGirador(new Model.Models.Catalogo.CatalogoListDto { Codigo = operacionDetalle.Data.nIdGirador });
+                ViewBag.Categoria = _Categoria.Data;
 
                 OperacionCreateModel operacionData = new();
-                //if (ModelState.IsValid)
-                //{
-                //    operacionData.IdOperacion = operacionDetalle.Data.nIdOperaciones;
-                //    operacionData.IdGirador = operacionDetalle.Data.nIdGirador;
-                //    operacionData.IdAdquiriente = operacionDetalle.Data.nIdAdquiriente;
-                //    //operacionData.IdInversionista = operacionDetalle.Data.nIdInversionista;
-                //    operacionData.IdGiradorDireccion = operacionDetalle.Data.nIdGiradorDireccion;
-                //    operacionData.IdAdquirienteDireccion = operacionDetalle.Data.nIdAdquirienteDireccion;
-                //    operacionData.TEM = operacionDetalle.Data.nTEM;
-                //    operacionData.PorcentajeFinanciamiento = operacionDetalle.Data.nPorcentajeFinanciamiento;
-                //    operacionData.MontoOperacion = operacionDetalle.Data.nMontoOperacion;
-                //    operacionData.DescContrato = operacionDetalle.Data.nDescContrato;
-                //    operacionData.DescFactura = operacionDetalle.Data.nDescFactura;
-                //    operacionData.DescCobranza = operacionDetalle.Data.nDescCobranza;
-                //    operacionData.IdTipoMoneda = operacionDetalle.Data.nIdTipoMoneda;
-                //    operacionData.PorcentajeRetencion = operacionDetalle.Data.nPorcentajeRetencion;
-                //    operacionData.Estado = operacionDetalle.Data.nEstado;
-                //    operacionData.NombreEstado = operacionDetalle.Data.NombreEstado;
-                //    operacionData.InteresMoratorio = operacionDetalle.Data.InteresMoratorio;
-                //    //*************Ini-09-01-2023-RCARRILLO******//
-                //    operacionData.MotivoTransaccion = operacionDetalle.Data.MotivoTransaccion;
-                //    operacionData.SustentoComercial = operacionDetalle.Data.SustentoComercial;
-                //    operacionData.IdCategoria = operacionDetalle.Data.IdCategoria;
-                //    operacionData.Plazo = operacionDetalle.Data.Plazo;
-                //    //*************Fin-09-01-2023-RCARRILLO******//
+                if (ModelState.IsValid)
+                {
+                    operacionData.nNroOperacion = operacionDetalle.Data.nNroOperacion;
+                    operacionData.IdOperacion = operacionDetalle.Data.nIdOperaciones;
+                    operacionData.IdGirador = operacionDetalle.Data.nIdGirador;
+                    operacionData.IdAdquiriente = operacionDetalle.Data.nIdAdquiriente;
+                    operacionData.IdGiradorDireccion = operacionDetalle.Data.nIdGiradorDireccion;
+                    operacionData.IdAdquirienteDireccion = operacionDetalle.Data.nIdAdquirienteDireccion;
+                    operacionData.TEM = operacionDetalle.Data.nTEM;
+                    operacionData.PorcentajeFinanciamiento = operacionDetalle.Data.nPorcentajeFinanciamiento;
+                    operacionData.MontoOperacion = operacionDetalle.Data.nMontoOperacion;
+                    operacionData.DescContrato = operacionDetalle.Data.nDescContrato;
+                    operacionData.DescFactura = operacionDetalle.Data.nDescFactura;
+                    operacionData.DescCobranza = operacionDetalle.Data.nDescCobranza;
+                    operacionData.IdTipoMoneda = operacionDetalle.Data.nIdTipoMoneda;
+                    operacionData.PorcentajeRetencion = operacionDetalle.Data.nPorcentajeRetencion;
+                    operacionData.Estado = operacionDetalle.Data.nEstado;
+                    operacionData.NombreEstado = operacionDetalle.Data.NombreEstado;
+                    operacionData.InteresMoratorio = operacionDetalle.Data.InteresMoratorio;
+                    operacionData.MotivoTransaccion = operacionDetalle.Data.MotivoTransaccion;
+                    operacionData.SustentoComercial = operacionDetalle.Data.SustentoComercial;
+                    operacionData.IdCategoria = operacionDetalle.Data.IdCategoria;
+                    operacionData.Plazo = operacionDetalle.Data.Plazo;
 
-                //}
+                }
                 return View(operacionData);
             }
         }
@@ -509,7 +507,7 @@ namespace Factoring.WebMvc.Controllers
         }
         public async Task<IActionResult> GetAllFacturas(int operacionId)
         {
-            return Json(null);
+            return Json(await _facturaOperacionesProxy.GetAllListFacturaByIdOperaciones(operacionId));
         }
 
         public async Task<IActionResult> GetAllCavali(int operacionId)

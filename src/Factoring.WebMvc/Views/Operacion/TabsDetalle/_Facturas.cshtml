@@ -1,0 +1,58 @@
+﻿@if (ViewData["Action"] == "Editar")
+{
+    <form id="kt_form_add_factura" class="form" asp-controller="Operacion" asp-action="AgregarFacturas" enctype="multipart/form-data" method="post" novalidate="novalidate">
+        <input type="hidden" id="IdOperacionCabeceraFacturas" name="IdOperacionCabeceraFacturas" />
+        <div class="row g-9 mb-7">
+          @*  <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2" style="display:none">Monto</label>
+                <input type="text" id="Monto" name="Monto" class="form-control form-control-solid" style="display:none" required="required" data-fv-not-empty___message="Monto es obligatorio" />
+            </div>
+            <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2" style="display:none">Fecha de Emision</label>
+                <input type="text" id="fechaEmision" name="fechaEmision" class="form-control form-control-solid" style="display:none" required="required" readonly="readonly" data-fv-not-empty___message="Fecha Emisión es obligatorio" />
+            </div>
+            <div class="col-md-3 fv-row" style="display:none">
+                <label class="required fs-6 fw-bold mb-2" style="display:none">Fecha de Vencimiento</label>
+                <input type="text" id="fechaVencimiento" style="display:none" name="fechaVencimiento" class="form-control form-control-solid" required="required" readonly="readonly" data-fv-not-empty___message="Fecha Vencimiento es obligatorio" />
+            </div>
+            <div class="col-md-3 fv-row" style="display:none">
+                <label class="required fs-6 fw-bold mb-2" style="display:none">Fecha de Pago Negociado</label>
+                <input style="display:none" type="text" id="fechaPagoNegociado" name="fechaPagoNegociado" class="form-control form-control-solid" required="required" readonly="readonly" data-fv-not-empty___message="Fecha Pago es obligatorio" />
+            </div>*@
+            <div class="col-md-8 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Adjuntar Archivo XML</label>
+                <input type="file" id="fileXml" name="fileXml" class="form-control form-control-solid" required="required" data-fv-not-empty___message="Archivo XML es obligatorio" />
+            </div>
+            <div class="col-md-4 fv-row d-flex justify-content-center align-items-center">
+                <div>
+                    <button id="kt_add_factura" type="button" class="btn btn-sm btn-primary btn-ins">
+                        <span class="indicator-label">Agregar</span>
+                        <span class="indicator-progress" >Agregando Registro... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <input type="hidden" id="Action" value="@ViewData["Action"]" />
+}
+
+
+<table id="kt_facturas_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+    <thead>
+        <tr class="text-center fw-bolder fs-8 text-uppercase gs-0">
+            <th class="text-center">Factura</th>
+            <th class="text-center">Importe factura</th>
+            <th class="text-center">Fecha Emisión</th>
+            <th class="text-center">Fecha de Vencimiento</th>
+            <th class="text-center">Fecha Pago Negociado</th>
+            <th class="text-center">Nombre Archivo</th>
+            <th class="text-center">Estado</th>
+            <th class="text-center">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

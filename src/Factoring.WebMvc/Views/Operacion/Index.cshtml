@@ -67,7 +67,7 @@
                     </select>
                 </div>
                 <div class="col-lg-4 text-center">
-                    <button id="kt_search_button" type="button" class="btn btn-warning p-con">
+                    <button id="kt_search_button" type="button" class="btn btn-warning">
                         <span class="indicator-label">Buscar</span>
                         <span class="indicator-progress">Buscando... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                     </button>
@@ -82,17 +82,17 @@
                 <table id="kt_operaciones_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
                     <thead>
                         <tr class="text-center text-muted fw-bolder fs-7 text-uppercase gs-0">
-                            <th class="text-center">
+                            <th class="text-center" style="background-color:#001540">
                                 <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
                                     <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_operaciones_table .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th class="text-center">Operación</th>
-                            <th class="text-center">Girador</th>
-                            <th class="text-center">Adquiriente</th>
-                            <th class="text-center">Fecha Registro</th>
-                            <th class="text-center">Estado Operación</th>
-                            <th class="text-center">Acción</th>
+                            <th class="text-center" style="background-color:#001540">Operación</th>
+                            <th class="text-center" style="background-color:#001540">Girador</th>
+                            <th class="text-center" style="background-color:#001540">Adquiriente</th>
+                            <th class="text-center" style="background-color:#001540">Fecha Registro</th>
+                            <th class="text-center" style="background-color:#001540">Estado Operación</th>
+                            <th class="text-center" style="background-color:#001540">Acción</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -102,7 +102,7 @@
         </div>
     </div>
 </div>
-@*<div id="kt_operaciones_carga_masiva" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+<div id="kt_operaciones_carga_masiva" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <form id="kt_modal_masivo_form" class="form" asp-controller="Operacion" asp-action="CargaMasiva" novalidate="novalidate">
@@ -224,8 +224,8 @@
             </form>
         </div>
     </div>
-</div>*@
+</div>
 @section Scripts {
     <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
-    @*    <script src="~/assets/js/registro-operacion.js"></script>*@
+    <script src="~/assets/js/registro-operacion.js"></script>
 }

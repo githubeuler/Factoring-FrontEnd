@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LedoQooBAryBvAjlVj2xLqpNfOo0yABjGJJ2lohEkTmG+2IfQTTmz8lYr2W462uyr0ja9u9ECBWmftZY90CPFg==",
+  "dgSpecHash": "rNUR+kQKIul+VNHocxmUOrHayUJMe+jwN+LAt/Dmn2DF3pIo21tLTpSYfuLWuwxB8NfTyJ9RJ0JGsQlQir3I0w==",
   "success": true,
-  "projectFilePath": "C:\\Rafael\\Fuente\\FrontEnd\\src\\Factoring.WebMvc\\Factoring.WebMvc.csproj",
+  "projectFilePath": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\Factoring.WebMvc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chanc\\.nuget\\packages\\exceldatareader\\3.6.0\\exceldatareader.3.6.0.nupkg.sha512",
     "C:\\Users\\chanc\\.nuget\\packages\\exceldatareader.dataset\\3.6.0\\exceldatareader.dataset.3.6.0.nupkg.sha512",
