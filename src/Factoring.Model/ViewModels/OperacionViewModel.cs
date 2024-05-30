@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Factoring.Model.ViewModels
@@ -13,7 +11,6 @@ namespace Factoring.Model.ViewModels
         public string FechaCreacion { get; set; }
         public string Estado { get; set; }
     }
-
 
     public class OperacionSingleViewModel
     {
@@ -51,6 +48,8 @@ namespace Factoring.Model.ViewModels
         public string SustentoComercial { get; set; }//  EATB - 25/01/2023
         public int Plazo { get; set; }//  EATB - 25/01/2023
         public string cDesCategoria { get; set; }// RCR-2023-01-26
+
+        public int IdTipoDocumentoSUNAT { get; set; }
     }
 
     public class OperacionCreateModel

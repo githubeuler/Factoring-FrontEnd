@@ -1,0 +1,207 @@
+﻿@model OperacionSingleViewModel
+@using Newtonsoft.Json
+@using Factoring.Model.Models.Catalogo
+@{
+    ViewData["Title"] = "Carga Masiva";
+    string RoleName = "TESTER";
+}
+
+<style>
+    tr.group,
+    tr.group:hover {
+        font-weight: bold;
+        color: #eee !important;
+        background-color: #336699 !important;
+    }
+</style>
+
+<div class="card">
+    <div class="card-header border-0 pt-6">
+        <div class="card-title">
+            <h2 class="fw-bolder">Selección de Archivos</h2>
+        </div>
+    </div>
+    <div class="card-body pt-5">
+        <form id="kt_form_add_factura" class="form" asp-controller="CargaMasiva" asp-action="CargaMasivaXML" enctype="multipart/form-data" method="post" novalidate="novalidate">
+            <input type="hidden" id="IdOperacionCabeceraFacturas" name="IdOperacionCabeceraFacturas" />
+            <div class="row g-9 mb-7">
+                <div class="col-md-2 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Tipo de Documento</label>
+                   @*  <select id="cmbTipo" class="form-select form-select-solid fw-bolder" data-control="select2">
+                        <option value="1">FACTURA ELECTRONICA</option>
+                        <option value="2">RECIBO x HONORARIOS</option>
+                    </select> *@
+                    <select asp-for="IdTipoDocumentoSUNAT" asp-items="@(new SelectList(ViewBag.TipoDocumentoSunat, "nId", "cNombre"))" data-control="select2" aria-label="País" data-placeholder="Buscar por Tipo de Documento" class="form-select form-select-solid fw-bolder">
+                    </select>
+                </div>
+                <div class="col-md-4 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Adjuntar Archivo XML</label>
+                    <input id="fileXml" name="fileXml" type="file" multiple accept="text/xml" class="form-control form-control-solid" required="required" data-fv-not-empty___message="Archivo XML es obligatorio" />
+                </div>
+                <div class="col-md-2 fv-row d-flex justify-content-center align-items-center">
+                    <div>
+                        <button id="kt_add_xml" type="button" class="btn btn-sm btn-primary btn-ins">
+                            <span class="indicator-label">Cargar</span>
+                            <span class="indicator-progress">Cargando Archivo... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                    </div>
+                </div>
+               @*  <div class="col-md-2 fv-row d-flex justify-content-center align-items-center">
+                    <div>
+                        <button id="kt_search" type="button" class="btn btn-sm btn-primary btn-ins">
+                            <span class="indicator-label">Asociar Operación</span>
+                            <span class="indicator-progress">Procesando Datos... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                    </div>
+                </div> *@
+                <div class="col-md-2 fv-row d-flex justify-content-center align-items-center">
+                    <div>
+                        <button id="kt_register" type="button" class="btn btn-sm btn-primary btn-ins">
+                            <span class="indicator-label">Registrar Datos</span>
+                            <span class="indicator-progress">Procesando Datos... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <table id="kt_facturas_table" class="table border table-row-bordered gy-2 gs-4 align-middle">
+            <thead>
+                <tr class="text-center fw-bolder fs-8 text-uppercase gs-0">
+                    <th class="text-left">Girador</th>
+                    <th class="text-left">Aceptante</th>
+                    <th class="text-center">Factura</th>
+                    <th class="text-center">Fecha Emision</th>
+                    <th class="text-center">Fecha Vencimiento</th>
+                    <th class="text-center">Fecha Pago Negoc.</th>
+                    <th class="text-center">Moneda</th>
+                    <th class="text-right">Importe Neto Factura</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="kt_register_modal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_register_form" class="form" novalidate="novalidate">
+                <input id="txtIDOperacion" type="hidden"/>
+                <div class="modal-header">
+                    <h2>Registro de Datos de la Operación</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <div class="row g-9 mb-7">
+                        <div class="col-md-12 fv-row">
+                            <label class="fs-6 fw-bold mb-2">Girador</label>
+                            <input id="txtRazonSocialGirador" type="text" asp-for="RazonSocialGirador" class="form-control form-control-solid ps-10" placeholder="Razón Social del Girador" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row g-9 mb-7">
+                        <div class="col-md-12 fv-row">
+                            <label class="fs-6 fw-bold mb-2">Adquiriente</label>
+                            <input id="txtRazonSocialAdquiriente" type="text" asp-for="RazonSocialAdquiriente" class="form-control form-control-solid ps-10" placeholder="Razón Social del Adquiriente" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row g-9 mb-7">
+                  @*       <div class="col-md-4 fv-row">
+                            <label class="fs-6 fw-bold mb-2">Categoría</label>
+                            <select id="comboCategoria" data-control="select2" class="form-select form-select-solid fw-bolder" >
+                                <option value="">Seleccionar</option>
+                            </select>
+                        </div> *@
+                        <div class="col-md-4 fv-row">
+                            <label class="fs-6 fw-bold mb-2">Tipo de Fondo</label>
+                            <select id="comboCategoria" data-control="select2" class="form-select form-select-solid fw-bolder">
+                                <option value="">Seleccionar</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 fv-row">
+                            <label class="fs-6 fw-bold mb-2">Tasa Mensual (TEM)</label>
+                            <input id="txtTEM" type="number" asp-for="TEM" class="form-control form-control-solid ps-10" maxlength="11" placeholder="0.00">
+                        </div>
+                        <div class="col-md-4 fv-row">
+                            <label class="fs-6 fw-bold mb-2">% Financiamiento</label>
+                            <input id="txtFinanciamiento" type="number" asp-for="PorcentajeFinanciamiento" class="form-control form-control-solid ps-10" maxlength="11" placeholder="0.00">
+                        </div>
+                    </div>
+                    <div class="row g-9 mb-7">
+                        <div class="col-md-4 fv-row">
+                            <label class="fs-6 fw-bold mb-2">Monto Total Operación</label>
+                            <input id="txtMonto" type="number" asp-for="MontoOperacion" class="form-control form-control-solid ps-10" maxlength="11" placeholder="0.00">
+                        </div>
+                        <div class="col-md-4 fv-row">
+                            <label class="fs-6 fw-bold mb-2">% Comisión</label>
+                            <input id="txtDescCobranza" type="number" asp-for="DescCobranza" class="form-control form-control-solid ps-10" maxlength="11" placeholder="0.00">
+                        </div>
+                      @*   <div id="box-tasa" class="col-md-4 fv-row">
+                            <label class="fs-6 fw-bold mb-2">Tasa Moratoria</label>
+                            <input id="txtTasaMoratoria" type="number" asp-for="InteresMoratorio" class="form-control form-control-solid ps-10" maxlength="11" placeholder="0.00">
+                        </div> *@
+                    </div>
+                 @*    <div class="row g-9 mb-7">
+                        <div id="box-retencion" class="col-md-4 fv-row">
+                            <label class="fs-6 fw-bold mb-2">% Retención</label>
+                            <input id="txtRetencion" type="number" asp-for="PorcentajeRetencion" class="form-control form-control-solid ps-10" maxlength="11" placeholder="0.00">
+                        </div>
+                    </div> *@
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_register_process" type="submit" class="btn btn-primary">
+                        <span class="indicator-label">Guardar</span>
+                        <span class="indicator-progress">Procesando Datos... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="kt_operation_modal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_operation_form" class="form" asp-controller="CargaMasiva" asp-action="GetOperacion" novalidate="novalidate">
+                <div class="modal-header">
+                    <h2>Registro de Datos de la Operación</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <div class="row g-9 mb-7">
+                        <div class="col-md-12 fv-row">
+                            <label class="fs-6 fw-bold mb-2">Nro. Operación</label>
+                            <input id="txtNROperacion" type="number" asp-for="IdOperacion" class="form-control form-control-solid ps-10" maxlength="11" placeholder="00000">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_search_button_operacion" type="submit" class="btn btn-primary">
+                        <span class="indicator-label">Aceptar</span>
+                        <span class="indicator-progress">Procesando Datos... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    <script src="~/assets/js/carga-masiva.js"></script>
+
+    <script language="javascript">
+        var sRoleName = "@RoleName";
+    </script>
+}
