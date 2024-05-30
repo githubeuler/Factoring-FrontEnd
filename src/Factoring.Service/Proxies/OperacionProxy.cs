@@ -13,6 +13,7 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<int>> Create(OperacionesInsertDto model);
         Task<ResponseData<List<OperacionesResponseDataTable>>> GetAllListOperaciones(OperacionesRequestDataTableDto model);
         Task<ResponseData<OperacionSingleResponseDto>> GetOperaciones(int id);
+        Task<ResponseData<int>> Update(OperacionesUpdateDto model);
     }
     public class OperacionProxy : IOperacionProxy
     {
@@ -65,22 +66,22 @@ namespace Factoring.Service.Proxies
             var data = JsonConvert.DeserializeObject<ResponseData<OperacionSingleResponseDto>>(json);
             return data;
         }
-        public async Task<ResponseData<int>> Create(OperacionesInsertDto model)
-        {
-            try
-            {
-                var client = _proxyHttpClient.GetHttp();
-                var us = JsonConvert.SerializeObject(model);
-                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
-                var response = await client.PostAsync("Operaciones", requestContent);
-                var json = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<ResponseData<int>>(json);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        //public async Task<ResponseData<int>> Create(OperacionesInsertDto model)
+        //{
+        //    try
+        //    {
+        //        var client = _proxyHttpClient.GetHttp();
+        //        var us = JsonConvert.SerializeObject(model);
+        //        var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+        //        var response = await client.PostAsync("Operaciones", requestContent);
+        //        var json = await response.Content.ReadAsStringAsync();
+        //        return JsonConvert.DeserializeObject<ResponseData<int>>(json);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
 
         public async Task<ResponseData<int>> Update(OperacionesUpdateDto model)
         {
@@ -99,4 +100,5 @@ namespace Factoring.Service.Proxies
             }
         }
 
+    }
 }
