@@ -26,6 +26,7 @@ using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Factoring.Model.Models.Operaciones;
+using Factoring.Model.Models.EvaluacionOperacion;
 
 namespace Factoring.WebMvc.Controllers
 {
@@ -45,7 +46,7 @@ namespace Factoring.WebMvc.Controllers
         private readonly IFacturaOperacionesProxy _facturaOperacionesProxy;
         //private readonly IDivisoExternProxy _divisoExternProxy;
         //private readonly IFilesProxy _filesProxy;
-        //private readonly IEvaluacionOperacionesProxy _evaluacionOperacionesProxy;
+        private readonly IEvaluacionOperacionesProxy _evaluacionOperacionesProxy;
         //private readonly IComentariosProxy _comentariosProxy;
         private readonly IConfiguration _configuration;
         public const string Operaciones = "Operaciones";
@@ -65,11 +66,11 @@ namespace Factoring.WebMvc.Controllers
             IFacturaOperacionesProxy facturaOperacionesProxy,
             //IDivisoExternProxy divisoExternProxy,
             //IFilesProxy filesProxy,
-            //IEvaluacionOperacionesProxy evaluacionOperacionesProxy,
+            IEvaluacionOperacionesProxy evaluacionOperacionesProxy,
             //IComentariosProxy comentariosProxy,
             IConfiguration configuration
-            //IEvaluacionOperacionesComentariosProxy evaluacionOperacionesComentariosProxy,
-            //IProcesoMasivoLoteFacturaProxy procesoMasivoLoteFacturaProxy
+        //IEvaluacionOperacionesComentariosProxy evaluacionOperacionesComentariosProxy,
+        //IProcesoMasivoLoteFacturaProxy procesoMasivoLoteFacturaProxy
         )
         {
             _logger = logger;
@@ -83,7 +84,7 @@ namespace Factoring.WebMvc.Controllers
             _facturaOperacionesProxy = facturaOperacionesProxy;
             //_divisoExternProxy = divisoExternProxy;
             //_filesProxy = filesProxy;
-            //_evaluacionOperacionesProxy = evaluacionOperacionesProxy;
+            _evaluacionOperacionesProxy = evaluacionOperacionesProxy;
             //_comentariosProxy = comentariosProxy;
             _configuration = configuration;
             //_evaluacionOperacionesComentariosProxy = evaluacionOperacionesComentariosProxy;
@@ -97,7 +98,7 @@ namespace Factoring.WebMvc.Controllers
                 return Redirect("~/Account/Logout");
             }
 
-            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 101,Valor="0" });
+            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 101, Valor = "0" });
             ViewBag.Estados = _Estados.Data.ToList();
             return View();
         }
@@ -162,12 +163,6 @@ namespace Factoring.WebMvc.Controllers
             ViewBag.IsEdit = operacionId != null;
             ViewBag.ListGirador = await _giradorProxy.GetAllListGiradorlista();
             ViewBag.ListAdquiriente = await _adquirienteProxy.GetAllListAdquirientelista();
-            //ViewBag.ListInversionista = await _divisoExternProxy.GetAllListFondeadoreslista();
-
-            //var _TipoDocumento = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 118 });
-            //ViewBag.TipoDocumento = _TipoDocumento.Data.ToList();
-            //var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 103 });
-            //ViewBag.Estados = _Estados.Data.ToList();
             if (operacionId == null)
             {
                 ViewBag.DireccionGirador = "";
@@ -183,15 +178,7 @@ namespace Factoring.WebMvc.Controllers
                     return Redirect("~/Operacion/Index");
                 }
 
-                //var direccionGirador = await _giradorUbicacionProxy.GetAllListDireccionGirador(operacionDetalle.Data.nIdGirador);
-                //ViewBag.DireccionGirador = direccionGirador.Data;
-
-                //var direccionAdquiriente = await _adquirienteUbicacion.GetAllListDireccionAdquiriente(operacionDetalle.Data.nIdAdquiriente);
-                //ViewBag.DireccionAdquiriente = direccionAdquiriente.Data;
-
-                //ViewBag.FormatoDocumento = operacionDetalle.Data.SerieDocumentoPais;
-
-               var _Categoria = await _catalogoProxy.GetGategoriaGirador(new Model.Models.Catalogo.CatalogoListDto { Codigo = operacionDetalle.Data.nIdGirador });
+                var _Categoria = await _catalogoProxy.GetGategoriaGirador(new Model.Models.Catalogo.CatalogoListDto { Codigo = operacionDetalle.Data.nIdGirador });
                 ViewBag.Categoria = _Categoria.Data;
 
                 OperacionCreateModel operacionData = new();
@@ -334,140 +321,147 @@ namespace Factoring.WebMvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistroProceso(int operacionId, string operacionFlat, OperacionCreateModel model)
         {
-            //var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //bool IsOperacionExist = false;
-            //var operacionDetalle = await _operacionProxy.GetOperaciones(operacionId);
-            //if (operacionDetalle.Succeeded == true)
-            //{
-            //    IsOperacionExist = true;
-            //}
-            //if (ModelState.IsValid)
-            //{
-            //    try
-            //    {
-            //        if (IsOperacionExist)
-            //        {
-            //            var result = await _operacionProxy.Update(new OperacionesUpdateDto
-            //            {
-            //                IdOperaciones = operacionId,
-            //                IdGirador = model.IdGirador,
-            //                IdAdquiriente = model.IdAdquiriente,
-            //                //IdInversionista = 1, //Rcarrillo 2023-01-19
-            //                //IdInversionista = model.IdInversionista,
-            //                IdGiradorDireccion = model.IdGiradorDireccion,
-            //                IdAdquirienteDireccion = model.IdAdquirienteDireccion,
-            //                TEM = model.TEM,
-            //                PorcentajeFinanciamiento = model.PorcentajeFinanciamiento,
-            //                MontoOperacion = model.MontoOperacion,
-            //                DescContrato = 0,
-            //                DescFactura = 0,
-            //                DescCobranza = model.DescCobranza,
-            //                IdTipoMoneda = model.IdTipoMoneda,
-            //                PorcentajeRetencion = model.PorcentajeRetencion,
-            //                UsuarioActualizacion = userName,
-            //                InteresMoratorio = model.InteresMoratorio,
-            //                /************ini -Rcarrillo 2023-01-19 **************/
-            //                IdCategoria = model.IdCategoria,
-            //                MotivoTransaccion = model.MotivoTransaccion,
-            //                SustentoComercial = model.SustentoComercial,
-            //                Plazo = model.Plazo
-            //                /************Fin -Rcarrillo 2023-01-19 **************/
+            var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            bool IsOperacionExist = false;
+            var operacionDetalle = await _operacionProxy.GetOperaciones(operacionId);
+            if (operacionDetalle.Succeeded == true)
+            {
+                IsOperacionExist = true;
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (IsOperacionExist)
+                    {
+                        var result = await _operacionProxy.Update(new OperacionesUpdateDto
+                        {
+                            IdOperaciones = operacionId,
+                            IdGirador = model.IdGirador,
+                            IdAdquiriente = model.IdAdquiriente,
+                            IdGiradorDireccion = model.IdGiradorDireccion,
+                            IdAdquirienteDireccion = model.IdAdquirienteDireccion,
+                            TEM = model.TEM,
+                            PorcentajeFinanciamiento = model.PorcentajeFinanciamiento,
+                            MontoOperacion = model.MontoOperacion,
+                            DescContrato = 0,
+                            DescFactura = 0,
+                            DescCobranza = model.DescCobranza,
+                            IdTipoMoneda = model.IdTipoMoneda,
+                            PorcentajeRetencion = model.PorcentajeRetencion,
+                            UsuarioActualizacion = userName,
+                            InteresMoratorio = model.InteresMoratorio,
+                            IdCategoria = model.IdCategoria,
+                            MotivoTransaccion = model.MotivoTransaccion,
+                            SustentoComercial = model.SustentoComercial,
+                            Plazo = model.Plazo
 
-            //            });
+                        });
 
-            //            if (operacionFlat == "E" && result.Succeeded)
-            //            {
-            //                var resultado = await _evaluacionOperacionesProxy.Create(new EvaluacionOperacionesInsertDto
-            //                {
-            //                    IdOperaciones = operacionId,
-            //                    IdCatalogoEstado = 18,
-            //                    UsuarioCreador = userName
-            //                });
+                        //if (operacionFlat == "E" && result.Succeeded)
+                        //{
+                        //    var resultado = await _evaluacionOperacionesProxy.Create(new EvaluacionOperacionesInsertDto
+                        //    {
+                        //        IdOperaciones = operacionId,
+                        //        IdCatalogoEstado = 18,
+                        //        UsuarioCreador = userName
+                        //    });
+                        //}
+                        // else
+                        // {
 
+                        //if (result.Succeeded)
+                        //{
 
-            //            }
-            //            else
-            //            {
+                        //await _evaluacionOperacionesComentariosProxy.UpdateComentario(new EvaluacionUpdateOperacionesComentariosInsertDto
+                        //{
+                        //nIdOperacion = operacionId,
+                        //Comentario = model.SustentoComercial,
+                        // UsuarioCreador = userName
+                        //});
+                        //}
 
-            //                if (result.Succeeded)
-            //                {
+                        //}
+                        return Json(result);
+                    }
+                    else
+                    {
+                        var result = await _operacionProxy.Create(new OperacionesInsertDto
+                        {
+                            IdGirador = model.IdGirador,
+                            IdAdquiriente = model.IdAdquiriente,
+                            IdGiradorDireccion = model.IdGiradorDireccion,
+                            IdAdquirienteDireccion = model.IdAdquirienteDireccion,
+                            TEM = model.TEM,
+                            PorcentajeFinanciamiento = model.PorcentajeFinanciamiento,
+                            MontoOperacion = model.MontoOperacion,
+                            DescContrato = 0,
+                            DescFactura = 0,
+                            DescCobranza = model.DescCobranza,
+                            IdTipoMoneda = model.IdTipoMoneda,
+                            PorcentajeRetencion = model.PorcentajeRetencion,
+                            UsuarioCreador = userName,
+                            InteresMoratorio = model.InteresMoratorio,
+                            IdCategoria = model.IdCategoria,
+                            MotivoTransaccion = model.MotivoTransaccion,
+                            SustentoComercial = model.SustentoComercial,
+                            Plazo = model.Plazo
+                        });
+                        //if (result.Succeeded)
+                        //{
+                        //    var resultado = await _evaluacionOperacionesProxy.Create(new EvaluacionOperacionesInsertDto
+                        //    {
+                        //        IdOperaciones = result.Data,
+                        //        IdCatalogoEstado = 1,
+                        //        UsuarioCreador = userName
+                        //    });
+                        //    if (resultado.Succeeded)
+                        //    {
 
-            //                    await _evaluacionOperacionesComentariosProxy.UpdateComentario(new EvaluacionUpdateOperacionesComentariosInsertDto
-            //                    {
-            //                        nIdOperacion = operacionId,
-            //                        Comentario = model.SustentoComercial,
-            //                        UsuarioCreador = userName
-            //                    });
-            //                }
+                        //        await _evaluacionOperacionesComentariosProxy.Create(new EvaluacionOperacionesComentariosInsertDto
+                        //        {
+                        //            IdEvaluacionOperaciones = resultado.Data,
+                        //            Comentario = model.SustentoComercial,
+                        //            IdCatalogoTipoComentario = 1,
+                        //            UsuarioCreador = userName
+                        //        });
+                        //    }
 
-            //            }
-            //            return Json(result);
-            //        }
-            //        else
-            //        {
-            //            var result = await _operacionProxy.Create(new OperacionesInsertDto
-            //            {
-            //                IdGirador = model.IdGirador,
-            //                IdAdquiriente = model.IdAdquiriente,
-            //                //IdInversionista = model.IdInversionista,
-            //                //IdInversionista = 1, //Rcarrillo 2023-01-19
-            //                IdGiradorDireccion = model.IdGiradorDireccion,
-            //                IdAdquirienteDireccion = model.IdAdquirienteDireccion,
-            //                TEM = model.TEM,
-            //                PorcentajeFinanciamiento = model.PorcentajeFinanciamiento,
-            //                MontoOperacion = model.MontoOperacion,
-            //                DescContrato = 0,
-            //                DescFactura = 0,
-            //                DescCobranza = model.DescCobranza,
-            //                IdTipoMoneda = model.IdTipoMoneda,
-            //                PorcentajeRetencion = model.PorcentajeRetencion,
-            //                UsuarioCreador = userName,
-            //                InteresMoratorio = model.InteresMoratorio,
-
-            //                /************ini -Rcarrillo 2023-01-19 **************/
-            //                IdCategoria = model.IdCategoria,
-            //                MotivoTransaccion = model.MotivoTransaccion,
-            //                SustentoComercial = model.SustentoComercial,
-            //                Plazo = model.Plazo
-            //                /************Fin -Rcarrillo 2023-01-19 **************/
-
-
-            //            });
-            //            if (result.Succeeded)
-            //            {
-            //                var resultado = await _evaluacionOperacionesProxy.Create(new EvaluacionOperacionesInsertDto
-            //                {
-            //                    IdOperaciones = result.Data,
-            //                    IdCatalogoEstado = 1,
-            //                    UsuarioCreador = userName
-            //                });
-            //                if (resultado.Succeeded)
-            //                {
-
-            //                    await _evaluacionOperacionesComentariosProxy.Create(new EvaluacionOperacionesComentariosInsertDto
-            //                    {
-            //                        IdEvaluacionOperaciones = resultado.Data,
-            //                        Comentario = model.SustentoComercial,
-            //                        IdCatalogoTipoComentario = 1,
-            //                        UsuarioCreador = userName
-            //                    });
-            //                }
-
-
-            //            }
-
-            //            return Json(result);
-            //        }
-            //    }
-            //    catch (Exception)
-            //    {
-            //        throw;
-            //    }
-            //}
-
-
-
+                        //}
+                        return Json(result);
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
             return Redirect("~/Operacion/Index");
+        }
+
+
+        public async Task<IActionResult> ResultadoEvaluacion(int operacionId, int Estado, OperacionCreateModel model)
+        {
+            var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var _estadoOperaciones = await _evaluacionOperacionesProxy.Create(new EvaluacionOperacionesInsertDto
+            {
+                IdOperaciones = operacionId,
+                IdCatalogoEstado = Estado,
+                UsuarioCreador = userName,
+
+            });
+            if (_estadoOperaciones.Succeeded)
+            {
+                 await _evaluacionOperacionesProxy.CreateEstadoFactura(new EvaluacionOperacionesEstadoInsertDto
+                {
+                    IdOperaciones = operacionId,
+                    IdCatalogoEstado = Estado,
+                    UsuarioCreador = userName,
+                    Comentario = model.SustentoComercial
+                });
+            }
+
+            return Json(new { succeeded = _estadoOperaciones.Succeeded, message = _estadoOperaciones.Message });
         }
 
         public async Task<IActionResult> AnularOperacion(int operacionId)
