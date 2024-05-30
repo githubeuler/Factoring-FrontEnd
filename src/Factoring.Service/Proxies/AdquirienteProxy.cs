@@ -3,11 +3,8 @@ using Factoring.Model.Models.Adquiriente;
 using Factoring.Service.Common;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Factoring.Service.Proxies
 {
@@ -15,6 +12,8 @@ namespace Factoring.Service.Proxies
     {
     
         Task<List<AdquirienteResponseListaDto>> GetAllListAdquirientelista();
+        Task<ResponseData<List<AdquirienteResponseDatatableDto>>> GetAllListAdquiriente(AdquirienteRequestDatatableDto model);
+        Task<ResponseData<int>> Create(AdquirienteInsertDto model);
     }
 
     public class AdquirienteProxy : IAdquirienteProxy
@@ -36,6 +35,33 @@ namespace Factoring.Service.Proxies
             var data = JsonConvert.DeserializeObject<ResponseData<List<AdquirienteResponseListaDto>>>(json);
             return data.Data;
         }
-
+        public async Task<ResponseData<int>> Create(AdquirienteInsertDto model)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var us = JsonConvert.SerializeObject(model);
+                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+                var response = await client.PostAsync("adquiriente", requestContent);
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ResponseData<int>>(json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<ResponseData<List<AdquirienteResponseDatatableDto>>> GetAllListAdquiriente(AdquirienteRequestDatatableDto model)
+        {
+            var client = _proxyHttpClient.GetHttp();
+            var response = await client.GetAsync($"adquiriente?Pageno={model.Pageno}&PageSize={model.PageSize}" +
+            $"&Sorting={model.Sorting}&SortOrder={model.SortOrder}&FilterRuc={model.FilterRuc}" +
+            $"&FilterRazon={model.FilterRazon}" +
+            $"&FilterIdPais={model.FilterIdPais}&FilterFecCrea={model.FilterFecCrea}" +
+                $"&FilterIdSector={model.FilterIdSector}&FilterIdGrupoEconomico={model.FilterIdGrupoEconomico}");
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<ResponseData<List<AdquirienteResponseDatatableDto>>>(json);
+            return data;
+        }
     }
 }

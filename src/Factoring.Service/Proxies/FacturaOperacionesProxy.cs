@@ -1,21 +1,21 @@
-﻿using Factoring.Model;
+﻿using Factoring.Model.Models.OperacionesFactura;
+using Factoring.Model;
 using Factoring.Model.Models.OperacionesFactura;
 using Factoring.Service.Common;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Extensions.Configuration;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Factoring.Service.Proxies
 {
     public interface IFacturaOperacionesProxy
     {
+        Task<ResponseData<int>> Create(OperacionesFacturaInsertDto model);
+        Task<ResponseData<int>> Delete(int idAdquirienteDireccion, string usuario);
+        Task<ResponseData<int>> Editar(OperacionesFacturaEditDto model);
+        Task<ResponseData<OperacionesFacturaListDto>> GetInvoiceByNumber(int IdGirador, int IdAdquiriente, string NroFactura);
         Task<ResponseData<List<OperacionesFacturaListDto>>> GetAllListFacturaByIdOperaciones(int id);
     }
-
     public class FacturaOperacionesProxy : IFacturaOperacionesProxy
     {
         private readonly ProxyHttpClient _proxyHttpClient;
@@ -36,6 +36,73 @@ namespace Factoring.Service.Proxies
                 var json = await response.Content.ReadAsStringAsync();
                 var data = JsonConvert.DeserializeObject<ResponseData<List<OperacionesFacturaListDto>>>(json);
                 data.Data.ForEach(m => m.nMontoTotal = data.Data.Sum(x => x.nMonto));
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ResponseData<int>> Create(OperacionesFacturaInsertDto model)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var us = JsonConvert.SerializeObject(model);
+                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+                var response = await client.PostAsync("OperacionesFactura", requestContent);
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ResponseData<int>>(json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ResponseData<int>> Delete(int idOperacionFactura, string usuario)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var response = await client.GetAsync($"OperacionesFactura/delete?IdOperacionesFacturas={idOperacionFactura}&UsuarioActualizacion={usuario}");
+                var json = await response.Content.ReadAsStringAsync();
+                var data = JsonConvert.DeserializeObject<ResponseData<int>>(json);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ResponseData<int>> Editar(OperacionesFacturaEditDto model)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var us = JsonConvert.SerializeObject(model);
+                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+                var response = await client.PostAsync("OperacionesFactura/edit", requestContent);
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ResponseData<int>>(json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ResponseData<OperacionesFacturaListDto>> GetInvoiceByNumber(int IdGirador, int IdAdquiriente, string NroFactura)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var response = await client.GetAsync($"OperacionesFactura/GetInvoiceByNumber/{IdGirador}/{IdAdquiriente}/{NroFactura}");
+                var json = await response.Content.ReadAsStringAsync();
+
+                var data = JsonConvert.DeserializeObject<ResponseData<OperacionesFacturaListDto>>(json);
                 return data;
             }
             catch (Exception ex)

@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
+﻿using Factoring.Model.Models.Catalogo;
 using Factoring.Model;
-using Factoring.Model.Models.Catalogo;
 using Factoring.Service.Common;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 namespace Factoring.Service.Proxies
 {
     public interface ICatalogoProxy

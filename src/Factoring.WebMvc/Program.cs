@@ -31,10 +31,15 @@ builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<ProxyHttpClient>();
 builder.Services.AddTransient<IAuthProxy, AuthProxy>();
 builder.Services.AddTransient<ICatalogoProxy, CatalogoProxy>();
-builder.Services.AddTransient<IOperacionProxy, OperacionProxy>();
+builder.Services.AddTransient<IFacturaOperacionesProxy, FacturaOperacionesProxy>();
 builder.Services.AddTransient<IAdquirienteProxy, AdquirienteProxy>();
 builder.Services.AddTransient<IGiradorProxy, GiradorProxy>();
-builder.Services.AddTransient<IFacturaOperacionesProxy, FacturaOperacionesProxy>();
+builder.Services.AddTransient<ICategoriaGiradorProxy, CategoriaGiradorProxy>();
+builder.Services.AddTransient<IOperacionProxy, OperacionProxy>();
+builder.Services.AddTransient<IFilesProxy, FilesProxy>();
+builder.Services.AddTransient<IGiradorUbicacionProxy, GiradorUbicacionProxy>();
+builder.Services.AddTransient<IAdquirienteUbicacionProxy, AdquirienteUbicacionProxy>();
+
 var app = builder.Build();
 
 // Configuración de la aplicación

@@ -72,7 +72,7 @@ var AccountSignin = function () {
                         
                     }, 2000);
                 } else {
-                    messageError('Lo sentimos, parece que se han detectado algunos errores. Vuelve a intentarlo.');
+                    messageError('Favor de ingresar los campos obligatorios y volver a intentarlo.');
                 }
             });
         });
