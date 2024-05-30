@@ -146,64 +146,7 @@ namespace Factoring.Model.Models.Operaciones
 
         public int IdSolEvalOperacion { get; set; }
     }
-    public class OperacionesUpdateDto
-    {
-        public int IdOperaciones { get; set; }
-        public int IdGirador { get; set; }
-        public int IdAdquiriente { get; set; }
-        //public int IdInversionista { get; set; }
-        public int IdTipoMoneda { get; set; }
-        public int IdGiradorDireccion { get; set; }
-        public int IdAdquirienteDireccion { get; set; }
-        public decimal TEM { get; set; }
-        public decimal PorcentajeFinanciamiento { get; set; }
-        public decimal PorcentajeRetencion { get; set; }
-        public decimal MontoOperacion { get; set; }
-        public decimal DescContrato { get; set; }
-        public decimal DescFactura { get; set; }
-        public decimal DescCobranza { get; set; }
-        public string UsuarioActualizacion { get; set; }
-        public decimal InteresMoratorio { get; set; }
-
-        //*************Ini-09-01-2023-RCARRILLO******//
-        public int IdCategoria { get; set; }
-        public string SustentoComercial { get; set; }
-        public string MotivoTransaccion { get; set; }
-        public int Plazo { get; set; }
-        public int IdSolEvalOperacion { get; set; }
-        //*************Fin-09-01-2023-RCARRILLO******//
-    }
-
-
-
-    public class OperacionesInsertDto
-    {
-        public int IdGirador { get; set; }
-        public int IdAdquiriente { get; set; }
-        //public int IdInversionista { get; set; }
-        public int IdTipoMoneda { get; set; }
-        public int IdGiradorDireccion { get; set; }
-        public int IdAdquirienteDireccion { get; set; }
-        public decimal TEM { get; set; }
-        public decimal PorcentajeFinanciamiento { get; set; }
-        public decimal PorcentajeRetencion { get; set; }
-        public decimal MontoOperacion { get; set; }
-        public decimal DescContrato { get; set; }
-        public decimal DescFactura { get; set; }
-        public decimal DescCobranza { get; set; }
-        public string UsuarioCreador { get; set; }
-        public decimal InteresMoratorio { get; set; }
-
-        //*************Ini-09-01-2023-RCARRILLO******//
-        public int IdCategoria { get; set; }
-        public string SustentoComercial { get; set; }
-        public string MotivoTransaccion { get; set; }
-        public int Plazo { get; set; }
-
-        public int IdSolEvalOperacion { get; set; }
-        //*************Fin-09-01-2023-RCARRILLO******//
-    }
-
+  
     public class OperacionesGetByIdDto
     {
         public int nIdOperaciones { get; set; }
