@@ -281,7 +281,7 @@ namespace Factoring.WebMvc.Controllers
             lst.Add(new CategoriaGiradorDto() { Categoria = "VENTA DE CARTERA",nCategoria = 1 });
             lst.Add(new CategoriaGiradorDto() { Categoria = "FONDOS PROPIOS", nCategoria = 2 });
             var lstCategoria = lst;//_Categorias.Data.ToList();
-            return Json(new { succeeded = true, message = $"Se cargaron {lstAuxiliar.Count} archivos XML.", data = lstAuxiliar, comboCategoria = lstCategoria });
+            return Json(new { succeeded = true, message = $"Se {(lstAuxiliar.Count > 1 ? "cargaron" : "cargo")} {lstAuxiliar.Count} {(lstAuxiliar.Count > 1 ? "archivos" : "archivo")} XML.", data = lstAuxiliar, comboCategoria = lstCategoria });
         }
 
         private async Task<ResponseData<OperacionesFacturaListDto>> GetFactura(int IdGirador, int IdAdquiriente, string NroFactura)
