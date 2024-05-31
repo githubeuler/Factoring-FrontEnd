@@ -435,7 +435,8 @@ namespace Factoring.WebMvc.Controllers
                         IdCategoria = oRecord.IdCategoria,
                         MotivoTransaccion = "...",
                         SustentoComercial = "...",
-                        Plazo = 0
+                        Plazo = 0,
+                        CantidadFactura = lstFacturas.Count
                     });
                     if (!resultOpe.Succeeded)
                         throw new Exception(resultOpe.Message);
