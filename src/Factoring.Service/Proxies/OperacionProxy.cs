@@ -14,6 +14,7 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<List<OperacionesResponseDataTable>>> GetAllListOperaciones(OperacionesRequestDataTableDto model);
         Task<ResponseData<OperacionSingleResponseDto>> GetOperaciones(int id);
         Task<ResponseData<int>> Update(OperacionesUpdateDto model);
+        Task<ResponseData<int>> Delete(int idGirador, string usuario);
     }
     public class OperacionProxy : IOperacionProxy
     {
@@ -65,6 +66,21 @@ namespace Factoring.Service.Proxies
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<ResponseData<OperacionSingleResponseDto>>(json);
             return data;
+        }
+        public async Task<ResponseData<int>> Delete(int idGirador, string usuario)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var response = await client.GetAsync($"Operaciones/delete?IdOperaciones={idGirador}&UsuarioActualizacion={usuario}");
+                var json = await response.Content.ReadAsStringAsync();
+                var data = JsonConvert.DeserializeObject<ResponseData<int>>(json);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
         //public async Task<ResponseData<int>> Create(OperacionesInsertDto model)
         //{

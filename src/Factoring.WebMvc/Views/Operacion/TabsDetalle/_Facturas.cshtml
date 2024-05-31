@@ -2,23 +2,9 @@
 {
     <form id="kt_form_add_factura" class="form" asp-controller="Operacion" asp-action="AgregarFacturas" enctype="multipart/form-data" method="post" novalidate="novalidate">
         <input type="hidden" id="IdOperacionCabeceraFacturas" name="IdOperacionCabeceraFacturas" />
+        <input type="hidden" id="nIdGiradorFact" name="nIdGiradorFact" value=@ViewBag.IdGiradorCod />
+        <input type="hidden" id="nIdAdquirenteFact" name="nIdAdquirenteFact" value=@ViewBag.IdAdquirienteCod />
         <div class="row g-9 mb-7">
-          @*  <div class="col-md-3 fv-row">
-                <label class="required fs-6 fw-bold mb-2" style="display:none">Monto</label>
-                <input type="text" id="Monto" name="Monto" class="form-control form-control-solid" style="display:none" required="required" data-fv-not-empty___message="Monto es obligatorio" />
-            </div>
-            <div class="col-md-3 fv-row">
-                <label class="required fs-6 fw-bold mb-2" style="display:none">Fecha de Emision</label>
-                <input type="text" id="fechaEmision" name="fechaEmision" class="form-control form-control-solid" style="display:none" required="required" readonly="readonly" data-fv-not-empty___message="Fecha Emisión es obligatorio" />
-            </div>
-            <div class="col-md-3 fv-row" style="display:none">
-                <label class="required fs-6 fw-bold mb-2" style="display:none">Fecha de Vencimiento</label>
-                <input type="text" id="fechaVencimiento" style="display:none" name="fechaVencimiento" class="form-control form-control-solid" required="required" readonly="readonly" data-fv-not-empty___message="Fecha Vencimiento es obligatorio" />
-            </div>
-            <div class="col-md-3 fv-row" style="display:none">
-                <label class="required fs-6 fw-bold mb-2" style="display:none">Fecha de Pago Negociado</label>
-                <input style="display:none" type="text" id="fechaPagoNegociado" name="fechaPagoNegociado" class="form-control form-control-solid" required="required" readonly="readonly" data-fv-not-empty___message="Fecha Pago es obligatorio" />
-            </div>*@
             <div class="col-md-8 fv-row">
                 <label class="required fs-6 fw-bold mb-2">Adjuntar Archivo XML</label>
                 <input type="file" id="fileXml" name="fileXml" class="form-control form-control-solid" required="required" data-fv-not-empty___message="Archivo XML es obligatorio" />

@@ -15,6 +15,7 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<int>> Editar(OperacionesFacturaEditDto model);
         Task<ResponseData<OperacionesFacturaListDto>> GetInvoiceByNumber(int IdGirador, int IdAdquiriente, string NroFactura);
         Task<ResponseData<List<OperacionesFacturaListDto>>> GetAllListFacturaByIdOperaciones(int id);
+        Task<ResponseData<List<OperacionesFacturaListDto>>> GetAllListFacturaByIdOperacionesFactura(int id);
     }
     public class FacturaOperacionesProxy : IFacturaOperacionesProxy
     {
@@ -111,7 +112,28 @@ namespace Factoring.Service.Proxies
             }
         }
 
+        public async Task<ResponseData<List<OperacionesFacturaListDto>>> GetAllListFacturaByIdOperacionesFactura(int id)
+        {
+            try
+            {
+                OperacionesFacturaListDto operacionesFacturas = new OperacionesFacturaListDto();
+                operacionesFacturas.nIdOperacionesFacturas = id;
 
+                var client = _proxyHttpClient.GetHttp();
+                client.Timeout = TimeSpan.FromMinutes(15);
+
+                var us = JsonConvert.SerializeObject(operacionesFacturas);
+                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+                var response = await client.PostAsync("OperacionesFactura/consultar-factura", requestContent);
+                var json = await response.Content.ReadAsStringAsync();
+                var data = JsonConvert.DeserializeObject<ResponseData<List<OperacionesFacturaListDto>>>(json);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
     }
 }

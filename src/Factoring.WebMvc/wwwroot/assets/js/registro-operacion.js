@@ -141,6 +141,7 @@ var RegistroOperacion = function () {
         datatable.on('draw', function () {
             initToggleToolbar();
             toggleToolbars();
+            handleDeleteOperacionForm();
             var searchButton = document.getElementById('kt_search_button');
             var searchClear = document.getElementById('kt_search_clear');
             searchButton.removeAttribute('data-kt-indicator');
@@ -247,6 +248,84 @@ var RegistroOperacion = function () {
         //    });
         //});
     }
+
+    var handleDeleteOperacionForm = function () {
+        var tableOperaciones = document.querySelector('#kt_operaciones_table');
+        if (!tableOperaciones) {
+            return;
+        }
+        //`<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt-factura-table-filter="delete_row" data-parent="` + $(idOperacion).val() + `" data-id="` + data.nIdOperacionesFacturas + `" data-path="` + data.cRutaDocumentoXML + `" data-Operacion="` + data.nroOperacion + `"><i class="las la-trash fs-2"></i></a>`);
+
+        //<button data-delete-table="delete_row" data-row= ${data.nIdOperaciones} class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-trash fs-2"></i></button> `;
+        var deleteFacturaButton = tableOperaciones.querySelectorAll('[data-delete-table="delete_row"]');
+        deleteFacturaButton.forEach(d => {
+            d.addEventListener('click', function (e) {
+                debugger;
+                e.preventDefault();
+                var idOperacion = $(this).data('id');
+              /*  var filePath = $(this).data('path');*/
+
+                var parent = e.target.closest('tr');
+                Swal.fire({
+                    text: '¿Estás seguro de que quieres eliminar la operacón?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    buttonsStyling: false,
+                    confirmButtonText: 'Sí, eliminar!',
+                    cancelButtonText: 'Cancelar',
+                    customClass: {
+                        confirmButton: 'btn fw-bold btn-danger',
+                        cancelButton: 'btn fw-bold btn-active-light-primary'
+                    }
+                }).then(function (result) {
+                    debugger;
+                    if (result.value) {
+                        var token = $('input[name="__RequestVerificationToken"]').val();
+                        $.ajax({
+                            type: 'POST',
+                            dataType: 'json',
+                            url: globalPath + 'Operacion/ DeleteOperacion',
+                            data: {
+                                nIdOperacion: idOperacion
+                            },
+                            headers: {
+                                'RequestVerificationToken': token
+                            },
+                            success: function (data) {
+                                debugger;
+                                if (data.succeeded) {
+                                    Swal.fire({
+                                        text: 'Eliminaste correctamente la operación.',
+                                        icon: 'success',
+                                        buttonsStyling: false,
+                                        confirmButtonText: 'Listo',
+                                        customClass: {
+                                            confirmButton: 'btn fw-bold btn-primary',
+                                        }
+                                    }).then(function () {
+                                        datatableFacturas.row($(parent)).remove().draw();
+                                    });
+                                } else {
+                                    messageError('La operación no fue eliminada (' + data.message + ')');
+                                }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                messageError(errorThrown);
+                            }
+                        });
+                    } else if (result.dismiss === 'cancel') {
+                        messageError('La operación no fue eliminada.');
+                    }
+                });
+            });
+        });
+    }
+
+
+
+
+
+
     var toggleToolbars = function () {
         var container = document.querySelector('#kt_operaciones_table');
         var toolbarBase = document.querySelector('[data-kt-operaciones-table-toolbar="base"]');
@@ -985,6 +1064,8 @@ var RegistroOperacion = function () {
         var addButton = document.getElementById('kt_add_factura');
         var validator;
         $('#IdOperacionCabeceraFacturas').val($('#IdOperacion').val());
+        //$('#nIdGiradorFact').val($('#IdGiradorCod').val());
+        //$('#nIdAdquirenteFact').val($('#IdAdquirienteCod').val());
         validator = FormValidation.formValidation(
             formAddFactura,
             {
@@ -1034,11 +1115,8 @@ var RegistroOperacion = function () {
                         var fileInputXml = $('#fileXml')[0];
                         var formData = new FormData();
                         formData.append('IdOperacionCabeceraFacturas', $('#IdOperacionCabeceraFacturas').val());
-                        formData.append('nroDocumento', json_documento);
-                        formData.append('Monto', $('#Monto').val());
-                        formData.append('fechaEmision', $('#fechaEmision').val());
-                        formData.append('fechaVencimiento', $('#fechaVencimiento').val());
-                        formData.append('FechaPagoNegociado', $('#fechaPagoNegociado').val());
+                        formData.append('nIdGiradorFact', $('#nIdGiradorFact').val());
+                        formData.append('nIdAdquirenteFact', $('#nIdAdquirenteFact').val());
                         formData.append('fileXml', fileInputXml.files[0]);
                         $.ajax({
                             type: 'POST',
@@ -1866,6 +1944,7 @@ var RegistroOperacion = function () {
             initDataTableCavali()
             handleAddFacturaForm();
             handleDeleteFacturaForm();
+            handleDeleteOperacionForm();
             handleUploadExcel();
             handleUploadFacturas();
           /*  handleComentarios();*/

@@ -50,6 +50,8 @@ namespace Factoring.Model.ViewModels
         public string cDesCategoria { get; set; }// RCR-2023-01-26
 
         public int IdTipoDocumentoSUNAT { get; set; }
+        public string nNroOperacion { get; set; }
+
     }
 
     public class OperacionCreateModel
@@ -117,24 +119,30 @@ namespace Factoring.Model.ViewModels
     {
         public int IdOperacionCabeceraFacturas { get; set; }
 
-        [Required]
-        public string nroDocumento { get; set; }
+        //[Required]
+        //public string nroDocumento { get; set; }
 
-        [Required]
-        public decimal Monto { get; set; }
+        //[Required]
+        //public decimal Monto { get; set; }
 
-        [Required]
-        public DateTime fechaEmision { get; set; }
+        //[Required]
+        //public DateTime fechaEmision { get; set; }
 
-        [Required]
-        public DateTime fechaVencimiento { get; set; }
+        //[Required]
+        //public DateTime fechaVencimiento { get; set; }
+
+
+        public int nIdGiradorFact { get; set; }
+
+
+        public int nIdAdquirenteFact { get; set; }
 
         [Required]
         public IFormFile fileXml { get; set; }
 
-        public string UsuarioCreador { get; set; }
-        [Required]
-        public DateTime FechaPagoNegociado { get; set; }
+        //public string UsuarioCreador { get; set; }
+        //[Required]
+        //public DateTime FechaPagoNegociado { get; set; }
     }
 
     public class EliminarFactura
