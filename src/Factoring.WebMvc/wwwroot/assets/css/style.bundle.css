@@ -50226,7 +50226,7 @@ body {
         right: 0;
         left: 0;
         z-index: 100;
-        background-color: #ffffff;
+        background-color: #204b9b;
         height: 65px;
         padding: 0;
         box-shadow: 0 10px 30px 0 rgba(82,63,105,.05)
@@ -50393,7 +50393,7 @@ body {
     }
 
         .aside.aside-dark .aside-logo {
-            background-color: #ffffff
+            background-color: #204b9b
         }
 
         .aside.aside-dark .aside-toggle svg [fill]:not(.permanent):not(g) {

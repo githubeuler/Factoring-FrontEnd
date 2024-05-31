@@ -9,6 +9,14 @@ var CargaMasiva = function () {
         if (!formAddFactura) {
             return;
         }
+
+        var formRegister = document.getElementById('kt_register_form');
+        if (!formRegister) {
+            return;
+        }
+
+        
+
         var addButton = document.getElementById('kt_add_xml');
         var validator;
         $('#IdOperacionCabeceraFacturas').val($('#IdOperacion').val());
@@ -157,86 +165,141 @@ var CargaMasiva = function () {
         });
 
         var processRegisterButton = document.getElementById('kt_register_process');
+        var validatorprocessRegisterButton;
+        $('#IdOperacionCabeceraFacturas').val($('#IdOperacion').val());
+        validatorprocessRegisterButton = FormValidation.formValidation(
+            formRegister,
+            {
+                fields: {
+                    'TEM': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Tasa Mensual es obligatorio'
+                            }
+                        }
+                    },
+                    'PorcentajeFinanciamiento': {
+                        validators: {
+                            notEmpty: {
+                                message: '% Financiamiento es obligatorio'
+                            }
+                        }
+                    },
+                    'DescCobranza': {
+                        validators: {
+                            notEmpty: {
+                                message: '% Comision es obligatorio'
+                            }
+                        }
+                    }
+
+                },
+                plugins: {
+                    declarative: new FormValidation.plugins.Declarative({
+                        html5Input: true,
+                    }),
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap5({
+                        rowSelector: '.fv-row',
+                        eleValidClass: '',
+                        eleInvalidClass: '',
+                    })
+                }
+            }
+        );
+
         processRegisterButton.addEventListener('click', function (e) {
             e.preventDefault();
+            validatorprocessRegisterButton.validate().then(function (status) {
+                if (status == 'Valid') {
 
-            var nCategoria = parseInt($("#comboCategoria").val());
-            var nTEM = ($("#txtTEM").val() == "" ? 0 : $("#txtTEM").val());
-            var nDescCobranza = ($("#txtDescCobranza").val() == "" ? 0 : $("#txtDescCobranza").val());
-            var nFinanciamiento = ($("#txtFinanciamiento").val() == "" ? 0 : $("#txtFinanciamiento").val());
-            var nTasa = ($("#txtTasaMoratoria").val() == "" ? 0 : $("#txtTasaMoratoria").val());
-            var nMonto = ($("#txtMonto").val() == "" ? 0 : $("#txtMonto").val());
-            var nRetencion = ($("#txtRetencion").val() == "" ? 0 : $("#txtRetencion").val());
-            var tokenVerification = $('input[name="__RequestVerificationToken"]').val();
-            var lstInvoice = new Array();
-            for (let i = 0; i < lstFactura.length; i++) {
-                var json = JSON.stringify(lstFactura[i]);
-                var oRecord = JSON.parse(json);
+                    processRegisterButton.setAttribute('data-kt-indicator', 'on');
+                    processRegisterButton.disabled = true;
 
-                oRecord.IdCategoria = nCategoria;
-                oRecord.nTEM = nTEM;
-                oRecord.ComisionCobranza = nDescCobranza;
-                oRecord.nPorcentajeFinanciamiento = nFinanciamiento;
-                oRecord.interesMoratorio = nTasa;
-                oRecord.nMontoOperacion = nMonto;
-                oRecord.retencion = nRetencion;
+                    var nCategoria = parseInt($("#comboCategoria").val());
+                    var nTEM = ($("#txtTEM").val() == "" ? 0 : $("#txtTEM").val());
+                    var nDescCobranza = ($("#txtDescCobranza").val() == "" ? 0 : $("#txtDescCobranza").val());
+                    var nFinanciamiento = ($("#txtFinanciamiento").val() == "" ? 0 : $("#txtFinanciamiento").val());
+                    var nTasa = ($("#txtTasaMoratoria").val() == "" ? 0 : $("#txtTasaMoratoria").val());
+                    var nMonto = ($("#txtMonto").val() == "" ? 0 : $("#txtMonto").val());
+                    var nRetencion = ($("#txtRetencion").val() == "" ? 0 : $("#txtRetencion").val());
+                    var tokenVerification = $('input[name="__RequestVerificationToken"]').val();
+                    var lstInvoice = new Array();
+                    for (let i = 0; i < lstFactura.length; i++) {
+                        var json = JSON.stringify(lstFactura[i]);
+                        var oRecord = JSON.parse(json);
 
-                lstInvoice.push(oRecord);
-            }
+                        oRecord.IdCategoria = nCategoria;
+                        oRecord.nTEM = nTEM;
+                        oRecord.ComisionCobranza = nDescCobranza;
+                        oRecord.nPorcentajeFinanciamiento = nFinanciamiento;
+                        oRecord.interesMoratorio = nTasa;
+                        oRecord.nMontoOperacion = nMonto;
+                        oRecord.retencion = nRetencion;
 
-            var formData = new FormData();
-            var fileInputXml = $('#fileXml')[0];
-            for (var x = 0; x < fileInputXml.files.length; x++) {
-                formData.append("fileXml", fileInputXml.files[x]);
-            }
-            formData.append('operacionId', $('#txtIDOperacion').val());
-            formData.append('lstFacturas', JSON.stringify(lstInvoice));
-
-            searchButtonOperacion.setAttribute('data-kt-indicator', 'on');
-            searchButtonOperacion.disabled = true;
-
-            $.ajax({
-                type: 'POST',
-                url: globalPath + "CargaMasiva/ProcessBatch",
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                headers: {
-                    'RequestVerificationToken': tokenVerification
-                },
-                success: function (data) {
-                    setTimeout(function () {
-                        searchButtonOperacion.removeAttribute('data-kt-indicator');
-                        searchButtonOperacion.disabled = false;
-                    }, 1000);
-
-                    if (data.succeeded) {
-                        Swal.fire({
-                            text: data.message,
-                            icon: 'success',
-                            buttonsStyling: false,
-                            confirmButtonText: 'Listo',
-                            customClass: {
-                                confirmButton: 'btn btn-primary'
-                            }
-                        }).then(function (result) {
-                            if (result.isConfirmed)
-                                $(window).attr('location', globalPath + 'CargaMasiva/Index');
-                        });
-
-                        $("#kt_operation_modal").modal("hide");
-
-                    } else {
-                        messageError(data.message);
+                        lstInvoice.push(oRecord);
                     }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    searchButtonOperacion.removeAttribute('data-kt-indicator');
-                    searchButtonOperacion.disabled = false;
-                    messageError(errorThrown);
+
+                    var formData = new FormData();
+                    var fileInputXml = $('#fileXml')[0];
+                    for (var x = 0; x < fileInputXml.files.length; x++) {
+                        formData.append("fileXml", fileInputXml.files[x]);
+                    }
+                    formData.append('operacionId', $('#txtIDOperacion').val());
+                    formData.append('lstFacturas', JSON.stringify(lstInvoice));
+
+                    processRegisterButton.setAttribute('data-kt-indicator', 'on');
+                    processRegisterButton.disabled = true;
+
+                    $.ajax({
+                        type: 'POST',
+                        url: globalPath + "CargaMasiva/ProcessBatch",
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        headers: {
+                            'RequestVerificationToken': tokenVerification
+                        },
+                        success: function (data) {
+                            setTimeout(function () {
+                                processRegisterButton.removeAttribute('data-kt-indicator');
+                                processRegisterButton.disabled = false;
+                            }, 1000);
+
+                            if (data.succeeded) {
+                                Swal.fire({
+                                    text: data.message,
+                                    icon: 'success',
+                                    buttonsStyling: false,
+                                    confirmButtonText: 'Listo',
+                                    customClass: {
+                                        confirmButton: 'btn btn-primary'
+                                    }
+                                }).then(function (result) {
+                                    if (result.isConfirmed)
+                                        $(window).attr('location', globalPath + 'CargaMasiva/Index');
+                                });
+
+                                $("#kt_operation_modal").modal("hide");
+
+                            } else {
+                                messageError(data.message);
+                            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            processRegisterButton.removeAttribute('data-kt-indicator');
+                            processRegisterButton.disabled = false;
+                            messageError(errorThrown);
+                        }
+                    });
+
+                     } else {
+                    messageError('Favor de ingresar los campos obligatorios y volver a intentarlo.');
                 }
-            });
+                });
+
+           
         });
 
         //
