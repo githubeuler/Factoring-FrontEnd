@@ -228,7 +228,7 @@
 <div id="kt_modal_evaluacion_operacion" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-            <form id="kt_modal_evaluacion_form" class="form" asp-controller="Operacion" asp-action="CargaMasiva" novalidate="novalidate">
+            <form id="kt_modal_evaluacion_form" class="form" asp-controller="Operacion" asp-action="ResultadoEvaluacion" novalidate="novalidate">
                 <div class="modal-header">
                     <h2>Resultado de Evaluación</h2>
                     <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -242,12 +242,12 @@
                                 <label class="d-flex align-items-center fs-5 fw-bold mb-2">
                                     <span class="required">Resultado Adquiriente</span>
                                 </label>
-                                <select id="EstadoAdquiriente" name="EstadoAdquiriente" asp-items="@(new SelectList(ViewBag.adquirienteEstados, "nId", "cNombre"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                                <select id="EstadoOperacion" name="EstadoOperacion" asp-items="@(new SelectList(ViewBag.EstadoEvaluacion, "nId", "cNombre"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
                                     <option value="">Seleccionar</option>
                                 </select>
                             </div>
                             <div class="fv-row mb-5">
-                                <textarea id="ComentarioAdquiriente" name="ComentarioAdquiriente" class="form-control form-control-solid" rows="4" maxlength="3000" placeholder="Ingresar la observación del Adquiriente..."></textarea>
+                                <textarea id="Comentario" name="Comentario" class="form-control form-control-solid" rows="4" maxlength="3000" placeholder="Ingresar la observación de riesgo..."></textarea>
                             </div>
                         </div>
                     </div>

@@ -98,8 +98,9 @@ namespace Factoring.WebMvc.Controllers
                 return Redirect("~/Account/Logout");
             }
 
-            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 101, Valor = "0" });
+            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 103, Valor = "0" });
             ViewBag.Estados = _Estados.Data.ToList();
+            ViewBag.EstadoEvaluacion = _Estados.Data.ToList();
             return View();
         }
 
@@ -178,7 +179,8 @@ namespace Factoring.WebMvc.Controllers
                     return Redirect("~/Operacion/Index");
                 }
 
-                var _Categoria = await _catalogoProxy.GetGategoriaGirador(new Model.Models.Catalogo.CatalogoListDto { Codigo = operacionDetalle.Data.nIdGirador });
+                var _Categoria = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 116, Valor = "0" });
+                //await _catalogoProxy.GetGategoriaGirador(new Model.Models.Catalogo.CatalogoListDto { Codigo = operacionId.Value});
                 ViewBag.Categoria = _Categoria.Data;
 
                 OperacionCreateModel operacionData = new();
@@ -188,24 +190,32 @@ namespace Factoring.WebMvc.Controllers
                     operacionData.IdOperacion = operacionDetalle.Data.nIdOperaciones;
                     operacionData.IdGirador = operacionDetalle.Data.nIdGirador;
                     operacionData.IdAdquiriente = operacionDetalle.Data.nIdAdquiriente;
-                    operacionData.IdGiradorDireccion = operacionDetalle.Data.nIdGiradorDireccion;
-                    operacionData.IdAdquirienteDireccion = operacionDetalle.Data.nIdAdquirienteDireccion;
+                    //operacionData.IdGiradorDireccion = operacionDetalle.Data.nIdGiradorDireccion;
+                    //operacionData.IdAdquirienteDireccion = operacionDetalle.Data.nIdAdquirienteDireccion;
                     operacionData.TEM = operacionDetalle.Data.nTEM;
                     operacionData.PorcentajeFinanciamiento = operacionDetalle.Data.nPorcentajeFinanciamiento;
                     operacionData.MontoOperacion = operacionDetalle.Data.nMontoOperacion;
-                    operacionData.DescContrato = operacionDetalle.Data.nDescContrato;
-                    operacionData.DescFactura = operacionDetalle.Data.nDescFactura;
+                    //operacionData.DescContrato = operacionDetalle.Data.nDescContrato;
+                    //operacionData.DescFactura = operacionDetalle.Data.nDescFactura;
                     operacionData.DescCobranza = operacionDetalle.Data.nDescCobranza;
                     operacionData.IdTipoMoneda = operacionDetalle.Data.nIdTipoMoneda;
-                    operacionData.PorcentajeRetencion = operacionDetalle.Data.nPorcentajeRetencion;
+                    //operacionData.PorcentajeRetencion = operacionDetalle.Data.nPorcentajeRetencion;
                     operacionData.Estado = operacionDetalle.Data.nEstado;
                     operacionData.NombreEstado = operacionDetalle.Data.NombreEstado;
                     operacionData.InteresMoratorio = operacionDetalle.Data.InteresMoratorio;
-                    operacionData.MotivoTransaccion = operacionDetalle.Data.MotivoTransaccion;
-                    operacionData.SustentoComercial = operacionDetalle.Data.SustentoComercial;
+                    //operacionData.MotivoTransaccion = operacionDetalle.Data.MotivoTransaccion;
+                    //operacionData.SustentoComercial = operacionDetalle.Data.SustentoComercial;
                     operacionData.IdCategoria = operacionDetalle.Data.IdCategoria;
-                    operacionData.Plazo = operacionDetalle.Data.Plazo;
-
+                    //operacionData.Plazo = operacionDetalle.Data.Plazo;
+                    operacionData.IdGiradorCod = operacionDetalle.Data.nIdGirador;
+                    operacionData.IdAdquirienteCod = operacionDetalle.Data.nIdAdquiriente;
+                    ViewBag.IdGiradorCod = operacionDetalle.Data.nIdGirador;
+                    ViewBag.IdAdquirienteCod = operacionDetalle.Data.nIdAdquiriente;
+                }
+                else
+                {
+                    ViewBag.IdGiradorCod = "";
+                    ViewBag.IdAdquirienteCod = "";
                 }
                 return View(operacionData);
             }
@@ -323,6 +333,8 @@ namespace Factoring.WebMvc.Controllers
         {
             var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             bool IsOperacionExist = false;
+            model.IdAdquiriente = model.IdAdquirienteCod;
+            model.IdGirador = model.IdGiradorCod;
             var operacionDetalle = await _operacionProxy.GetOperaciones(operacionId);
             if (operacionDetalle.Succeeded == true)
             {
@@ -337,10 +349,10 @@ namespace Factoring.WebMvc.Controllers
                         var result = await _operacionProxy.Update(new OperacionesUpdateDto
                         {
                             IdOperaciones = operacionId,
-                            IdGirador = model.IdGirador,
-                            IdAdquiriente = model.IdAdquiriente,
-                            IdGiradorDireccion = model.IdGiradorDireccion,
-                            IdAdquirienteDireccion = model.IdAdquirienteDireccion,
+                            IdGirador = model.IdGiradorCod,
+                            IdAdquiriente = model.IdAdquirienteCod,
+                            //IdGiradorDireccion = model.IdGiradorDireccion,
+                            //IdAdquirienteDireccion = model.IdAdquirienteDireccion,
                             TEM = model.TEM,
                             PorcentajeFinanciamiento = model.PorcentajeFinanciamiento,
                             MontoOperacion = model.MontoOperacion,
@@ -348,13 +360,13 @@ namespace Factoring.WebMvc.Controllers
                             DescFactura = 0,
                             DescCobranza = model.DescCobranza,
                             IdTipoMoneda = model.IdTipoMoneda,
-                            PorcentajeRetencion = model.PorcentajeRetencion,
+                            //PorcentajeRetencion = model.PorcentajeRetencion,
                             UsuarioActualizacion = userName,
                             InteresMoratorio = model.InteresMoratorio,
-                            IdCategoria = model.IdCategoria,
-                            MotivoTransaccion = model.MotivoTransaccion,
-                            SustentoComercial = model.SustentoComercial,
-                            Plazo = model.Plazo
+                            IdCategoria = model.IdCategoria//,
+                            //MotivoTransaccion = model.MotivoTransaccion,
+                            //SustentoComercial = model.SustentoComercial,
+                            //Plazo = model.Plazo
 
                         });
 
@@ -388,10 +400,10 @@ namespace Factoring.WebMvc.Controllers
                     {
                         var result = await _operacionProxy.Create(new OperacionesInsertDto
                         {
-                            IdGirador = model.IdGirador,
-                            IdAdquiriente = model.IdAdquiriente,
-                            IdGiradorDireccion = model.IdGiradorDireccion,
-                            IdAdquirienteDireccion = model.IdAdquirienteDireccion,
+                            IdGirador = model.IdGiradorCod,
+                            IdAdquiriente = model.IdAdquirienteCod,
+                            //IdGiradorDireccion = model.IdGiradorDireccion,
+                            //IdAdquirienteDireccion = model.IdAdquirienteDireccion,
                             TEM = model.TEM,
                             PorcentajeFinanciamiento = model.PorcentajeFinanciamiento,
                             MontoOperacion = model.MontoOperacion,
@@ -399,13 +411,13 @@ namespace Factoring.WebMvc.Controllers
                             DescFactura = 0,
                             DescCobranza = model.DescCobranza,
                             IdTipoMoneda = model.IdTipoMoneda,
-                            PorcentajeRetencion = model.PorcentajeRetencion,
+                           // PorcentajeRetencion = model.PorcentajeRetencion,
                             UsuarioCreador = userName,
                             InteresMoratorio = model.InteresMoratorio,
-                            IdCategoria = model.IdCategoria,
-                            MotivoTransaccion = model.MotivoTransaccion,
-                            SustentoComercial = model.SustentoComercial,
-                            Plazo = model.Plazo
+                            IdCategoria = model.IdCategoria//,
+                            //MotivoTransaccion = model.MotivoTransaccion,
+                            //SustentoComercial = model.SustentoComercial,
+                            //Plazo = model.Plazo
                         });
                         //if (result.Succeeded)
                         //{
@@ -524,114 +536,8 @@ namespace Factoring.WebMvc.Controllers
         //    {
         //        //ResponseData<List<OperacionesFacturaListDto>> lst = new ResponseData<List<OperacionesFacturaListDto>>();
         //        //lst = await _facturaOperacionesProxy.GetAllListFacturaByIdOperaciones(model.IdOperacionCabeceraFacturas);
-        //        //if (lst.Data != null) {
-        //        //    if (lst.Data.Count > 0)
-        //        //        nroOperacion = lst.Data[0].nroOperacion;
-
-        //        //}
-        //        //var operacionDetalle = await _operacionProxy.GetOperaciones(model.IdOperacionCabeceraFacturas);
-        //        //if (operacionDetalle != null)
+        //        //if (lst.Data != null)
         //        //{
-        //        //    nroOperacion = operacionDetalle.Data.nNroOperacion;
-        //        //}
-        //        string randon = RandomString(10);
-        //        var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //        //var path = _configuration[$"PathDocumentos:{Operaciones}"].ToString() + "\\" + nroOperacion + _configuration[$"PathDocumentos:{Facturas}"].ToString();
-        //        //var archivoXML = await _filesProxy.UploadFile(model.fileXml, randon + "_" + model.fileXml.FileName, path);
-        //        //if (archivoXML.Succeeded)
-        //        //{
-        //        //    var result = await _facturaOperacionesProxy.Create(new OperacionesFacturaInsertDto
-        //        //    {
-        //        //        IdOperaciones = model.IdOperacionCabeceraFacturas,
-        //        //        NroDocumento = model.nroDocumento,
-        //        //        Monto = model.Monto,
-        //        //        FechaEmision = model.fechaEmision,
-        //        //        FechaVencimiento = model.fechaVencimiento,
-        //        //        NombreDocumentoXML = model.fileXml.FileName,
-        //        //        RutaDocumentoXML = Path.Combine(path, randon + "_" + model.fileXml.FileName),
-        //        //        NombreDocumentoPDF = "",
-        //        //        RutaDocumentoPDF = "",
-        //        //        UsuarioCreador = userName,
-        //        //        FechaPagoNegociado = model.FechaPagoNegociado
-        //        //    });
-        //        //    return Json(result);
-        //        //}
-        //        //else
-        //        //{
-        //        //    return Json(new { succeeded = false, message = "El archivo no se cargo, intente nuevamente..." });
-        //        //}
-        //        //}
-        //        //else
-        //        //{
-        //        //    return Json(new { succeeded = false, message = "Ocurrió un error, intente nuevamente..." });
-        //        //}
-        //    }
-        //}
-
-        //AgregarDocumentos
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> AgregarDocumentoSolicitud(AgregarDocumentoSolicitud model)
-        //{
-        //    string nroOperacion = string.Empty;
-        //    int nIdSolicitud = 0;
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        var operacionDetalle = await _operacionProxy.GetOperaciones(model.IdOperacionCabeceraFacturas);
-        //        if (operacionDetalle != null)
-        //        {
-        //            nroOperacion = operacionDetalle.Data.nNroOperacion;
-        //            nIdSolicitud = operacionDetalle.Data.IdSolEvalOperacion;
-        //        }
-        //        string randon = RandomString(10);
-        //        var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //        var path = _configuration[$"PathDocumentos:{Operaciones}"].ToString() + "\\" + nroOperacion + _configuration[$"PathDocumentos:{TipoDocumento}"].ToString();
-        //        var archivoXML = await _filesProxy.UploadFile(model.fileDocumentoXml, randon + "_" + model.fileDocumentoXml.FileName, path);
-
-        //        //List<IFormFile> fill = new List<IFormFile>();
-        //        //fill.Add(model.fileDocumentoXml);
-        //        //ValidarMasivoValidacionFacturaDTO obj = new ValidarMasivoValidacionFacturaDTO()
-        //        //{
-        //        //    UsuarioCreador = userName,
-        //        //    NombreSeccion = "prueba",
-        //        //    fileDocumentoXml = fill
-
-        //        //};
-        //        //var prueba = await _procesoMasivoLoteFacturaProxy.Validar_Facturas_Xml(obj);
-        //        if (archivoXML.Succeeded)
-        //        {
-        //            var result = await _facturaOperacionesProxy.CreateSolcitudDocumento(new DocumentosSolicitudperacionesInsertDto
-        //            {
-        //                nIdSolEvalOperaciones = nIdSolicitud,
-        //                nTipoDocumento = model.nTipoDocumento,
-        //                cNombreDocumento = model.fileDocumentoXml.FileName,
-        //                cRutaDocumento = Path.Combine(path, randon + "_" + model.fileDocumentoXml.FileName),
-        //                cUsuarioCreador = userName
-        //            });
-        //            return Json(result);
-        //        }
-        //        else
-        //        {
-        //            return Json(new { succeeded = false, message = "El archivo no se cargo, intente nuevamente..." });
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return Json(new { succeeded = false, message = "Ocurrió un error, intente nuevamente..." });
-        //    }
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> AgregarDocumentos(AgregarFactura model)
-        //{
-        //    string nroOperacion = string.Empty;
-        //    if (ModelState.IsValid)
-        //    {
-        //        //ResponseData<List<OperacionesFacturaListDto>> lst = new ResponseData<List<OperacionesFacturaListDto>>();
-        //        //lst = await _facturaOperacionesProxy.GetAllListFacturaByIdOperaciones(model.IdOperacionCabeceraFacturas);
-        //        //if (lst.Data != null) {
         //        //    if (lst.Data.Count > 0)
         //        //        nroOperacion = lst.Data[0].nroOperacion;
 
@@ -643,7 +549,7 @@ namespace Factoring.WebMvc.Controllers
         //        }
         //        string randon = RandomString(10);
         //        var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //        var path = _configuration[$"PathDocumentos:{Operaciones}"].ToString() + "\\" + nroOperacion;
+        //        var path = _configuration[$"PathDocumentos:{Operaciones}"].ToString() + "\\" + nroOperacion + _configuration[$"PathDocumentos:{Facturas}"].ToString();
         //        var archivoXML = await _filesProxy.UploadFile(model.fileXml, randon + "_" + model.fileXml.FileName, path);
         //        if (archivoXML.Succeeded)
         //        {
@@ -673,152 +579,259 @@ namespace Factoring.WebMvc.Controllers
         //        return Json(new { succeeded = false, message = "Ocurrió un error, intente nuevamente..." });
         //    }
         //}
+    
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> EliminarFactura(EliminarFactura model)
-        //{
-        //    var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //    var archivoXML = await _filesProxy.DeleteFiles(model.filePath);
-        //    if (archivoXML.Succeeded)
-        //    {
-        //        var result = await _facturaOperacionesProxy.Delete(model.operacionFacturaId, userName);
-        //        return Json(result);
-        //    }
-        //    else
-        //    {
-        //        return Json(new { succeeded = false, message = "El archivo no se elimino, intente nuevamente..." });
-        //    }
+    //AgregarDocumentos
+    //[HttpPost]
+    //[ValidateAntiForgeryToken]
+    //public async Task<IActionResult> AgregarDocumentoSolicitud(AgregarDocumentoSolicitud model)
+    //{
+    //    string nroOperacion = string.Empty;
+    //    int nIdSolicitud = 0;
+    //    if (ModelState.IsValid)
+    //    {
 
-        //}
+    //        var operacionDetalle = await _operacionProxy.GetOperaciones(model.IdOperacionCabeceraFacturas);
+    //        if (operacionDetalle != null)
+    //        {
+    //            nroOperacion = operacionDetalle.Data.nNroOperacion;
+    //            nIdSolicitud = operacionDetalle.Data.IdSolEvalOperacion;
+    //        }
+    //        string randon = RandomString(10);
+    //        var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    //        var path = _configuration[$"PathDocumentos:{Operaciones}"].ToString() + "\\" + nroOperacion + _configuration[$"PathDocumentos:{TipoDocumento}"].ToString();
+    //        var archivoXML = await _filesProxy.UploadFile(model.fileDocumentoXml, randon + "_" + model.fileDocumentoXml.FileName, path);
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> EditarFactura(EditarFactura model)
-        //{
-        //    var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    //        //List<IFormFile> fill = new List<IFormFile>();
+    //        //fill.Add(model.fileDocumentoXml);
+    //        //ValidarMasivoValidacionFacturaDTO obj = new ValidarMasivoValidacionFacturaDTO()
+    //        //{
+    //        //    UsuarioCreador = userName,
+    //        //    NombreSeccion = "prueba",
+    //        //    fileDocumentoXml = fill
 
-        //    var result = await _facturaOperacionesProxy.Editar(new OperacionesFacturaEditDto()
-        //    {
-        //        FechaPagoNegociado = model.dFechaPagoNegociado,
-        //        UsuarioActualizacion = userName,
-        //        IdOperacionesFacturas = model.nIdOperacionesFacturas,
-        //        Estado = 0      //  <OAV - 30/01/2023>
-        //    });
-        //    return Json(result.Succeeded);
+    //        //};
+    //        //var prueba = await _procesoMasivoLoteFacturaProxy.Validar_Facturas_Xml(obj);
+    //        if (archivoXML.Succeeded)
+    //        {
+    //            var result = await _facturaOperacionesProxy.CreateSolcitudDocumento(new DocumentosSolicitudperacionesInsertDto
+    //            {
+    //                nIdSolEvalOperaciones = nIdSolicitud,
+    //                nTipoDocumento = model.nTipoDocumento,
+    //                cNombreDocumento = model.fileDocumentoXml.FileName,
+    //                cRutaDocumento = Path.Combine(path, randon + "_" + model.fileDocumentoXml.FileName),
+    //                cUsuarioCreador = userName
+    //            });
+    //            return Json(result);
+    //        }
+    //        else
+    //        {
+    //            return Json(new { succeeded = false, message = "El archivo no se cargo, intente nuevamente..." });
+    //        }
+    //    }
+    //    else
+    //    {
+    //        return Json(new { succeeded = false, message = "Ocurrió un error, intente nuevamente..." });
+    //    }
+    //}
+
+    //[HttpPost]
+    //[ValidateAntiForgeryToken]
+    //public async Task<IActionResult> AgregarDocumentos(AgregarFactura model)
+    //{
+    //    string nroOperacion = string.Empty;
+    //    if (ModelState.IsValid)
+    //    {
+    //        //ResponseData<List<OperacionesFacturaListDto>> lst = new ResponseData<List<OperacionesFacturaListDto>>();
+    //        //lst = await _facturaOperacionesProxy.GetAllListFacturaByIdOperaciones(model.IdOperacionCabeceraFacturas);
+    //        //if (lst.Data != null) {
+    //        //    if (lst.Data.Count > 0)
+    //        //        nroOperacion = lst.Data[0].nroOperacion;
+
+    //        //}
+    //        var operacionDetalle = await _operacionProxy.GetOperaciones(model.IdOperacionCabeceraFacturas);
+    //        if (operacionDetalle != null)
+    //        {
+    //            nroOperacion = operacionDetalle.Data.nNroOperacion;
+    //        }
+    //        string randon = RandomString(10);
+    //        var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    //        var path = _configuration[$"PathDocumentos:{Operaciones}"].ToString() + "\\" + nroOperacion;
+    //        var archivoXML = await _filesProxy.UploadFile(model.fileXml, randon + "_" + model.fileXml.FileName, path);
+    //        if (archivoXML.Succeeded)
+    //        {
+    //            var result = await _facturaOperacionesProxy.Create(new OperacionesFacturaInsertDto
+    //            {
+    //                IdOperaciones = model.IdOperacionCabeceraFacturas,
+    //                NroDocumento = model.nroDocumento,
+    //                Monto = model.Monto,
+    //                FechaEmision = model.fechaEmision,
+    //                FechaVencimiento = model.fechaVencimiento,
+    //                NombreDocumentoXML = model.fileXml.FileName,
+    //                RutaDocumentoXML = Path.Combine(path, randon + "_" + model.fileXml.FileName),
+    //                NombreDocumentoPDF = "",
+    //                RutaDocumentoPDF = "",
+    //                UsuarioCreador = userName,
+    //                FechaPagoNegociado = model.FechaPagoNegociado
+    //            });
+    //            return Json(result);
+    //        }
+    //        else
+    //        {
+    //            return Json(new { succeeded = false, message = "El archivo no se cargo, intente nuevamente..." });
+    //        }
+    //    }
+    //    else
+    //    {
+    //        return Json(new { succeeded = false, message = "Ocurrió un error, intente nuevamente..." });
+    //    }
+    //}
+
+    //[HttpPost]
+    //[ValidateAntiForgeryToken]
+    //public async Task<IActionResult> EliminarFactura(EliminarFactura model)
+    //{
+    //    var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    //    var archivoXML = await _filesProxy.DeleteFiles(model.filePath);
+    //    if (archivoXML.Succeeded)
+    //    {
+    //        var result = await _facturaOperacionesProxy.Delete(model.operacionFacturaId, userName);
+    //        return Json(result);
+    //    }
+    //    else
+    //    {
+    //        return Json(new { succeeded = false, message = "El archivo no se elimino, intente nuevamente..." });
+    //    }
+
+    //}
+
+    //[HttpPost]
+    //[ValidateAntiForgeryToken]
+    //public async Task<IActionResult> EditarFactura(EditarFactura model)
+    //{
+    //    var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+    //    var result = await _facturaOperacionesProxy.Editar(new OperacionesFacturaEditDto()
+    //    {
+    //        FechaPagoNegociado = model.dFechaPagoNegociado,
+    //        UsuarioActualizacion = userName,
+    //        IdOperacionesFacturas = model.nIdOperacionesFacturas,
+    //        Estado = 0      //  <OAV - 30/01/2023>
+    //    });
+    //    return Json(result.Succeeded);
 
 
-        //}
+    //}
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> CargaMasiva(IFormFile fileExcel)
-        //{
-        //    string fileExtension = Path.GetExtension(fileExcel.FileName).ToLower();
-        //    if (fileExtension == ".xlsx" || fileExtension == ".xls")
-        //    {
-        //        System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-        //        Stream stream = fileExcel.OpenReadStream();
-        //        using (var reader = ExcelReaderFactory.CreateReader(stream))
-        //        {
-        //            var userName = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //            var resultExcel = SetAsDataSet(reader);
-        //            DataTable table = resultExcel.Tables[0];
-        //            var ItemsExcel = new List<OperacionesInsertMasiveDto>(table.Rows.Count);
-        //            foreach (DataRow row in table.Rows)
-        //            {
-        //                var item = row.ItemArray;
-        //                var rowOperacion = new OperacionesInsertMasiveDto()
-        //                {
-        //                    RucGirador = item[0].ToString(),
-        //                    RucAdquiriente = item[1].ToString(),
-        //                    DOIInversionista = item[2].ToString(),
-        //                    Moneda = item[3].ToString(),
-        //                    TEM = decimal.Parse(item[4].ToString()),
-        //                    PorcentajeFinanciamiento = decimal.Parse(item[5].ToString()),
-        //                    MontoOperacion = decimal.Parse(item[6].ToString()),
-        //                    DescContrato = decimal.Parse(item[7].ToString()),
-        //                    DescFactura = decimal.Parse(item[8].ToString()),
-        //                    DescCobranza = decimal.Parse(item[9].ToString()),
-        //                    PorcentajeRetencion = decimal.Parse(item[10].ToString())
-        //                };
-        //                ItemsExcel.Add(rowOperacion);
-        //            }
-        //            var requestExcel = await _operacionProxy.CreateMasivo(new MasivoOperacionDto
-        //            {
-        //                Operaciones = ItemsExcel,
-        //                UsuarioCreador = userName
-        //            });
-        //            return Json(requestExcel);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return Json(new { succeeded = false, message = "Debe adjuntar un archivo Excel" });
-        //    }
-        //}
+    //[HttpPost]
+    //[ValidateAntiForgeryToken]
+    //public async Task<IActionResult> CargaMasiva(IFormFile fileExcel)
+    //{
+    //    string fileExtension = Path.GetExtension(fileExcel.FileName).ToLower();
+    //    if (fileExtension == ".xlsx" || fileExtension == ".xls")
+    //    {
+    //        System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+    //        Stream stream = fileExcel.OpenReadStream();
+    //        using (var reader = ExcelReaderFactory.CreateReader(stream))
+    //        {
+    //            var userName = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    //            var resultExcel = SetAsDataSet(reader);
+    //            DataTable table = resultExcel.Tables[0];
+    //            var ItemsExcel = new List<OperacionesInsertMasiveDto>(table.Rows.Count);
+    //            foreach (DataRow row in table.Rows)
+    //            {
+    //                var item = row.ItemArray;
+    //                var rowOperacion = new OperacionesInsertMasiveDto()
+    //                {
+    //                    RucGirador = item[0].ToString(),
+    //                    RucAdquiriente = item[1].ToString(),
+    //                    DOIInversionista = item[2].ToString(),
+    //                    Moneda = item[3].ToString(),
+    //                    TEM = decimal.Parse(item[4].ToString()),
+    //                    PorcentajeFinanciamiento = decimal.Parse(item[5].ToString()),
+    //                    MontoOperacion = decimal.Parse(item[6].ToString()),
+    //                    DescContrato = decimal.Parse(item[7].ToString()),
+    //                    DescFactura = decimal.Parse(item[8].ToString()),
+    //                    DescCobranza = decimal.Parse(item[9].ToString()),
+    //                    PorcentajeRetencion = decimal.Parse(item[10].ToString())
+    //                };
+    //                ItemsExcel.Add(rowOperacion);
+    //            }
+    //            var requestExcel = await _operacionProxy.CreateMasivo(new MasivoOperacionDto
+    //            {
+    //                Operaciones = ItemsExcel,
+    //                UsuarioCreador = userName
+    //            });
+    //            return Json(requestExcel);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        return Json(new { succeeded = false, message = "Debe adjuntar un archivo Excel" });
+    //    }
+    //}
 
-        //[HttpPost]
-        //public async Task<IActionResult> CargaMasivaFacturas(int operacionId, IFormFile fileExcelFacturas, List<IFormFile> filesXml)
-        //{
-        //    var countFilesXML = filesXml.Count();
-        //    if (countFilesXML == 0)
-        //    {
-        //        return Json(new { succeeded = false, message = "Debe adjuntar los archivos XML de las facturas." });
-        //    }
-        //    string fileExtension = Path.GetExtension(fileExcelFacturas.FileName).ToLower();
-        //    if (fileExtension == ".xlsx" || fileExtension == ".xls")
-        //    {
-        //        System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-        //        Stream stream = fileExcelFacturas.OpenReadStream();
-        //        using (var reader = ExcelReaderFactory.CreateReader(stream))
-        //        {
-        //            var userName = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //            var resultExcel = SetAsDataSet(reader);
-        //            DataTable table = resultExcel.Tables[0];
-        //            var countRowsExcel = table.Rows.Count;
-        //            if (countRowsExcel == countFilesXML)
-        //            {
-        //                var ItemsExcel = new List<OperacionesFacturaInsertMasivotDto>(countRowsExcel);
-        //                foreach (DataRow row in table.Rows)
-        //                {
-        //                    var item = row.ItemArray;
-        //                    var NroDocumento = new { Serie = item[0].ToString(), Numero = item[1].ToString() };
-        //                    var rowFactura = new OperacionesFacturaInsertMasivotDto()
-        //                    {
-        //                        IdOperaciones = operacionId,
-        //                        NroDocumento = JsonSerializer.Serialize(NroDocumento).ToString(),
-        //                        Monto = decimal.Parse(item[2].ToString()),
-        //                        FechaEmision = DateTime.Parse(item[3].ToString()),
-        //                        FechaVencimiento = DateTime.Parse(item[4].ToString()),
-        //                        NombreDocumentoXML = item[5].ToString(),
-        //                        RutaDocumentoXML = Path.Combine("upload", "files", item[5].ToString()).ToString(),
-        //                        NombreDocumentoPDF = "",
-        //                        RutaDocumentoPDF = ""
-        //                    };
-        //                    ItemsExcel.Add(rowFactura);
-        //                }
-        //                var requestExcelFacturas = await _filesProxy.UploadFiles(new OperacionesFacturaSendMasivo
-        //                {
-        //                    Files = filesXml,
-        //                    UsuarioCreador = userName,
-        //                    Facturas = ItemsExcel
-        //                });
-        //                return Json(requestExcelFacturas);
-        //            }
-        //            else
-        //            {
-        //                return Json(new { succeeded = false, message = "El archivo excel tiene " + countRowsExcel + " registro(s) y se han adjuntado " + countFilesXML + " archivo(s) XML." });
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return Json(new { succeeded = false, message = "Debe adjuntar un archivo Excel." });
-        //    }
-        //}
+    //[HttpPost]
+    //public async Task<IActionResult> CargaMasivaFacturas(int operacionId, IFormFile fileExcelFacturas, List<IFormFile> filesXml)
+    //{
+    //    var countFilesXML = filesXml.Count();
+    //    if (countFilesXML == 0)
+    //    {
+    //        return Json(new { succeeded = false, message = "Debe adjuntar los archivos XML de las facturas." });
+    //    }
+    //    string fileExtension = Path.GetExtension(fileExcelFacturas.FileName).ToLower();
+    //    if (fileExtension == ".xlsx" || fileExtension == ".xls")
+    //    {
+    //        System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+    //        Stream stream = fileExcelFacturas.OpenReadStream();
+    //        using (var reader = ExcelReaderFactory.CreateReader(stream))
+    //        {
+    //            var userName = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    //            var resultExcel = SetAsDataSet(reader);
+    //            DataTable table = resultExcel.Tables[0];
+    //            var countRowsExcel = table.Rows.Count;
+    //            if (countRowsExcel == countFilesXML)
+    //            {
+    //                var ItemsExcel = new List<OperacionesFacturaInsertMasivotDto>(countRowsExcel);
+    //                foreach (DataRow row in table.Rows)
+    //                {
+    //                    var item = row.ItemArray;
+    //                    var NroDocumento = new { Serie = item[0].ToString(), Numero = item[1].ToString() };
+    //                    var rowFactura = new OperacionesFacturaInsertMasivotDto()
+    //                    {
+    //                        IdOperaciones = operacionId,
+    //                        NroDocumento = JsonSerializer.Serialize(NroDocumento).ToString(),
+    //                        Monto = decimal.Parse(item[2].ToString()),
+    //                        FechaEmision = DateTime.Parse(item[3].ToString()),
+    //                        FechaVencimiento = DateTime.Parse(item[4].ToString()),
+    //                        NombreDocumentoXML = item[5].ToString(),
+    //                        RutaDocumentoXML = Path.Combine("upload", "files", item[5].ToString()).ToString(),
+    //                        NombreDocumentoPDF = "",
+    //                        RutaDocumentoPDF = ""
+    //                    };
+    //                    ItemsExcel.Add(rowFactura);
+    //                }
+    //                var requestExcelFacturas = await _filesProxy.UploadFiles(new OperacionesFacturaSendMasivo
+    //                {
+    //                    Files = filesXml,
+    //                    UsuarioCreador = userName,
+    //                    Facturas = ItemsExcel
+    //                });
+    //                return Json(requestExcelFacturas);
+    //            }
+    //            else
+    //            {
+    //                return Json(new { succeeded = false, message = "El archivo excel tiene " + countRowsExcel + " registro(s) y se han adjuntado " + countFilesXML + " archivo(s) XML." });
+    //            }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        return Json(new { succeeded = false, message = "Debe adjuntar un archivo Excel." });
+    //    }
+    //}
 
-        public async Task<IActionResult> GetAllComentariosOperacion(int operacionId)
+    public async Task<IActionResult> GetAllComentariosOperacion(int operacionId)
         {
             //var comentarios = await _comentariosProxy.GetAllListComentarios(3, operacionId);
             return Json(null);

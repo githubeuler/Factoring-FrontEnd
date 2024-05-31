@@ -42,6 +42,15 @@ var RegistroOperacion = function () {
             initDatatable();
         });
     }
+    var initToggleToolbar = function () {
+        //var container = document.querySelector('#kt_pago_table');
+        //var container2 = document.querySelector('n-pago');
+        //$('#dFechaPago').flatpickr({
+        //    dateFormat: 'd/m/Y',
+        //    defaultDate: 'today'
+
+        //});
+    }
     var initDatatable = function () {
         var table = document.getElementById('kt_operaciones_table');
         if (!table) {
@@ -96,9 +105,11 @@ var RegistroOperacion = function () {
 
                         /*var _button = `<a href="${globalPath}VentaCartera/Editar?prestamoId=${data.iIdPrestamoVentaCartera}" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a> <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eva open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_pago" data-n-pago="1" title="Evaluar"><i class="las la-check-square fs-2"></i></a>`*/
                         return `<a href="${globalPath}Operacion/Registro?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a> 
-                            <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eva open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-pago="1" title="Evaluar" ><i class="las la-check-square fs-2"></i></a>
-                            <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row"><i class="las la-search fs-2"></i></a> 
-                            <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-trash fs-2"></i></button> `;
+                                
+                               <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eva open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-pago="1" title="Evaluar"><i class="las la-check-square fs-2"></i></a>
+
+                                <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row"><i class="las la-search fs-2"></i></a> 
+                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-trash fs-2"></i></button> `;
 
 
 
@@ -264,6 +275,13 @@ var RegistroOperacion = function () {
         if (!form) {
             return;
         }
+
+        //var phIdGiradorCod = document.getElementById('hIdGiradorCod');
+        //var phIdAdquirienteCod = document.getElementById('hIdAdquirienteCod')
+        //$("#IdGirador").val($(phIdGiradorCod).val()).trigger("change");
+        //$("#IdAdquiriente").val($(phIdAdquirienteCod).val()).trigger("change");
+        //$("#IdGiradorCod").val($(phIdGiradorCod).val()).trigger("change");
+        //$("#IdAdquirienteCod").val($(phIdAdquirienteCod).val()).trigger("change");
         $('#IdGirador').on('change', function (e) {
             var idGirador = this.options[this.selectedIndex].value;
 
@@ -402,54 +420,54 @@ var RegistroOperacion = function () {
                             }
                         }
                     },
-                    'IdGiradorDireccion': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Girador Dirección es obligatorio'
-                            }
-                        }
-                    },
-                    'IdAdquirienteDireccion': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Adquiriente Dirección es obligatorio'
-                            }
-                        }
-                    },
+                    //'IdGiradorDireccion': {
+                    //    validators: {
+                    //        notEmpty: {
+                    //            message: 'Girador Dirección es obligatorio'
+                    //        }
+                    //    }
+                    //},
+                    //'IdAdquirienteDireccion': {
+                    //    validators: {
+                    //        notEmpty: {
+                    //            message: 'Adquiriente Dirección es obligatorio'
+                    //        }
+                    //    }
+                    //},
 
-                    'MotivoTransaccion': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Motivo es obligatorio'
-                            }
-                        }
-                    },
+                    //'MotivoTransaccion': {
+                    //    validators: {
+                    //        notEmpty: {
+                    //            message: 'Motivo es obligatorio'
+                    //        }
+                    //    }
+                    //},
 
-                    'Plazo': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Plazo es obligatorio'
-                            },
-                            numeric: {
-                                thousandsSeparator: '',
-                                decimalSeparator: '.',
-                                message: 'Ingresar sólo números'
-                            },
-                            between: {
-                                min: 0,
-                                max: 120,
-                                message: 'El valor de plazo debe ser entre 0 y 100',
-                            }
-                        }
-                    },
+                    //'Plazo': {
+                    //    validators: {
+                    //        notEmpty: {
+                    //            message: 'Plazo es obligatorio'
+                    //        },
+                    //        numeric: {
+                    //            thousandsSeparator: '',
+                    //            decimalSeparator: '.',
+                    //            message: 'Ingresar sólo números'
+                    //        },
+                    //        between: {
+                    //            min: 0,
+                    //            max: 120,
+                    //            message: 'El valor de plazo debe ser entre 0 y 100',
+                    //        }
+                    //    }
+                    //},
 
-                    'SustentoComercial': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Sustento es obligatorio'
-                            }
-                        }
-                    },
+                    //'SustentoComercial': {
+                    //    validators: {
+                    //        notEmpty: {
+                    //            message: 'Sustento es obligatorio'
+                    //        }
+                    //    }
+                    //},
 
                     'TEM': {
                         validators: {
@@ -554,8 +572,8 @@ var RegistroOperacion = function () {
         RegistroOperacion.getRevalidateFormElement(form, 'IdGirador', validator);
         RegistroOperacion.getRevalidateFormElement(form, 'IdAdquiriente', validator);
         RegistroOperacion.getRevalidateFormElement(form, 'IdCategoria', validator);
-        RegistroOperacion.getRevalidateFormElement(form, 'IdGiradorDireccion', validator);
-        RegistroOperacion.getRevalidateFormElement(form, 'IdAdquirienteDireccion', validator);
+        //RegistroOperacion.getRevalidateFormElement(form, 'IdGiradorDireccion', validator);
+        //RegistroOperacion.getRevalidateFormElement(form, 'IdAdquirienteDireccion', validator);
         RegistroOperacion.getRevalidateFormElement(form, 'IdTipoMoneda', validator);
 
 

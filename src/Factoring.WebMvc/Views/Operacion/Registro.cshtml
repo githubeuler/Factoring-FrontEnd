@@ -39,22 +39,25 @@
                     </div>*@
                 }
                 <div class="row g-9 mb-7">
-
+                    <input type="hidden" id="IdGiradorCod" name="IdGiradorCod" value=@ViewBag.IdGiradorCod />
+                    <input type="hidden" id="IdAdquirienteCod" name="IdAdquirienteCod" value=@ViewBag.IdAdquirienteCod />
                     <div class="col-md-2 fv-row">
                         <label class="required fs-6 fw-bold mb-2">Nro Operación</label>
                         <input type="text" asp-for="nNroOperacion" class="form-control form-control-solid"  readonly disabled/>
                     </div>
                     <div class="col-md-4 fv-row">
                         <label class="required fs-6 fw-bold mb-2">Girador</label>
-                        <select asp-for="IdGirador" asp-items="@(new SelectList(ViewBag.ListGirador, "nIdGirador", "cRazonSocial"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                        <select asp-for="IdGirador" asp-items="@(new SelectList(ViewBag.ListGirador, "nIdGirador", "cRazonSocial"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder" disabled>
                             <option value="">Seleccionar</option>
                         </select>
+                        @*<input type="text" asp-for="IdGiradorCod" class="form-control form-control-solid" readonly disabled style="display:none"/>*@
                     </div>
                     <div class="col-md-4 fv-row">
                         <label class="required fs-6 fw-bold mb-2">Aceptante</label>
-                        <select asp-for="IdAdquiriente" asp-items="@(new SelectList(ViewBag.ListAdquiriente, "nIdAdquiriente", "cRazonSocial"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                        <select asp-for="IdAdquiriente" asp-items="@(new SelectList(ViewBag.ListAdquiriente, "nIdAdquiriente", "cRazonSocial"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder" disabled>
                             <option value="">Seleccionar</option>
                         </select>
+                        @*<input type="text" asp-for="IdAdquirienteCod" class="form-control form-control-solid" readonly disabled style="display:none" />*@
                     </div>
                     <div class="col-md-2 fv-row">
                         <label class="fs-6 fw-bold mb-2">Estado</label>
@@ -112,19 +115,20 @@
 
                     <div class="row g-9 mb-7">
                         <div class="col-md-4 fv-row">
-                            <label class="required fs-6 fw-bold mb-2">Plazo</label>
-                            <input type="text" asp-for="Plazo" class="form-control form-control-solid" placeholder="0" maxlength="10" />
-                        </div>
-                        <div id="box-retencion" class="col-md-4 fv-row">
-                            <label class="fs-6 fw-bold mb-2">% Retención</label>
-                            <input type="text" asp-for="PorcentajeRetencion" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
-                        </div>
-                        <div class="col-md-4 fv-row">
                             <label class="required fs-6 fw-bold mb-2">Tipo de Fondeo</label>
                             <select asp-for="IdCategoria" asp-items="@(new SelectList(ViewBag.Categoria, "nId", "cNombre"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
                                 <option value="">Seleccionar</option>
                             </select>
                         </div>
+                        @*<div class="col-md-4 fv-row" style="display:none;">
+                            <label class="required fs-6 fw-bold mb-2" style="display:none;">Plazo</label>
+                            <input type="text" asp-for="Plazo" class="form-control form-control-solid" placeholder="0" maxlength="10" style="display:none;" />
+                        </div>*@
+                        @*<div id="box-retencion" class="col-md-4 fv-row" style="display:none;">
+                            <label class="fs-6 fw-bold mb-2" style="display:none;">% Retención</label>
+                            <input type="text" asp-for="PorcentajeRetencion" class="form-control form-control-solid" placeholder="0.00" maxlength="10" style="display:none;" />
+                        </div>*@
+                        
                     </div>
                    
 

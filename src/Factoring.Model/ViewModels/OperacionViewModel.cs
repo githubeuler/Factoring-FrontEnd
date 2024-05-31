@@ -54,53 +54,59 @@ namespace Factoring.Model.ViewModels
 
     public class OperacionCreateModel
     {
-        public string nNroOperacion { get; set; }
+        public string? nNroOperacion { get; set; }
         public int IdOperacion { get; set; }
-        [Required]
+    
         public int IdGirador { get; set; }
-        [Required]
+  
         public int IdAdquiriente { get; set; }
-        [Required]
-        public int IdInversionista { get; set; }
-        [Required]
-        public int IdGiradorDireccion { get; set; }
-        [Required]
-        public int IdAdquirienteDireccion { get; set; }
+
+        //[Required]
+        public int IdGiradorCod { get; set; }
+        //[Required]
+        public int IdAdquirienteCod { get; set; }
+        //[Required]
+        //public int IdInversionista { get; set; }
+        //[Required]
+        //public int IdGiradorDireccion { get; set; }
+        //[Required]
+        //public int IdAdquirienteDireccion { get; set; }
         [Required]
         public decimal TEM { get; set; }
         [Required]
         public decimal PorcentajeFinanciamiento { get; set; }
         [Required]
         public decimal MontoOperacion { get; set; }
-        [Required]
-        public decimal DescContrato { get; set; }
-        [Required]
-        public decimal DescFactura { get; set; }
+        //[Required]
+        //public decimal DescContrato { get; set; }
+        //[Required]
+        //public decimal DescFactura { get; set; }
         [Required]
         public decimal DescCobranza { get; set; }
         [Required]
         public int IdTipoMoneda { get; set; }
         [Required]
         public decimal InteresMoratorio { get; set; }
-        public decimal PorcentajeRetencion { get; set; }
+        [Required]
+        public int IdCategoria { get; set; }
+        //public decimal PorcentajeRetencion { get; set; }
         public int Estado { get; set; }
-        public string NombreEstado { get; set; }
-        public string ComentarioOperaciones { get; set; }
-        public string UsuarioCreador { get; set; }
-        public string UsuarioActualizacion { get; set; }
+        public string? NombreEstado { get; set; }
+        //public string ComentarioOperaciones { get; set; }
+        //public string UsuarioCreador { get; set; }
+        //public string UsuarioActualizacion { get; set; }
 
         //*************Ini-09-01-2023-RCARRILLO******//
 
-        [Required]
-        public string MotivoTransaccion { get; set; }
+        //[Required]
+        //public string MotivoTransaccion { get; set; }
 
-        [Required]
-        public string SustentoComercial { get; set; }
+        //[Required]
+        public string? SustentoComercial { get; set; }
 
-        [Required]
-        public int IdCategoria { get; set; }
+      
 
-        public int Plazo { get; set; }
+        //public int Plazo { get; set; }
 
         //public int TipoDocumento { get; set; }
         //*************Fin-09-01-2023-RCARRILLO******//
