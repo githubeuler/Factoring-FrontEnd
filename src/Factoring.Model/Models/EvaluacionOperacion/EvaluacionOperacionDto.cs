@@ -11,6 +11,7 @@ namespace Factoring.Model.Models.EvaluacionOperacion
         public int IdOperaciones { get; set; }
         public int IdCatalogoEstado { get; set; }
         public string UsuarioCreador { get; set; }
+        public string? Comentario { get; set; }
     }
     public class EvaluacionOperacionesEstadoInsertDto
     {

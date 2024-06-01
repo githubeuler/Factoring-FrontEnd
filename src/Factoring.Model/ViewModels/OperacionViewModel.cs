@@ -10,6 +10,11 @@ namespace Factoring.Model.ViewModels
         public string RazonAdquiriente { get; set; }
         public string FechaCreacion { get; set; }
         public string Estado { get; set; }
+
+        public int nIdOperacionEval { get; set; }
+
+        public int nIdEstadoEvaluacion { get; set; }
+        public string? cComentario { get; set; }
     }
 
     public class OperacionSingleViewModel

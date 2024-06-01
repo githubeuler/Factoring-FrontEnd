@@ -100,19 +100,23 @@ var RegistroOperacion = function () {
                         //if (data.nEstado == '1' || data.nEstado == '6' || data.nEstado == '7' || data.nEstado == '8'
                         //    || data.nEstado == '19' || data.nEstado == '16' || data.nEstado == '14' || data.nEstado == '17'
                         //    || data.nEstado == '41' || data.nAprobadoRiesgo == 0)  {
-                            //buttonAction += `<div class="menu-item px-3 p-act"><a href="` + globalPath + `Operacion/Registro?operacionId=` + data.nIdOperaciones + `" class="menu-link px-3">Editar</a></div>`;
-                      /*  }*/
+                        //    buttonAction += `<div class="menu-item px-3 p-act"><a href="` + globalPath + `Operacion/Registro?operacionId=` + data.nIdOperaciones + `" class="menu-link px-3">Editar</a></div>`;
+                        //}
+                        if (data.nEstado == '0') {
+                            buttonAction += ``;
+                        }
+                        else {
 
-                        /*var _button = `<a href="${globalPath}VentaCartera/Editar?prestamoId=${data.iIdPrestamoVentaCartera}" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a> <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eva open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_pago" data-n-pago="1" title="Evaluar"><i class="las la-check-square fs-2"></i></a>`*/
-                        return `<a href="${globalPath}Operacion/Registro?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a> 
+                            /*var _button = `<a href="${globalPath}VentaCartera/Editar?prestamoId=${data.iIdPrestamoVentaCartera}" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a> <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eva open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_pago" data-n-pago="1" title="Evaluar"><i class="las la-check-square fs-2"></i></a>`*/
+                            buttonAction += `<a href="${globalPath}Operacion/Registro?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a> 
                                 
-                               <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eva open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-pago="1" title="Evaluar"><i class="las la-check-square fs-2"></i></a>
-
+                                <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperaciones} title="Evaluar"><i class="las la-check-square fs-2"></i></a>
+                                
                                 <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row"><i class="las la-search fs-2"></i></a> 
                                 <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-trash fs-2"></i></button> `;
+                        }
 
-
-
+                        return buttonAction;
                         //if (data.nEstado == '1') {
                         //    buttonAction += `<div class="menu-item px-3"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#kt_facturas_carga_masiva" data-id="` + data.nIdOperaciones + `" class="menu-link px-3 open-masivo-factura p-car">Cargar Facturas</a></div>`;
                         //}
@@ -145,7 +149,11 @@ var RegistroOperacion = function () {
             var searchButton = document.getElementById('kt_search_button');
             var searchClear = document.getElementById('kt_search_clear');
             searchButton.removeAttribute('data-kt-indicator');
+            handleModalControlEvaluacion();
             searchButton.disabled = false;
+
+         /*   handleAnularEvaluacion2();*/
+
             $(searchClear).show();
             KTMenu.createInstances();
             Common.init();
@@ -169,7 +177,7 @@ var RegistroOperacion = function () {
             });
         });
         var searchButton = document.getElementById('kt_search_button');
-      /*  var searchClear = document.getElementById('kt_search_clear');*/
+        /*  var searchClear = document.getElementById('kt_search_clear');*/
         searchButton.removeAttribute('data-kt-indicator');
         searchButton.disabled = false;
         //deleteSelected.addEventListener('click', function () {
@@ -249,22 +257,20 @@ var RegistroOperacion = function () {
         //});
     }
 
+
+
+
+
     var handleDeleteOperacionForm = function () {
-        var tableOperaciones = document.querySelector('#kt_operaciones_table');
-        if (!tableOperaciones) {
+        var deleteRow = document.querySelectorAll('[data-delete-table="delete_row"]');
+        if (!deleteRow) {
             return;
         }
-        //`<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt-factura-table-filter="delete_row" data-parent="` + $(idOperacion).val() + `" data-id="` + data.nIdOperacionesFacturas + `" data-path="` + data.cRutaDocumentoXML + `" data-Operacion="` + data.nroOperacion + `"><i class="las la-trash fs-2"></i></a>`);
-
-        //<button data-delete-table="delete_row" data-row= ${data.nIdOperaciones} class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-trash fs-2"></i></button> `;
-        var deleteFacturaButton = tableOperaciones.querySelectorAll('[data-delete-table="delete_row"]');
-        deleteFacturaButton.forEach(d => {
+        deleteRow.forEach(d => {
             d.addEventListener('click', function (e) {
                 debugger;
                 e.preventDefault();
-                var idOperacion = $(this).data('id');
-              /*  var filePath = $(this).data('path');*/
-
+                var idOperacion = $(this).data('row');
                 var parent = e.target.closest('tr');
                 Swal.fire({
                     text: '¿Estás seguro de que quieres eliminar la operacón?',
@@ -284,7 +290,7 @@ var RegistroOperacion = function () {
                         $.ajax({
                             type: 'POST',
                             dataType: 'json',
-                            url: globalPath + 'Operacion/ DeleteOperacion',
+                            url: globalPath + 'Operacion/DeleteOperacion',
                             data: {
                                 nIdOperacion: idOperacion
                             },
@@ -303,7 +309,7 @@ var RegistroOperacion = function () {
                                             confirmButton: 'btn fw-bold btn-primary',
                                         }
                                     }).then(function () {
-                                        datatableFacturas.row($(parent)).remove().draw();
+                                        datatable.row($(parent)).remove().draw();
                                     });
                                 } else {
                                     messageError('La operación no fue eliminada (' + data.message + ')');
@@ -346,7 +352,7 @@ var RegistroOperacion = function () {
             toolbarSelected.classList.remove('d-none');
         } else {
             toolbarBase.classList.remove('d-none');
-            toolbarSelected.classList.add('d-none');
+           /* toolbarSelected.classList.add('d-none');*/
         }
     }
     var handleRegisterForm = function (e) {
@@ -354,13 +360,6 @@ var RegistroOperacion = function () {
         if (!form) {
             return;
         }
-
-        //var phIdGiradorCod = document.getElementById('hIdGiradorCod');
-        //var phIdAdquirienteCod = document.getElementById('hIdAdquirienteCod')
-        //$("#IdGirador").val($(phIdGiradorCod).val()).trigger("change");
-        //$("#IdAdquiriente").val($(phIdAdquirienteCod).val()).trigger("change");
-        //$("#IdGiradorCod").val($(phIdGiradorCod).val()).trigger("change");
-        //$("#IdAdquirienteCod").val($(phIdAdquirienteCod).val()).trigger("change");
         $('#IdGirador').on('change', function (e) {
             var idGirador = this.options[this.selectedIndex].value;
 
@@ -724,55 +723,55 @@ var RegistroOperacion = function () {
             e.preventDefault();
             validator.validate().then(function (status) {
                 if (status == 'Valid') {
-                   /* var isEmpty = datatableFacturas.rows().count() === 0;
-                    if (isEmpty) {
-                        messageError('Antes de enviar la operación a Evaluar, debería ingresar como mínimo 1 factura.');
-                    } else {*/
-                        evaluateButton.setAttribute('data-kt-indicator', 'on');
-                        evaluateButton.disabled = true;
-                        var idOperacion = document.getElementById('IdOperacion');
-                        var urlAction = $(form).attr('action');
-                        if (idOperacion) {
-                            urlAction += '?operacionId=' + $(idOperacion).val() + '&operacionFlat=E';
-                        }
-                        setTimeout(function () {
-                            $.ajax({
-                                type: 'POST',
-                                dataType: 'json',
-                                url: urlAction,
-                                xhrFields: {
-                                    withCredentials: true
-                                },
-                                data: $(form).serializeObject(),
-                                success: function (data) {
-                                    if (data.succeeded) {
-                                        Swal.fire({
-                                            text: 'Operación enviada a evaluación correctamente.',
-                                            icon: 'success',
-                                            buttonsStyling: false,
-                                            confirmButtonText: 'Listo',
-                                            customClass: {
-                                                confirmButton: 'btn btn-primary'
-                                            }
-                                        }).then(function (result) {
-                                            if (result.isConfirmed) {
-                                                $(window).attr('location', globalPath + 'Operacion');
-                                            }
-                                        });
-                                    } else {
-                                        evaluateButton.removeAttribute('data-kt-indicator');
-                                        evaluateButton.disabled = false;
-                                        messageError(data.message);
-                                    }
-                                },
-                                error: function (jqXHR, textStatus, errorThrown) {
+                    /* var isEmpty = datatableFacturas.rows().count() === 0;
+                     if (isEmpty) {
+                         messageError('Antes de enviar la operación a Evaluar, debería ingresar como mínimo 1 factura.');
+                     } else {*/
+                    evaluateButton.setAttribute('data-kt-indicator', 'on');
+                    evaluateButton.disabled = true;
+                    var idOperacion = document.getElementById('IdOperacion');
+                    var urlAction = $(form).attr('action');
+                    if (idOperacion) {
+                        urlAction += '?operacionId=' + $(idOperacion).val() + '&operacionFlat=E';
+                    }
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'POST',
+                            dataType: 'json',
+                            url: urlAction,
+                            xhrFields: {
+                                withCredentials: true
+                            },
+                            data: $(form).serializeObject(),
+                            success: function (data) {
+                                if (data.succeeded) {
+                                    Swal.fire({
+                                        text: 'Operación enviada a evaluación correctamente.',
+                                        icon: 'success',
+                                        buttonsStyling: false,
+                                        confirmButtonText: 'Listo',
+                                        customClass: {
+                                            confirmButton: 'btn btn-primary'
+                                        }
+                                    }).then(function (result) {
+                                        if (result.isConfirmed) {
+                                            $(window).attr('location', globalPath + 'Operacion');
+                                        }
+                                    });
+                                } else {
                                     evaluateButton.removeAttribute('data-kt-indicator');
                                     evaluateButton.disabled = false;
-                                    messageError(errorThrown);
+                                    messageError(data.message);
                                 }
-                            });
-                        }, 2000);
-                   // }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                evaluateButton.removeAttribute('data-kt-indicator');
+                                evaluateButton.disabled = false;
+                                messageError(errorThrown);
+                            }
+                        });
+                    }, 2000);
+                    // }
                 } else {
                     messageError('Lo sentimos, parece que se han detectado algunos errores. Vuelve a intentarlo.');
                 }
@@ -994,7 +993,7 @@ var RegistroOperacion = function () {
         });
     }
     var initDataTableCavali = function () {
-        
+
         var idOperacion = document.getElementById('IdOperacion');
         if (!idOperacion) {
             return;
@@ -1029,14 +1028,6 @@ var RegistroOperacion = function () {
                         return moment(value).format('DD/MM/YYYY');
                     }
                 }
-                //,
-                //{
-                //    data: 'dFechaPagoNegociado', 'autoWidth': true, class: 'text-center', render: function (value, eee, row) {
-                //        console.log(row)
-                //        return value == '0001-01-01T00:00:00' ? '' : (tableCavaliAction == 'Detalle') ? moment(value).format('DD/MM/YYYY') : '<div> <input type="text" data-id="' + row.nIdOperacionesFacturas + '" id="date_' + row.nIdOperacionesFacturas + '" class="form-control form-control flatpickr-input date-fnego" value="' + moment(value).format('DD/MM/YYYY') + '"></input> <span style="display:none" id="span_' + row.nIdOperacionesFacturas + '" class="spinner-border spinner-border-sm align-middle ms-2"></span></div>';
-                //    }
-                //},
-
 
             ],
             columnDefs: [
@@ -1064,8 +1055,6 @@ var RegistroOperacion = function () {
         var addButton = document.getElementById('kt_add_factura');
         var validator;
         $('#IdOperacionCabeceraFacturas').val($('#IdOperacion').val());
-        //$('#nIdGiradorFact').val($('#IdGiradorCod').val());
-        //$('#nIdAdquirenteFact').val($('#IdAdquirienteCod').val());
         validator = FormValidation.formValidation(
             formAddFactura,
             {
@@ -1166,6 +1155,21 @@ var RegistroOperacion = function () {
             });
         });
     }
+
+    var initToggleToolbarModal = function () {
+        $('#nIdOperacionEval').val($('#IdOperacion').val());
+        //var container = document.querySelector('#kt_pago_table');
+        //var container2 = document.querySelector('n-pago');    
+    }
+
+    $('#kt_modal_evaluacion_operacion').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Botón que activó el modal
+        var nOpe = button.data('n-operacion'); // Obtener el valor data-n-pago
+        console.log('Valor data-n-nOpe:', nOpe);
+        /*   $('#nIdOperacionEval').val($('#IdOperacion').val());*/
+        $('#nIdOperacionEval').val(nOpe);
+        // Aquí puedes usar el valor nPagoId como necesites
+    });
     var handleDownloadFactura = function () {
         var tableFacturas = document.querySelector('#kt_facturas_table');
         if (!tableFacturas) {
@@ -1183,6 +1187,328 @@ var RegistroOperacion = function () {
             });
         });
     }
+
+
+    //var handleFormEvaluarOperacion = function () {
+    //    var form = document.getElementById('kt_modal_evaluacion_form');
+    //    if (!form) {
+    //        return;
+    //    }
+    //    var saveButton = document.getElementById('kt_save_estado_button');
+    //    var validator;
+    //    validator = FormValidation.formValidation(
+    //        form,
+    //        {
+    //            fields: {
+    //                'nIdEstadoEvaluacion': {
+    //                    validators: {
+    //                        notEmpty: {
+    //                            message: 'Inversionista es obligatorio'
+    //                        }
+    //                    }
+    //                }
+    //            },
+    //            plugins: {
+    //                trigger: new FormValidation.plugins.Trigger(),
+    //                bootstrap: new FormValidation.plugins.Bootstrap5({
+    //                    rowSelector: '.fv-row',
+    //                    eleValidClass: '',
+    //                    eleInvalidClass: '',
+    //                })
+    //            }
+    //        }
+    //    );
+
+    //    //var formData = new FormData();
+    //    //formData.append('nIdEstadoEvaluacion', $('#nIdEstadoEvaluacion').val());
+    //    //formData.append('cComentario', $('#cComentario').val());
+    //    //formData.append('nIdOperacionEval', $('#nIdOperacionEval').val());
+
+    //    RegistroOperacion.getRevalidateFormElement(form, 'nIdEstadoEvaluacion', validator);
+    //    RegistroOperacion.getRevalidateFormElement(form, 'cComentario', validator);
+    //    //RegistroOperacion.append('nIdOperacionEval', $('#nIdOperacionEval').val());
+    //    /* RegistroOperacion.getRevalidateFormElement(form, 'nIdOperacionEval', validator);*/
+    //    saveButton.addEventListener('click', function (e) {
+    //        e.preventDefault();
+    //        validator.validate().then(function (status) {
+    //            if (status == 'Valid') {
+    //                saveButton.setAttribute('data-kt-indicator', 'on');
+    //                saveButton.disabled = true;
+    //                setTimeout(function () {
+    //                    $.ajax({
+    //                        type: 'POST',
+    //                        dataType: 'json',
+    //                        url: $(form).attr('action'),
+    //                        xhrFields: {
+    //                            withCredentials: true
+    //                        },
+    //                        data: form,
+    //                        success: function (data) {
+    //                            if (data != null) {
+    //                                if (typeof data.processId != 'undefined') {
+    //                                    if (data.processId !== 0) {
+    //                                        Swal.fire({
+    //                                            text: data.message,
+    //                                            icon: 'success',
+    //                                            buttonsStyling: false,
+    //                                            confirmButtonText: 'Listo',
+    //                                            customClass: {
+    //                                                confirmButton: 'btn btn-primary'
+    //                                            }
+    //                                        }).then(function (result) {
+    //                                            /*initDatatable();*/
+    //                                            $(window).attr('location', globalPath + 'Index');
+    //                                        });
+    //                                    } else {
+    //                                        saveButton.removeAttribute('data-kt-indicator');
+    //                                        saveButton.disabled = false;
+    //                                        messageError('El servicio no esta disponible, intentar nuevamente.');
+    //                                    }
+    //                                }
+    //                                else {
+    //                                    saveButton.removeAttribute('data-kt-indicator');
+    //                                    saveButton.disabled = false;
+    //                                    messageError(data);
+    //                                }
+    //                            }
+    //                            else {
+    //                                saveButton.removeAttribute('data-kt-indicator');
+    //                                saveButton.disabled = false;
+    //                                messageError('El servicio no esta disponible, intentar nuevamente.');
+    //                            }
+    //                        },
+    //                        error: function (jqXHR, textStatus, errorThrown) {
+    //                            saveButton.removeAttribute('data-kt-indicator');
+    //                            saveButton.disabled = false;
+    //                            messageError(errorThrown);
+    //                        }
+    //                    });
+    //                }, 2000);
+    //            } else {
+    //                messageError('Lo sentimos, parece que se han detectado algunos errores. Vuelve a intentarlo.');
+    //            }
+    //        });
+
+    //    });
+    //}
+
+
+    var handleModalControlEvaluacion = function () {
+        var table = document.getElementById('kt_operaciones_table');
+        if (!table) {
+            return;
+        }
+        //$(table).on('click', '.edit-row', function () {
+        //    var data = datatable.row($(this).parents('tr')).data();
+
+        //    var piIdFondeador = data.iIdFondeador;
+        //    var pMetodoFondeador = data.iModalidad;
+        //    var pnIdOperaciones = data.nIdOperaciones;
+        //    var pnIdOperacionesFacturas = data.nIdOperacionesFacturas;
+        //    handleModalidadEnvio(piIdFondeador);
+
+        //    //var pFecha = moment(data.dFechaAsignacionOpeFondeador).format("DD/MM/YYYY");//FormatDate(data.dFechaAsignacionOpeFondeador);
+
+        //    //$('#cboFondeadorEnvio').attr('disabled', 'disabled'); //Disable*/
+        //    //$('#cboMetodoFondeadorEnvio').attr('disabled', 'disabled'); //Disable*/
+        //    //$('#dFechaAsignacionEnvio').attr('disabled', 'disabled'); //Disable*/
+
+        //    //$('#cboFondeadorEnvio').val(piIdFondeador).trigger("change");
+        //    //$('#cboMetodoFondeadorEnvio').val(pMetodoFondeador).trigger("change");
+
+        //    //$('#operacionIdEnvio').val(pnIdOperaciones);
+        //    //$('#facturaIdEnvio').val(pnIdOperacionesFacturas);
+
+        //    //$('#FondeadorEnvio').val(piIdFondeador);
+        //    //$('#MetodoFondeadorEnvio').val(pMetodoFondeador);
+        //    //$('#FechaAsignacionEnvio').val(pFecha);
+
+        //    //$('#dFechaAsignacionEnvio').val(pFecha);
+        //    $('#kt_modal_control-Envio').modal('show');
+        //});
+
+        var form = document.getElementById('kt_modal_evaluacion_form');
+        if (!form) {
+            return;
+        }
+
+        var saveButton = document.getElementById('kt_save_estado_button');
+        var validator;
+
+        validator = FormValidation.formValidation(
+            form,
+            {
+                fields: {
+                    'nIdEstadoEvaluacion': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Estado es obligatorio'
+                            }
+                        }
+                    },                    
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap5({
+                        rowSelector: '.fv-row',
+                        eleValidClass: '',
+                        eleInvalidClass: '',
+                    })
+                }
+            });
+        RegistroOperacion.getRevalidateFormElement(form, 'nIdEstadoEvaluacion', validator);
+        RegistroOperacion.getRevalidateFormElement(form, 'cComentario', validator);
+        saveButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            validator.validate().then(function (status) {
+                if (status == 'Valid') {
+                    saveButton.setAttribute('data-kt-indicator', 'on');
+                    saveButton.disabled = true;
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'POST',
+                            dataType: 'json',
+                            url: $(form).attr('action'),
+                            xhrFields: {
+                                withCredentials: true
+                            },
+                            data: $(form).serializeObject(),
+                            success: function (data) {
+                                if (data.succeeded) {
+                                    Swal.fire({
+                                        text: data.message,
+                                        icon: 'success',
+                                        buttonsStyling: false,
+                                        confirmButtonText: 'Listo',
+                                        customClass: {
+                                            confirmButton: 'btn btn-primary'
+                                        }
+                                    }).then(function (result) {
+                                        if (result.isConfirmed) {
+                                            $(window).attr('location', globalPath + 'Operacion');
+                                        }
+                                    });
+                                } else {
+                                    saveButton.removeAttribute('data-kt-indicator');
+                                    saveButton.disabled = false;
+                                    messageError(data.message);
+                                }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                saveButton.removeAttribute('data-kt-indicator');
+                                saveButton.disabled = false;
+                                messageError(errorThrown);
+                            }
+                        });
+                    }, 2000);
+                } else {
+                    messageError('Lo sentimos, parece que se han detectado algunos errores. Vuelve a intentarlo.');
+                }
+            });
+        });
+    }
+    //var handleAnularEvaluacion2 = function () {
+    //    var form = document.getElementById('kt_modal_evaluacion_form');
+    //    if (!form) {
+    //        return;
+    //    }
+    //    console.log(" rutaaaaaaa ", $(window).attr('location', globalPath + 'Operacion'));
+    //    var saveButton = document.getElementById('kt_save_estado_button');
+    //    var validator;
+    //    console.log(" rooooooooooota ", $(window).attr('location', globalPath + 'Operacion'));
+    //    validator = FormValidation.formValidation(
+    //        form,
+    //        {
+    //            fields: {
+    //                'nIdEstadoEvaluacion': {
+    //                    validators: {
+    //                        notEmpty: {
+    //                            message: 'Estado es obligatorio'
+    //                        }
+    //                    }
+    //                }
+    //            },
+    //            plugins: {
+    //                trigger: new FormValidation.plugins.Trigger(),
+    //                bootstrap: new FormValidation.plugins.Bootstrap5({
+    //                    rowSelector: '.fv-row',
+    //                    eleValidClass: '',
+    //                    eleInvalidClass: '',
+    //                })
+    //            }
+    //        }
+    //    );
+
+    //    console.log(" $(window).attr('location', globalPath + 'Operacion') ", $(window).attr('location', globalPath + 'Operacion'));
+
+    //    saveButton.addEventListener('click', function (e) {
+    //        e.preventDefault();
+    //        validator.validate().then(function (status) {
+    //            if (status == 'Valid') {
+    //                //saveButton.setAttribute('data-kt-indicator', 'on');
+    //                //saveButton.disabled = true;
+    //                Swal.fire({
+    //                    text: '¿Está seguro de que desea anular la operación?',
+    //                    icon: 'warning',
+    //                    showCancelButton: true,
+    //                    buttonsStyling: false,
+    //                    showLoaderOnConfirm: true,
+    //                    confirmButtonText: 'Anular',
+    //                    cancelButtonText: 'Cancelar',
+    //                    customClass: {
+    //                        confirmButton: 'btn fw-bold btn-danger',
+    //                        cancelButton: 'btn fw-bold btn-active-light-primary'
+    //                    },
+    //                }).then(function (result) {
+    //                    if (result.value) {
+    //                        var idOperacion = $('#IdOperacion').val();
+    //                        anularButton.setAttribute('data-kt-indicator', 'on');
+    //                        anularButton.disabled = true;
+    //                        setTimeout(function () {
+    //                            $.ajax({
+    //                                type: 'POST',
+    //                                dataType: 'json',
+    //                                url: $(form).attr('action'),
+    //                                xhrFields: {
+    //                                    withCredentials: true
+    //                                },
+    //                                data: form,
+    //                                success: function (data) {
+    //                                    if (data.succeeded) {
+    //                                        Swal.fire({
+    //                                            text: data.message,
+    //                                            icon: 'success',
+    //                                            buttonsStyling: false,
+    //                                            confirmButtonText: 'Listo',
+    //                                            customClass: {
+    //                                                confirmButton: 'btn btn-primary'
+    //                                            }
+    //                                        }).then(function (result) {
+    //                                            if (result.isConfirmed) {
+    //                                                $(window).attr('location', globalPath + 'Operacion');
+    //                                            }
+    //                                        });
+    //                                    } else {
+    //                                        anularButton.removeAttribute('data-kt-indicator');
+    //                                        anularButton.disabled = false;
+    //                                        messageError(data.message);
+    //                                    }
+    //                                },
+    //                                error: function (jqXHR, textStatus, errorThrown) {
+    //                                    anularButton.removeAttribute('data-kt-indicator');
+    //                                    anularButton.disabled = false;
+    //                                    messageError(errorThrown);
+    //                                }
+    //                            });
+    //                        }, 2000);
+    //                    }
+    //                });
+
+    //            }
+    //        });
+    //    });
+    //}
+
     var handleDeleteFacturaForm = function () {
         var tableFacturas = document.querySelector('#kt_facturas_table');
         if (!tableFacturas) {
@@ -1584,7 +1910,7 @@ var RegistroOperacion = function () {
             var fecha = $('#FechaCreacion').val();
             var estado = $('#Estado').val();
 
-            window.open(globalPath + `Reporte/DescargarRegistroOperacionArchivo?operacion=${operacion}&girador=${girador}&adquiriente=${adquiriente}&fecha=${fecha}&estado=${estado}`, '_blank');
+            window.open(globalPath + `Operacion/DescargarRegistroOperacionArchivo?operacion=${operacion}&girador=${girador}&adquiriente=${adquiriente}&fecha=${fecha}&estado=${estado}`, '_blank');
 
         });
     }
@@ -1947,6 +2273,9 @@ var RegistroOperacion = function () {
             handleDeleteOperacionForm();
             handleUploadExcel();
             handleUploadFacturas();
+            initToggleToolbarModal();
+           // handleAnularEvaluacion2();
+           /* handleFormEvaluarOperacion();*/
           /*  handleComentarios();*/
             handleDescarga();
 

@@ -15,6 +15,7 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<OperacionSingleResponseDto>> GetOperaciones(int id);
         Task<ResponseData<int>> Update(OperacionesUpdateDto model);
         Task<ResponseData<int>> Delete(int idGirador, string usuario);
+        Task<ResponseData<string>> GetReporteRegistroOperacionDonwload(OperacionesRequestDataTableDto model);
     }
     public class OperacionProxy : IOperacionProxy
     {
@@ -82,22 +83,17 @@ namespace Factoring.Service.Proxies
                 throw new Exception(ex.Message);
             }
         }
-        //public async Task<ResponseData<int>> Create(OperacionesInsertDto model)
-        //{
-        //    try
-        //    {
-        //        var client = _proxyHttpClient.GetHttp();
-        //        var us = JsonConvert.SerializeObject(model);
-        //        var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
-        //        var response = await client.PostAsync("Operaciones", requestContent);
-        //        var json = await response.Content.ReadAsStringAsync();
-        //        return JsonConvert.DeserializeObject<ResponseData<int>>(json);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //}
+        public async Task<ResponseData<string>> GetReporteRegistroOperacionDonwload(OperacionesRequestDataTableDto model)
+        {
+            var client = _proxyHttpClient.GetHttp();
+            client.Timeout = TimeSpan.FromMinutes(5);
+            var response = await client.GetAsync($"Operaciones/get-registro-operacion-base64?&FilterNroOperacion={model.FilterNroOperacion}" +
+                $"&FilterRazonGirador={model.FilterRazonGirador}&FilterRazonAdquiriente={model.FilterRazonAdquiriente}&FilterFecCrea={model.FilterFecCrea}" +
+                $"&Estado={model.Estado}");
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<ResponseData<string>>(json);
+            return data;
+        }
 
         public async Task<ResponseData<int>> Update(OperacionesUpdateDto model)
         {
