@@ -823,6 +823,23 @@ namespace Factoring.WebMvc.Controllers
             return result;
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditarFactura(EditarFactura model)
+        {
+            var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var result = await _facturaOperacionesProxy.Editar(new OperacionesFacturaEditDto()
+            {
+                FechaPagoNegociado = model.dFechaPagoNegociado,
+                UsuarioActualizacion = userName,
+                IdOperacionesFacturas = model.nIdOperacionesFacturas,
+                Estado = 0      //  <OAV - 30/01/2023>
+            });
+            return Json(result.Succeeded);
+
+
+        }
         public static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -853,6 +870,6 @@ namespace Factoring.WebMvc.Controllers
             //}
             return File("", "application/octet-stream", "");
         }
-       
+
     }
 }

@@ -405,25 +405,25 @@ var RegistroOperacion = function () {
         }
 
         $('#IdCategoria').on('change', function (e) {
-            if ($('#IdCategoria').val() == "2" || $('#IdCategoria').val() == "4") {
-                $('#InteresMoratorio').val(0);
-                $('#InteresMoratorio').attr("disabled", "false");
-            }
-            else {
+            //if ($('#IdCategoria').val() == "2" || $('#IdCategoria').val() == "4") {
+            //    $('#InteresMoratorio').val(0);
+            //    $('#InteresMoratorio').attr("disabled", "false");
+            //}
+            //else {
                 $('#InteresMoratorio').attr("disabled", "true");
 
                 $('#InteresMoratorio').val('');
                 $('#InteresMoratorio').attr('placeholder', '0.00');
                 $("#InteresMoratorio").removeAttr("disabled")
-            }
+            /*}*/
 
-            if ($('#IdCategoria').val() == "1" || $('#IdCategoria').val() == "3") {
-                $('#box-retencion').show();
-            }
-            else {
-                $('#PorcentajeRetencion').val(0);
-                $('#box-retencion').hide();
-            }
+            //if ($('#IdCategoria').val() == "1" || $('#IdCategoria').val() == "3") {
+            //    $('#box-retencion').show();
+            //}
+            //else {
+            //    $('#PorcentajeRetencion').val(0);
+            //    $('#box-retencion').hide();
+            //}
         });
 
 
