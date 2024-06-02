@@ -109,7 +109,7 @@
             <form id="kt_modal_evaluacion_form" class="form" asp-controller="Operacion" asp-action="ResultadoEvaluacion" novalidate="novalidate">
                 <input type="hidden" id="nIdOperacionEval" name="nIdOperacionEval" />
                 <div class="modal-header">
-                    <h2>Evaluación Riesgos</h2>
+                    <h2>Actualización de Estado</h2>
                     <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
                         <i class="las la-times"></i>
                     </div>
@@ -119,14 +119,14 @@
                         <div class="w-100">
                             <div class="fv-row mb-5">
                                 <label class="d-flex align-items-center fs-5 fw-bold mb-2">
-                                    <span class="required">Resultado Riesgos</span>
+                                    <span class="required">Estados de operación</span>
                                 </label>
                                 <select id="nIdEstadoEvaluacion" name="nIdEstadoEvaluacion" asp-items="@(new SelectList(ViewBag.EstadoEvaluacion, "nId", "cNombre"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
                                     <option value="">Seleccionar</option>
                                 </select>
                             </div>
                             <div class="fv-row mb-5">
-                                <textarea id="cComentario" name="cComentario" class="form-control form-control-solid" rows="4" maxlength="3000" placeholder="Ingresar la observación de riesgo..."></textarea>
+                                <textarea id="cComentario" name="cComentario" class="form-control form-control-solid" rows="4" maxlength="3000" placeholder="Ingresar comentario..."></textarea>
                             </div>
                         </div>
                     </div>
