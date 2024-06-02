@@ -208,7 +208,7 @@ namespace Factoring.WebMvc.Controllers
                     return Redirect("~/Operacion/Index");
                 }
 
-                var _Categoria = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 116, Valor = "0" });
+                var _Categoria = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 102, Valor = "0" });
                 ViewBag.Categoria = _Categoria.Data;
 
                 OperacionCreateModel operacionData = new();
@@ -260,7 +260,7 @@ namespace Factoring.WebMvc.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    var _Categoria = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 116, Valor = "0" });//await _catalogoProxy.GetGategoriaGirador(new Model.Models.Catalogo.CatalogoListDto { Codigo = operacionDetalle.Data.nIdGirador });
+                    var _Categoria = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 102, Valor = "0" });//await _catalogoProxy.GetGategoriaGirador(new Model.Models.Catalogo.CatalogoListDto { Codigo = operacionDetalle.Data.nIdGirador });
                     ViewBag.Categoria = _Categoria.Data;
                     operacionData.nNroOperacion = operacionDetalle.Data.nNroOperacion;
                     operacionData.IdOperacion = operacionDetalle.Data.nIdOperaciones;
