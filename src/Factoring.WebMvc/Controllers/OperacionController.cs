@@ -480,13 +480,14 @@ namespace Factoring.WebMvc.Controllers
                 Comentario=model.cComentario,
 
             });
-            var estadosValidos = new List<int> { 8, 9, 12, 14 };
+            var estadosValidos = new List<int> { 8, 9, 12, 14, 10};
             if (_estadoOperaciones.Succeeded  && estadosValidos.Contains(model.nIdEstadoEvaluacion))
             {
                  await _evaluacionOperacionesProxy.CreateEstadoFactura(new EvaluacionOperacionesEstadoInsertDto
                 {
                     IdOperaciones = model.nIdOperacionEval,
                     IdCatalogoEstado = model.nIdEstadoEvaluacion,
+                    
                     UsuarioCreador = userName,
                     Comentario = model.cComentario
                 });
