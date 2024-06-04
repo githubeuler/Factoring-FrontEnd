@@ -164,7 +164,7 @@ namespace Factoring.WebMvc.Controllers
             var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             //foreach (int id in selectedOperacion)
             //{
-                await _operacionProxy.Delete(nIdOperacion, userName);
+            await _operacionProxy.Delete(nIdOperacion, userName);
             //}
             return Json(new { succeeded = true, message = "Registros eliminados correctamente..." });
         }
@@ -428,7 +428,7 @@ namespace Factoring.WebMvc.Controllers
                             DescFactura = 0,
                             DescCobranza = model.DescCobranza,
                             IdTipoMoneda = model.IdTipoMoneda,
-                           // PorcentajeRetencion = model.PorcentajeRetencion,
+                            // PorcentajeRetencion = model.PorcentajeRetencion,
                             UsuarioCreador = userName,
                             InteresMoratorio = model.InteresMoratorio,
                             IdCategoria = model.IdCategoria//,
@@ -477,25 +477,55 @@ namespace Factoring.WebMvc.Controllers
                 IdOperaciones = model.nIdOperacionEval,
                 IdCatalogoEstado = model.nIdEstadoEvaluacion,
                 UsuarioCreador = userName,
-                Comentario=model.cComentario,
+                Comentario = model.cComentario,
 
             });
-            var estadosValidos = new List<int> { 8, 9, 12, 14, 10};
-            if (_estadoOperaciones.Succeeded  && estadosValidos.Contains(model.nIdEstadoEvaluacion))
+            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 4, Codigo = 103, Valor = "0" });
+            var nCant=_Estados.Data.Where(n => n.nId == model.nIdEstadoEvaluacion).ToList();
+
+            if (_estadoOperaciones.Succeeded && nCant.Count > 0)
             {
-                 await _evaluacionOperacionesProxy.CreateEstadoFactura(new EvaluacionOperacionesEstadoInsertDto
+                await _evaluacionOperacionesProxy.CreateEstadoFactura(new EvaluacionOperacionesEstadoInsertDto
                 {
                     IdOperaciones = model.nIdOperacionEval,
                     IdCatalogoEstado = model.nIdEstadoEvaluacion,
-                    
                     UsuarioCreador = userName,
                     Comentario = model.cComentario
                 });
+
+                if (model.nIdEstadoEvaluacion == 10)
+                {
+                    var oFactura = await _facturaOperacionesProxy.GetAllListFacturaByIdOperaciones(model.nIdOperacionEval);
+                    if (oFactura.Data.Count > 0)
+                    {
+                        foreach (var item in oFactura.Data)
+                        {
+                            await _evaluacionOperacionesProxy.UpdateCalculoFactura(new EvaluacionOperacionesCalculoInsertDto
+                            {
+                                IdOperaciones = model.nIdOperacionEval,
+                                IdOperacionesFactura= item.nIdOperacionesFacturas,
+                                IdCatalogoEstado = model.nIdEstadoEvaluacion,
+                                UsuarioCreador = userName,
+                                cFecha = item.dFechaRegistro.ToString()
+                            });
+                        }
+                    }
+                }
+                if (model.nIdEstadoEvaluacion == 11)
+                {
+                    await _evaluacionOperacionesProxy.UpdateCalculoFactura(new EvaluacionOperacionesCalculoInsertDto
+                    {
+                        IdOperaciones = model.nIdOperacionEval,
+                        IdOperacionesFactura = 0,
+                        IdCatalogoEstado = model.nIdEstadoEvaluacion,
+                        UsuarioCreador = userName,
+                    });
+                }
             }
 
             return Json(_estadoOperaciones);
         }
-          //return Json(new { succeeded = true, message = "Registros eliminados correctamente..." });
+        //return Json(new { succeeded = true, message = "Registros eliminados correctamente..." });
         public async Task<IActionResult> AnularOperacion(int operacionId)
         {
             //var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -563,96 +593,96 @@ namespace Factoring.WebMvc.Controllers
                     nroOperacion = operacionDetalle.Data.nNroOperacion;
                 }
 
-                    byte[] data;
-                    using (var br = new BinaryReader(model.fileXml.OpenReadStream()))
-                        data = br.ReadBytes((int)model.fileXml.OpenReadStream().Length);
+                byte[] data;
+                using (var br = new BinaryReader(model.fileXml.OpenReadStream()))
+                    data = br.ReadBytes((int)model.fileXml.OpenReadStream().Length);
 
-                    string path1 = $"{_env.WebRootPath}\\assets\\upload";
-                    if (!Directory.Exists(path1))
-                        Directory.CreateDirectory(path1);
-                    string sFileName = $"{path1}\\{model.fileXml.FileName}";
-                    System.IO.File.WriteAllBytes(sFileName, data);
-                    string cFactura = string.Empty;
-                    string cGirador = string.Empty;
-                    string cGiradorRUT = string.Empty;
-                    string cGiradorDireccion = string.Empty;
-                    string cGiradorUbigeo = string.Empty;
+                string path1 = $"{_env.WebRootPath}\\assets\\upload";
+                if (!Directory.Exists(path1))
+                    Directory.CreateDirectory(path1);
+                string sFileName = $"{path1}\\{model.fileXml.FileName}";
+                System.IO.File.WriteAllBytes(sFileName, data);
+                string cFactura = string.Empty;
+                string cGirador = string.Empty;
+                string cGiradorRUT = string.Empty;
+                string cGiradorDireccion = string.Empty;
+                string cGiradorUbigeo = string.Empty;
 
-                    string cAdquiriente = string.Empty;
-                    string cAdquirienteRUT = string.Empty;
-                    string cAdquirienteDireccion = string.Empty;
-                    string cAdquirienteUbigeo = string.Empty;
+                string cAdquiriente = string.Empty;
+                string cAdquirienteRUT = string.Empty;
+                string cAdquirienteDireccion = string.Empty;
+                string cAdquirienteUbigeo = string.Empty;
 
-                    string cMoneda = string.Empty;
-                    string cFieldName = string.Empty;
-                    DateTime dFechaEmision = DateTime.Today;
-                    DateTime dFechaVencimiento = DateTime.Today;
-                    decimal nMonto = 0;
+                string cMoneda = string.Empty;
+                string cFieldName = string.Empty;
+                DateTime dFechaEmision = DateTime.Today;
+                DateTime dFechaVencimiento = DateTime.Today;
+                decimal nMonto = 0;
 
-                    XmlDocument xmlDocument = new XmlDocument();
-                    xmlDocument.Load(sFileName);
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.Load(sFileName);
 
-                    #region Ensobrado
+                #region Ensobrado
 
-                    XPathNavigator navNs = xmlDocument.CreateNavigator();
-                    navNs.MoveToFollowing(XPathNodeType.Element);
-                    IDictionary<string, string> nsDictList = navNs.GetNamespacesInScope(XmlNamespaceScope.All);
+                XPathNavigator navNs = xmlDocument.CreateNavigator();
+                navNs.MoveToFollowing(XPathNodeType.Element);
+                IDictionary<string, string> nsDictList = navNs.GetNamespacesInScope(XmlNamespaceScope.All);
 
-                    XmlNamespaceManager ns = new XmlNamespaceManager(xmlDocument.NameTable);
+                XmlNamespaceManager ns = new XmlNamespaceManager(xmlDocument.NameTable);
 
-                    foreach (var nsItem in nsDictList)
+                foreach (var nsItem in nsDictList)
+                {
+                    if (string.IsNullOrEmpty(nsItem.Key))
+                        ns.AddNamespace("sig", nsItem.Value);
+                    else
+                        ns.AddNamespace(nsItem.Key, nsItem.Value);
+                }
+                ns.AddNamespace("xs", "http://www.w3.org/2001/XMLSchema");
+
+                var nav = xmlDocument.CreateNavigator();
+
+                #endregion
+
+                string fecha = nav.SelectSingleNode("/descendant::*[local-name() = 'IssueDate'][1]", ns)?.Value ?? "1900-01-01";
+                dFechaEmision = Convert.ToDateTime(fecha);
+                fecha = nav.SelectSingleNode("/descendant::*[local-name() = 'PaymentDueDate'][1]", ns)?.Value ?? "1900-01-01";
+                dFechaVencimiento = Convert.ToDateTime(fecha);
+                cFactura = nav.SelectSingleNode("//*[local-name() = 'Invoice']/*[local-name() = 'ID']", ns)?.Value ?? "0000000";
+                cMoneda = nav.SelectSingleNode("//*[local-name() = 'DocumentCurrencyCode']", ns)?.Value ?? "";
+                foreach (XPathNavigator node in nav.Select("//cac:PaymentTerms", ns))
+                {
+                    bool bValidNode = false;
+                    foreach (XPathNavigator child in node.SelectChildren(XPathNodeType.All))
                     {
-                        if (string.IsNullOrEmpty(nsItem.Key))
-                            ns.AddNamespace("sig", nsItem.Value);
-                        else
-                            ns.AddNamespace(nsItem.Key, nsItem.Value);
+                        if (child.Value.ToUpper() == "CREDITO")
+                            bValidNode = true;
+                        if (child.Name == "cbc:Amount" && bValidNode)
+                            nMonto = Convert.ToDecimal(child.Value);
                     }
-                    ns.AddNamespace("xs", "http://www.w3.org/2001/XMLSchema");
+                }
+                string[] docnum = cFactura.Split('-');
+                var NroDocumento = new { Serie = docnum[0].ToString(), Numero = docnum[1].ToString() };
+                var jsonFactura = System.Text.Json.JsonSerializer.Serialize(NroDocumento).ToString();
+                var oFactura = GetFactura(model.nIdGiradorFact, model.nIdAdquirenteFact, jsonFactura).Result;
+                if (oFactura.Succeeded)
+                    if (oFactura.Data.nEstado == 1)
+                        throw new Exception($"Factura Nro. {cFactura}  ya se encuentra registrada.");
 
-                    var nav = xmlDocument.CreateNavigator();
-
-                    #endregion
-
-                    string fecha = nav.SelectSingleNode("/descendant::*[local-name() = 'IssueDate'][1]", ns)?.Value ?? "1900-01-01";
-                    dFechaEmision = Convert.ToDateTime(fecha);
-                    fecha = nav.SelectSingleNode("/descendant::*[local-name() = 'PaymentDueDate'][1]", ns)?.Value ?? "1900-01-01";
-                    dFechaVencimiento = Convert.ToDateTime(fecha);
-                    cFactura = nav.SelectSingleNode("//*[local-name() = 'Invoice']/*[local-name() = 'ID']", ns)?.Value ?? "0000000";                  
-                    cMoneda = nav.SelectSingleNode("//*[local-name() = 'DocumentCurrencyCode']", ns)?.Value ?? "";
-                    foreach (XPathNavigator node in nav.Select("//cac:PaymentTerms", ns))
-                    {
-                        bool bValidNode = false;
-                        foreach (XPathNavigator child in node.SelectChildren(XPathNodeType.All))
-                        {
-                            if (child.Value.ToUpper() == "CREDITO")
-                                bValidNode = true;
-                            if (child.Name == "cbc:Amount" && bValidNode)
-                                nMonto = Convert.ToDecimal(child.Value);
-                        }
-                    }
-                    string[] docnum = cFactura.Split('-');
-                    var NroDocumento = new { Serie = docnum[0].ToString(), Numero = docnum[1].ToString() };
-                    var jsonFactura = System.Text.Json.JsonSerializer.Serialize(NroDocumento).ToString();
-                    var oFactura = GetFactura(model.nIdGiradorFact, model.nIdAdquirenteFact, jsonFactura).Result;
-                    if (oFactura.Succeeded)
-                        if (oFactura.Data.nEstado == 1) 
-                            throw new Exception($"Factura Nro. {cFactura}  ya se encuentra registrada.");
-
-                    var oRecord = new ReportesGiradorOperacionesResponse
-                    {
-                        nNroOperacion = 0,
-                        IdGirador = model.nIdGiradorFact,
-                        IdAdquiriente = model.nIdAdquirenteFact,
-                        IdTipoMoneda = (cMoneda == "PEN" ? 1 : 2),
-                        NroFactura = cFactura,
-                        cMoneda = cMoneda,
-                        ImporteNetoFactura = nMonto,
-                        dFechaEmision = dFechaEmision,
-                        dFechaVencimiento = dFechaVencimiento,
-                        dFechaPagoNegociado = dFechaVencimiento,
-                        NombreDocumentoXML = model.fileXml.FileName,
-                        Estado = "OK"
-                    };
+                var oRecord = new ReportesGiradorOperacionesResponse
+                {
+                    nNroOperacion = 0,
+                    IdGirador = model.nIdGiradorFact,
+                    IdAdquiriente = model.nIdAdquirenteFact,
+                    IdTipoMoneda = (cMoneda == "PEN" ? 1 : 2),
+                    NroFactura = cFactura,
+                    cMoneda = cMoneda,
+                    ImporteNetoFactura = nMonto,
+                    dFechaEmision = dFechaEmision,
+                    dFechaVencimiento = dFechaVencimiento,
+                    dFechaPagoNegociado = dFechaVencimiento,
+                    NombreDocumentoXML = model.fileXml.FileName,
+                    Estado = "OK"
+                };
                 lstAuxiliar.Add(oRecord);
                 string randon = RandomString(10);
                 var path = _configuration[$"PathDocumentos:{Operaciones}"].ToString() + "\\" + nroOperacion + _configuration[$"PathDocumentos:{Facturas}"].ToString();
@@ -748,7 +778,7 @@ namespace Factoring.WebMvc.Controllers
             return oRecord;
         }
 
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarFactura(EliminarFactura model)
@@ -767,7 +797,7 @@ namespace Factoring.WebMvc.Controllers
 
         }
 
-       
+
         public async Task<IActionResult> GetAllComentariosOperacion(int operacionId)
         {
             //var comentarios = await _comentariosProxy.GetAllListComentarios(3, operacionId);

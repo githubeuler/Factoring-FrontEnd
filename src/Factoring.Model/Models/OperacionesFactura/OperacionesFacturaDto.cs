@@ -22,6 +22,7 @@ namespace Factoring.Model.Models.OperacionesFactura
         public string cFormatoDocumento { get; set; }
         public string cIdEstadoFacturaHistorico { get; set; }
         public string cFactura { get; set; }
+        public DateTime? dFechaRegistro { get; set; }
         public int TotalRecords { get; set; }
     }
 
