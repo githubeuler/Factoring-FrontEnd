@@ -276,12 +276,14 @@ namespace Factoring.WebMvc.Controllers
                 return Json(new { succeeded = false, message = ex.Message });
             }
 
-            var _Categorias = await _categoriaProxy.GetAllCategoriasListGirador(nIdGirador);
-            List<CategoriaGiradorDto> lst = new List<CategoriaGiradorDto>();
-            lst.Add(new CategoriaGiradorDto() { Categoria = "VENTA DE CARTERA",nCategoria = 1 });
-            lst.Add(new CategoriaGiradorDto() { Categoria = "FONDOS PROPIOS", nCategoria = 2 });
-            var lstCategoria = lst;//_Categorias.Data.ToList();
-            return Json(new { succeeded = true, message = $"Se {(lstAuxiliar.Count > 1 ? "cargaron" : "cargo")} {lstAuxiliar.Count} {(lstAuxiliar.Count > 1 ? "archivos" : "archivo")} XML.", data = lstAuxiliar, comboCategoria = lstCategoria });
+            //var _Categorias = await _categoriaProxy.GetAllCategoriasListGirador(nIdGirador);
+            //List<CategoriaGiradorDto> lst = new List<CategoriaGiradorDto>();
+  
+
+            //lst.Add(new CategoriaGiradorDto() { Categoria = "VENTA DE CARTERA",nCategoria = 1 });
+            //lst.Add(new CategoriaGiradorDto() { Categoria = "FONDOS PROPIOS", nCategoria = 2 });
+            var lstCategoria = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 102, Tipo = 1, Valor = "1" }); //_Categorias.Data.ToList();
+            return Json(new { succeeded = true, message = $"Se {(lstAuxiliar.Count > 1 ? "cargaron" : "cargo")} {lstAuxiliar.Count} {(lstAuxiliar.Count > 1 ? "archivos" : "archivo")} XML.", data = lstAuxiliar, comboCategoria = lstCategoria.Data.OrderByDescending(x=> x.nId) });
         }
 
         private async Task<ResponseData<OperacionesFacturaListDto>> GetFactura(int IdGirador, int IdAdquiriente, string NroFactura)

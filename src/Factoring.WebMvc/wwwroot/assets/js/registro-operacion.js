@@ -947,18 +947,18 @@ var RegistroOperacion = function () {
                     }
                 },
                 {
-                    data: 'dFechaVencimiento', 'autoWidth': true, class: 'text-center', render: function (value) {
+                    data: 'dFechaVencimiento', 'autoWidth': true, class: 'text-center fv', render: function (value) {
                         return moment(value).format('DD/MM/YYYY');
                     }
                 },
                 {
                     data: 'dFechaPagoNegociado', 'autoWidth': true, class: 'text-center', render: function (value, eee, row) {
-                        console.log(row)
+                        //console.log(row)
                         return value == '0001-01-01T00:00:00' ? '' : (tableFacturaAction == 'Detalle')
                             ? moment(value).format('DD/MM/YYYY')
                             : (row.cIdEstadoFacturaHistorico.includes('4')
                                 ? moment(value).format('DD/MM/YYYY')
-                                : '<div> <input style="text-align: center" type="text" data-id="' + row.nIdOperacionesFacturas + '" id="date_' + row.nIdOperacionesFacturas + '" class="form-control form-control flatpickr-input date-fnego" value="' + moment(value).format('DD/MM/YYYY') + '"></input> <span style="display:none" id="span_' + row.nIdOperacionesFacturas + '" class="spinner-border spinner-border-sm align-middle ms-2"></span></div>');
+                                : '<div> <input style="text-align: center" kt-t-fv="' + row.dFechaVencimiento + '" data-fv="' + row.dFechaVencimiento +'" type="text" data-id="' + row.nIdOperacionesFacturas + '" id="date_' + row.nIdOperacionesFacturas + '" class="form-control form-control flatpickr-input date-fnego" value="' + moment(value).format('DD/MM/YYYY') + '"></input> <span style="display:none" id="span_' + row.nIdOperacionesFacturas + '" class="spinner-border spinner-border-sm align-middle ms-2"></span></div>');
                     }
                 },
                 { data: 'cNombreDocumentoXML', 'autoWidth': true, class: 'text-center' },
@@ -1586,16 +1586,44 @@ var RegistroOperacion = function () {
         });
     }
     var handleEditFacturaForm = function () {
-        flatpickr('.date-fnego', {
-            dateFormat: 'd/m/Y',
+        
+
+        var tableFacturas = document.querySelectorAll('#kt_facturas_table tbody tr');
+        if (!tableFacturas) {
+            return;
+        }
+
+        tableFacturas.forEach(f => {
+            var inputsFv = f.querySelectorAll('[data-fv]');
+           // console.log(inputsFv)
+            inputsFv.forEach(d => {
+
+                //console.log($(d))
+
+
+                flatpickr('#' + $(d)[0].id, {
+                    dateFormat: 'd/m/Y',
+                    minDate: Date.parse($(d)[0].dataset.fv)
+
+                });
+            });
         });
+
+
+       
+
+        //flatpickr('.date-fnego', {
+        //    dateFormat: 'd/m/Y',
+
+        //});
+
         $('.date-fnego').on('change', function (e) {
             //console.log(e.target.value)
             //console.log(e.target.dataset.id)
 
             var inputFecha = $('#date_' + e.target.dataset.id);
             var spanFecha = $('#span_' + e.target.dataset.id);
-            console.log(inputFecha)
+            //console.log(inputFecha)
             inputFecha.hide();
             spanFecha.show();
 
@@ -1619,7 +1647,7 @@ var RegistroOperacion = function () {
                     },
                     data: formData,
                     success: function (data) {
-                        console.log(data)
+                        //console.log(data)
                         if (data) {
                             Swal.fire({
                                 text: 'Fecha de pago negociado actualizado.',
