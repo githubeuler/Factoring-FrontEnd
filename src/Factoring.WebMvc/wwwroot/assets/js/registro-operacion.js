@@ -107,21 +107,21 @@ var RegistroOperacion = function () {
                         }
                         else if (data.nEstado == '10' || data.nEstado == '5')
                         {
-                            buttonAction += `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperaciones} title="Evaluar"><i class="las la-check-square fs-2"></i></a>
+                            buttonAction += `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperaciones} title="Evaluar"><i class="las la-check-square fs-2"></i></a>
                                 
-                                <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row"><i class="las la-search fs-2"></i></a> 
-                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-trash fs-2"></i></button> `;
+                                <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row p-con"><i class="las la-search fs-2"></i></a> 
+                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-trash fs-2"></i></button> `;
                         }
 
                         else {
 
                             /*var _button = `<a href="${globalPath}VentaCartera/Editar?prestamoId=${data.iIdPrestamoVentaCartera}" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a> <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eva open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_pago" data-n-pago="1" title="Evaluar"><i class="las la-check-square fs-2"></i></a>`*/
-                            buttonAction += `<a href="${globalPath}Operacion/Registro?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a> 
+                            buttonAction += `<a href="${globalPath}Operacion/Registro?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-act" title="Editar"><i class="las la-pen fs-2"></i></a> 
                                 
-                                <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperaciones} title="Evaluar"><i class="las la-check-square fs-2"></i></a>
+                                <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperaciones} title="Evaluar"><i class="las la-check-square fs-2"></i></a>
                                 
-                                <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row"><i class="las la-search fs-2"></i></a> 
-                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-trash fs-2"></i></button> `;
+                                <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row p-con"><i class="las la-search fs-2"></i></a> 
+                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-trash fs-2"></i></button> `;
                         }
 
                         return buttonAction;
@@ -983,18 +983,18 @@ var RegistroOperacion = function () {
                     }
                 },
                 {
-                    data: 'dFechaVencimiento', 'autoWidth': true, class: 'text-center', render: function (value) {
+                    data: 'dFechaVencimiento', 'autoWidth': true, class: 'text-center fv', render: function (value) {
                         return moment(value).format('DD/MM/YYYY');
                     }
                 },
                 {
                     data: 'dFechaPagoNegociado', 'autoWidth': true, class: 'text-center', render: function (value, eee, row) {
-                        console.log(row)
+                        //console.log(row)
                         return value == '0001-01-01T00:00:00' ? '' : (tableFacturaAction == 'Detalle')
                             ? moment(value).format('DD/MM/YYYY')
                             : (row.cIdEstadoFacturaHistorico.includes('4')
                                 ? moment(value).format('DD/MM/YYYY')
-                                : '<div> <input style="text-align: center" type="text" data-id="' + row.nIdOperacionesFacturas + '" id="date_' + row.nIdOperacionesFacturas + '" class="form-control form-control flatpickr-input date-fnego" value="' + moment(value).format('DD/MM/YYYY') + '"></input> <span style="display:none" id="span_' + row.nIdOperacionesFacturas + '" class="spinner-border spinner-border-sm align-middle ms-2"></span></div>');
+                                : '<div> <input style="text-align: center" kt-t-fv="' + row.dFechaVencimiento + '" data-fv="' + row.dFechaVencimiento +'" type="text" data-id="' + row.nIdOperacionesFacturas + '" id="date_' + row.nIdOperacionesFacturas + '" class="form-control form-control flatpickr-input date-fnego" value="' + moment(value).format('DD/MM/YYYY') + '"></input> <span style="display:none" id="span_' + row.nIdOperacionesFacturas + '" class="spinner-border spinner-border-sm align-middle ms-2"></span></div>');
                     }
                 },
                 { data: 'cNombreDocumentoXML', 'autoWidth': true, class: 'text-center' },
@@ -1622,16 +1622,44 @@ var RegistroOperacion = function () {
         });
     }
     var handleEditFacturaForm = function () {
-        flatpickr('.date-fnego', {
-            dateFormat: 'd/m/Y',
+        
+
+        var tableFacturas = document.querySelectorAll('#kt_facturas_table tbody tr');
+        if (!tableFacturas) {
+            return;
+        }
+
+        tableFacturas.forEach(f => {
+            var inputsFv = f.querySelectorAll('[data-fv]');
+           // console.log(inputsFv)
+            inputsFv.forEach(d => {
+
+                //console.log($(d))
+
+
+                flatpickr('#' + $(d)[0].id, {
+                    dateFormat: 'd/m/Y',
+                    minDate: Date.parse($(d)[0].dataset.fv)
+
+                });
+            });
         });
+
+
+       
+
+        //flatpickr('.date-fnego', {
+        //    dateFormat: 'd/m/Y',
+
+        //});
+
         $('.date-fnego').on('change', function (e) {
             //console.log(e.target.value)
             //console.log(e.target.dataset.id)
 
             var inputFecha = $('#date_' + e.target.dataset.id);
             var spanFecha = $('#span_' + e.target.dataset.id);
-            console.log(inputFecha)
+            //console.log(inputFecha)
             inputFecha.hide();
             spanFecha.show();
 
@@ -1655,7 +1683,7 @@ var RegistroOperacion = function () {
                     },
                     data: formData,
                     success: function (data) {
-                        console.log(data)
+                        //console.log(data)
                         if (data) {
                             Swal.fire({
                                 text: 'Fecha de pago negociado actualizado.',

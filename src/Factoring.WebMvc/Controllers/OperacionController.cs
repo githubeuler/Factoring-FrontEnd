@@ -651,6 +651,11 @@ namespace Factoring.WebMvc.Controllers
                 dFechaVencimiento = Convert.ToDateTime(fecha);
                 cFactura = nav.SelectSingleNode("//*[local-name() = 'Invoice']/*[local-name() = 'ID']", ns)?.Value ?? "0000000";
                 cMoneda = nav.SelectSingleNode("//*[local-name() = 'DocumentCurrencyCode']", ns)?.Value ?? "";
+                cGiradorRUT = nav.SelectSingleNode("/*[local-name() = 'Invoice']/*[local-name() = 'AccountingSupplierParty']/*[local-name() = 'Party']/*[local-name() = 'PartyIdentification']/*[local-name() = 'ID']", ns)?.Value ?? "";
+                cAdquirienteRUT = nav.SelectSingleNode("/*[local-name() = 'Invoice']/*[local-name() = 'AccountingCustomerParty']/*[local-name() = 'Party']/*[local-name() = 'PartyIdentification']/*[local-name() = 'ID']", ns)?.Value ?? "";
+                cGirador = nav.SelectSingleNode("/*[local-name() = 'Invoice']/*[local-name() = 'AccountingSupplierParty']/*[local-name() = 'Party']/*[local-name() = 'PartyLegalEntity']/*[local-name() = 'RegistrationName']", ns)?.Value ?? "";
+                cAdquiriente = nav.SelectSingleNode("/*[local-name() = 'Invoice']/*[local-name() = 'AccountingCustomerParty']/*[local-name() = 'Party']/*[local-name() = 'PartyLegalEntity']/*[local-name() = 'RegistrationName']", ns)?.Value ?? "";
+
                 foreach (XPathNavigator node in nav.Select("//cac:PaymentTerms", ns))
                 {
                     bool bValidNode = false;
@@ -662,6 +667,36 @@ namespace Factoring.WebMvc.Controllers
                             nMonto = Convert.ToDecimal(child.Value);
                     }
                 }
+                string mensajeErrorG = "{0} {1} tiene que ser igual que la operación";
+
+                var oGirador = GetGirador(cGiradorRUT).Result;
+                if (oGirador == null)
+                {
+                    //throw new Exception($"Girador {cGiradorRUT} tiene que ser igual que la operación.");
+                    return Json(new { succeeded = false, message = string.Format(mensajeErrorG,"Girador", cGirador) });
+
+                }
+
+                var oAdquiriente = GetAdquiriente(cAdquirienteRUT).Result;
+                if (oAdquiriente == null)
+                {
+                    return Json(new { succeeded = false, message = string.Format(mensajeErrorG, "Aceptante", cAdquiriente) });
+                }
+
+                if (oGirador.nIdGirador != model.nIdGiradorFact)
+                {
+                    return Json(new { succeeded = false, message = string.Format(mensajeErrorG, "Girador", cGirador) });
+                }
+                if (oAdquiriente.nIdAdquiriente != model.nIdAdquirenteFact)
+                {
+                    return Json(new { succeeded = false, message = string.Format(mensajeErrorG, "Aceptante", cAdquiriente) });
+                }
+                if (operacionDetalle.Data.nIdTipoMoneda != (cMoneda == "PEN" ? 1 : 2))
+                {
+                    return Json(new { succeeded = false, message = string.Format(mensajeErrorG, "Moneda", cMoneda) });
+                }
+
+
                 string[] docnum = cFactura.Split('-');
                 var NroDocumento = new { Serie = docnum[0].ToString(), Numero = docnum[1].ToString() };
                 var jsonFactura = System.Text.Json.JsonSerializer.Serialize(NroDocumento).ToString();
