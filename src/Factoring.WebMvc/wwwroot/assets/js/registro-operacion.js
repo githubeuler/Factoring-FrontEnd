@@ -105,13 +105,14 @@ var RegistroOperacion = function () {
                         if (data.nEstado == '0') {
                             buttonAction += ``;
                         }
-                        else if (data.nEstado == '10')
+                        else if (data.nEstado == '10' || data.nEstado == '5')
                         {
                             buttonAction += `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperaciones} title="Evaluar"><i class="las la-check-square fs-2"></i></a>
                                 
                                 <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row"><i class="las la-search fs-2"></i></a> 
                                 <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-trash fs-2"></i></button> `;
                         }
+
                         else {
 
                             /*var _button = `<a href="${globalPath}VentaCartera/Editar?prestamoId=${data.iIdPrestamoVentaCartera}" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a> <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eva open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_pago" data-n-pago="1" title="Evaluar"><i class="las la-check-square fs-2"></i></a>`*/
@@ -634,6 +635,41 @@ var RegistroOperacion = function () {
                                 max: 100,
                                 message: 'Comisión de Estructuración acepta % entre 0.01 y 100',
                             },
+                        }
+                    },
+                    'DescFactura': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Descuento de Factura es obligatorio'
+                            },
+                            numeric: {
+                                thousandsSeparator: '',
+                                decimalSeparator: '.',
+                                message: 'Ingresar sólo números'
+                            },
+                            //between: {
+                            //    min: 0,
+                            //    max: 100,
+                            //    message: 'Descuento de Factura acepta % entre 0.01 y 100',
+                            //},
+                        }
+                    },
+                    'DescContrato': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Descuento de Contrato es obligatorio'
+                            },
+                            numeric: {
+                                thousandsSeparator: '',
+                                decimalSeparator: '.',
+                                message: 'Ingresar sólo números'
+                            },
+
+                            //between: {
+                            //    min: 0,
+                            //    max: 100,
+                            //    message: 'Descuento de Contrato acepta % entre 0.01 y 100',
+                            //},
                         }
                     },
                     'IdTipoMoneda': {

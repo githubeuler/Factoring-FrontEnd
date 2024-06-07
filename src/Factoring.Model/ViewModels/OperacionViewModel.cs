@@ -84,10 +84,10 @@ namespace Factoring.Model.ViewModels
         public decimal PorcentajeFinanciamiento { get; set; }
         [Required]
         public decimal MontoOperacion { get; set; }
-        //[Required]
-        //public decimal DescContrato { get; set; }
-        //[Required]
-        //public decimal DescFactura { get; set; }
+        [Required]
+        public decimal DescContrato { get; set; }
+        [Required]
+        public decimal DescFactura { get; set; }
         [Required]
         public decimal DescCobranza { get; set; }
         [Required]

@@ -120,6 +120,14 @@
                                 <option value="">Seleccionar</option>
                             </select>
                         </div>
+                        <div class="col-md-4 fv-row">
+                            <label class="required fs-6 fw-bold mb-2">Descuento Factura</label>
+                            <input type="text" asp-for="DescFactura" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                        </div>
+                        <div class="col-md-4 fv-row">
+                            <label class="required fs-6 fw-bold mb-2">Descuento Contrato</label>
+                            <input type="text" asp-for="DescContrato" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                        </div>
                         @*<div class="col-md-4 fv-row" style="display:none;">
                             <label class="required fs-6 fw-bold mb-2" style="display:none;">Plazo</label>
                             <input type="text" asp-for="Plazo" class="form-control form-control-solid" placeholder="0" maxlength="10" style="display:none;" />

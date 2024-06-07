@@ -229,6 +229,8 @@ namespace Factoring.WebMvc.Controllers
                     operacionData.IdCategoria = operacionDetalle.Data.IdCategoria;
                     operacionData.IdGiradorCod = operacionDetalle.Data.nIdGirador;
                     operacionData.IdAdquirienteCod = operacionDetalle.Data.nIdAdquiriente;
+                    operacionData.DescFactura = operacionDetalle.Data.nDescFactura;
+                    operacionData.DescContrato = operacionDetalle.Data.nDescContrato;
                     ViewBag.IdGiradorCod = operacionDetalle.Data.nIdGirador;
                     ViewBag.IdAdquirienteCod = operacionDetalle.Data.nIdAdquiriente;
                 }
@@ -373,8 +375,8 @@ namespace Factoring.WebMvc.Controllers
                             TEM = model.TEM,
                             PorcentajeFinanciamiento = model.PorcentajeFinanciamiento,
                             MontoOperacion = model.MontoOperacion,
-                            DescContrato = 0,
-                            DescFactura = 0,
+                            DescContrato = model.DescContrato,
+                            DescFactura = model.DescFactura,
                             DescCobranza = model.DescCobranza,
                             IdTipoMoneda = model.IdTipoMoneda,
                             //PorcentajeRetencion = model.PorcentajeRetencion,
