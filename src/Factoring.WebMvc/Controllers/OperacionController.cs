@@ -379,40 +379,11 @@ namespace Factoring.WebMvc.Controllers
                             DescFactura = model.DescFactura,
                             DescCobranza = model.DescCobranza,
                             IdTipoMoneda = model.IdTipoMoneda,
-                            //PorcentajeRetencion = model.PorcentajeRetencion,
                             UsuarioActualizacion = userName,
                             InteresMoratorio = model.InteresMoratorio,
-                            IdCategoria = model.IdCategoria//,
-                            //MotivoTransaccion = model.MotivoTransaccion,
-                            //SustentoComercial = model.SustentoComercial,
-                            //Plazo = model.Plazo
+                            IdCategoria = model.IdCategoria
 
                         });
-
-                        //if (operacionFlat == "E" && result.Succeeded)
-                        //{
-                        //    var resultado = await _evaluacionOperacionesProxy.Create(new EvaluacionOperacionesInsertDto
-                        //    {
-                        //        IdOperaciones = operacionId,
-                        //        IdCatalogoEstado = 18,
-                        //        UsuarioCreador = userName
-                        //    });
-                        //}
-                        // else
-                        // {
-
-                        //if (result.Succeeded)
-                        //{
-
-                        //await _evaluacionOperacionesComentariosProxy.UpdateComentario(new EvaluacionUpdateOperacionesComentariosInsertDto
-                        //{
-                        //nIdOperacion = operacionId,
-                        //Comentario = model.SustentoComercial,
-                        // UsuarioCreador = userName
-                        //});
-                        //}
-
-                        //}
                         return Json(result);
                     }
                     else
@@ -421,8 +392,6 @@ namespace Factoring.WebMvc.Controllers
                         {
                             IdGirador = model.IdGiradorCod,
                             IdAdquiriente = model.IdAdquirienteCod,
-                            //IdGiradorDireccion = model.IdGiradorDireccion,
-                            //IdAdquirienteDireccion = model.IdAdquirienteDireccion,
                             TEM = model.TEM,
                             PorcentajeFinanciamiento = model.PorcentajeFinanciamiento,
                             MontoOperacion = model.MontoOperacion,
@@ -430,35 +399,10 @@ namespace Factoring.WebMvc.Controllers
                             DescFactura = 0,
                             DescCobranza = model.DescCobranza,
                             IdTipoMoneda = model.IdTipoMoneda,
-                            // PorcentajeRetencion = model.PorcentajeRetencion,
                             UsuarioCreador = userName,
                             InteresMoratorio = model.InteresMoratorio,
-                            IdCategoria = model.IdCategoria//,
-                            //MotivoTransaccion = model.MotivoTransaccion,
-                            //SustentoComercial = model.SustentoComercial,
-                            //Plazo = model.Plazo
+                            IdCategoria = model.IdCategoria
                         });
-                        //if (result.Succeeded)
-                        //{
-                        //    var resultado = await _evaluacionOperacionesProxy.Create(new EvaluacionOperacionesInsertDto
-                        //    {
-                        //        IdOperaciones = result.Data,
-                        //        IdCatalogoEstado = 1,
-                        //        UsuarioCreador = userName
-                        //    });
-                        //    if (resultado.Succeeded)
-                        //    {
-
-                        //        await _evaluacionOperacionesComentariosProxy.Create(new EvaluacionOperacionesComentariosInsertDto
-                        //        {
-                        //            IdEvaluacionOperaciones = resultado.Data,
-                        //            Comentario = model.SustentoComercial,
-                        //            IdCatalogoTipoComentario = 1,
-                        //            UsuarioCreador = userName
-                        //        });
-                        //    }
-
-                        //}
                         return Json(result);
                     }
                 }
@@ -495,7 +439,7 @@ namespace Factoring.WebMvc.Controllers
                     Comentario = model.cComentario
                 });
 
-                if (model.nIdEstadoEvaluacion == 10)
+                if (model.nIdEstadoEvaluacion == 10 || model.nIdEstadoEvaluacion == 11)
                 {
                     var oFactura = await _facturaOperacionesProxy.GetAllListFacturaByIdOperaciones(model.nIdOperacionEval);
                     if (oFactura.Data.Count > 0)
@@ -513,16 +457,16 @@ namespace Factoring.WebMvc.Controllers
                         }
                     }
                 }
-                if (model.nIdEstadoEvaluacion == 11)
-                {
-                    await _evaluacionOperacionesProxy.UpdateCalculoFactura(new EvaluacionOperacionesCalculoInsertDto
-                    {
-                        IdOperaciones = model.nIdOperacionEval,
-                        IdOperacionesFactura = 0,
-                        IdCatalogoEstado = model.nIdEstadoEvaluacion,
-                        UsuarioCreador = userName,
-                    });
-                }
+                //if (model.nIdEstadoEvaluacion == 11)
+                //{
+                //    await _evaluacionOperacionesProxy.UpdateCalculoFactura(new EvaluacionOperacionesCalculoInsertDto
+                //    {
+                //        IdOperaciones = model.nIdOperacionEval,
+                //        IdOperacionesFactura = 0,
+                //        IdCatalogoEstado = model.nIdEstadoEvaluacion,
+                //        UsuarioCreador = userName,
+                //    });
+                //}
             }
 
             return Json(_estadoOperaciones);
