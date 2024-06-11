@@ -12,6 +12,8 @@ namespace Factoring.Model.Models.EvaluacionOperacion
         public int IdCatalogoEstado { get; set; }
         public string UsuarioCreador { get; set; }
         public string? Comentario { get; set; }
+
+        public bool? bRegistro { get; set; }
     }
     public class EvaluacionOperacionesEstadoInsertDto
     {
@@ -20,6 +22,7 @@ namespace Factoring.Model.Models.EvaluacionOperacion
         public int IdCatalogoEstado { get; set; }
         public string UsuarioCreador { get; set; }
         public string? Comentario { get; set; }
+        public bool? bRegistro { get; set; }
     }
 
     public class EvaluacionOperacionesCalculoInsertDto
