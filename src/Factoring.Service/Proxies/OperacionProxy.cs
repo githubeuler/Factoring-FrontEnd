@@ -54,7 +54,7 @@ namespace Factoring.Service.Proxies
             var response = await client.GetAsync($"Operaciones?Pageno={model.Pageno}&PageSize={model.PageSize}" +
             $"&Sorting={model.Sorting}&SortOrder={model.SortOrder}&FilterNroOperacion={model.FilterNroOperacion}" +
             $"&FilterRazonGirador={model.FilterRazonGirador}&FilterRazonAdquiriente={model.FilterRazonAdquiriente}&FilterFecCrea={model.FilterFecCrea}" +
-            $"&Estado={model.Estado}");
+            $"&Estado={model.Estado}&Usuario={model.Usuario}");
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<ResponseData<List<OperacionesResponseDataTable>>>(json);
             return data;

@@ -119,6 +119,8 @@ namespace Factoring.WebMvc.Controllers
 
         public async Task<JsonResult> GetOperacionAllList(OperacionViewModel model)
         {
+            var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
             try
             {
                 var requestData = new OperacionesRequestDataTableDto();
@@ -131,6 +133,7 @@ namespace Factoring.WebMvc.Controllers
                 requestData.FilterRazonAdquiriente = model.RazonAdquiriente;
                 requestData.FilterFecCrea = model.FechaCreacion;
                 requestData.Estado = model.Estado;
+                requestData.Usuario = userName;
 
                 var data = await _operacionProxy.GetAllListOperaciones(requestData);
                 var recordsTotal = data.Data.Count > 0 ? data.Data[0].TotalRecords : 0;
