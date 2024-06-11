@@ -97,15 +97,10 @@ var RegistroOperacion = function () {
                     className: 'text-end',
                     render: function (data, type, row) {
                         var buttonAction = ``;
-                        //if (data.nEstado == '1' || data.nEstado == '6' || data.nEstado == '7' || data.nEstado == '8'
-                        //    || data.nEstado == '19' || data.nEstado == '16' || data.nEstado == '14' || data.nEstado == '17'
-                        //    || data.nEstado == '41' || data.nAprobadoRiesgo == 0)  {
-                        //    buttonAction += `<div class="menu-item px-3 p-act"><a href="` + globalPath + `Operacion/Registro?operacionId=` + data.nIdOperaciones + `" class="menu-link px-3">Editar</a></div>`;
-                        //}
                         if (data.nEstado == '0') {
                             buttonAction += ``;
-                        }
-                        else if (data.nEstado == '10' || data.nEstado == '5')
+                        } // else if (data.nEditar == '10' || data.nEstado == '5')
+                        else if (data.nEditar > 0 )
                         {
                             buttonAction += `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperaciones} title="Evaluar"><i class="las la-check-square fs-2"></i></a>
                                 
@@ -976,7 +971,17 @@ var RegistroOperacion = function () {
             },
             columns: [
                 { data: 'cNroDocumento', 'autoWidth': true, class: 'text-left' },
-                { data: 'nMonto', 'autoWidth': true, class: 'text-end', render: $.fn.dataTable.render.number(',', '.', 2, '') },
+                //{ data: 'nMonto', 'autoWidth': true, class: 'text-end', render: $.fn.dataTable.render.number(',', '.', 2, '') },
+                {
+                    data: 'nMonto', 'autoWidth': true, class: 'text-center', render: function (value, eee, row) {
+                        //console.log(row)
+                        return  value == 'Detalle'
+                            ? value
+                            : '<div> <input style="text-align: center" kt-t-ff="' + row.nMonto + '" type="text" data-id-fact="' + row.nIdOperacionesFacturas + '" id="monto_' + row.nIdOperacionesFacturas + '" class="form-control form-control monto-input" value="' + value + '"></div>';;
+                    }
+                },
+
+
                 {
                     data: 'dFechaEmision', 'autoWidth': true, class: 'text-center', render: function (value) {
                         return moment(value).format('DD/MM/YYYY');
@@ -1024,7 +1029,13 @@ var RegistroOperacion = function () {
                         montoFacturaTotal = data.nMontoTotal;
                         var buttonDownload = ((data.cNombreDocumentoXML == null || data.cNombreDocumentoXML == '') ? `` : `<a href="javascript:;" class="btn btn-icon btn-sm btn-outline btn-outline-solid btn-outline-default me-2 p-des" data-kt-factura-table-filter="download_file" data-filename="` + data.cNombreDocumentoXML + `" onclick="RegistroOperacion.fnDownloadOperaciones(` + data.nIdOperacionesFacturas + `)" title="` + data.cNombreDocumentoXML + `" data-id="` + data.nIdOperacionesFacturas + `"><i class="las la-download fs-2"></i></a>`);
                         var buttonDelete = ((tableFacturaAction == 'Detalle') ? `` : `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt-factura-table-filter="delete_row" data-parent="` + $(idOperacion).val() + `" data-id="` + data.nIdOperacionesFacturas + `" data-path="` + data.cRutaDocumentoXML + `" data-Operacion="` + data.nroOperacion + `"><i class="las la-trash fs-2"></i></a>`);
-                        return buttonDownload + buttonDelete;
+                        var buttoEdit = `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperacionesFacturas} title="Evaluar"><i class="las la-check-square fs-2"></i></a>`;
+
+                        //((tableFacturaAction == 'Detalle') ? `` : ` < a href = "javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data - bs - toggle="modal" data - bs - target="#kt_modal_evaluacion_operacion" data - n - operacion="`+ data.nIdOperaciones + `" data - path="` + data.cRutaDocumentoXML + title="Evaluar"><i class="las la - check - square fs - 2"></i></a>`);
+                        // var buttoEdit = ((tableFacturaAction == 'Detalle') ? `` : `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-edit" data-kt-factura-table-filter="edit_row" data-parent="` + $(idOperacion).val() + `" data-id="` + data.nIdOperacionesFacturas + `" data-path="` + data.cRutaDocumentoXML + `" data-Operacion="` + data.nroOperacion + `" data-monto="` + data.nMonto + `"><i class="las la-trash fs-2"></i></a>`);
+
+                        //`<a href="${globalPath}Operacion/Registro?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-act" title="Editar"><i class="las la-pen fs-2"></i></a> 
+                        return buttonDownload + buttonDelete + buttoEdit;
                     }
                 }
             ]
@@ -1032,6 +1043,7 @@ var RegistroOperacion = function () {
         datatableFacturas.on('draw', function () {
             handleDeleteFacturaForm();
             handleEditFacturaForm();
+            /*handOpenFacturaForm();*/
             Common.init();
         });
     }
@@ -1209,10 +1221,45 @@ var RegistroOperacion = function () {
         var button = $(event.relatedTarget); // Botón que activó el modal
         var nOpe = button.data('n-operacion'); // Obtener el valor data-n-pago
         console.log('Valor data-n-nOpe:', nOpe);
+        $('#nIdOperacionEval').select2({
+          /*  placeholder: "Seleccionar",*/
+            allowClear: true,
+            dropdownParent: $('#kt_modal_evaluacion_operacion') // Asegura que el dropdown se muestre dentro del modal
+        });
         /*   $('#nIdOperacionEval').val($('#IdOperacion').val());*/
         $('#nIdOperacionEval').val(nOpe);
+
+        //$('#nIdOperacionEval').select2({
+        //    placeholder: "Seleccionar",
+        //    allowClear: true//,
+        //   /* dropdownParent: $('#myModal') // Asegura que el dropdown se muestre dentro del modal*/
+        //});
         // Aquí puedes usar el valor nPagoId como necesites
     });
+
+
+    $('#kt_factura_monto_modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Botón que activó el modal
+        //var nOpe = button.data('n-operacion'); // Obtener el valor data-n-pago
+        //console.log('Valor data-n-nOpe:', nOpe);
+        //$('#nIdOperacionEval').select2({
+        //    /*  placeholder: "Seleccionar",*/
+        //    allowClear: true,
+        //    dropdownParent: $('#kt_modal_evaluacion_operacion') // Asegura que el dropdown se muestre dentro del modal
+        //});
+        ///*   $('#nIdOperacionEval').val($('#IdOperacion').val());*/
+        //$('#nIdOperacionEval').val(nOpe);
+
+        //$('#nIdOperacionEval').select2({
+        //    placeholder: "Seleccionar",
+        //    allowClear: true//,
+        //   /* dropdownParent: $('#myModal') // Asegura que el dropdown se muestre dentro del modal*/
+        //});
+        // Aquí puedes usar el valor nPagoId como necesites
+    });
+
+
+
     var handleDownloadFactura = function () {
         var tableFacturas = document.querySelector('#kt_facturas_table');
         if (!tableFacturas) {
@@ -1450,107 +1497,6 @@ var RegistroOperacion = function () {
             });
         });
     }
-    //var handleAnularEvaluacion2 = function () {
-    //    var form = document.getElementById('kt_modal_evaluacion_form');
-    //    if (!form) {
-    //        return;
-    //    }
-    //    console.log(" rutaaaaaaa ", $(window).attr('location', globalPath + 'Operacion'));
-    //    var saveButton = document.getElementById('kt_save_estado_button');
-    //    var validator;
-    //    console.log(" rooooooooooota ", $(window).attr('location', globalPath + 'Operacion'));
-    //    validator = FormValidation.formValidation(
-    //        form,
-    //        {
-    //            fields: {
-    //                'nIdEstadoEvaluacion': {
-    //                    validators: {
-    //                        notEmpty: {
-    //                            message: 'Estado es obligatorio'
-    //                        }
-    //                    }
-    //                }
-    //            },
-    //            plugins: {
-    //                trigger: new FormValidation.plugins.Trigger(),
-    //                bootstrap: new FormValidation.plugins.Bootstrap5({
-    //                    rowSelector: '.fv-row',
-    //                    eleValidClass: '',
-    //                    eleInvalidClass: '',
-    //                })
-    //            }
-    //        }
-    //    );
-
-    //    console.log(" $(window).attr('location', globalPath + 'Operacion') ", $(window).attr('location', globalPath + 'Operacion'));
-
-    //    saveButton.addEventListener('click', function (e) {
-    //        e.preventDefault();
-    //        validator.validate().then(function (status) {
-    //            if (status == 'Valid') {
-    //                //saveButton.setAttribute('data-kt-indicator', 'on');
-    //                //saveButton.disabled = true;
-    //                Swal.fire({
-    //                    text: '¿Está seguro de que desea anular la operación?',
-    //                    icon: 'warning',
-    //                    showCancelButton: true,
-    //                    buttonsStyling: false,
-    //                    showLoaderOnConfirm: true,
-    //                    confirmButtonText: 'Anular',
-    //                    cancelButtonText: 'Cancelar',
-    //                    customClass: {
-    //                        confirmButton: 'btn fw-bold btn-danger',
-    //                        cancelButton: 'btn fw-bold btn-active-light-primary'
-    //                    },
-    //                }).then(function (result) {
-    //                    if (result.value) {
-    //                        var idOperacion = $('#IdOperacion').val();
-    //                        anularButton.setAttribute('data-kt-indicator', 'on');
-    //                        anularButton.disabled = true;
-    //                        setTimeout(function () {
-    //                            $.ajax({
-    //                                type: 'POST',
-    //                                dataType: 'json',
-    //                                url: $(form).attr('action'),
-    //                                xhrFields: {
-    //                                    withCredentials: true
-    //                                },
-    //                                data: form,
-    //                                success: function (data) {
-    //                                    if (data.succeeded) {
-    //                                        Swal.fire({
-    //                                            text: data.message,
-    //                                            icon: 'success',
-    //                                            buttonsStyling: false,
-    //                                            confirmButtonText: 'Listo',
-    //                                            customClass: {
-    //                                                confirmButton: 'btn btn-primary'
-    //                                            }
-    //                                        }).then(function (result) {
-    //                                            if (result.isConfirmed) {
-    //                                                $(window).attr('location', globalPath + 'Operacion');
-    //                                            }
-    //                                        });
-    //                                    } else {
-    //                                        anularButton.removeAttribute('data-kt-indicator');
-    //                                        anularButton.disabled = false;
-    //                                        messageError(data.message);
-    //                                    }
-    //                                },
-    //                                error: function (jqXHR, textStatus, errorThrown) {
-    //                                    anularButton.removeAttribute('data-kt-indicator');
-    //                                    anularButton.disabled = false;
-    //                                    messageError(errorThrown);
-    //                                }
-    //                            });
-    //                        }, 2000);
-    //                    }
-    //                });
-
-    //            }
-    //        });
-    //    });
-    //}
 
     var handleDeleteFacturaForm = function () {
         var tableFacturas = document.querySelector('#kt_facturas_table');
@@ -1621,6 +1567,34 @@ var RegistroOperacion = function () {
             });
         });
     }
+
+
+
+
+
+    var handOpenFacturaForm = function () {
+        var tableFacturas = document.querySelector('#kt_facturas_table');
+        if (!tableFacturas) {
+            return;
+        }
+        var editFacturaButton = tableFacturas.querySelectorAll('[data-kt-factura-table-filter="edit_row"]');
+        editFacturaButton.forEach(d => {
+            d.addEventListener('click', function (e) {
+                debugger;
+                e.preventDefault();
+                $('#kt_factura_monto_modal').show();
+            });
+        });
+       
+    
+    }
+
+
+
+
+
+
+
     var handleEditFacturaForm = function () {
         
 
@@ -1718,6 +1692,15 @@ var RegistroOperacion = function () {
                 });
             }, 2000);
         });
+    }
+
+    var handleEditFacturaMontoForm = function () {
+        var tableFacturas = document.querySelectorAll('#kt_facturas_table tbody tr');
+        if (!tableFacturas) {
+            return;
+        }
+        var deleteFacturaButton = tableFacturas.querySelectorAll('[data-kt-factura-table-filter="delete_row"]');
+
     }
     var handleUploadExcel = function () {
         var form = document.getElementById('kt_modal_masivo_form');
@@ -2345,6 +2328,7 @@ var RegistroOperacion = function () {
             handleUploadExcel();
             handleUploadFacturas();
             initToggleToolbarModal();
+            handOpenFacturaForm();
            // handleAnularEvaluacion2();
            /* handleFormEvaluarOperacion();*/
           /*  handleComentarios();*/

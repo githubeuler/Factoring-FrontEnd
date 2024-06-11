@@ -421,16 +421,25 @@ namespace Factoring.WebMvc.Controllers
         public async Task<IActionResult> ResultadoEvaluacion(OperacionViewModel model)
         {
             var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 4, Codigo = 103, Valor = "0" });
+            var nCant = _Estados.Data.Where(n => n.nId == model.nIdEstadoEvaluacion).ToList();
+            bool pRegistro=false;
+           
             var _estadoOperaciones = await _evaluacionOperacionesProxy.Create(new EvaluacionOperacionesInsertDto
             {
                 IdOperaciones = model.nIdOperacionEval,
                 IdCatalogoEstado = model.nIdEstadoEvaluacion,
                 UsuarioCreador = userName,
                 Comentario = model.cComentario,
+                bRegistro=pRegistro
 
             });
-            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 4, Codigo = 103, Valor = "0" });
-            var nCant=_Estados.Data.Where(n => n.nId == model.nIdEstadoEvaluacion).ToList();
+
+            if (nCant.Count > 0 && model.nIdEstadoEvaluacion != 11)
+            {
+                pRegistro = true;
+            }
 
             if (_estadoOperaciones.Succeeded && nCant.Count > 0)
             {
@@ -439,7 +448,8 @@ namespace Factoring.WebMvc.Controllers
                     IdOperaciones = model.nIdOperacionEval,
                     IdCatalogoEstado = model.nIdEstadoEvaluacion,
                     UsuarioCreador = userName,
-                    Comentario = model.cComentario
+                    Comentario = model.cComentario,
+                    bRegistro = pRegistro
                 });
 
                 if (model.nIdEstadoEvaluacion == 10 || model.nIdEstadoEvaluacion == 11)
