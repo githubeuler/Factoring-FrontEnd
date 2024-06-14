@@ -1127,16 +1127,21 @@ var RegistroOperacion = function () {
     }
 
     $('#kt_modal_evaluacion_operacion').on('show.bs.modal', function (event) {
+        $.fn.modal.Constructor.prototype.enforceFocus = function () { };
+
         var button = $(event.relatedTarget); // Botón que activó el modal
         var nOpe = button.data('n-operacion'); // Obtener el valor data-n-pago
         console.log('Valor data-n-nOpe:', nOpe);
-        //$('#nIdOperacionEval').select2({
-        //    allowClear: true,
-        //    dropdownParent: $('#kt_modal_evaluacion_operacion') 
-        //});
+
+        $('#nIdEstadoEvaluacion').select2({
+            allowClear: true,
+            dropdownParent: $('#kt_modal_evaluacion_operacion') 
+        });
+
         $('#nIdOperacionEval').val(nOpe);
 
     });
+
     //var buttonEdit = '<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-edit" data-bs-toggle="modal" data-bs-target="#kt_factura_monto_modal" data-n-operacion="' + data.nIdOperaciones + `" data-idfactura="` + data.nIdOperacionesFacturas + `" data-monto="` + data.nMonto + '" title="Editar"><i class="las la-pen fs-2"></i></a>';
     $('#kt_factura_monto_modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Botón que activa el modal
