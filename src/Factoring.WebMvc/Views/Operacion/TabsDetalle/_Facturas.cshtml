@@ -42,3 +42,42 @@ else
     <tbody>
     </tbody>
 </table>
+<div id="kt_factura_monto_modal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_modal_evaluacion_form" class="form" asp-controller="Operacion" asp-action="ActualizarMontoFactura" enctype="multipart/form-data" method="post" novalidate="novalidate">
+                <input type="hidden" id="nIdOperaciones" name="nIdOperaciones" />
+                <input type="hidden" id="nIdOperacionesFacturas" name="nIdOperacionesFacturas" />
+                <div class="modal-header">
+                    <h2>Actualización monto de Factura</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <div class="flex-row-fluid">
+                        <div class="w-100">
+                            <div class="fv-row mb-5">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Monto</span>
+                                </label>
+                                <input type="text" id="nMonto"  name="nMonto"  class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_save_monto_button" type="submit" class="btn btn-primary">
+                        <span class="indicator-label">Grabar</span>
+                        <span class="indicator-progress">Registrando registros... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    <script src="~/assets/js/registro-operacion.js"></script>
+}

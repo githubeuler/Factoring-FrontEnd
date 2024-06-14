@@ -15,6 +15,11 @@ namespace Factoring.Model.ViewModels
 
         public int nIdEstadoEvaluacion { get; set; }
         public string? cComentario { get; set; }
+
+        public int? nIdOperaciones { get; set; }
+        public int? nIdOperacionesFacturas { get; set; }
+        public decimal? nMonto { get; set; }
+
     }
 
     public class OperacionSingleViewModel

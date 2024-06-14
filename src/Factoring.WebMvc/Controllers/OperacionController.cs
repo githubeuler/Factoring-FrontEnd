@@ -484,6 +484,23 @@ namespace Factoring.WebMvc.Controllers
 
             return Json(_estadoOperaciones);
         }
+
+        public async Task<IActionResult> ActualizarMontoFactura(OperacionViewModel model)
+        {
+            var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+        
+            var _estadoOperaciones = await _facturaOperacionesProxy.EditarMonto(new OperacionesFacturaEditMontoDto
+            {
+                nIdOperaciones = model.nIdOperaciones.Value,
+                nIdOperacionesFacturas = model.nIdOperacionesFacturas.Value,
+                cUsuarioActualizacion = userName,
+                nMonto = model.nMonto.Value
+            });
+
+            return Json(_estadoOperaciones);
+        }
+
         //return Json(new { succeeded = true, message = "Registros eliminados correctamente..." });
         public async Task<IActionResult> AnularOperacion(int operacionId)
         {

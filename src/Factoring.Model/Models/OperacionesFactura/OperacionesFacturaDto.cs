@@ -115,7 +115,13 @@ namespace Factoring.Model.Models.OperacionesFactura
         public DateTime FechaPagoNegociado { get; set; }
         public int Estado { get; set; }       //  <OAV - 30/01/2023>
     }
-
+    public class OperacionesFacturaEditMontoDto
+    {
+        public int nIdOperaciones { get; set; }
+        public int nIdOperacionesFacturas { get; set; }
+        public string? cUsuarioActualizacion { get; set; }
+        public decimal nMonto { get; set; }
+    }
     public class OperacionesFacturaDeleteDto
     {
         public int IdOperacionesFacturas { get; set; }
