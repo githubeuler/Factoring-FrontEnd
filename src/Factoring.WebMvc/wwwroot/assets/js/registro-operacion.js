@@ -1096,7 +1096,8 @@ var RegistroOperacion = function () {
                                             $(addButton).closest('form').find('input[type=text], textarea').val('');
                                             addButton.removeAttribute('data-kt-indicator');
                                             addButton.disabled = false;
-                                            initDataTableFacturas();
+                                            //initDataTableFacturas();
+                                            $(window).attr('location', globalPath + 'Operacion/Registro?operacionId=' + $('#IdOperacionCabeceraFacturas').val());
                                         }
                                     });
                                 } else {

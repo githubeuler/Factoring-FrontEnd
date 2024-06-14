@@ -127,7 +127,7 @@ namespace Factoring.WebMvc.Controllers
                 requestData.Pageno = (Convert.ToInt32(Request.Form["start"].FirstOrDefault()));
                 requestData.PageSize = (Convert.ToInt32(Request.Form["length"].FirstOrDefault())) == 0 ? 10 : (Convert.ToInt32(Request.Form["length"].FirstOrDefault()));
                 requestData.Sorting = "nIdOperaciones";
-                requestData.SortOrder = "asc";
+                requestData.SortOrder = "desc";
                 requestData.FilterNroOperacion = model.NroOperacion;
                 requestData.FilterRazonGirador = model.RazonGirador;
                 requestData.FilterRazonAdquiriente = model.RazonAdquiriente;
