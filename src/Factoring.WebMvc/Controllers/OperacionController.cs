@@ -677,7 +677,8 @@ namespace Factoring.WebMvc.Controllers
                 var oFactura = GetFactura(model.nIdGiradorFact, model.nIdAdquirenteFact, jsonFactura).Result;
                 if (oFactura.Succeeded)
                     if (oFactura.Data.nEstado == 1)
-                        throw new Exception($"Factura Nro. {cFactura}  ya se encuentra registrada.");
+                        //throw new Exception($"Factura Nro. {cFactura}  ya se encuentra registrada.");
+                        return Json(new { succeeded = false, message = "Factura Nro. " + cFactura + "  ya se encuentra registrada." });
 
                 var oRecord = new ReportesGiradorOperacionesResponse
                 {
