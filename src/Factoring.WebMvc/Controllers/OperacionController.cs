@@ -436,10 +436,10 @@ namespace Factoring.WebMvc.Controllers
 
             });
 
-            if (nCant.Count > 0 && model.nIdEstadoEvaluacion != 11)
-            {
-                pRegistro = true;
-            }
+            //if (nCant.Count > 0 && model.nIdEstadoEvaluacion != 11)
+            //{
+            //    pRegistro = true;
+            //}
 
             if (_estadoOperaciones.Succeeded && nCant.Count > 0)
             {
@@ -449,7 +449,7 @@ namespace Factoring.WebMvc.Controllers
                     IdCatalogoEstado = model.nIdEstadoEvaluacion,
                     UsuarioCreador = userName,
                     Comentario = model.cComentario,
-                    bRegistro = pRegistro
+                    bRegistro = true
                 });
 
                 if (model.nIdEstadoEvaluacion == 10 || model.nIdEstadoEvaluacion == 11)
