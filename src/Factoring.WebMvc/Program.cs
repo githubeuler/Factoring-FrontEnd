@@ -40,6 +40,9 @@ builder.Services.AddTransient<IFilesProxy, FilesProxy>();
 builder.Services.AddTransient<IGiradorUbicacionProxy, GiradorUbicacionProxy>();
 builder.Services.AddTransient<IAdquirienteUbicacionProxy, AdquirienteUbicacionProxy>();
 builder.Services.AddTransient<IEvaluacionOperacionesProxy, EvaluacionOperacionesProxy>();
+builder.Services.AddTransient<IContactoGiradorProxy, ContactoGiradorProxy>();
+builder.Services.AddTransient<IDocumentosGiradorProxy, DocumentosGiradorProxy>();
+
 var app = builder.Build();
 
 // Configuración de la aplicación

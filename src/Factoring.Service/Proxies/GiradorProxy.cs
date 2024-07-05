@@ -12,7 +12,12 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<List<GiradorResponseDatatableDto>>> GetAllListGirador(GiradorRequestDatatableDto model);
         Task<ResponseData<int>> Create(GiradorCreateDto model);
         Task<List<GiradorResponseListaDto>> GetAllListGiradorlista();
-     
+
+        Task<ResponseData<GiradorSingleDto>> GetGirador(int id);
+        Task<ResponseData<int>> Update(GiradorUpdateDto model);
+
+        Task<ResponseData<GiradorFileNameEntidad>> GetObtenerFileName(GiradorFileNameEntidad model);
+
     }
 
     public class GiradorProxy : IGiradorProxy
@@ -63,6 +68,49 @@ namespace Factoring.Service.Proxies
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<ResponseData<List<GiradorResponseListaDto>>>(json);
             return data.Data;
+        }
+
+        public async Task<ResponseData<GiradorSingleDto>> GetGirador(int id)
+        {
+            var client = _proxyHttpClient.GetHttp();
+            var response = await client.GetAsync($"girador/{id}");
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<ResponseData<GiradorSingleDto>>(json);
+            return data;
+        }
+
+        public async Task<ResponseData<int>> Update(GiradorUpdateDto model)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var us = JsonConvert.SerializeObject(model);
+                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+                var response = await client.PostAsync("girador/update", requestContent);
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ResponseData<int>>(json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ResponseData<GiradorFileNameEntidad>> GetObtenerFileName(GiradorFileNameEntidad model)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var us = JsonConvert.SerializeObject(model);
+                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+                var response = await client.PostAsync("girador/obtener-filename-documento", requestContent);
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ResponseData<GiradorFileNameEntidad>>(json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
     }

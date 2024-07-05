@@ -1,0 +1,70 @@
+﻿@if (ViewData["Action"] == "Editar")
+{
+    <form id="kt_form_add_contacto" class="form" asp-controller="Girador" asp-action="AgregarContacto" method="post" novalidate="novalidate">
+        <input type="hidden" id="IdGiradorCabecera" name="IdGiradorCabecera" />
+        <div class="row g-9 mb-7">
+            <div class="col-md-4 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Nombres</label>
+                <input type="text" name="Nombre" class="form-control form-control-solid" minlength="3" maxlength="100" />
+            </div>
+            <div class="col-md-4 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Apellido Paterno</label>
+                <input type="text" name="ApellidoPaterno" class="form-control form-control-solid" minlength="3" maxlength="100" />
+            </div>
+            <div class="col-md-4 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Apellido Materno</label>
+                <input type="text" name="ApellidoMaterno" class="form-control form-control-solid" minlength="3" maxlength="100" />
+            </div>
+        </div>
+        <div class="row g-9 mb-15">
+            <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Celular</label>
+                <input type="text" name="Celular" class="form-control form-control-solid" minlength="9" maxlength="9" />
+            </div>
+            <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Correo Electrónico</label>
+                <input type="text" name="Email" class="form-control form-control-solid" minlength="3" maxlength="100" />
+            </div>
+            <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Tipo Contacto</label>
+                @*<select name="TipoContacto" aria-label="Seleccionar" data-control="select2" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+            <option value="">Seleccionar</option>
+            <option value="1">PRIMARIO</option>
+            <option value="2">SECUNDARIO</option>
+        </select>*@
+                <select id="TipoContacto" name="TipoContacto" asp-items="@(new SelectList(ViewBag.TipoContactos, "nId", "cNombre"))" aria-label="Seleccionar" data-control="select2" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                    <option value="">Seleccionar</option>
+                </select>
+            </div>
+            <div class="col-md-3 fv-row d-flex justify-content-center align-items-center">
+                <div>
+                    <button id="kt_add_contacto" type="button" class="btn btn-sm btn-primary p-ins">
+                        <span class="indicator-label">Agregar</span>
+                        <span class="indicator-progress">Agregando Registro... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+} 
+else
+{
+    <input type="hidden" id="Action" value="@ViewData["Action"]" />
+}
+<table id="kt_giradores_contacto_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+    <thead>
+        <tr class="text-center fw-bolder fs-7 text-uppercase gs-0">
+            <th class="text-center">Nombre</th>
+            <th class="text-center">Apellidos</th>
+            <th class="text-center">Celular</th>
+            <th class="text-center">Correo</th>
+            <th class="text-center">Tipo Contacto</th>
+            <th class="text-center">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+
