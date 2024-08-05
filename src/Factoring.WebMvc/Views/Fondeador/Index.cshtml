@@ -1,0 +1,113 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model FondeadorViewModel
+@{
+    ViewData["Title"] = "Bandeja de Fondeadores";
+}
+<div class="card">
+    <div class="card-header border-0 pt-6">
+        <div class="card-title">
+            <h2 class="fw-bolder">Listado de Registros</h2>
+        </div>
+        <div class="card-toolbar">
+            <div class="d-flex justify-content-end" data-kt-girador-table-toolbar="base">
+                <a asp-controller="Fondeador" asp-action="Registro" class="btn btn-sm btn-primary">
+                    <i class="las la-plus fs-3"></i> Nuevo Registro
+                </a>
+            </div>
+            <div class="d-flex justify-content-end align-items-center d-none" data-kt-girador-table-toolbar="selected">
+                <div class="fw-bolder me-5">
+                    <span class="me-2" data-kt-girador-table-select="selected_count"></span>Seleccionados
+                </div>
+                <button type="button" class="btn btn-sm btn-danger" data-kt-girador-table-select="delete_selected">Eliminar Registros</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body pt-5">
+        <form id="kt_search_form" class="form w-100 mt-5 mb-10 align-items-center">
+            <div class="row g-9 mb-7">
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="FilterDoi" class="form-control form-control-solid ps-10" maxlength="11" placeholder="Buscar por DOI">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="FilterRazon" class="form-control form-control-solid ps-10" maxlength="200" placeholder="Buscar por Razón Social">
+                    </div>
+                </div>
+                <div class="col-lg-4" style="display:none">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="FilterFecCrea" class="form-control form-control-solid ps-10" placeholder="Buscar por Fecha">
+                    </div>
+                </div>
+                <div class="col-lg-4" style="display:none">
+                    @*<select data-control="select2" aria-label="Sector" data-placeholder="Buscar por Estado" class="form-select form-select-solid fw-bolder">
+                    <option value="">Seleccionar</option>
+                    </select>*@
+                    <select asp-for="IdEstado" asp-items="@(new SelectList(ViewBag.Estados, "nId", "cNombre"))" class="form-select form-select-solid" data-control="select2" aria-label="Fondeador" data-placeholder="Buscar por Fondeador" data-allow-clear="true">
+                        <option value="">Seleccionar</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <button id="kt_search_button" type="button" class="btn btn-primary">
+                        <span class="indicator-label">Buscar</span>
+                        <span class="indicator-progress">Buscando... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                    <button id="kt_search_clear" type="button" class="btn btn-light">
+                        <span>Limpiar</span>
+                    </button>
+                </div>
+
+               
+
+
+            </div>
+            @* <div class="row g-9 mb-7">
+                <div class="col-lg-12 text-end">
+                    <button id="kt_search_button" type="button" class="btn btn-warning">
+                        <span class="indicator-label">Buscar</span>
+                        <span class="indicator-progress">Buscando... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                    <button id="kt_search_clear" type="button" class="btn btn-light">
+                        <span>Limpiar</span>
+                    </button>
+                </div>
+            </div> *@
+        </form>
+        <div class="row g-8">
+            <div class="col-lg-12">
+                <table id="kt_fondeador_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+                    <thead>
+                        <tr class="text-center text-muted fw-bolder fs-7 text-uppercase gs-0">
+                            <th class="text-center">
+                                <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                    <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_fondeador_table .form-check-input" value="1" />
+                                </div>
+                            </th>
+                            <th class="text-center">DOI</th>
+                            <th class="text-center">Razón Social</th>
+                            <th class="text-center">Fecha Registro</th>
+                            <th class="text-center">Estado</th>
+                            <th class="text-center">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    <script src="~/assets/js/registro-fondeador.js"></script>
+}

@@ -29,6 +29,17 @@ var RegistroGirador = function () {
     });
 
     var handleFilterTable = function () {
+
+        $('#FechaInicioActividades').flatpickr({
+            dateFormat: 'd/m/Y'
+            /*,defaultDate: 'today'*/
+        });
+
+        $('#FechaFirmaContrato').flatpickr({
+            dateFormat: 'd/m/Y'
+            /*,defaultDate: 'today'*/
+        });
+
         var searchButton = document.getElementById('kt_search_button');
         if (!searchButton) {
             return;
@@ -2442,9 +2453,9 @@ var RegistroGirador = function () {
             //handleEditCuentaBancariaForm();
             //handleAddCuentaBancariaForm();
             //handleDeleteCuentaBancariaForm();
-            //initDataTableUbicaciones();
-            //handleAddUbicacionForm();
-            //handleDeleteUbicacionForm();
+            initDataTableUbicaciones();
+            handleAddUbicacionForm();
+            handleDeleteUbicacionForm();
             initDataTableDocumentos();
             handleAddDocumentosForm();
             handleDeleteDocumentosForm();
@@ -2460,9 +2471,9 @@ var RegistroGirador = function () {
         getRevalidateFormElement: function (form, elem, val) {
             handleRevalidateFormElement(form, elem, val);
         },
-        //getUbigeo: function (pais, tipo, codigo) {
-        //    handleUbigeo(pais, tipo, codigo);
-        //},
+        getUbigeo: function (pais, tipo, codigo) {
+            handleUbigeo(pais, tipo, codigo);
+        },
         //getDownloadFile: function (idDocumento, tipoDocumento) {
         //    handleDownloadFile(idDocumento, tipoDocumento);
         //},

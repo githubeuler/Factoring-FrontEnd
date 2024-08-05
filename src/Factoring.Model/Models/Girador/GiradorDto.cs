@@ -36,6 +36,11 @@ namespace Factoring.Model.Models.Girador
         public int nEstado { get; set; }
         public string NombreEstado { get; set; }
         public List<string> FormatoUbigeoPais { get; set; }
+        public int nIdActividadEconomica { get; set; }
+        public string dFechaInicioActividad { get; set; }
+        public string dFechaFirmaContrato { get; set; }
+        public string cAntecedente { get; set; }
+
     }
     public class GiradorResponseComentariosLista
     {
@@ -71,6 +76,16 @@ namespace Factoring.Model.Models.Girador
         public int IdGrupoEconomico { get; set; }
 
         public string UsuarioActualizacion { get; set; }
+
+        [Required]
+        public int IdActividadEconomica { get; set; }
+        [Required]
+        public string FechaInicioActividad { get; set; }
+        [Required]
+        public string FechaFirmaContrato { get; set; }
+        [Required]
+        public string Antecedente { get; set; }
+
     }
 
     public class GiradorCreateDto
@@ -97,6 +112,10 @@ namespace Factoring.Model.Models.Girador
         public int IdGrupoEconomico { get; set; }
 
         public string UsuarioCreador { get; set; }
+
+        public int IdActividadEconomica { get; set; }
+
+        public string FechaInicioActividad { get; set; }
     }
 
     public class GiradorRequestDatatableDto

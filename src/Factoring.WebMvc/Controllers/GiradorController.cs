@@ -1,7 +1,9 @@
 ﻿using Factoring.Model.Models.Auth;
+using Factoring.Model.Models.Catalogo;
 using Factoring.Model.Models.ContactoGirador;
 using Factoring.Model.Models.Girador;
 using Factoring.Model.Models.GiradorDocumentos;
+using Factoring.Model.Models.GiradorUbicacion;
 using Factoring.Model.ViewModels;
 using Factoring.Service.Proxies;
 using Factoring.WebMvc.Helpers;
@@ -21,6 +23,8 @@ namespace Factoring.WebMvc.Controllers
         private readonly IDocumentosGiradorProxy _giradorDocumentosProxy;
         private readonly IConfiguration _configuration;
         private readonly IFilesProxy _filesProxy;
+        private readonly IUbigeoProxy _ubigeoProxy;
+        private readonly IGiradorUbicacionProxy _giradorUbicacionProxy;
 
 
         public const string GiradorDocumentos = "GiradorDocumentos";
@@ -32,7 +36,9 @@ namespace Factoring.WebMvc.Controllers
             IContactoGiradorProxy contactoGiradorProxy,
             IDocumentosGiradorProxy giradorDocumentosProxy,
             IConfiguration configuration,
-             IFilesProxy filesProxy)
+             IFilesProxy filesProxy,
+             IUbigeoProxy ubigeoProxy,
+             IGiradorUbicacionProxy giradorUbicacionProxy)
         {
             _httpContextAccessor = httpContextAccessor;
             _giradorProxy = giradorProxy;
@@ -41,6 +47,8 @@ namespace Factoring.WebMvc.Controllers
             _giradorDocumentosProxy = giradorDocumentosProxy;
             _configuration = configuration;
             _filesProxy = filesProxy;
+            _ubigeoProxy = ubigeoProxy;
+            _giradorUbicacionProxy = giradorUbicacionProxy;
         }
         public async Task<IActionResult> IndexAsync()
         {
@@ -85,7 +93,9 @@ namespace Factoring.WebMvc.Controllers
             ViewBag.Title = ((giradorId == null) ? "Registrar Girador" : "Editar Girador");
             ViewBag.IsEdit = giradorId != null;
             //ViewBag.Paises = await _dataProxy.GetAllListPais();
-            //ViewBag.Sector = await _dataProxy.GetAllListSector();
+            var ActividadesEconomicas = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 120, Tipo = 1, Valor = "1" });
+
+            ViewBag.ActividadesEconomicas = ActividadesEconomicas.Data.Select(x => new CatalogoResponseListDto { cNombre = x.nId + " - " + x.cNombre, nId = x.nId }).ToList(); ;
             //ViewBag.Grupo = await _dataProxy.GetAllListGrupo();
             var TipoDocumentos = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 118, Tipo = 1,Valor = "1" });
             //var Categorias = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 116, Tipo = 1 });
@@ -96,8 +106,8 @@ namespace Factoring.WebMvc.Controllers
             //ViewBag.Monedas = Monedas.Data;
             var TipoContactos = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 117, Tipo = 1,Valor = "1" });
             ViewBag.TipoContactos = TipoContactos.Data;
-            //var TipoContactosUbi = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 102, Tipo = 1 });
-            //ViewBag.TipoContactosUbi = TipoContactosUbi.Data;
+            var TipoContactosUbi = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 121, Tipo = 1,Valor = "1" });
+            ViewBag.TipoContactosUbi = TipoContactosUbi.Data;
 
             var item1 = TipoDocumentos.Data.SingleOrDefault(x => x.cNombre == "COMPRAS");
             var item2 = TipoDocumentos.Data.SingleOrDefault(x => x.cNombre == "VENTAS");
@@ -119,11 +129,11 @@ namespace Factoring.WebMvc.Controllers
                     return Redirect("~/Girador/Index");
                 }
 
-                //ViewBag.UbigeoPais = giradorDetalle.Data.FormatoUbigeoPais;
-                //ViewBag.UbigeoPaisCount = giradorDetalle.Data.FormatoUbigeoPais.Count;
+                ViewBag.UbigeoPais = giradorDetalle.Data.FormatoUbigeoPais;
+                ViewBag.UbigeoPaisCount = giradorDetalle.Data.FormatoUbigeoPais.Count;
 
-                //var UbigeoDepartamento = await _ubigeoProxy.GetUbigeo(giradorDetalle.Data.nIdPais, 1, "");
-                //ViewBag.DepartamentoPais = UbigeoDepartamento.Data;
+                var UbigeoDepartamento = await _ubigeoProxy.GetUbigeo(giradorDetalle.Data.nIdPais, 1, "");
+                ViewBag.DepartamentoPais = UbigeoDepartamento.Data;
 
                 //ViewBag.ListInversionista = await _divisoExternProxy.GetAllListFondeadoreslista();
 
@@ -132,11 +142,13 @@ namespace Factoring.WebMvc.Controllers
                 if (ModelState.IsValid)
                 {
                     giradorData.IdGirador = giradorDetalle.Data.nIdGirador;
-                   
+                    giradorData.IdActividadEconomica = giradorDetalle.Data.nIdActividadEconomica;
+                    giradorData.FechaInicioActividades = giradorDetalle.Data.dFechaInicioActividad == "01/01/1900" ? string.Empty : giradorDetalle.Data.dFechaInicioActividad; ;
                     giradorData.RegUnicoEmpresa = giradorDetalle.Data.cRegUnicoEmpresa;
                     HttpContext.Session.SetObjectAsJson("RucGirador", giradorDetalle.Data.cRegUnicoEmpresa);
                     giradorData.RazonSocial = giradorDetalle.Data.cRazonSocial;
-                   
+                    giradorData.FechaFirmaContrato = giradorDetalle.Data.dFechaFirmaContrato == "01/01/1900" ? string.Empty : giradorDetalle.Data.dFechaFirmaContrato;
+                    giradorData.Antecedente = giradorDetalle.Data.cAntecedente;
                     giradorData.Estado = giradorDetalle.Data.nEstado;
                     giradorData.NombreEstado = giradorDetalle.Data.NombreEstado;
                 }
@@ -157,39 +169,41 @@ namespace Factoring.WebMvc.Controllers
             }
             //if (ModelState.IsValid)
             //{
-                try
+            try
+            {
+                if (IsGiradorExist)
                 {
-                    if (IsGiradorExist)
+                    var result = await _giradorProxy.Update(new GiradorUpdateDto
                     {
-                        var result = await _giradorProxy.Update(new GiradorUpdateDto
-                        {
-                            IdGirador = giradorId,
-                           
-                            RegUnicoEmpresa = model.RegUnicoEmpresa,
-                            RazonSocial = model.RazonSocial.ToUpper(),
-                           
-                            UsuarioActualizacion = userName
-                        });
-                        return Json(result);
-                    }
-                    else
-                    {
-                        var result = await _giradorProxy.Create(new GiradorCreateDto
-                        {
-                           
-                            RegUnicoEmpresa = model.RegUnicoEmpresa,
-                            RazonSocial = model.RazonSocial.ToUpper(),
-                           
-                            UsuarioCreador = userName
-                        });
+                        IdGirador = giradorId,
 
-                        return Json(result);
-                    }
+                        RegUnicoEmpresa = model.RegUnicoEmpresa,
+                        RazonSocial = model.RazonSocial.ToUpper(),
+                        FechaInicioActividad = model.FechaInicioActividades ?? string.Empty,
+                        IdActividadEconomica = model.IdActividadEconomica,
+                        FechaFirmaContrato = model.FechaFirmaContrato ?? string.Empty,
+                        Antecedente = model.Antecedente ?? string.Empty,
+                        UsuarioActualizacion = userName
+                    });
+                    return Json(result);
                 }
-                catch (Exception)
+                else
                 {
-                    throw;
+                    var result = await _giradorProxy.Create(new GiradorCreateDto
+                    {
+
+                        RegUnicoEmpresa = model.RegUnicoEmpresa,
+                        RazonSocial = model.RazonSocial.ToUpper(),
+                        UsuarioCreador = userName
+                    });
+
+                    return Json(result);
                 }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             //}
             //return Redirect("~/Girador/Index");
         }
@@ -331,6 +345,42 @@ namespace Factoring.WebMvc.Controllers
 
             return File(bytesFile, "application/octet-stream", EntidadDocumento.Data.FileName);
         }
+
+        public async Task<IActionResult> ListarUbigeos(int pais, int tipo, string codigo)
+        {
+            var result = await _ubigeoProxy.GetUbigeo(pais, tipo, codigo);
+            return Json(result.Data);
+        }
+        public async Task<IActionResult> GetAllUbicaciones(int giradorId)
+        {
+            var ubicaciones = await _giradorUbicacionProxy.GetAllListDireccionGirador(giradorId);
+            return Json(ubicaciones);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AgregarUbicacion(AgregarUbicacion model)
+        {
+            var result = await _giradorUbicacionProxy.Create(new UbicacionGiradorInsertDto
+            {
+                IdGirador = model.IdGiradorCabeceraUbicacion,
+                FormatoUbigeo = model.Ubigeo,
+                Direccion = model.Direccion,
+                IdTipoDireccion = model.TipoDireccion
+            });
+            return Json(result);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EliminarUbicacion(int giradorUbicacionId)
+        {
+            var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var result = await _giradorUbicacionProxy.Delete(giradorUbicacionId, userName);
+            return Json(result.Succeeded);
+        }
+
+
 
 
 

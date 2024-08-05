@@ -1,0 +1,120 @@
+﻿@model FondeadorCreateModel
+@{
+    ViewData["Action"] = "Editar";
+}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="fw-bolder mb-0">Datos Básicos</h3>
+        </div>
+        <div class="card-toolbar">
+            <a asp-controller="Fondeador" asp-action="Index" class="btn btn-sm btn-flex btn-light btn-active-primary me-2">
+                <i class="las la-arrow-left fs-3"></i> Regresar
+            </a>
+            <button id="kt_save_button_registro" type="submit" class="btn btn-sm btn-success me-2 p-ins">
+                <span class="indicator-label">Guardar</span>
+                <span class="indicator-progress">Guardando Registro... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            </button>
+        </div>
+    </div>
+    <div class="card-body pt-5">
+        <form id="kt_form_registro" class="form" asp-controller="Fondeador" asp-action="RegistrarFondeador" method="post" novalidate="novalidate">
+            @if (@ViewBag.IsEdit)
+            {
+                <input type="hidden" asp-for="IdFondeador" />
+            }
+
+            <div class="row g-9 mb-7">
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Tipo Documento</label>
+                    <select asp-for="IdTipoDocumento" asp-items="@(new SelectList(ViewBag.ListaTipoDocumento, "nId", "cNombre"))" class="form-select form-select-solid" data-control="select2" aria-label="Tipo de Documento" data-placeholder="Buscar por Tipo Documento" data-allow-clear="true">
+                        <option value="">Seleccionar</option>
+                    </select>
+                </div>
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">DOI o RUC</label>
+                    <input type="text" asp-for="DOI" autocomplete="off" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                </div>
+
+                <div class="col-md-6 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Razon Social</label>
+                    <input type="text" asp-for="RazonSocial" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                </div>
+            </div>
+
+         </form>
+        @if (@ViewBag.IsEdit)
+        {
+            <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6 fw-bold pt-8 mb-8">
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#tab_datos_contacto">
+                        Datos Cálculos
+                    </a>
+                </li>
+                @*   <li class="nav-item">
+            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_representante_legal">
+            Datos Representante Legal
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_cuentas_bancarias">
+            Cuentas Bancarias
+            </a>
+            </li>*@
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_ubicacion">
+                        Datos Cavali
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_documentos">
+                        Documentos
+                    </a>
+                </li>
+                @* <li class="nav-item">
+            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_linea">
+            Línea
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_Categoria">
+            Categoría
+            </a>
+            </li> *@
+            </ul>
+            <div id="tabContentDetalle" class="tab-content">
+                <div id="tab_datos_calculos" class="tab-pane fade show active" role="tabpanel">
+                    <partial name="TabsDetalle/_Calculos" view-data="ViewData" />
+                </div>
+                @*  <div id="tab_representante_legal" class="tab-pane fade" role="tabpanel">
+            <partial name="TabsDetalle/_RepresentanteLegal" view-data="ViewData" />
+            </div>
+            <div id="tab_cuentas_bancarias" class="tab-pane fade" role="tabpanel">
+            <partial name="TabsDetalle/_CuentasBancarias" view-data="ViewData" />
+            </div>*@
+                <div id="tab_datos_cavali" class="tab-pane fade" role="tabpanel">
+                    <partial name="TabsDetalle/_Cavali" view-data="ViewData" />
+                </div>
+                <div id="tab_documentos" class="tab-pane fade" role="tabpanel">
+                    <partial name="TabsDetalle/_Documentos" view-data="ViewData" />
+                </div>
+                @*  <div id="tab_linea" class="tab-pane fade" role="tabpanel">
+            <partial name="TabsDetalle/_Linea" view-data="ViewData" />
+            </div>
+            <div id="tab_Categoria" class="tab-pane fade" role="tabpanel">
+            <partial name="TabsDetalle/_Categoria" view-data="ViewData" />
+            </div> *@
+            </div>
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    @if (@ViewBag.IsEdit)
+    {
+       @*  <script type="text/javascript">var countUbigeo = @ViewBag.UbigeoPaisCount;</script> *@
+    }
+    <script src="~/assets/js/registro-fondeador.js"></script>
+}

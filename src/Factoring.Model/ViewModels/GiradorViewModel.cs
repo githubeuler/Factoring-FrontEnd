@@ -37,6 +37,15 @@ namespace Factoring.Model.ViewModels
       
       
         public string NombreEstado { get; set; }
+
+        public string FechaInicioActividades { get; set; }
+        public int IdActividadEconomica { get; set; }
+        public string ActividadEconomica { get; set; }
+
+        public string FechaFirmaContrato { get; set; }
+        public string Antecedente { get; set; }
+
+
     }
 
     public class AgregarContactoGirador

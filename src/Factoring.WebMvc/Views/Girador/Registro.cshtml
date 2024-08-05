@@ -54,27 +54,35 @@
                 </div> *@
                 <div class="col-md-3 fv-row">
                     <label class="required fs-6 fw-bold mb-2">RUC o Registro Único</label>
-                    <input type="text" asp-for="RegUnicoEmpresa" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                    <input type="text" asp-for="RegUnicoEmpresa" autocomplete="off" minlength="11" maxlength="11" class="form-control form-control-solid" />
                 </div>
+
                 <div class="col-md-6 fv-row">
                     <label class="required fs-6 fw-bold mb-2">Razón Social</label>
-                    <input type="text" asp-for="RazonSocial" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                    <input type="text" asp-for="RazonSocial" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
                 </div>
             </div>
-            <div class="row g-9 mb-7">
-                @* <div class="col-md-3 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Sector</label>
-                    <select asp-for="Sector" asp-items="@(new SelectList(ViewBag.Sector, "nIdSector", "cNombreSector"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
-                        <option value="">Seleccionar</option>
-                    </select>
-                </div> *@
-               @*  <div class="col-md-3 fv-row">
+
+            @if (@ViewBag.IsEdit)
+            {
+                <div class="row g-9 mb-7">
+                    <div class="col-md-3 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Fecha Inicio de Actividades</label>
+                        <input type="text" asp-for="FechaInicioActividades" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                    </div>
+                    <div class="col-md-6 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Actividad Economica</label>
+                        <select asp-for="IdActividadEconomica" asp-items="@(new SelectList(ViewBag.ActividadesEconomicas, "nId", "cNombre"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                            <option value="">Seleccionar</option>
+                        </select>
+                    </div>
+                    @*  <div class="col-md-3 fv-row">
                     <label class="fs-6 fw-bold mb-2">Grupo Económico</label>
                     <select asp-for="GrupoEconomico" asp-items="@(new SelectList(ViewBag.Grupo, "nIdGrupoEconomico", "cNombreGrupoEconomico"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
                         <option value="">Seleccionar</option>
                     </select>
                 </div> *@
-               @*  <div class="col-md-3 fv-row">
+                    @*  <div class="col-md-3 fv-row">
                     <label class="required fs-6 fw-bold mb-2">Ventas (6 Últ. Meses)</label>
                     <input type="text" asp-for="Venta" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
                 </div>
@@ -82,7 +90,32 @@
                     <label class="required fs-6 fw-bold mb-2">Compras (6 Últ. Meses)</label>
                     <input type="text" asp-for="Compra" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
                 </div> *@
+                </div>
+                <div class="row g-9 mb-7">
+                    <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Fecha Firma de Contraro</label>
+                    <input type="text" asp-for="FechaFirmaContrato" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                </div>
+                <div class="col-md-6 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Antecedente</label>
+                    <textarea  asp-for="Antecedente" rows="6" class="form-control form-control-solid" ></textarea>
+                </div>
+                @*  <div class="col-md-3 fv-row">
+                <label class="fs-6 fw-bold mb-2">Grupo Económico</label>
+                <select asp-for="GrupoEconomico" asp-items="@(new SelectList(ViewBag.Grupo, "nIdGrupoEconomico", "cNombreGrupoEconomico"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                <option value="">Seleccionar</option>
+                </select>
+                </div> *@
+                @*  <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Ventas (6 Últ. Meses)</label>
+                <input type="text" asp-for="Venta" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                </div>
+                <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Compras (6 Últ. Meses)</label>
+                <input type="text" asp-for="Compra" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                </div> *@
             </div>
+            }
         </form>
         @if (@ViewBag.IsEdit)
         {
@@ -101,12 +134,12 @@
             <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_cuentas_bancarias">
                 Cuentas Bancarias
             </a>
-        </li>
+            </li>*@
         <li class="nav-item">
             <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_ubicacion">
-                Ubicación
+                Dirección
             </a>
-        </li> *@
+        </li> 
         <li class="nav-item">
             <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_documentos">
                 Documentos
@@ -132,10 +165,10 @@
         </div>
         <div id="tab_cuentas_bancarias" class="tab-pane fade" role="tabpanel">
             <partial name="TabsDetalle/_CuentasBancarias" view-data="ViewData" />
-        </div>
+            </div>*@
         <div id="tab_ubicacion" class="tab-pane fade" role="tabpanel">
             <partial name="TabsDetalle/_Ubicacion" view-data="ViewData" />
-        </div> *@
+        </div> 
         <div id="tab_documentos" class="tab-pane fade" role="tabpanel">
             <partial name="TabsDetalle/_Documentos" view-data="ViewData" />
         </div>
@@ -204,7 +237,7 @@
     <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
     @if (@ViewBag.IsEdit)
     {
-        @* <script type="text/javascript">var countUbigeo = @ViewBag.UbigeoPaisCount;</script> *@
+        <script type="text/javascript">var countUbigeo = @ViewBag.UbigeoPaisCount;</script>
     }
     <script src="~/assets/js/registro-girador.js"></script>
 }

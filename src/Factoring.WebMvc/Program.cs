@@ -42,7 +42,8 @@ builder.Services.AddTransient<IAdquirienteUbicacionProxy, AdquirienteUbicacionPr
 builder.Services.AddTransient<IEvaluacionOperacionesProxy, EvaluacionOperacionesProxy>();
 builder.Services.AddTransient<IContactoGiradorProxy, ContactoGiradorProxy>();
 builder.Services.AddTransient<IDocumentosGiradorProxy, DocumentosGiradorProxy>();
-
+builder.Services.AddTransient<IUbigeoProxy, UbigeoProxy>();
+builder.Services.AddTransient<IFondeadorProxy, FondeadorProxy>();
 var app = builder.Build();
 
 // Configuración de la aplicación
