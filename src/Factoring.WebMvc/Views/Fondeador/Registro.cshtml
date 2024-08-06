@@ -1,4 +1,4 @@
-﻿@model FondeadorCreateModel
+﻿@model FondeadorRegistroViewModel
 @{
     ViewData["Action"] = "Editar";
 }
@@ -19,6 +19,7 @@
     </div>
     <div class="card-body pt-5">
         <form id="kt_form_registro" class="form" asp-controller="Fondeador" asp-action="RegistrarFondeador" method="post" novalidate="novalidate">
+            <input type="hidden" name="hDOI" id="hDOI" value="@ViewBag.DOI" />
             @if (@ViewBag.IsEdit)
             {
                 <input type="hidden" asp-for="IdFondeador" />
@@ -42,15 +43,47 @@
                 </div>
             </div>
 
+            @if (@ViewBag.IsEdit)
+            {
+                <div class="row g-9 mb-7">
+                    <div class="col-md-3 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Producto</label>
+                        <select asp-for="IdProducto" asp-items="@(new SelectList(ViewBag.ListaProducto, "nId", "cNombre"))" class="form-select form-select-solid" data-control="select2" aria-label="Producto" data-placeholder="Buscar por Producto" data-allow-clear="true">
+                            <option value="">Seleccionar</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Interés Calculado</label>
+                        <select asp-for="IdInteresCalculado" asp-items="@(new SelectList(ViewBag.ListaInteresCalculo, "nId", "cNombre"))" class="form-select form-select-solid" data-control="select2" aria-label="Interés Calculado" data-placeholder="Buscar por Interés Calculado" data-allow-clear="true">
+                            <option value="">Seleccionar</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 fv-row" style="display:none" id="divDF">
+                        <label class="required fs-6 fw-bold mb-2">Distribución Fondeador</label>
+                        <input type="text" asp-for="DistribucionFondeador" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                    </div>
+                    <div class="col-md-3 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Tipo Fondeo</label>
+                        <select asp-for="IdTipoFondeo" asp-items="@(new SelectList(ViewBag.ListaTipoFondeo, "nId", "cNombre"))" class="form-select form-select-solid" data-control="select2" aria-label="Tipo Fondeo" data-placeholder="Buscar por Tipo Fondeo" data-allow-clear="true">
+                            <option value="">Seleccionar</option>
+                        </select>
+                    </div>
+
+
+                </div>
+            }
+
          </form>
         @if (@ViewBag.IsEdit)
         {
+             
+
             <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6 fw-bold pt-8 mb-8">
-                <li class="nav-item">
+               @*  <li class="nav-item">
                     <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#tab_datos_contacto">
                         Datos Cálculos
                     </a>
-                </li>
+                </li> *@
                 @*   <li class="nav-item">
             <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_representante_legal">
             Datos Representante Legal
@@ -62,7 +95,7 @@
             </a>
             </li>*@
                 <li class="nav-item">
-                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_ubicacion">
+                    <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#tab_datos_cavali">
                         Datos Cavali
                     </a>
                 </li>
@@ -83,16 +116,16 @@
             </li> *@
             </ul>
             <div id="tabContentDetalle" class="tab-content">
-                <div id="tab_datos_calculos" class="tab-pane fade show active" role="tabpanel">
+              @*   <div id="tab_datos_calculos" class="tab-pane fade show active" role="tabpanel">
                     <partial name="TabsDetalle/_Calculos" view-data="ViewData" />
-                </div>
+                </div> *@
                 @*  <div id="tab_representante_legal" class="tab-pane fade" role="tabpanel">
             <partial name="TabsDetalle/_RepresentanteLegal" view-data="ViewData" />
             </div>
             <div id="tab_cuentas_bancarias" class="tab-pane fade" role="tabpanel">
             <partial name="TabsDetalle/_CuentasBancarias" view-data="ViewData" />
             </div>*@
-                <div id="tab_datos_cavali" class="tab-pane fade" role="tabpanel">
+                <div id="tab_datos_cavali" class="tab-pane fade show active" role="tabpanel">
                     <partial name="TabsDetalle/_Cavali" view-data="ViewData" />
                 </div>
                 <div id="tab_documentos" class="tab-pane fade" role="tabpanel">
@@ -114,7 +147,9 @@
     <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
     @if (@ViewBag.IsEdit)
     {
-       @*  <script type="text/javascript">var countUbigeo = @ViewBag.UbigeoPaisCount;</script> *@
+        @* <script type="text/javascript">var countUbigeo = @ViewBag.UbigeoPaisCount;</script> *@
+        <script type="text/javascript">var countUbigeo = 0;</script>
+
     }
     <script src="~/assets/js/registro-fondeador.js"></script>
 }

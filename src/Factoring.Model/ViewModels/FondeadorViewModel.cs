@@ -36,6 +36,10 @@ namespace Factoring.Model.ViewModels
         public int IdTipoDocumento { get; set; }
         public string DOI { get; set; }
         public string RazonSocial { get; set; }
+        public int IdProducto { get; set; } = 0;
+        public int IdInteresCalculado { get; set; }
+        public int IdTipoFondeo { get; set; } 
+        public string? DistribucionFondeador { get; set; }
 
     }
 

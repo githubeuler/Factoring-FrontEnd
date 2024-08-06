@@ -39,6 +39,7 @@ var Fondeador = function () {
             $('#IdEstado').select2();
             initDatatable();
         });
+
     }
     var initDatatable = function () {
         var table = document.getElementById('kt_fondeador_table');
@@ -60,7 +61,7 @@ var Fondeador = function () {
                 data: $('#kt_search_form').serializeObject()
             },
             columns: [
-                { data: 'iIdFondeador', name: 'iIdFondeador', 'autoWidth': true, class: 'text-center' },
+                { data: 'nIdFondeador', name: 'nIdFondeador', 'autoWidth': true, class: 'text-center' },
                 { data: 'cNroDocumento', 'autoWidth': true, class: 'text-center' },
                 { data: 'cNombreFondeador', 'autoWidth': true, class: 'text-center' },
                 { data: 'dFecRegistro', 'autoWidth': true, class: 'text-left' },
@@ -105,7 +106,7 @@ var Fondeador = function () {
                         </a>
                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                             <div class="menu-item px-3">
-                                <a href="` + globalPath + `Fondeador/Registro?fondeadorId=` + data.iIdFondeador + `" class="menu-link px-3">Editar</a>
+                                <a href="` + globalPath + `Fondeador/Registro?fondeadorId=` + data.nIdFondeador + `" class="menu-link px-3">Editar</a>
                             </div>
                          
                         </div>`;
@@ -689,8 +690,8 @@ var Fondeador = function () {
                 }
             },
             columns: [
-                { data: 'iCodParticipante', 'autoWidth': true, class: 'text-center' },
-                { data: 'iCodRUT', 'autoWidth': true, class: 'text-center' },
+                { data: 'nCodParticipante', 'autoWidth': true, class: 'text-center' },
+                { data: 'nCodRUT', 'autoWidth': true, class: 'text-center' },
 
                 { data: null, 'autoWidth': true, class: 'text-center', responsivePriority: -1 }
             ],
@@ -702,7 +703,7 @@ var Fondeador = function () {
                     orderable: false,
                     className: 'text-end',
                     render: function (data, type, row) {
-                        return `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm" data-kt-cavali-factoring-table-filter="delete_row" data-parent="` + $(idFondeador).val() + `" data-id="` + row.iIdFondeadorCavali + `"><i class="las la-trash fs-2"></i></a>`;
+                        return `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm" data-kt-cavali-factoring-table-filter="delete_row" data-parent="` + $(idFondeador).val() + `" data-id="` + row.nIdFondeadorCavali + `"><i class="las la-trash fs-2"></i></a>`;
                     }
                 }
             ]
@@ -1913,7 +1914,12 @@ var Fondeador = function () {
             columns: [
                 { data: 'nombreTipoDocumento', 'autoWidth': true, class: 'text-left' },
                 { data: 'cNombreDocumento', 'autoWidth': true, class: 'text-left' },
-                { data: 'dFecRegistro', 'autoWidth': true, class: 'text-left' },
+                //{ data: 'dFechaCreacion', 'autoWidth': true, class: 'text-left' },
+                {
+                    data: 'dFechaCreacion', 'autoWidth': true, class: 'text-center', render: function (value) {
+                        return moment(value).format('DD/MM/YYYY');
+                    }
+                },
                 { data: null, 'autoWidth': true, class: 'text-center', responsivePriority: -1 }
             ],
             columnDefs: [
@@ -1925,7 +1931,7 @@ var Fondeador = function () {
                     className: 'text-end',
                     render: function (data, type, row) {
                         var buttonDownload = ((data.cNombreDocumento == null || data.cNombreDocumento == '') ? `` : `<a href="javascript:;" class="btn btn-icon btn-sm btn-outline btn-outline-solid btn-outline-default me-2" data-kt-documento-table-filter="download_file" onclick="Fondeador.Download(this)" data-path="` + data.cRutaDocumento + `"data-filename="` + data.cNombreDocumento + `" title="` + data.cNombreDocumento + `"><i class="las la-download fs-2"></i></a>`);
-                        var buttonDelete = ((tableDocumentoAction == 'Detalle') ? `` : `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm" data-kt-documento-table-filter="delete_row" data-parent="` + $(idFondeador).val() + `" data-id="` + data.iIdFondeadorDocumento + `"><i class="las la-trash fs-2"></i></a>`);
+                        var buttonDelete = ((tableDocumentoAction == 'Detalle') ? `` : `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm" data-kt-documento-table-filter="delete_row" data-parent="` + $(idFondeador).val() + `" data-id="` + data.nIdFondeadorDocumento + `"><i class="las la-trash fs-2"></i></a>`);
                         return buttonDownload + buttonDelete;
                     }
                 }
@@ -1946,13 +1952,21 @@ var Fondeador = function () {
 
         jqcboproducto.on("change", function (e) {
             var producto = parseInt($('#IdProducto').val());
-            var CapitalFinanciado = document.getElementById('CapitalFinanciado');
-            var MetodoCalculo = document.getElementById('IdMetodoCalculo');
-            var searchDiasPagoButton = document.getElementById('DiasPago');
-            var RetencionInicial = document.getElementById('IdRetencionInicial');
-            var CalculoInteres = document.getElementById('IdCalculoInteres');
+            
+            console.log(producto)
+            if (producto == 2) { //Cobranza Libre
+                $("#divDF").show();
+            } else {
+                $("#divDF").hide();
+            }
 
-            var valor = producto != 3
+            //var CapitalFinanciado = document.getElementById('CapitalFinanciado');
+            //var MetodoCalculo = document.getElementById('IdMetodoCalculo');
+            //var searchDiasPagoButton = document.getElementById('DiasPago');
+            //var RetencionInicial = document.getElementById('IdRetencionInicial');
+            //var CalculoInteres = document.getElementById('IdCalculoInteres');
+
+            //var valor = producto != 3
 
 
             //CapitalFinanciado.disabled = valor;
@@ -2247,7 +2261,7 @@ var Fondeador = function () {
             initDatatable();
             handleRegistroFondeador();
 
-            handleUbigeo();
+            //handleUbigeo();
 
             handleAddFondeForm();
             handleDeleteFondeoForm();
@@ -2282,9 +2296,19 @@ var Fondeador = function () {
             handleAddPrestamoForm();
             initDataTablePrestamo();
             handleDeletePrestamoForm();
+
+            var producto = parseInt($('#IdProducto').val());
+
+            //console.log(producto)
+            if (producto == 2) { //Cobranza Libre
+                $("#divDF").show();
+            } else {
+                $("#divDF").hide();
+
+            }
         },
         getUbigeo: function (pais, tipo, codigo) {
-            handleUbigeo(pais, tipo, codigo);
+            //handleUbigeo(pais, tipo, codigo);
         },
         getDownloadFile: function (fileName, ruta) {
             handleDownloadFile(fileName, ruta);
