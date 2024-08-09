@@ -1,0 +1,243 @@
+﻿@model GiradorCreateModel
+@{
+    ViewData["Action"] = "Editar";
+}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="fw-bolder mb-0">Datos Básicos</h3>
+        </div>
+        <div class="card-toolbar">
+            <a asp-controller="Girador" asp-action="Index" class="btn btn-sm btn-flex btn-light btn-active-primary me-2">
+                <i class="las la-arrow-left fs-3"></i> Regresar
+            </a>
+            <button id="kt_save_button" type="submit" class="btn btn-sm btn-success me-2 p-ins">
+                <span class="indicator-label">Guardar</span>
+                <span class="indicator-progress">Guardando Registro... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            </button>
+           @*  @if (@ViewBag.IsEdit)
+            {
+                @switch (Model.Estado)
+                {
+                    case 1:
+                        <a href="javascript:;" class="btn btn-sm btn-danger me-2 comment" data-flag="@Model.Estado" data-state="3">
+                            <i class="las la-file-alt fs-3"></i> Evaluación Legal
+                        </a>
+                        break;
+                    case 4:
+                        <a href="javascript:;" class="btn btn-sm btn-warning me-2 comment" data-flag="@Model.Estado" data-state="3">
+                            <i class="las la-exclamation-triangle fs-3"></i> Levantar Observación
+                        </a>
+                        break;
+                }
+            } *@
+        </div>
+    </div>
+    <div class="card-body pt-5">
+        <form id="kt_form_registro" class="form" asp-controller="Girador" asp-action="RegistroProceso" method="post" novalidate="novalidate">
+            @if (@ViewBag.IsEdit)
+            {
+                <input type="hidden" asp-for="IdGirador" />
+                <div class="row g-9 mb-7">
+                    <div class="col-md-3 offset-9 fv-row">
+                        <label class="fs-6 fw-bold mb-2">Estado</label>
+                        <p class="form-control-static">@Model.NombreEstado</p>
+                    </div>
+                </div>
+            }
+            <div class="row g-9 mb-7">
+               @*  <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">País</label>
+                    <select asp-for="Pais" asp-items="@(new SelectList(ViewBag.Paises, "nIdPais", "cNombrePais"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                        <option value="">Seleccionar</option>
+                    </select>
+                </div> *@
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">RUC o Registro Único</label>
+                    <input type="text" asp-for="RegUnicoEmpresa" autocomplete="off" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                </div>
+
+                <div class="col-md-6 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Razón Social</label>
+                    <input type="text" asp-for="RazonSocial" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                </div>
+            </div>
+
+            @if (@ViewBag.IsEdit)
+            {
+                <div class="row g-9 mb-7">
+                    <div class="col-md-3 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Fecha Inicio de Actividades</label>
+                        <input type="text" asp-for="FechaInicioActividades" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                    </div>
+                    <div class="col-md-6 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Actividad Economica</label>
+                        <select asp-for="IdActividadEconomica" asp-items="@(new SelectList(ViewBag.ActividadesEconomicas, "nId", "cNombre"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                            <option value="">Seleccionar</option>
+                        </select>
+                    </div>
+                    @*  <div class="col-md-3 fv-row">
+                    <label class="fs-6 fw-bold mb-2">Grupo Económico</label>
+                    <select asp-for="GrupoEconomico" asp-items="@(new SelectList(ViewBag.Grupo, "nIdGrupoEconomico", "cNombreGrupoEconomico"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                        <option value="">Seleccionar</option>
+                    </select>
+                </div> *@
+                    @*  <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Ventas (6 Últ. Meses)</label>
+                    <input type="text" asp-for="Venta" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                </div>
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Compras (6 Últ. Meses)</label>
+                    <input type="text" asp-for="Compra" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                </div> *@
+                </div>
+                <div class="row g-9 mb-7">
+                    <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Fecha Firma de Contraro</label>
+                    <input type="text" asp-for="FechaFirmaContrato" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                </div>
+                <div class="col-md-6 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Antecedente</label>
+                    <textarea  asp-for="Antecedente" rows="6" class="form-control form-control-solid" ></textarea>
+                </div>
+                @*  <div class="col-md-3 fv-row">
+                <label class="fs-6 fw-bold mb-2">Grupo Económico</label>
+                <select asp-for="GrupoEconomico" asp-items="@(new SelectList(ViewBag.Grupo, "nIdGrupoEconomico", "cNombreGrupoEconomico"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                <option value="">Seleccionar</option>
+                </select>
+                </div> *@
+                @*  <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Ventas (6 Últ. Meses)</label>
+                <input type="text" asp-for="Venta" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                </div>
+                <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Compras (6 Últ. Meses)</label>
+                <input type="text" asp-for="Compra" class="form-control form-control-solid" placeholder="0.00" maxlength="10" />
+                </div> *@
+            </div>
+            }
+        </form>
+        @if (@ViewBag.IsEdit)
+        {
+    <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6 fw-bold pt-8 mb-8">
+        <li class="nav-item">
+            <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#tab_datos_contacto">
+                Datos de Contacto
+            </a>
+        </li>
+      @*   <li class="nav-item">
+            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_representante_legal">
+                Datos Representante Legal
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_cuentas_bancarias">
+                Cuentas Bancarias
+            </a>
+            </li>*@
+        <li class="nav-item">
+            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_ubicacion">
+                Dirección
+            </a>
+        </li> 
+        <li class="nav-item">
+            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_documentos">
+                Documentos
+            </a>
+        </li>
+        @* <li class="nav-item">
+            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_linea">
+                Línea
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_Categoria">
+                Categoría
+            </a>
+        </li> *@
+    </ul>
+    <div id="tabContentDetalle" class="tab-content">
+        <div id="tab_datos_contacto" class="tab-pane fade show active" role="tabpanel">
+            <partial name="TabsDetalle/_Contacto" view-data="ViewData" />
+        </div>
+       @*  <div id="tab_representante_legal" class="tab-pane fade" role="tabpanel">
+            <partial name="TabsDetalle/_RepresentanteLegal" view-data="ViewData" />
+        </div>
+        <div id="tab_cuentas_bancarias" class="tab-pane fade" role="tabpanel">
+            <partial name="TabsDetalle/_CuentasBancarias" view-data="ViewData" />
+            </div>*@
+        <div id="tab_ubicacion" class="tab-pane fade" role="tabpanel">
+            <partial name="TabsDetalle/_Ubicacion" view-data="ViewData" />
+        </div> 
+        <div id="tab_documentos" class="tab-pane fade" role="tabpanel">
+            <partial name="TabsDetalle/_Documentos" view-data="ViewData" />
+        </div>
+       @*  <div id="tab_linea" class="tab-pane fade" role="tabpanel">
+            <partial name="TabsDetalle/_Linea" view-data="ViewData" />
+        </div>
+        <div id="tab_Categoria" class="tab-pane fade" role="tabpanel">
+            <partial name="TabsDetalle/_Categoria" view-data="ViewData" />
+        </div> *@
+    </div>
+        }
+    </div>
+</div>
+@if (@ViewBag.IsEdit)
+{
+    @if (Model.Estado == 4)
+    {
+        <div id="kt_modal_levantar_observacion" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form id="kt_modal_resultado_form" class="form" asp-controller="Girador" asp-action="LevantarObservacion" novalidate="novalidate">
+                        <div class="modal-header">
+                            <h2>Levantar Observación Girador</h2>
+                            <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal"><i class="las la-times"></i></div>
+                        </div>
+                        <div class="modal-body py-lg-5 px-lg-5">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                            <button id="kt_save_button_observado" type="submit" class="btn btn-primary">
+                                <span class="indicator-label">Guardar</span>
+                                <span class="indicator-progress">Guardando Información... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+}
+@if (@ViewBag.IsEdit)
+{
+    <div class="engage-toolbar d-flex position-fixed px-5 fw-bolder zindex-2 top-50 end-0 transform-90 mt-20 gap-2">
+        <button id="kt_help_toggle" class="engage-help-toggle btn btn-flex h-35px bg-body btn-color-gray-700 btn-active-color-gray-900 shadow-sm px-5 rounded-top-0">Comentarios</button>
+    </div>
+    <div id="kt_help" class="bg-body drawer drawer-end" data-kt-drawer="true" data-kt-drawer-name="help" data-kt-drawer-activate="true" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'350px', 'md': '525px'}" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_help_toggle" data-kt-drawer-close="#kt_help_close" style="width: 525px !important;">
+        <div class="card shadow-none rounded-0 w-100">
+            <div class="card-header" id="kt_help_header">
+                <h5 class="card-title fw-bold text-gray-600">Listado de Comentarios</h5>
+                <div class="card-toolbar">
+                    <button type="button" class="btn btn-sm btn-icon explore-btn-dismiss me-n5" id="kt_help_close">
+                        <i class="las la-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body" id="kt_help_body">
+                <div id="kt_help_scroll" class="hover-scroll-overlay-y" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_help_body" data-kt-scroll-dependencies="#kt_help_header" data-kt-scroll-offset="5px" style="height: 247px;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    @if (@ViewBag.IsEdit)
+    {
+        <script type="text/javascript">var countUbigeo = @ViewBag.UbigeoPaisCount;</script>
+    }
+    <script src="~/assets/js/registro-girador.js"></script>
+}

@@ -1,0 +1,66 @@
+﻿@if (ViewData["Action"] == "Editar")
+{
+    <form id="kt_form_add_ubicacion" class="form" asp-controller="Girador" asp-action="AgregarUbicacion" method="post" novalidate="novalidate">
+        <input type="hidden" id="IdGiradorCabeceraUbicacion" name="IdGiradorCabeceraUbicacion" />
+        <div class="row g-9 mb-7">
+            @{ var i = 1; }
+            @foreach (var itemUbigeo in ViewBag.UbigeoPais)
+            {
+                <div class="col-md-4 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">@itemUbigeo</label>
+                    <select id="@i" name="@itemUbigeo" aria-label="Seleccionar" data-control="select2" data-placeholder="Seleccionar" onchange="@(i == ViewBag.UbigeoPaisCount ? "javascript:;" : "RegistroGirador.getUbigeo(1, " + i + ", this)")" class="form-select form-select-solid fw-bolder ubigeo-list" required="required" data-fv-not-empty___message="@itemUbigeo es obligatorio">
+                        <option value="">Seleccionar</option>
+                        @if (i == 1)
+                        {
+                            @foreach (var departamento in ViewBag.DepartamentoPais)
+                            {
+                                <option value="@departamento.cCodigo">@departamento.cDescripcion</option>
+                            }
+                        }
+                    </select>
+                </div>
+                i++;
+            }
+            <div class="col-md-4 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Dirección</label>
+                <input type="text" id="Direccion" name="Direccion" class="form-control form-control-solid" minlength="5" maxlength="100" required="required" data-fv-not-empty___message="Dirección es obligatorio" />
+
+            </div>
+            <div class="col-md-4 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Tipo</label>
+                @*<select id="TipoDireccion" name="TipoDireccion" aria-label="Seleccionar" data-control="select2" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder" required="required" data-fv-not-empty___message="Tipo es obligatorio">
+            <option value="">Seleccionar</option>
+            <option value="1">PRINCIPAL</option>
+            <option value="2">SECUNDARIA</option>
+        </select>*@
+                <select id="TipoDireccion" name="TipoDireccion" asp-items="@(new SelectList(ViewBag.TipoContactosUbi, "nId", "cNombre"))" aria-label="Seleccionar" data-control="select2" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder" required="required" data-fv-not-empty___message="Tipo es obligatorio">
+                    <option value="">Seleccionar</option>
+                </select>
+            </div>
+            <div class="col-md-4 fv-row d-flex justify-content-center align-items-center">
+                <div>
+                    <button id="kt_add_ubicacion" type="button" class="btn btn-sm btn-primary p-ins">
+                        <span class="indicator-label">Agregar</span>
+                        <span class="indicator-progress">Agregando Registro... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <input type="hidden" id="Action" value="@ViewData["Action"]" />
+}
+<table id="kt_ubicaciones_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+    <thead>
+        <tr class="text-center fw-bolder fs-7 text-uppercase gs-0">
+            <th class="text-center">Ubigeo</th>
+            <th class="text-center">Dirección</th>
+            <th class="text-center">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>

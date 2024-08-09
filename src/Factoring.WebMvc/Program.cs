@@ -40,7 +40,14 @@ builder.Services.AddTransient<IFilesProxy, FilesProxy>();
 builder.Services.AddTransient<IGiradorUbicacionProxy, GiradorUbicacionProxy>();
 builder.Services.AddTransient<IAdquirienteUbicacionProxy, AdquirienteUbicacionProxy>();
 builder.Services.AddTransient<IEvaluacionOperacionesProxy, EvaluacionOperacionesProxy>();
+builder.Services.AddTransient<IContactoGiradorProxy, ContactoGiradorProxy>();
+builder.Services.AddTransient<IDocumentosGiradorProxy, DocumentosGiradorProxy>();
+builder.Services.AddTransient<IUbigeoProxy, UbigeoProxy>();
 builder.Services.AddTransient<IFondeadorProxy, FondeadorProxy>();
+builder.Services.AddTransient<ICavaliFactoringFondeadorProxy, CavaliFactoringFondeadorProxy>();
+builder.Services.AddTransient<IDocumentoFondeadorProxy, DocumentoFondeadorProxy>();
+
+
 
 var app = builder.Build();
 

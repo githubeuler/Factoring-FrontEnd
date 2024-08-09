@@ -1,0 +1,41 @@
+﻿@if (ViewData["Action"] == "Editar")
+{
+    <form id="kt_form_add_cavali_factoring" class="form" asp-controller="Fondeador" asp-action="AgregarCavaliFactoring" method="post" novalidate="novalidate">
+        <input type="hidden" id="IdFondeadorCabeceraCF" name="IdFondeadorCabeceraCF" />
+        <div class="row g-9 mb-7">
+            <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Código Participante</label>
+                <input type="text" id="CodigoParticipante" name="CodigoParticipante" class="form-control form-control-solid" minlength="3" maxlength="100" />
+            </div>
+            <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Codigo RUT</label>
+                <input type="text" id="CodigoRUT" name="CodigoRUT" class="form-control form-control-solid" minlength="3" maxlength="100" />
+            </div>
+            <div class="col-md-2 fv-row d-flex justify-content-center align-items-center">
+                <div>
+                    <button id="kt_add_cavali_factoring" type="button" class="btn btn-sm btn-primary">
+                        <span class="indicator-label">Agregar</span>
+                        <span class="indicator-progress">Agregando Registro... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <input type="hidden" id="Action" value="@ViewData["Action"]" />
+}
+<table id="kt_fondeador_cavali_factoring_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+    <thead>
+        <tr class="text-center fw-bolder fs-7 text-uppercase gs-0">
+            <th class="text-center">Código Participante</th>
+            <th class="text-center">Codigo RUT</th>
+            <th class="text-center">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+

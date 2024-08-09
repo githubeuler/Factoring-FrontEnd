@@ -1,0 +1,149 @@
+﻿@using Factoring.WebMvc.Helpers;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model GiradorCreateModel
+@{
+    ViewData["Action"] = "Detalle";
+    ViewData["IdGirador"] = Model.IdGirador;
+}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="fw-bolder mb-0">Datos Básicos</h3>
+        </div>
+        <div class="card-toolbar">
+            <a asp-controller="Girador" asp-action="Index" class="btn btn-sm btn-flex btn-light btn-active-primary me-2">
+                <i class="las la-arrow-left fs-3"></i> Regresar
+            </a>
+
+        </div>
+    </div>
+    <div class="card-body pt-5">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__formGiradorDetalle" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="IdGirador" />
+            <div class="row g-9 mb-7">
+                <div class="col-md-3 offset-9 fv-row">
+                    <label class="fs-6 fw-bold mb-2">Estado</label>
+                    <p class="form-control-static">@Model.NombreEstado</p>
+                </div>
+            </div>
+            <div class="row g-9 mb-7">
+               @*  <div class="col-md-3 fv-row">
+                    <label class="fs-6 fw-bold mb-2">País</label>
+                    <p class="form-control-static">@Model.NombrePais</p>
+                </div> *@
+                <div class="col-md-3 fv-row">
+                    <label class="fs-6 fw-bold mb-2">RUC o Registro Único</label>
+                    <p class="form-control-static">@Model.RegUnicoEmpresa</p>
+                </div>
+                <div class="col-md-6 fv-row">
+                    <label class="fs-6 fw-bold mb-2">Razón Social</label>
+                    <p class="form-control-static">@Model.RazonSocial</p>
+                </div>
+            </div>
+            <div class="row g-9 mb-7">
+               @*  <div class="col-md-3 fv-row">
+                    <label class="fs-6 fw-bold mb-2">Sector</label>
+                    <p class="form-control-static">@Model.NombreSector</p>
+                </div>
+                <div class="col-md-3 fv-row">
+                    <label class="fs-6 fw-bold mb-2">Grupo Económico</label>
+                    <p class="form-control-static">@Model.NombreGrupoEconomico</p>
+                </div>
+                <div class="col-md-3 fv-row">
+                    <label class="fs-6 fw-bold mb-2">Ventas (6 Últ. Meses)</label>
+                    <p class="form-control-static">@Model.Venta</p>
+                </div>
+                <div class="col-md-3 fv-row">
+                    <label class="fs-6 fw-bold mb-2">Compras (6 Últ. Meses)</label>
+                    <p class="form-control-static">@Model.Compra</p>
+                </div> *@
+            </div>
+            <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6 fw-bold pt-8 mb-8">
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#tab_datos_contacto">
+                        Datos de Contacto
+                    </a>
+                </li>
+               @*  <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_representante_legal">
+                        Datos Representante Legal
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_cuentas_bancarias">
+                        Cuentas Bancarias
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_ubicacion">
+                        Ubicación
+                    </a>
+                </li> *@
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_documentos">
+                        Documentos
+                    </a>
+                </li>
+                @* <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_linea">
+                        Línea
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_Categoria">
+                        Categoría
+                    </a>
+                </li> *@
+            </ul>
+            <div id="tabContentDetalle" class="tab-content">
+                <div id="tab_datos_contacto" class="tab-pane fade show active" role="tabpanel">
+                    <partial name="TabsDetalle/_Contacto" view-data="ViewData" />
+                </div>
+                @* <div id="tab_representante_legal" class="tab-pane fade" role="tabpanel">
+                    <partial name="TabsDetalle/_RepresentanteLegal" view-data="ViewData" />
+                </div>
+                <div id="tab_cuentas_bancarias" class="tab-pane fade" role="tabpanel">
+                    <partial name="TabsDetalle/_CuentasBancarias" view-data="ViewData" />
+                </div>
+                <div id="tab_ubicacion" class="tab-pane fade" role="tabpanel">
+                    <partial name="TabsDetalle/_Ubicacion" view-data="ViewData" />
+                </div> *@
+                <div id="tab_documentos" class="tab-pane fade" role="tabpanel">
+                    <partial name="TabsDetalle/_Documentos" view-data="ViewData" />
+                </div>
+               @*  <div id="tab_linea" class="tab-pane fade" role="tabpanel">
+                    <partial name="TabsDetalle/_Linea" view-data="ViewData" />
+                </div>
+                <div id="tab_Categoria" class="tab-pane fade" role="tabpanel">
+                    <partial name="TabsDetalle/_Categoria" view-data="ViewData" />
+                </div> *@
+            </div>
+        }
+    </div>
+</div>
+<div class="engage-toolbar d-flex position-fixed px-5 fw-bolder zindex-2 top-50 end-0 transform-90 mt-20 gap-2">
+    <button id="kt_help_toggle" class="engage-help-toggle btn btn-flex h-35px bg-body btn-color-gray-700 btn-active-color-gray-900 shadow-sm px-5 rounded-top-0">Comentarios</button>
+</div>
+<div id="kt_help" class="bg-body drawer drawer-end" data-kt-drawer="true" data-kt-drawer-name="help" data-kt-drawer-activate="true" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'350px', 'md': '525px'}" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_help_toggle" data-kt-drawer-close="#kt_help_close" style="width: 525px !important;">
+    <div class="card shadow-none rounded-0 w-100">
+        <div class="card-header" id="kt_help_header">
+            <h5 class="card-title fw-bold text-gray-600">Listado de Comentarios</h5>
+            <div class="card-toolbar">
+                <button type="button" class="btn btn-sm btn-icon explore-btn-dismiss me-n5" id="kt_help_close">
+                    <i class="las la-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body" id="kt_help_body">
+            <div id="kt_help_scroll" class="hover-scroll-overlay-y" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_help_body" data-kt-scroll-dependencies="#kt_help_header" data-kt-scroll-offset="5px" style="height: 247px;">
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    <script src="~/assets/js/registro-girador.js"></script>
+}
