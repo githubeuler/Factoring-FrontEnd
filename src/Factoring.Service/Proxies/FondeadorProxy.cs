@@ -1,5 +1,7 @@
 ﻿using Factoring.Model;
+using Factoring.Model.Models.Externos;
 using Factoring.Model.Models.Fondeador;
+using Factoring.Model.Models.Inversionista;
 using Factoring.Service.Common;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -13,6 +15,7 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<int>> Create(FondeadorRegistroRequestDto request);
         Task<ResponseData<FondeadorSingleDto>> GetFondeador(int id);
         Task<ResponseData<int>> Update(FondeadorUpdateRequestDto model);
+        Task<List<DivisoFondeadores>> GetAllListFondeadoreslista();
     }
     public class FondeadorProxy : IFondeadorProxy
     {
@@ -76,6 +79,15 @@ namespace Factoring.Service.Proxies
             {
                 throw new Exception(ex.Message);
             } 
+        }
+
+        public async Task<List<DivisoFondeadores>> GetAllListFondeadoreslista()
+        {
+            var client = _proxyHttpClient.GetHttp();
+            var response = await client.GetAsync($"Fondeador/lista-fondeadores");
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<InversionistaSGC>(json);
+            return data.data;
         }
     }
 }

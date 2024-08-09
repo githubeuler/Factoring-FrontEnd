@@ -52,6 +52,50 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZ2FNYXNpdmFcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Fondeador/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9uZGVhZG9yXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Fondeador/Registro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9uZGVhZG9yXFJlZ2lzdHJvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Fondeador/TabsDetalle/_Calculos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9uZGVhZG9yXFRhYnNEZXRhbGxlXF9DYWxjdWxvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Fondeador/TabsDetalle/_Cavali.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9uZGVhZG9yXFRhYnNEZXRhbGxlXF9DYXZhbGkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Fondeador/TabsDetalle/_Documentos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9uZGVhZG9yXFRhYnNEZXRhbGxlXF9Eb2N1bWVudG9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Girador/Detalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lyYWRvclxEZXRhbGxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Girador/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lyYWRvclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Girador/Registro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lyYWRvclxSZWdpc3Ryby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Girador/TabsDetalle/_Contacto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lyYWRvclxUYWJzRGV0YWxsZVxfQ29udGFjdG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Girador/TabsDetalle/_Documentos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lyYWRvclxUYWJzRGV0YWxsZVxfRG9jdW1lbnRvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Girador/TabsDetalle/_Ubicacion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lyYWRvclxUYWJzRGV0YWxsZVxfVWJpY2FjaW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Home/FileTest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGaWxlVGVzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

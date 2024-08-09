@@ -46,9 +46,9 @@ builder.Services.AddTransient<IUbigeoProxy, UbigeoProxy>();
 builder.Services.AddTransient<IFondeadorProxy, FondeadorProxy>();
 builder.Services.AddTransient<ICavaliFactoringFondeadorProxy, CavaliFactoringFondeadorProxy>();
 builder.Services.AddTransient<IDocumentoFondeadorProxy, DocumentoFondeadorProxy>();
-
-
-
+builder.Services.AddTransient<IContactoAceptanteProxy, ContactoAceptanteProxy>();
+builder.Services.AddTransient<IAceptanteProxy, AceptanteProxy>();
+builder.Services.AddTransient<IDataProxy, DataProxy>();
 var app = builder.Build();
 
 // Configuración de la aplicación

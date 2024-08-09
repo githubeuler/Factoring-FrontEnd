@@ -307,12 +307,7 @@ namespace Factoring.WebMvc.Controllers
             });
             return Json(result);
         }
-
-       
-        
-        
-        
-        
+                
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarContacto(int adquirienteContactoId)
@@ -321,7 +316,6 @@ namespace Factoring.WebMvc.Controllers
             var result = await _contactoAceptanteProxy.Delete(adquirienteContactoId, userName);
             return Json(result.Succeeded);
         }
-
         public async Task<IActionResult> ListarUbigeos(int pais, int tipo, string codigo)
         {
             var result = await _ubigeoProxy.GetUbigeo(pais, tipo, codigo);
