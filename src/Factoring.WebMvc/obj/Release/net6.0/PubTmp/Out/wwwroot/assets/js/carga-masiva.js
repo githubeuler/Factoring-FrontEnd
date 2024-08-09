@@ -390,7 +390,7 @@ var CargaMasiva = function () {
                 var dropdown = document.getElementById("comboCategoria");
                 for (var i = 0; i < lstCategoria.length; i++) {
                     var oRecCat = lstCategoria[i];
-                    dropdown.options[i] = new Option(oRecCat.categoria, oRecCat.nCategoria);
+                    dropdown.options[i] = new Option(oRecCat.cNombre, oRecCat.nId);
                 }
 
                 //$("#comboCategoria").prepend('<option selected="selected" value="0"> Seleccione Categoría </option>');

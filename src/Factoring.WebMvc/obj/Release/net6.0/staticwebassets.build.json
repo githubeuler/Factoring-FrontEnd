@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LIfUZ8ck/1uMOOh2BlmCig4Srp+6qM71WCdSfEnqMOk=",
+  "Hash": "5WwZ1SgBdGvPqcX9Wk9hFPs8OGjMu6vzHLy8pzd9YTk=",
   "Source": "Factoring.WebMvc",
   "BasePath": "_content/Factoring.WebMvc",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\favicon_old.ico"
+    },
+    {
+      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo circular.png",
+      "SourceId": "Factoring.WebMvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "BasePath": "_content/Factoring.WebMvc",
+      "RelativePath": "assets/images/logos/logo circular.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\logos\\logo circular.png"
     },
     {
       "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\LOGO FINAL (1).png",
@@ -3109,6 +3126,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\upload\\20611541555-01-F001-00000051.xml"
+    },
+    {
+      "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\upload\\20611541555-01-F001-00000054.xml",
+      "SourceId": "Factoring.WebMvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\",
+      "BasePath": "_content/Factoring.WebMvc",
+      "RelativePath": "assets/upload/20611541555-01-F001-00000054.xml",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\upload\\20611541555-01-F001-00000054.xml"
     },
     {
       "Identity": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\favicon.ico",

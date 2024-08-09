@@ -215,7 +215,7 @@ namespace Factoring.WebMvc.Controllers
 
                         oAdquiriente = GetAdquiriente(cAdquirienteRUT).Result;
 
-                        var resultAU = await _adquirienteUbicacionProxy.Create(new UbicacionAdquirienteInsertDto
+                        var resultAU = await _adquirienteUbicacionProxy.Create(new UbicacionAcepInsertDto
                         {
                             IdAdquiriente = oAdquiriente.nIdAdquiriente,
                             FormatoUbigeo = $"{{\"Departamento\":\"{cAdquirienteUbigeo.Substring(0, 2)}\",\"Provincia\":\"{cAdquirienteUbigeo.Substring(0, 4)}\",\"Distrito\":\"{cAdquirienteUbigeo}\"}}",

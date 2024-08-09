@@ -1,0 +1,273 @@
+﻿@model OperacionViewModel
+@{
+    ViewData["Title"] = "Operaciones CAVALI";
+}
+<div class="card">
+    <div class="card-header border-0 pt-6">
+        <div class="card-title">
+            <h2 class="fw-bolder">Listado de Registros</h2>
+        </div>
+        <div class="card-toolbar">
+            <div class="d-flex justify-content-end" data-kt-girador-table-toolbar="base">
+                <button id="kt_export_button" type="button" class="btn btn-sm btn-primary me-3 p-exp-exc">Exportar Registros</button>
+
+            </div>
+            <div class="d-flex justify-content-end align-items-center d-none" data-kt-transferencias-table-toolbar="selected">
+                <div class="fw-bolder me-5">
+                    <span class="me-2" data-kt-transferencias-table-select="selected_count"></span>Seleccionados
+                </div>
+                <button type="button" id="btn_registro" class="btn btn-sm btn-primary" data-kt-transferencias-table-select="register_selected">Registro y Anotación</button>
+                <button type="button" id="btn_transferir" class="btn btn-sm btn-danger" data-kt-transferencias-table-select="transfer_selected">Transferir</button>
+                <button type="button" id="btn_traspaso" class="btn btn-sm btn-facebook" data-kt-transferencias-table-select="traspasar_selected">Traspasar</button>
+                <button type="button" id="btn_remover" class="btn btn-sm btn-google" data-kt-transferencias-table-select="remover_selected">Remover</button>
+                <button type="button" id="btn_accion" class="btn btn-sm btn-success" data-kt-transferencias-table-select="accion_selected">Realizar Acción</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body pt-5">
+        <form id="kt_search_form" class="form w-100 mt-5 mb-15 align-items-center">
+            <div class="row g-9 mb-7">
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="NroOperacion" class="form-control form-control-solid ps-10" maxlength="15" placeholder="Buscar por Nro. Operación">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="RazonGirador" class="form-control form-control-solid ps-10" maxlength="200" placeholder="Buscar por Razón Social Girador">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="RazonAdquiriente" class="form-control form-control-solid ps-10" maxlength="200" placeholder="Buscar por Razón Social Adquirente">
+                    </div>
+                </div>
+            </div>
+            <div class="row g-9 mb-7">
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="FechaCreacion" class="form-control form-control-solid ps-10" placeholder="Buscar por Fecha">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <select asp-for="Estado" asp-items="@(new SelectList(ViewBag.Estados, "nId", "cNombre"))" data-control="select2" aria-label="Estados" data-placeholder="Estados" class="form-select form-select-solid fw-bolder">
+                        <option value="">Seleccionar</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <button id="kt_search_button" type="button" class="btn btn-warning">
+                        <span class="indicator-label">Buscar</span>
+                        <span class="indicator-progress">Buscando... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                    <button id="kt_search_clear" type="button" class="btn btn-light">
+                        <span>Limpiar</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="row g-8">
+            <div class="col-lg-12">
+                <table id="kt_transferencias_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+                    <thead>
+                        <tr class="text-center text-muted fw-bolder fs-7 text-uppercase gs-0">
+                            <th class="text-center">
+                                <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                    <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_transferencias_table .form-check-input" value="1" />
+                                </div>
+                            </th>
+                            <th class="text-center">N° Operación</th>
+                            <th class="text-center">Serie Documento</th>
+                            <th class="text-center">Nro Documento</th>
+                            <th class="text-center">Monto</th>
+                            <th class="text-center">Fecha Pago Negociado</th>
+                            <th class="text-center">OBSERVACION CAVALI</th>
+                            <th class="text-center">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="kt_modal_transferencia" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_modal_transfer_form" class="form" asp-controller="Transferencias" asp-action="Transferir" novalidate="novalidate">
+                <input type="hidden" id="IdFacturas" name="IdFacturas[]" />
+                <div class="modal-header">
+                    <h2>Transferencias</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <div class="flex-row-fluid">
+                        <div class="w-100">
+                            <div class="fv-row mb-5">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Inversionista</span>
+                                </label>
+                                <select id="Inversionista" name="Inversionista" asp-items="@(new SelectList(ViewBag.ListInversionista, "iIdFondeador", "cNombreFondeador"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                                    <option value="">Seleccionar</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_save_button" type="submit" class="btn btn-primary p-transfe">
+                        <span class="indicator-label">Transferir</span>
+                        <span class="indicator-progress">Transfiriendo información... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="kt_modal_traspasar" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_modal_traspasar_form" class="form" asp-controller="Transferencias" asp-action="Traspasar" novalidate="novalidate">
+                <input type="hidden" id="IdFacturasTraspaso" name="IdFacturasTraspaso[]" />
+                <div class="modal-header">
+                    <h2>Traspasos</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <div class="flex-row-fluid">
+                        <div class="w-100">
+                            <div class="fv-row mb-5">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Inversionista</span>
+                                </label>
+                                <select id="InversionistaTraspaso" name="InversionistaTraspaso" asp-items="@(new SelectList(ViewBag.ListInversionista, "iIdFondeador", "cNombreFondeador"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                                    <option value="">Seleccionar</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_save_button_Traspaso" type="submit" class="btn btn-primary p-traspa">
+                        <span class="indicator-label">Traspasar</span>
+                        <span class="indicator-progress">Traspasando información... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="kt_modal_remover" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_modal_remover_form" class="form" asp-controller="Transferencias" asp-action="Remover" novalidate="novalidate">
+                <input type="hidden" id="IdFacturasRemover" name="IdFacturasRemover[]" />
+                <div class="modal-header">
+                    <h2>Remover</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <div class="flex-row-fluid">
+                        <div class="w-100">
+                            <div class="fv-row mb-5">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Motivo de Retiro</span>
+                                </label>
+                                <select id="InversionistaRemover" name="InversionistaRemover" asp-items="@(new SelectList(ViewBag.Motivos, "nId", "cNombre"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                                    <option value="">Seleccionar</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_save_button_Remover" type="submit" class="btn btn-primary p-rem">
+                        <span class="indicator-label">Remover</span>
+                        <span class="indicator-progress">Remover información... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="kt_modal_accion" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_modal_accion_form" class="form" asp-controller="Transferencias" asp-action="Remover" novalidate="novalidate">
+                <input type="hidden" id="IdFacturasAccion" name="IdFacturasAccion[]" />
+                <div class="modal-header">
+                    <h2>Registrar Operación Cavali</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <div class="flex-row-fluid">
+                        <div class="w-100">
+                            <div class="fv-row mb-5">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Operación Cavali</span>
+                                </label>
+                                <select id="InversionistaAccion" name="InversionistaAccion" asp-items="@(new SelectList(ViewBag.Acciones, "nId", "cNombre"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                                    <option value="">Seleccionar</option>
+                                </select>
+                            </div>
+
+                            <div class="fv-row mb-5" id="dvInversionista" style="display:none">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Inversionista</span>
+                                </label>
+                                <select id="InversionistaNew" name="InversionistaNew" asp-items="@(new SelectList(ViewBag.ListInversionista, "iIdFondeador", "cNombreFondeador"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                                    <option value="">Seleccionar</option>
+                                </select>
+                            </div>
+
+                            <div class="fv-row mb-5" id="dvMotivo" style="display:none">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Motivo de Retiro</span>
+                                </label>
+                                <select id="InversionistaAccionRemover" name="InversionistaAccionRemover" asp-items="@(new SelectList(ViewBag.Motivos, "nId", "cNombre"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                                    <option value="">Seleccionar</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_save_button_Accion" type="submit" class="btn btn-primary">
+                        <span class="indicator-label">Guardar</span>
+                        <span class="indicator-progress">Guardar información... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    <script src="~/assets/js/transferencias.js"></script>
+}

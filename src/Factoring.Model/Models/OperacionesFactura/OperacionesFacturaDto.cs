@@ -63,7 +63,16 @@ namespace Factoring.Model.Models.OperacionesFactura
         public int InvoicesFactura { get; set; }
     }
 
+    public class FondeadorGetPermisos
+    {
+        public int iIdFondeador { get; set; }
+        public int iMetodoFondeo { get; set; }
+        public int transferencia { get; set; }
+        public int traspaso { get; set; }
+        public string cNombreFondeador { get; set; }
+        public int cantidadInversionistas { get; set; }
 
+    }
     public class OperacionesFacturaSendMasivo
     {
         public List<OperacionesFacturaInsertMasivotDto> Facturas { get; set; }
@@ -130,14 +139,14 @@ namespace Factoring.Model.Models.OperacionesFactura
 
     public class OperacionesFacturaRequestDataTableDto
     {
-        public int Pageno { get; set; }
-        public string FilterNroOperacion { get; set; }
-        public int PageSize { get; set; }
-        public string Sorting { get; set; }
-        public string SortOrder { get; set; }
-        public string NroOperacion { get; set; }
-        public int Estado { get; set; }
-        public string FechaCreacion { get; set; }
+        public int? Pageno { get; set; }
+        public string? FilterNroOperacion { get; set; }
+        public int? PageSize { get; set; }
+        public string? Sorting { get; set; }
+        public string? SortOrder { get; set; }
+        public string? NroOperacion { get; set; }
+        public int? Estado { get; set; }
+        public string? FechaCreacion { get; set; }
     }
 
 

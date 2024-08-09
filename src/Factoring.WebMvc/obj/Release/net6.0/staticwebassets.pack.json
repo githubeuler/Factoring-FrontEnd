@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\assets\\images\\logos\\favicon_old.ico"
     },
     {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo circular.png",
+      "PackagePath": "staticwebassets\\assets\\images\\logos\\logo circular.png"
+    },
+    {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\images\\logos\\logo-color-old.png",
       "PackagePath": "staticwebassets\\assets\\images\\logos\\logo-color-old.png"
     },
@@ -723,6 +727,10 @@
     {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\upload\\20611541555-01-F001-00000051.xml",
       "PackagePath": "staticwebassets\\assets\\upload\\20611541555-01-F001-00000051.xml"
+    },
+    {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\upload\\20611541555-01-F001-00000054.xml",
+      "PackagePath": "staticwebassets\\assets\\upload\\20611541555-01-F001-00000054.xml"
     },
     {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\favicon.ico",

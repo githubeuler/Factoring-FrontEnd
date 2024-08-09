@@ -54,7 +54,7 @@ namespace Factoring.Service.Proxies
         public async Task<ResponseData<List<AdquirienteResponseDatatableDto>>> GetAllListAdquiriente(AdquirienteRequestDatatableDto model)
         {
             var client = _proxyHttpClient.GetHttp();
-            var response = await client.GetAsync($"adquiriente?Pageno={model.Pageno}&PageSize={model.PageSize}" +
+            var response = await client.GetAsync($"Aceptante?Pageno={model.Pageno}&PageSize={model.PageSize}" +
             $"&Sorting={model.Sorting}&SortOrder={model.SortOrder}&FilterRuc={model.FilterRuc}" +
             $"&FilterRazon={model.FilterRazon}" +
             $"&FilterIdPais={model.FilterIdPais}&FilterFecCrea={model.FilterFecCrea}" +
