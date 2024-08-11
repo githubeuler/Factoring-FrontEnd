@@ -30,8 +30,8 @@ namespace Factoring.WebMvc.Controllers
         private readonly IContactoAceptanteProxy _contactoAceptanteProxy;
         private readonly IAdquirienteUbicacionProxy _adquirienteUbicacionProxy;
         private readonly IUbigeoProxy _ubigeoProxy;
-        private readonly ILineaAdquirienteProxy _lineaAdquirienteProxy;
-        private readonly IComentariosProxy _comentariosProxy;
+        //private readonly ILineaAdquirienteProxy _lineaAdquirienteProxy;
+        //private readonly IComentariosProxy _comentariosProxy;
         //private readonly IDivisoExternProxy _divisoExternProxy;
         private readonly ICatalogoProxy _catalogoProxy;
         private readonly IFondeadorProxy _fondeadorProxy;
@@ -46,8 +46,8 @@ namespace Factoring.WebMvc.Controllers
             IContactoAceptanteProxy contactoAceptanteProxy,
             IAdquirienteUbicacionProxy adquirienteUbicacionProxy,
             IUbigeoProxy ubigeoProxy,
-            ILineaAdquirienteProxy lineaAdquirienteProxy,
-            IComentariosProxy comentariosProxy,
+            //ILineaAdquirienteProxy lineaAdquirienteProxy,
+            //IComentariosProxy comentariosProxy,
             //IDivisoExternProxy divisoExternProxy,
              ICatalogoProxy catalogoProxy,
              IFondeadorProxy fondeadorProxy
@@ -62,8 +62,8 @@ namespace Factoring.WebMvc.Controllers
             _contactoAceptanteProxy= contactoAceptanteProxy;
             _adquirienteUbicacionProxy = adquirienteUbicacionProxy;
             _ubigeoProxy = ubigeoProxy;
-            _lineaAdquirienteProxy = lineaAdquirienteProxy;
-            _comentariosProxy = comentariosProxy;
+            //_lineaAdquirienteProxy = lineaAdquirienteProxy;
+            //_comentariosProxy = comentariosProxy;
             //_divisoExternProxy = divisoExternProxy;
             _catalogoProxy = catalogoProxy;
             _fondeadorProxy = fondeadorProxy;
@@ -194,38 +194,6 @@ namespace Factoring.WebMvc.Controllers
             }
         }
 
-        //public async Task<IActionResult> GetPartial(int paramId)
-        //{
-        //    var adquirienteDetalle = await _aceptanteProxy.GetAceptante((int)paramId);
-        //    ViewBag.UbigeoPais = adquirienteDetalle.Data.FormatoUbigeoPais;
-        //    AdquirienteCreateModel adquirienteData = new();
-        //    if (adquirienteDetalle.Succeeded == false)
-        //    {
-        //        ViewBag.ErrorMsg = "No se encontro información para mostrar.";
-        //    }
-        //    else
-        //    {
-        //        var _adquirienteReporte = await _aceptanteProxy.GetAdquirienteReporte(paramId);
-        //        ViewBag.Succeeded = _adquirienteReporte.Succeeded;
-        //        if (_adquirienteReporte.Succeeded)
-        //        {
-        //            ViewBag.Giradores = _adquirienteReporte.Data.CantidadGiradores;
-        //            ViewBag.Facturas = _adquirienteReporte.Data.Facturas;
-        //        }
-        //        if (ModelState.IsValid)
-        //        {
-        //            adquirienteData.IdAdquiriente = adquirienteDetalle.Data.nIdAdquiriente;
-        //            adquirienteData.NombrePais = adquirienteDetalle.Data.cNombrePais;
-        //            adquirienteData.RegUnicoEmpresa = adquirienteDetalle.Data.cRegUnicoEmpresa;
-        //            adquirienteData.RazonSocial = adquirienteDetalle.Data.cRazonSocial;
-        //            adquirienteData.NombreSector = adquirienteDetalle.Data.cNombreSector;
-        //            adquirienteData.NombreGrupoEconomico = adquirienteDetalle.Data.cNombreGrupoEconomico;
-        //            adquirienteData.NombreEstado = adquirienteDetalle.Data.NombreEstado;
-        //        }
-        //    }
-        //    return PartialView("_PartialDetalle", adquirienteData);
-        //}
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistroProceso(int adquirienteId, AdquirienteCreateModel model)
@@ -352,36 +320,37 @@ namespace Factoring.WebMvc.Controllers
 
         public async Task<IActionResult> GetAllLinea(int adquirienteLineaId)
         {
-            return Json(await _lineaAdquirienteProxy.GetAllListAdquirienteLinea(adquirienteLineaId));
+            return Json(null);
+            //return Json(await _lineaAdquirienteProxy.GetAllListAdquirienteLinea(adquirienteLineaId));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AgregarLinea(AgregarLineaAdquiriente model)
         {
-            var result = await _lineaAdquirienteProxy.Create(new LineaAdquirienteInsertDto
-            {
-                nIdAdquiriente = model.IdAdquiriente,
-                nIdInversionista = model.IdInversionista,
-                nIdTipoMoneda = model.IdTipoMoneda,
-                LineaMeta = model.LineaMeta,
-                LineaDisponible = model.LineaMeta
-            });
-            return Json(result);
+            //var result = await _lineaAdquirienteProxy.Create(new LineaAdquirienteInsertDto
+            //{
+            //    nIdAdquiriente = model.IdAdquiriente,
+            //    nIdInversionista = model.IdInversionista,
+            //    nIdTipoMoneda = model.IdTipoMoneda,
+            //    LineaMeta = model.LineaMeta,
+            //    LineaDisponible = model.LineaMeta
+            //});
+            return Json(null);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarLinea(int adquirienteLineaId)
         {
-            var result = await _lineaAdquirienteProxy.Delete(adquirienteLineaId);
-            return Json(result.Succeeded);
+            //var result = await _lineaAdquirienteProxy.Delete(adquirienteLineaId);
+            return Json(null);
         }
 
         public async Task<IActionResult> GetAllComentariosAdquiriente(int adquirienteId)
         {
-            var comentarios = await _comentariosProxy.GetAllListComentarios(2, adquirienteId);
-            return Json(comentarios);
+            //var comentarios = await _comentariosProxy.GetAllListComentarios(2, adquirienteId);
+            return Json(null);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

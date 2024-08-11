@@ -183,7 +183,6 @@ namespace Factoring.WebMvc.Controllers
             }
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AgregarCavaliFactoring(AgregarCavaliFactoringFondeadorViewModel model)
