@@ -58,6 +58,13 @@ namespace Factoring.Model.ViewModels.Aceptante
         public string NombreSector { get; set; }
         public string NombreGrupoEconomico { get; set; }
         public string NombreEstado { get; set; }
+        public int IdActividadEconomica { get; set; }
+        public string FechaInicioActividades { get; set; }
+        public string FechaFirmaContrato { get; set; }
+        public string Antecedente { get; set; }
+        public int Estado { get; set; }
+
+
     }
     public class AgregarContactoAdquiriente
     {

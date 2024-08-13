@@ -48,6 +48,7 @@ builder.Services.AddTransient<ICavaliFactoringFondeadorProxy, CavaliFactoringFon
 builder.Services.AddTransient<IDocumentoFondeadorProxy, DocumentoFondeadorProxy>();
 builder.Services.AddTransient<IContactoAceptanteProxy, ContactoAceptanteProxy>();
 builder.Services.AddTransient<IAceptanteProxy, AceptanteProxy>();
+builder.Services.AddTransient<IDocumentosAceptanteProxy, DocumentosAceptanteProxy>();
 builder.Services.AddTransient<IDataProxy, DataProxy>();
 var app = builder.Build();
 
