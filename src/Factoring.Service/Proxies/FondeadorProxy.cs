@@ -14,6 +14,7 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<List<FondedorResponseDatatableDto>>> GetAllLisFondeador(FondeadorRequestDatatableDto request);
         Task<ResponseData<int>> Create(FondeadorRegistroRequestDto request);
         Task<ResponseData<FondeadorSingleDto>> GetFondeador(int id);
+        Task<ResponseData<List<FondeadorSingleDto>>> GetFondeadorByTipoFondeo(int id);
         Task<ResponseData<int>> Update(FondeadorUpdateRequestDto model);
         Task<List<DivisoFondeadores>> GetAllListFondeadoreslista();
     }
@@ -63,7 +64,14 @@ namespace Factoring.Service.Proxies
             var data = JsonConvert.DeserializeObject<ResponseData<FondeadorSingleDto>>(json);
             return data;
         }
-
+        public async Task<ResponseData<List<FondeadorSingleDto>>> GetFondeadorByTipoFondeo(int id)
+        {
+            var client = _proxyHttpClient.GetHttp();
+            var response = await client.GetAsync($"Fondeador/lista-fondeadores-byTipoFondeo/{id}");
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<ResponseData<List<FondeadorSingleDto>>>(json);
+            return data;
+        }
         public async Task<ResponseData<int>> Update(FondeadorUpdateRequestDto model)
         {
             try

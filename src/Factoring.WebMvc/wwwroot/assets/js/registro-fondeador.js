@@ -208,7 +208,10 @@ var Fondeador = function () {
                                     $(window).attr('location', globalPath + 'Fondeador/Registro?fondeadorId=' + data.data);
                                 });
                             } else {
-                                messageError('Ocurrio un error en el proceso.');
+                                //messageError('Ocurrio un error en el proceso.');
+                                saveButton.removeAttribute('data-kt-indicator');
+                                saveButton.disabled = false;
+                                messageError(data.message);
                             }
                         },
                         error: function (jqXHR, textStatus, errorThrown) {

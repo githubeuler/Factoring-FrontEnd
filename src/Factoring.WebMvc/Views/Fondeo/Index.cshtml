@@ -1,0 +1,331 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model FondeoViewModel
+@{
+    ViewData["Title"] = "Bandeja de Fondeos";
+}
+<div class="card">
+    <div class="card-header border-0 pt-6">
+        <div class="card-title">
+            <h2 class="fw-bolder">Listado de Registros</h2>
+        </div>
+      @*   <div class="card-toolbar">
+            <div class="d-flex justify-content-end" data-kt-girador-table-toolbar="base">
+                <a asp-controller="Fondeador" asp-action="Registro" class="btn btn-sm btn-primary">
+                    <i class="las la-plus fs-3"></i> Nuevo Registro
+                </a>
+            </div>
+            <div class="d-flex justify-content-end align-items-center d-none" data-kt-girador-table-toolbar="selected">
+                <div class="fw-bolder me-5">
+                    <span class="me-2" data-kt-girador-table-select="selected_count"></span>Seleccionados
+                </div>
+                <button type="button" class="btn btn-sm btn-danger" data-kt-girador-table-select="delete_selected">Eliminar Registros</button>
+            </div>
+        </div> *@
+    </div>
+    <div class="card-body pt-5">
+        <form id="kt_search_form" class="form w-100 mt-5 mb-10 align-items-center">
+            <div class="row g-9 mb-7">
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="NroOperacion" class="form-control form-control-solid ps-10" maxlength="11" placeholder="Buscar por Nro Operacion">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="Fondeador" class="form-control form-control-solid ps-10" maxlength="200" placeholder="Buscar por Fondeador Asignado">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="Girador" class="form-control form-control-solid ps-10" placeholder="Buscar por Razon Social Girador">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    @*<select data-control="select2" aria-label="Sector" data-placeholder="Buscar por Estado" class="form-select form-select-solid fw-bolder">
+                    <option value="">Seleccionar</option>
+                    </select>*@
+                  @*   <select asp-for="IdEstado" asp-items="@(new SelectList(ViewBag.Estados, "nId", "cNombre"))" class="form-select form-select-solid" data-control="select2" aria-label="Fondeador" data-placeholder="Buscar por Fondeador" data-allow-clear="true">
+                        <option value="">Seleccionar</option>
+                    </select> *@
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="FechaRegistro" class="form-control form-control-solid ps-10" placeholder="Buscar por Fecha de Registro">
+                    </div>
+
+                </div>
+                 <div class="col-lg-4">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="EstadoFondeo" class="form-control form-control-solid ps-10" placeholder="Buscar por Estado del Fondeo">
+                    </div>
+                </div>
+
+                <div class="col-lg-4 text-center">
+                    <button id="kt_search_button" type="button" class="btn btn-primary">
+                        <span class="indicator-label">Buscar</span>
+                        <span class="indicator-progress">Buscando... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                    <button id="kt_search_clear" type="button" class="btn btn-light">
+                        <span>Limpiar</span>
+                    </button>
+                </div>
+
+
+
+
+            </div>
+            @* <div class="row g-9 mb-7">
+            <div class="col-lg-12 text-end">
+            <button id="kt_search_button" type="button" class="btn btn-warning">
+            <span class="indicator-label">Buscar</span>
+            <span class="indicator-progress">Buscando... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            </button>
+            <button id="kt_search_clear" type="button" class="btn btn-light">
+            <span>Limpiar</span>
+            </button>
+            </div>
+            </div> *@
+        </form>
+        <div class="row g-8">
+            <div class="col-lg-12">
+                <table id="kt_fondeo_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+                    <thead>
+                        <tr class="text-center text-muted fw-bolder fs-7 text-uppercase gs-0">
+                            <th class="text-center">
+                                <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                    <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_fondeo_table .form-check-input" value="1" />
+                                </div>
+                            </th>
+                            <th class="text-center">Operacion</th>
+                            <th class="text-center">Girador</th>
+                            <th class="text-center">Nro Asignacion</th>
+                            <th class="text-center">Fondeador Asignado</th>
+                            <th class="text-center">Fecha de Asignacion</th>
+                            <th class="text-center">Estado Fondeo</th>
+                            <th class="text-center">Moneda</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@* <div id="kt_modal_actualizar_estado_fonde" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_modal_evaluacion_form" class="form" asp-controller="Operacion" asp-action="ResultadoEvaluacion" novalidate="novalidate">
+                <input type="hidden" id="nIdOperacionEval" name="nIdOperacionEval" />
+                <div class="modal-header">
+                    <h2>Actualización de Estado Fondeo</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <div class="flex-row-fluid">
+                        <div class="w-100">
+                            <div class="fv-row mb-5">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Estados del Fondeo</span>
+                                </label>
+                                <select id="nIdEstadoEvaluacion" name="nIdEstadoEvaluacion" asp-items="@(new SelectList(ViewBag.EstadoEvaluacion, "nId", "cNombre"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                                    <option value="">Seleccionar</option>
+                                </select>
+                            </div>
+
+                            <div class="fv-row mb-5">
+                                <textarea id="cComentario" name="cComentario" class="form-control form-control-solid" rows="4" maxlength="3000" placeholder="Ingresar comentario..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_save_estado_button" type="submit" class="btn btn-primary">
+                        <span class="indicator-label">Grabar</span>
+                        <span class="indicator-progress">Registrando registros... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> *@
+
+
+<div id="kt_modal_registro_datos_fondeo" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_modal_registro_fondeo_form" class="form" asp-controller="Fondeo" asp-action="ActualizarFondeo" novalidate="novalidate">
+                <input type="hidden" id="IdOperacion" name="IdOperacion" />
+                <input type="hidden" id="IdTipoProducto" name="IdTipoProducto" />
+                <input type="hidden" id="IdFondeadorFactura" name="IdFondeadorFactura" />
+                <input type="hidden" id="IdFondeadorVal" name="IdFondeadorVal" />
+             
+                <div class="modal-header">
+                    <h2>Registro de Datos Fondeo</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <div class="row g-9 mb-12">
+                        <div class="col-lg-12">
+
+                        <div class="fv-row mb-5 position-relative">
+                            <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                <span class="required">Fondeador</span>
+                            </label>
+                                <select id="IdFondeador"  class="form-select form-select-solid" data-control="select2" aria-label="Fondeador" data-placeholder="Buscar por Fondeador" data-allow-clear="true">
+                                    <option value="">Seleccionar</option>
+                                </select>
+                        </div>
+
+
+                    </div>
+                    </div>
+                    <div class="row g-9 mb-7" id="sec-factoring" style="display:none">
+
+                        <div class="col-lg-4">
+
+                            <div class="fv-row mb-5 position-relative">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">% Capital Financiado</span>
+                                </label>
+                                <input type="text" asp-for="PorCapitalFinanciado" class="form-control form-control-solid ps-10" maxlength="11" placeholder="">
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-4">
+
+                            <div class="fv-row mb-5 position-relative">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">% Tasa Anual Fondeo</span>
+                                </label>
+                                <input type="text" asp-for="PorTasaAnualFondeo" class="form-control form-control-solid ps-10" maxlength="11" placeholder="">
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-4">
+
+                            <div class="fv-row mb-5 position-relative">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">% Tasa Mora Fondeo</span>
+                                </label>
+                                <input type="text" asp-for="PorTasaMoraFondeo" class="form-control form-control-solid ps-10" maxlength="11" placeholder="">
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="row g-9 mb-7" id="sec-cobranzaLibre" style="display:none">
+
+                        <div class="col-lg-4">
+
+                            <div class="fv-row mb-5 position-relative">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">% Tasa Mensual</span>
+                                </label>
+                                <input type="text" asp-for="PorTasaMensual" class="form-control form-control-solid ps-10" maxlength="11" placeholder="">
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-4">
+
+                            <div class="fv-row mb-5 position-relative">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">% Comisi&oacute;n Factura</span>
+                                </label>
+                                <input type="text" asp-for="PorComisionFactura" class="form-control form-control-solid ps-10" maxlength="11" placeholder="">
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-4">
+
+                            <div class="fv-row mb-5 position-relative">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">% Spread</span>
+                                </label>
+                                <input type="text" asp-for="PorSpread" class="form-control form-control-solid ps-10" maxlength="11" placeholder="">
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="row g-9 mb-7">
+
+                        <div class="col-lg-4">
+
+                            <div class="fv-row mb-5 position-relative">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="">Fecha Desembolso</span>
+                                </label>
+                                <input type="text" asp-for="FechaDesembolso" class="form-control form-control-solid ps-10" maxlength="11" placeholder="">
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-4">
+
+                            <div class="fv-row mb-5 position-relative">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="">Fecha Cobranza</span>
+                                </label>
+                                <input type="text" asp-for="FechaCobranza" class="form-control form-control-solid ps-10" maxlength="11" placeholder="">
+                            </div>
+
+
+                        </div>
+                       
+
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_save_fondeo_button" type="submit" class="btn btn-primary">
+                        <span class="indicator-label">Grabar</span>
+                        <span class="indicator-progress">Registrando... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    <script src="~/assets/js/registro-fondeo.js"></script>
+}

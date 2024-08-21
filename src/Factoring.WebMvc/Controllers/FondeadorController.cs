@@ -1,8 +1,10 @@
-﻿using Factoring.Model.Models.Fondeador;
+﻿using Factoring.Model;
+using Factoring.Model.Models.Fondeador;
 using Factoring.Model.ViewModels;
 using Factoring.Service.Proxies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 using System.Security.Claims;
 
 namespace Factoring.WebMvc.Controllers
@@ -123,6 +125,22 @@ namespace Factoring.WebMvc.Controllers
                 throw;
             }
         }
+
+        public async Task<JsonResult> ListadoRegistrosByTipoFondeo(int tipoFondeo)
+        {
+            try
+            {
+
+                var data = await _fondeadorProxy.GetFondeadorByTipoFondeo(tipoFondeo);
+                return Json(new { data = data.Data });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistrarFondeador(int fondeadorId, FondeadorRegistroViewModel fondeador)
@@ -159,14 +177,23 @@ namespace Factoring.WebMvc.Controllers
                         }
                         else
                         {
-                            var requestVentaCartera = await _fondeadorProxy.Create(new FondeadorRegistroRequestDto()
+                            var exists = await GetFondeaor(fondeador.DOI);
+                            if (exists == null)
                             {
-                                IdDocumento = fondeador.IdTipoDocumento,
-                                NroDocumento = fondeador.DOI,
-                                NombreFondeador = fondeador.RazonSocial,
-                                UsuarioCreador = userName
-                            });
-                            return Json(requestVentaCartera);
+                                var requestVentaCartera = await _fondeadorProxy.Create(new FondeadorRegistroRequestDto()
+                                {
+                                    IdDocumento = fondeador.IdTipoDocumento,
+                                    NroDocumento = fondeador.DOI,
+                                    NombreFondeador = fondeador.RazonSocial,
+                                    UsuarioCreador = userName
+                                });
+                                return Json(requestVentaCartera);
+                            }
+                            else
+                            {
+                                return Json(new ResponseData<int>() { Succeeded = false, Message = "El Fondeador " + fondeador.DOI + " ya existe." });
+                            }
+                           
                         }
                     }
                     catch (Exception)
@@ -258,5 +285,32 @@ namespace Factoring.WebMvc.Controllers
             var bytesFile = await _filesProxy.DownloadFile(ruta.Replace("/", @"\") + filename);
             return File(bytesFile, "application/octet-stream", filename);
         }
+
+        private async Task<FondedorResponseDatatableDto> GetFondeaor(string sRUC)
+        {
+            FondedorResponseDatatableDto oRecord = null;
+            try
+            {
+                var requestData = new FondeadorRequestDatatableDto();
+                requestData.Pageno = 0;
+                requestData.PageSize = 5;
+                requestData.Sorting = "nIdFondeador";
+                requestData.SortOrder = "asc";
+                requestData.FilterDoi = sRUC;
+                requestData.IdEstado = 1;
+                var data = await _fondeadorProxy.GetAllLisFondeador(requestData);
+
+                if (data.Data.Count > 0)
+                    oRecord = data.Data[0];
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRecord;
+        }
+
+
     }
 }
