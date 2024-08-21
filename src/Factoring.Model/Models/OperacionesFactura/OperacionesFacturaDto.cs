@@ -35,6 +35,7 @@ namespace Factoring.Model.Models.OperacionesFactura
         public string UsuarioCreador { get; set; }
         public List<int> Invoices { get; set; }
         public int InvoicesFactura { get; set; }
+        public int nCategoriaFondeador { get; set; }
     }
     public class OperacionesFacturaValidaAsignacion
     {

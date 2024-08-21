@@ -200,6 +200,7 @@ namespace Factoring.WebMvc.Controllers
                 {
                     var MensajeRetorno = new ResponseData<ResponseCavaliInvoice4012>();
                     int nIdFondeador = 0;
+                    int nCategoriaFondeador = 0;
                     var resultEval = await _facturaOperacionesProxy.ObtenerValidacionAsignaciones(new RequestOperacionesFacturaValidacion
                     {
                         nLstIdFacturas = IdFacturasAccion,
@@ -215,10 +216,12 @@ namespace Factoring.WebMvc.Controllers
                         if (listaFacturas.Count == 1)
                         {
                             nIdFondeador = nCantidadConfecha > 0 ? listaFacturas[0].nIdFondeador : throw new Exception("No se procesaron las facturas.");
+                            nCategoriaFondeador = nCantidadConfecha > 0 ? listaFacturas[0].nIdCategoria : throw new Exception("No se procesaron las facturas.");
                         }
                         else
                         {
                             nIdFondeador = listaFacturas[nCantidadConfecha == 1 ? 0 : 1].nIdFondeador;
+                            nCategoriaFondeador = listaFacturas[nCantidadConfecha == 1 ? 0 : 1].nIdCategoria;
                         }
                     }
 
@@ -262,10 +265,11 @@ namespace Factoring.WebMvc.Controllers
                             FlagRegisterProcess = 0,
                             FlagAcvProcess = 0,
                             FlagTransferProcess = 1,
-                            CodParticipante = 0,
+                            CodParticipante = nIdFondeador,
                             UsuarioCreador = userName,
                             InvoicesFactura = factura,
-                            Invoices = IdFacturasAccion
+                            Invoices = IdFacturasAccion,
+                            nCategoriaFondeador= nCategoriaFondeador
                         });
                         nNumeroProcesados++;
                         MensajeRetorno = result;
