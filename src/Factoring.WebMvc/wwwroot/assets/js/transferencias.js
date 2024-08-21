@@ -5,7 +5,7 @@ var Transferencias = function () {
 
     $('#InversionistaAccion').on('change', function () {
         const selectedValue = $(this).val();
-
+        toggleToolbarsValidarNew();
       
          if (selectedValue == "2") {
             $('#dvInversionista').show();
@@ -78,8 +78,8 @@ var Transferencias = function () {
             columns: [
                 { data: 'nIdOperacionesFacturas', 'Width': '10%', class: 'text-left' },
                 { data: 'nNroOperacion', 'Width': '10%', class: 'text-center' },
-                { data: 'serie', 'Width': '20%', class: 'text-left' },
-                { data: 'numero', 'Width': '20%', class: 'text-left' },
+                { data: 'cNroDocumento', 'Width': '20%', class: 'text-left' },
+                /*{ data: 'numero', 'Width': '20%', class: 'text-left' },*/
                 { data: 'nMonto', 'Width': '15%', class: 'text-end' },
                 {
                     data: 'dFechaPagoNegociado', 'Width': '10%', class: 'text-center', render: function (value) {
@@ -116,10 +116,10 @@ var Transferencias = function () {
         $('#btn_transferir, #btn_traspaso').hide();
         var container = document.querySelector('#kt_transferencias_table');
         var checkboxes = container.querySelectorAll('[type="checkbox"]');
-        var registerSelected = document.querySelector('[data-kt-transferencias-table-select="register_selected"]');
-        var transferSelected = document.querySelector('[data-kt-transferencias-table-select="transfer_selected"]');
-        var traspasarSelected = document.querySelector('[data-kt-transferencias-table-select="traspasar_selected"]');
-        var removerSelected = document.querySelector('[data-kt-transferencias-table-select="remover_selected"]');
+        //var registerSelected = document.querySelector('[data-kt-transferencias-table-select="register_selected"]');
+        //var transferSelected = document.querySelector('[data-kt-transferencias-table-select="transfer_selected"]');
+        //var traspasarSelected = document.querySelector('[data-kt-transferencias-table-select="traspasar_selected"]');
+        //var removerSelected = document.querySelector('[data-kt-transferencias-table-select="remover_selected"]');
         var accionSelected = document.querySelector('[data-kt-transferencias-table-select="accion_selected"]');
         checkboxes.forEach(c => {
             c.addEventListener('click', function () {
@@ -130,7 +130,7 @@ var Transferencias = function () {
         });
 
 
-        registerSelected.addEventListener('click', function () {
+        accionSelected.addEventListener('click', function () {
             Swal.fire({
                 text: '¿Está seguro que quiere continuar con el proceso de Registro y Anotación para las facturas seleccionadas?',
                 icon: 'warning',
@@ -194,77 +194,78 @@ var Transferencias = function () {
                 }
             });
         });
-        transferSelected.addEventListener('click', function () {
-            Swal.fire({
-                text: '¿Está seguro que quiere continuar con el proceso de Transferencia para las facturas seleccionadas?',
-                icon: 'warning',
-                showCancelButton: true,
-                buttonsStyling: false,
-                showLoaderOnConfirm: true,
-                confirmButtonText: 'Sí, continuar',
-                cancelButtonText: 'Cancelar',
-                customClass: {
-                    confirmButton: 'btn fw-bold btn-danger',
-                    cancelButton: 'btn fw-bold btn-active-light-primary'
-                },
-            }).then(function (result) {
-                if (result.value) {
-                    var IdFacturas = $.map($('input.checkbox-main:checkbox:checked'), function (e, i) {
-                        return +e.value;
-                    });
-                    $('#kt_modal_transferencia').find('input:hidden[name="IdFacturas[]"]').val(IdFacturas);
-                    $('#kt_modal_transferencia').modal('show');
-                }
-            });
-        });
 
-        traspasarSelected.addEventListener('click', function () {
-            Swal.fire({
-                text: '¿Está seguro que quiere continuar con el proceso de traspaso para las facturas seleccionadas?',
-                icon: 'warning',
-                showCancelButton: true,
-                buttonsStyling: false,
-                showLoaderOnConfirm: true,
-                confirmButtonText: 'Sí, continuar',
-                cancelButtonText: 'Cancelar',
-                customClass: {
-                    confirmButton: 'btn fw-bold btn-danger',
-                    cancelButton: 'btn fw-bold btn-active-light-primary'
-                },
-            }).then(function (result) {
-                if (result.value) {
-                    var IdFacturas = $.map($('input.checkbox-main:checkbox:checked'), function (e, i) {
-                        return +e.value;
-                    });
-                    $('#kt_modal_traspasar').find('input:hidden[name="IdFacturasTraspaso[]"]').val(IdFacturas);
-                    $('#kt_modal_traspasar').modal('show');
-                }
-            });
-        });
-        removerSelected.addEventListener('click', function () {
-            Swal.fire({
-                text: '¿Está seguro que quiere continuar con el proceso de remover para las facturas seleccionadas?',
-                icon: 'warning',
-                showCancelButton: true,
-                buttonsStyling: false,
-                showLoaderOnConfirm: true,
-                confirmButtonText: 'Sí, continuar',
-                cancelButtonText: 'Cancelar',
-                customClass: {
-                    confirmButton: 'btn fw-bold btn-danger',
-                    cancelButton: 'btn fw-bold btn-active-light-primary'
-                },
-            }).then(function (result) {
-                if (result.value) {
-                    var IdFacturas = $.map($('input.checkbox-main:checkbox:checked'), function (e, i) {
-                        return +e.value;
-                    });
-                    $('#kt_modal_remover').find('input:hidden[name="IdFacturasRemover[]"]').val(IdFacturas);
-                    $('#kt_modal_remover').modal('show');
-                }
-            });
-        });
 
+
+        //transferSelected.addEventListener('click', function () {
+        //    Swal.fire({
+        //        text: '¿Está seguro que quiere continuar con el proceso de Transferencia para las facturas seleccionadas?',
+        //        icon: 'warning',
+        //        showCancelButton: true,
+        //        buttonsStyling: false,
+        //        showLoaderOnConfirm: true,
+        //        confirmButtonText: 'Sí, continuar',
+        //        cancelButtonText: 'Cancelar',
+        //        customClass: {
+        //            confirmButton: 'btn fw-bold btn-danger',
+        //            cancelButton: 'btn fw-bold btn-active-light-primary'
+        //        },
+        //    }).then(function (result) {
+        //        if (result.value) {
+        //            var IdFacturas = $.map($('input.checkbox-main:checkbox:checked'), function (e, i) {
+        //                return +e.value;
+        //            });
+        //            $('#kt_modal_transferencia').find('input:hidden[name="IdFacturas[]"]').val(IdFacturas);
+        //            $('#kt_modal_transferencia').modal('show');
+        //        }
+        //    });
+        //});
+        //traspasarSelected.addEventListener('click', function () {
+        //    Swal.fire({
+        //        text: '¿Está seguro que quiere continuar con el proceso de traspaso para las facturas seleccionadas?',
+        //        icon: 'warning',
+        //        showCancelButton: true,
+        //        buttonsStyling: false,
+        //        showLoaderOnConfirm: true,
+        //        confirmButtonText: 'Sí, continuar',
+        //        cancelButtonText: 'Cancelar',
+        //        customClass: {
+        //            confirmButton: 'btn fw-bold btn-danger',
+        //            cancelButton: 'btn fw-bold btn-active-light-primary'
+        //        },
+        //    }).then(function (result) {
+        //        if (result.value) {
+        //            var IdFacturas = $.map($('input.checkbox-main:checkbox:checked'), function (e, i) {
+        //                return +e.value;
+        //            });
+        //            $('#kt_modal_traspasar').find('input:hidden[name="IdFacturasTraspaso[]"]').val(IdFacturas);
+        //            $('#kt_modal_traspasar').modal('show');
+        //        }
+        //    });
+        //});
+        //removerSelected.addEventListener('click', function () {
+        //    Swal.fire({
+        //        text: '¿Está seguro que quiere continuar con el proceso de remover para las facturas seleccionadas?',
+        //        icon: 'warning',
+        //        showCancelButton: true,
+        //        buttonsStyling: false,
+        //        showLoaderOnConfirm: true,
+        //        confirmButtonText: 'Sí, continuar',
+        //        cancelButtonText: 'Cancelar',
+        //        customClass: {
+        //            confirmButton: 'btn fw-bold btn-danger',
+        //            cancelButton: 'btn fw-bold btn-active-light-primary'
+        //        },
+        //    }).then(function (result) {
+        //        if (result.value) {
+        //            var IdFacturas = $.map($('input.checkbox-main:checkbox:checked'), function (e, i) {
+        //                return +e.value;
+        //            });
+        //            $('#kt_modal_remover').find('input:hidden[name="IdFacturasRemover[]"]').val(IdFacturas);
+        //            $('#kt_modal_remover').modal('show');
+        //        }
+        //    });
+        //});
         accionSelected.addEventListener('click', function () {
             Swal.fire({
                 text: '¿Está seguro que quiere continuar con el proceso de envío a registrar a CAVALI las facturas seleccionadas?',
@@ -297,6 +298,7 @@ var Transferencias = function () {
         var selectedCount = document.querySelector('[data-kt-transferencias-table-select="selected_count"]');
         var allCheckboxes = container.querySelectorAll('tbody [type="checkbox"]');
         var checkedState = false;
+        //var pnIdOpcionOperacion = $("#InversionistaAccion").val();
         var count = 0;
         $('#btn_traspaso').hide();
         $('#btn_transferir').hide();
@@ -309,7 +311,93 @@ var Transferencias = function () {
         var IdFacturas = $.map($('input.checkbox-main:checkbox:checked'), function (e, i) {
             return +e.value;
         });
+        $('#kt_modal_accion').find('input:hidden[name="IdFacturasAccion[]"]').val(IdFacturas);
         if (checkedState) {
+                selectedCount.innerHTML = count;
+                toolbarSelected.classList.remove('d-none');
+        }
+        //if (checkedState) {
+        //    setTimeout(function () {
+        //        $.ajax({
+        //            type: 'POST',
+        //            dataType: 'json',
+        //            url: globalPath + 'Transferencias/ObtenerAsignaciones',
+        //            xhrFields: {
+        //                withCredentials: true
+        //            },
+        //            data: {
+        //                IdFacturas: IdFacturas,
+        //                nIdOpcionOperacion: pnIdOpcionOperacion
+        //            },
+        //            success: function (data) {
+        //                if (typeof data.data != 'undefined') {
+        //                    console.log(data);
+        //                    if (typeof data.data.listaFondeador[0].cantidadInversionistas > 1) {
+        //                        //saveButton.removeAttribute('data-kt-indicator');
+        //                        //saveButton.disabled = false;
+        //                        messageError('Las facturas seleccionadas tienen mas de UN INVERSIONISTA asociado.');
+        //                    }
+        //                    else {
+        //                        if (typeof data.data.listaFondeador[0].iIdFondeador != 'undefined') {
+        //                            $('#InversionistaTraspaso').empty().change();
+        //                            $('#Inversionista').empty().change();
+        //                            //if (data.data[0].traspaso == 1) {
+        //                            //    $('#btn_traspaso').show();
+        //                            //    $.each(data.data, function () {
+        //                            //        $('#InversionistaTraspaso').append($("<option />").val(this.iIdFondeador).text(this.cNombreFondeador));
+        //                            //    });
+        //                            //} else {
+        //                            //    $('#btn_traspaso').hide();
+        //                            //}
+
+        //                            if (data.data.listaFondeador[0].transferencia == 1) {
+        //                                $('#btn_transferir').show();
+        //                                $.each(data.data, function () {
+        //                                    $('#Inversionista').append($("<option />").val(this.iIdFondeador).text(this.cNombreFondeador));
+        //                                });
+        //                            } else {
+        //                                $('#btn_transferir').hide();
+        //                            }
+
+
+        //                        }
+        //                        else {
+        //                            //saveButton.removeAttribute('data-kt-indicator');
+        //                            //saveButton.disabled = false;
+        //                            messageError(data);
+        //                        }
+        //                    }
+        //                }
+        //                else {
+        //                    $('#btn_traspaso').hide();
+        //                    $('#btn_transferir').hide();
+        //                    $('#Inversionista').empty().trigger("change");
+        //                    //saveButton.removeAttribute('data-kt-indicator');                            
+        //                    //saveButton.disabled = false;
+        //                    messageError(data);
+        //                }
+        //            },
+        //            error: function (jqXHR, textStatus, errorThrown) {
+        //                //saveButton.removeAttribute('data-kt-indicator');
+        //                //saveButton.disabled = false;
+        //                messageError(errorThrown);
+        //            }
+        //        });
+        //    },
+        //   2000);
+        //    selectedCount.innerHTML = count;
+        //    toolbarSelected.classList.remove('d-none');
+        //} else {
+        //    toolbarSelected.classList.add('d-none');
+        //}
+    }
+
+
+
+
+    var toggleToolbarsValidar = function () {
+        if ($("#IdFacturasAccion").val().length > 0) {
+            var pnIdOpcionOperacion = $("#InversionistaAccion").val();
             setTimeout(function () {
                 $.ajax({
                     type: 'POST',
@@ -319,43 +407,31 @@ var Transferencias = function () {
                         withCredentials: true
                     },
                     data: {
-                        IdFacturas: IdFacturas
+                        IdFacturas: $("#IdFacturasAccion").val(),
+                        nIdOpcionOperacion: pnIdOpcionOperacion
                     },
                     success: function (data) {
-                        if (typeof data.data != 'undefined') {
+                        console.log('looo::',data);
+                        if (typeof data.data.listaFondeador != 'undefined') {
                             console.log(data);
-                            if (typeof data.data[0].cantidadInversionistas > 1) {
-                                //saveButton.removeAttribute('data-kt-indicator');
-                                //saveButton.disabled = false;
+                            if (typeof data.data.listaFondeador[0].cantidadInversionistas > 1) {
                                 messageError('Las facturas seleccionadas tienen mas de UN INVERSIONISTA asociado.');
                             }
                             else {
-                                if (typeof data.data[0].iIdFondeador != 'undefined') {
+                                if (typeof data.data.listaFondeador[0].iIdFondeador != 'undefined') {
                                     $('#InversionistaTraspaso').empty().change();
                                     $('#Inversionista').empty().change();
-                                    if (data.data[0].traspaso == 1) {
-                                        $('#btn_traspaso').show();
-                                        $.each(data.data, function () {
-                                            $('#InversionistaTraspaso').append($("<option />").val(this.iIdFondeador).text(this.cNombreFondeador));
-                                        });
-                                    } else {
-                                        $('#btn_traspaso').hide();
-                                    }
-
-                                    if (data.data[0].transferencia == 1) {
-                                        $('#btn_transferir').show();
+                                    if (data.data.listaFondeador[0].transferencia == 1) {
+                                       /* $('#btn_transferir').show();*/
                                         $.each(data.data, function () {
                                             $('#Inversionista').append($("<option />").val(this.iIdFondeador).text(this.cNombreFondeador));
                                         });
-                                    } else {
-                                        $('#btn_transferir').hide();
                                     }
-
-
+                                    //else {
+                                    //    $('#btn_transferir').hide();
+                                    //}
                                 }
                                 else {
-                                    //saveButton.removeAttribute('data-kt-indicator');
-                                    //saveButton.disabled = false;
                                     messageError(data);
                                 }
                             }
@@ -364,24 +440,87 @@ var Transferencias = function () {
                             $('#btn_traspaso').hide();
                             $('#btn_transferir').hide();
                             $('#Inversionista').empty().trigger("change");
-                            //saveButton.removeAttribute('data-kt-indicator');                            
-                            //saveButton.disabled = false;
                             messageError(data);
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        //saveButton.removeAttribute('data-kt-indicator');
-                        //saveButton.disabled = false;
                         messageError(errorThrown);
                     }
                 });
             }, 2000);
-            selectedCount.innerHTML = count;
-            toolbarSelected.classList.remove('d-none');
-        } else {
-            toolbarSelected.classList.add('d-none');
+            //selectedCount.innerHTML = count;
+            //toolbarSelected.classList.remove('d-none');
+        }
+        //else {
+        //    toolbarSelected.classList.add('d-none');
+        //}
+    }
+
+
+    var toggleToolbarsValidarNew = function () {
+        if ($("#IdFacturasAccion").val().length > 0) {
+            var pnIdOpcionOperacion = $("#InversionistaAccion").val();
+            var mensaje;
+            if (pnIdOpcionOperacion == 1) {
+                mensaje = 'Las facturas seleccionadas deben estar en estado Registrado.'
+            }
+            else if (pnIdOpcionOperacion == 2) {
+                mensaje = 'Las facturas seleccionadas deben estar en estado Registrado.'
+            }
+            else {
+                //3
+                mensaje = 'Las facturas seleccionadas no deben estar en estado Desembolsado.'
+
+            }
+
+            setTimeout(function () {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: globalPath + 'Transferencias/ObtenerAsignacionesCavali',
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    data: {
+                        IdFacturas: $("#IdFacturasAccion").val(),
+                        nIdOpcionOperacion: pnIdOpcionOperacion
+                    },
+                    success: function (data) {
+                        if (typeof data.data.listaFacturas != 'undefined') {
+                            console.log(data);
+
+                            if (pnIdOpcionOperacion == 1 || pnIdOpcionOperacion == 3) {
+                                if (data.data.nActivarTransferencia == 0 && data.data.nActivarTransferencia != null  ) {
+                                    messageError(mensaje);
+                                }
+                            }
+                            else {
+
+                                if (data.data.listaFacturas[0].nCantOperacion > 1 ) {
+                                    messageError('Las facturas seleccionadas se encuentran en diferente Nro de operación');
+                                }
+                                else if (data.data.listaFacturas[0].nCantOperacion = 0) {
+                                    messageError('Las facturas seleccionadas no se encuentran aptas para transferencia');
+                                }
+                                else if (data.data.listaFacturas[0].nCantFacturasRecepcionada != data.data.listaFondeador[0].nCantFacturasEvaluada) {
+                                    messageError('Una o mas de una factura seleccionada no se encuentra en estado desembolsado.');
+                                }
+                            }
+                        }
+                        else {
+                            messageError(data);
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        messageError(errorThrown);
+                    }
+                });
+            }, 2000);
         }
     }
+
+
+
     var handleFormTransferir = function () {
         var form = document.getElementById('kt_modal_transfer_form');
         if (!form) {

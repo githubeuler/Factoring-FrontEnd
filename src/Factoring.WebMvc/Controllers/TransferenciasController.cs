@@ -25,7 +25,7 @@ namespace Factoring.WebMvc.Controllers
         private readonly ILogger<TransferenciasController> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IOperacionProxy _operacionProxy;
-        private readonly IFacturaOperacionesProxy _facturaOperacionesProxy;  
+        private readonly IFacturaOperacionesProxy _facturaOperacionesProxy;
         private readonly ICatalogoProxy _catalogoProxy;
         private readonly IFondeadorProxy _fondeadorProxy;
         public TransferenciasController(
@@ -43,7 +43,7 @@ namespace Factoring.WebMvc.Controllers
             _operacionProxy = operacionProxy;
             _facturaOperacionesProxy = facturaOperacionesProxy;
             //_divisoExternProxy = divisoExternProxy;
-            _fondeadorProxy= fondeadorProxy;
+            _fondeadorProxy = fondeadorProxy;
             _catalogoProxy = catalogoProxy;
         }
 
@@ -53,11 +53,11 @@ namespace Factoring.WebMvc.Controllers
             {
                 return Redirect("~/Account/Logout");
             }
-           // var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 103, Valor = "0" });
-            
+            // var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 103, Valor = "0" });
+
             ViewBag.ListInversionista = await _fondeadorProxy.GetAllListFondeadoreslista();
             var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 114, Valor = "0" });
-            var _Motivos = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 115,Valor = "0" });
+            var _Motivos = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 115, Valor = "0" });
             var _Acciones = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 123, Valor = "0" });
             ViewBag.Estados = _Estados.Data.ToList();
             ViewBag.Motivos = _Motivos.Data.ToList();
@@ -80,7 +80,7 @@ namespace Factoring.WebMvc.Controllers
                 requestData.FilterNroOperacion = model.NroOperacion;
                 var data = await _facturaOperacionesProxy.GetBandejaFacturas(requestData);
                 var recordsTotal = data.Data.Count > 0 ? data.Data[0].totalRecords : 0;
-                return Json(new { data = data.Data, recordsTotal = recordsTotal, recordsFiltered = recordsTotal });
+                return Json(new { data = data.Data, recordsTotal, recordsFiltered = recordsTotal });
             }
             catch (Exception)
             {
@@ -144,6 +144,190 @@ namespace Factoring.WebMvc.Controllers
                 throw new Exception(ex.Message);
             }
         }
+
+
+
+        public async Task<IActionResult> RegistroCavali(List<int> IdFacturasAccion, int InversionistaAccionRemover, int InversionistaAccion)
+        {
+            try
+            {
+                var userName = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var nNumeroProcesados = 0;
+
+                var nValidarEstado = 0;
+
+
+                //foreach (int factura in IdFacturas)
+                //{
+                //    var _validarEstado = await _facturaOperacionesProxy.ValidarEstadoFactura(new OperacionesFacturaListDto
+                //    {
+                //        nIdOperacionesFacturas = factura,
+                //        nEstado = 1
+                //    });
+
+                //    if (!_validarEstado.Succeeded)
+                //        nValidarEstado++;
+
+                //}
+                //if (nValidarEstado == 0)
+                //{
+                if (InversionistaAccion == 1)
+                {
+                    var MensajeRetorno = new ResponseData<ResponseCavaliInvoice4012>();
+                    foreach (int factura in IdFacturasAccion)
+                    {
+                        var result = await _facturaOperacionesProxy.OperacionCavaliInvoicesSend4012(new OperacionesFacturaLoteCavali
+                        {
+                            FlagRegisterProcess = 1,
+                            FlagAcvProcess = 0,
+                            FlagTransferProcess = 0,
+                            CodParticipante = 0,
+                            UsuarioCreador = userName,
+                            InvoicesFactura = factura,
+                            Invoices = IdFacturasAccion
+                        });
+                        nNumeroProcesados++;
+                        MensajeRetorno = result;
+                    }
+                    if (MensajeRetorno != null)
+                        return Json(MensajeRetorno.Data);
+                    else
+                    {
+                        return Json("No se procesaron las facturas.");
+                    }
+                }
+                else if (InversionistaAccion == 2)
+                {
+                    var MensajeRetorno = new ResponseData<ResponseCavaliInvoice4012>();
+                    int nIdFondeador = 0;
+                    var resultEval = await _facturaOperacionesProxy.ObtenerValidacionAsignaciones(new RequestOperacionesFacturaValidacion
+                    {
+                        nLstIdFacturas = IdFacturasAccion,
+                        nTipo = InversionistaAccion
+                    });
+
+                    var listaFacturas = resultEval.Data.listaFacturas;
+
+                    if (listaFacturas.Count > 0)
+                    {
+                        int nCantidadConfecha = listaFacturas.Count(x => x.dFechaDesembolso != "" && x.dFechaDesembolsoFondeador != "");
+
+                        if (listaFacturas.Count == 1)
+                        {
+                            nIdFondeador = nCantidadConfecha > 0 ? listaFacturas[0].nIdFondeador : throw new Exception("No se procesaron las facturas.");
+                        }
+                        else
+                        {
+                            nIdFondeador = listaFacturas[nCantidadConfecha == 1 ? 0 : 1].nIdFondeador;
+                        }
+                    }
+
+                    //var resultEval = await _facturaOperacionesProxy.ObtenerValidacionAsignaciones(new RequestOperacionesFacturaValidacion
+                    //{
+                    //    nLstIdFacturas = IdFacturasAccion,
+                    //    nTipo = InversionistaAccion
+                    //});
+
+                    //if (resultEval.Data.listaFacturas.Count > 0)
+                    //{
+                    //    if (resultEval.Data.listaFacturas.Count > 1)
+                    //    {
+                    //        int nCantidadConfecha = resultEval.Data.listaFacturas.Where(x => x.dFechaDesembolso != "" && x.dFechaDesembolsoFondeador != "").Count();
+                    //        if (nCantidadConfecha == 1)
+                    //        {
+                    //            nIdFondeador = resultEval.Data.listaFacturas[0].nIdFondeador;
+                    //        }
+                    //        else
+                    //        {
+                    //            nIdFondeador = resultEval.Data.listaFacturas[1].nIdFondeador;
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        int nCantidadConfecha = resultEval.Data.listaFacturas.Where(x => x.dFechaDesembolso != "" && x.dFechaDesembolsoFondeador != "").Count();
+                    //        if (nCantidadConfecha > 0)
+                    //        {
+                    //            nIdFondeador = resultEval.Data.listaFacturas[0].nIdFondeador;
+                    //        }
+                    //        else
+                    //        {
+                    //            return Json("No se procesaron las facturas.");
+                    //        }
+                    //    }
+                    //}
+                    foreach (int factura in IdFacturasAccion)
+                    {
+                        var result = await _facturaOperacionesProxy.OperacionCavaliInvoicesSend4012(new OperacionesFacturaLoteCavali
+                        {
+                            FlagRegisterProcess = 0,
+                            FlagAcvProcess = 0,
+                            FlagTransferProcess = 1,
+                            CodParticipante = 0,
+                            UsuarioCreador = userName,
+                            InvoicesFactura = factura,
+                            Invoices = IdFacturasAccion
+                        });
+                        nNumeroProcesados++;
+                        MensajeRetorno = result;
+                    }
+
+                    if (MensajeRetorno != null)
+                    {
+                        if (MensajeRetorno.Data.Valores != null)
+                            return Json(MensajeRetorno.Data.Valores.body);
+                        else
+                            return Json(MensajeRetorno.Data.Mensaje);
+                    }
+                    else
+                    {
+                        return Json("No se procesaron las facturas.");
+                    }
+
+                }
+                else
+                {
+                    var MensajeRetorno = new ResponseData<ResponseCavaliRemove4008>();
+                    foreach (int factura in IdFacturasAccion)
+                    {
+                        var result = await _facturaOperacionesProxy.OperacionCavaliRemove4008(new OperacionesFacturaRemoveCavali
+                        {
+                            IdMotivo = InversionistaAccionRemover,
+                            UsuarioCreador = userName,
+                            InvoicesFactura = factura,
+                            Invoices = IdFacturasAccion
+                        });
+                        nNumeroProcesados++;
+                        MensajeRetorno = result;
+                    }
+                    if (MensajeRetorno != null)
+                    {
+                        if (MensajeRetorno.Data != null)
+                        {
+                            MensajeRetorno.Data.Valores.body.processId = 1;
+                            return Json(MensajeRetorno.Data.Valores.body);
+                        }
+
+                        return Json(MensajeRetorno.Message);
+                    }
+                    else
+                    {
+                        return Json("No se procesaron las facturas.");
+                    }
+
+                }
+                //}
+                //else
+                //{
+                //    return Json("No se procesaron las facturas, ya que existen estados no permitidos.");
+                //}
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
 
         public async Task<IActionResult> Transferir(List<int> IdFacturas, int Inversionista)
         {
@@ -322,19 +506,20 @@ namespace Factoring.WebMvc.Controllers
             }
         }
 
-        public async Task<IActionResult> ObtenerAsignaciones(List<int> IdFacturas)
+        public async Task<IActionResult> ObtenerAsignaciones(List<int> IdFacturas, int nIdOpcionOperacion)
         {
             try
             {
                 var result = await _facturaOperacionesProxy.ObtenerAsignaciones(new OperacionesFacturaValidaAsignacion
                 {
-                    nLstIdFacturas = IdFacturas
+                    nLstIdFacturas = IdFacturas,
+                    nIdOpcionOperacion = nIdOpcionOperacion
                 });
                 if (result != null)
                 {
-                    if (result.Data != null)
+                    if (result.Data.listaFondeador != null)
                     {
-                        if (result.Data[0].cantidadInversionistas > 1)
+                        if (result.Data.listaFondeador[0].cantidadInversionistas > 1)
                             return Json("Las facturas seleccionadas tienen mas de UN INVERSIONISTA asociado.");
                         else
                             return Json(result);
@@ -343,6 +528,23 @@ namespace Factoring.WebMvc.Controllers
 
                 return Json("No se procesaron las facturas.");
 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<IActionResult> ObtenerAsignacionesCavali(List<int> IdFacturas, int nTipo)
+        {
+            try
+            {
+                var result = await _facturaOperacionesProxy.ObtenerValidacionAsignaciones(new RequestOperacionesFacturaValidacion
+                {
+                    nLstIdFacturas = IdFacturas,
+                    nTipo = nTipo
+                });
+                return Json(result);
             }
             catch (Exception ex)
             {

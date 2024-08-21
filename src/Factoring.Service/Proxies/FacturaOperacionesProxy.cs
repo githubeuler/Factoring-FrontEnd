@@ -1,6 +1,5 @@
 ﻿using Factoring.Model.Models.OperacionesFactura;
 using Factoring.Model;
-using Factoring.Model.Models.OperacionesFactura;
 using Factoring.Service.Common;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
@@ -22,8 +21,9 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<int>> ValidarEstadoFactura(OperacionesFacturaListDto OperacionFactura);
         Task<ResponseData<ResponseCavaliInvoice4012>> OperacionCavaliInvoicesSend4012(OperacionesFacturaLoteCavali model);
         Task<ResponseData<ResponseCavaliRemove4008>> OperacionCavaliRemove4008(OperacionesFacturaRemoveCavali model);
-        Task<ResponseData<List<FondeadorGetPermisos>>> ObtenerAsignaciones(OperacionesFacturaValidaAsignacion model);
+        Task<ResponseData<FondeadorGetPermisosCabecera>> ObtenerAsignaciones(OperacionesFacturaValidaAsignacion model);
         Task<ResponseData<ResponseCavaliRedeem4007>> OperacionCavaliRedeem4007(OperacionesFacturaRemoveCavali model);
+        Task<ResponseData<FacturasGetCabeceraRegistro>> ObtenerValidacionAsignaciones(RequestOperacionesFacturaValidacion model);
     }
     public class FacturaOperacionesProxy : IFacturaOperacionesProxy
     {
@@ -242,10 +242,11 @@ namespace Factoring.Service.Proxies
             }
         }
 
-        public async Task<ResponseData<List<FondeadorGetPermisos>>> ObtenerAsignaciones(OperacionesFacturaValidaAsignacion model)
+        public async Task<ResponseData<FondeadorGetPermisosCabecera>> ObtenerAsignaciones(OperacionesFacturaValidaAsignacion model)
         {
             try
             {
+                //Task<ResponseData<List<FondeadorGetPermisos>>> 
                 var client = _proxyHttpClient.GetHttp();
                 client.Timeout = TimeSpan.FromMinutes(15);
 
@@ -253,7 +254,25 @@ namespace Factoring.Service.Proxies
                 var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
                 var response = await client.PostAsync("OperacionesFactura/validate-asignacion-inversionista", requestContent);
                 var json = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<ResponseData<List<FondeadorGetPermisos>>>(json);
+                return JsonConvert.DeserializeObject<ResponseData<FondeadorGetPermisosCabecera>>(json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+       public async Task<ResponseData<FacturasGetCabeceraRegistro>> ObtenerValidacionAsignaciones(RequestOperacionesFacturaValidacion model)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                client.Timeout = TimeSpan.FromMinutes(15);
+                var us = JsonConvert.SerializeObject(model);
+                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+                var response = await client.PostAsync("OperacionesFactura/validate-envio-cavali", requestContent);
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ResponseData<FacturasGetCabeceraRegistro>>(json);
             }
             catch (Exception ex)
             {

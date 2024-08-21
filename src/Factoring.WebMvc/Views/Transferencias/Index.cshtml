@@ -16,10 +16,11 @@
                 <div class="fw-bolder me-5">
                     <span class="me-2" data-kt-transferencias-table-select="selected_count"></span>Seleccionados
                 </div>
-                <button type="button" id="btn_registro" class="btn btn-sm btn-primary" data-kt-transferencias-table-select="register_selected">Registro y Anotación</button>
+     @*            <button type="button" id="btn_registro" class="btn btn-sm btn-primary" data-kt-transferencias-table-select="register_selected">Registro y Anotación</button>
                 <button type="button" id="btn_transferir" class="btn btn-sm btn-danger" data-kt-transferencias-table-select="transfer_selected">Transferir</button>
-                <button type="button" id="btn_traspaso" class="btn btn-sm btn-facebook" data-kt-transferencias-table-select="traspasar_selected">Traspasar</button>
-                <button type="button" id="btn_remover" class="btn btn-sm btn-google" data-kt-transferencias-table-select="remover_selected">Remover</button>
+                <button type="button" id="btn_traspaso" class="btn btn-sm btn-facebook" data-kt-transferencias-table-select="traspasar_selected">Traspasar</button> *@
+                @* <button type="button" id="btn_remover" class="btn btn-sm btn-google" data-kt-transferencias-table-select="remover_selected">Remover</button> *@
+
                 <button type="button" id="btn_accion" class="btn btn-sm btn-success" data-kt-transferencias-table-select="accion_selected">Realizar Acción</button>
             </div>
         </div>
@@ -89,7 +90,7 @@
                             </th>
                             <th class="text-center">N° Operación</th>
                             <th class="text-center">Serie Documento</th>
-                            <th class="text-center">Nro Documento</th>
+                           @*  <th class="text-center">Nro Documento</th> *@
                             <th class="text-center">Monto</th>
                             <th class="text-center">Fecha Pago Negociado</th>
                             <th class="text-center">OBSERVACION CAVALI</th>
@@ -215,7 +216,7 @@
 <div id="kt_modal_accion" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form id="kt_modal_accion_form" class="form" asp-controller="Transferencias" asp-action="Remover" novalidate="novalidate">
+            <form id="kt_modal_accion_form" class="form" asp-controller="Transferencias" asp-action="RegistroCavali" novalidate="novalidate">
                 <input type="hidden" id="IdFacturasAccion" name="IdFacturasAccion[]" />
                 <div class="modal-header">
                     <h2>Registrar Operación Cavali</h2>
@@ -236,12 +237,12 @@
                             </div>
 
                             <div class="fv-row mb-5" id="dvInversionista" style="display:none">
-                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                               @*  <label class="d-flex align-items-center fs-5 fw-bold mb-2">
                                     <span class="required">Inversionista</span>
                                 </label>
-                                <select id="InversionistaNew" name="InversionistaNew" asp-items="@(new SelectList(ViewBag.ListInversionista, "iIdFondeador", "cNombreFondeador"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                                <select id="InversionistaNew" name="InversionistaNew" asp-items="@(new SelectList(ViewBag.ListInversionista, "nIdFondeador", "cNombreFondeador"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
                                     <option value="">Seleccionar</option>
-                                </select>
+                                </select> *@
                             </div>
 
                             <div class="fv-row mb-5" id="dvMotivo" style="display:none">

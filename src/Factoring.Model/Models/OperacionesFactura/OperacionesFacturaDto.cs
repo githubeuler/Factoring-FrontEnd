@@ -42,6 +42,35 @@ namespace Factoring.Model.Models.OperacionesFactura
         public List<int> nLstIdFacturas { get; set; }
         public List<string> sLstIdFacturas { get; set; }
         public string sIdFacturas { get; set; }
+        public int nIdOpcionOperacion { get; set; }
+    }
+
+
+    public class RequestOperacionesFacturaValidacion
+    {
+        public List<int>? nLstIdFacturas { get; set; }
+        public int nIdOpcionOperacion { get; set; }
+        public int nTipo { get; set; }
+    }
+
+    public class FacturasGetRegistro
+    {
+        public int nIdOperaciones { get; set; }
+        public int nIdOperacionesFacturas { get; set; }
+        public int nEstadoFactura { get; set; }
+        public int nIdFondeador { get; set; }
+        public string? dFechaDesembolsoFondeador { get; set; }
+        public string? dFechaDesembolso { get; set; }
+        public int nIdCategoria { get; set; }
+        public int nCantOperacion { get; set; }
+        public int nCantFacturasRecepcionada { get; set; }
+        public int nCantFacturasEvaluada { get; set; }
+    }
+
+    public class FacturasGetCabeceraRegistro
+    {
+        public List<FacturasGetRegistro> listaFacturas { get; set; }
+        public int? nActivarTransferencia { get; set; }
     }
     public class FondeadorGetPermisosSGC
     {
@@ -71,6 +100,13 @@ namespace Factoring.Model.Models.OperacionesFactura
         public int traspaso { get; set; }
         public string cNombreFondeador { get; set; }
         public int cantidadInversionistas { get; set; }
+
+    }
+
+    public class FondeadorGetPermisosCabecera
+    {
+        public int? nActivarTransferencia { get; set; }
+        public List<FondeadorGetPermisos> listaFondeador { get; set; }
 
     }
     public class OperacionesFacturaSendMasivo
