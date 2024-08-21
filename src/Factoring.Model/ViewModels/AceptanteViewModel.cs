@@ -20,9 +20,9 @@ namespace Factoring.Model.ViewModels
 
     public class AceptanteCreateModel
     {
-        public int IdAceptante { get; set; }
+        public int IdAdquiriente { get; set; }
 
-        [Required]
+        //[Required]
         public int Pais { get; set; }
 
         [Required]
@@ -43,6 +43,35 @@ namespace Factoring.Model.ViewModels
         public string NombreSector { get; set; }
         public string NombreGrupoEconomico { get; set; }
         public string NombreEstado { get; set; }
+        public int IdActividadEconomica { get; set; }
+        public string FechaInicioActividades { get; set; }
+        public string FechaFirmaContrato { get; set; }
+        public string Antecedente { get; set; }
+        public int Estado { get; set; }
+
+        //public int IdAceptante { get; set; }
+
+        //[Required]
+        //public int Pais { get; set; }
+
+        //[Required]
+        //public string RegUnicoEmpresa { get; set; }
+
+        //[Required]
+        //public string RazonSocial { get; set; }
+
+        //[Required]
+        //public int Sector { get; set; }
+
+        //[Required]
+        //public int GrupoEconomico { get; set; }
+
+        //public string UsuarioCreador { get; set; }
+        //public string UsuarioActualizacion { get; set; }
+        //public string NombrePais { get; set; }
+        //public string NombreSector { get; set; }
+        //public string NombreGrupoEconomico { get; set; }
+        //public string NombreEstado { get; set; }
     }
 
     public class AgregarContactoAceptante

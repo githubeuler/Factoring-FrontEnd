@@ -1,5 +1,112 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model AceptanteCreateModel
 @{
+    ViewData["Action"] = "Editar";
+}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="fw-bolder mb-0">Datos Básicos</h3>
+        </div>
+        <div class="card-toolbar">
+            <a asp-controller="Aceptante" asp-action="Index" class="btn btn-sm btn-flex btn-light btn-active-primary me-2">
+                <i class="las la-arrow-left fs-3"></i> Regresar
+            </a>
+            <button id="kt_save_button" type="submit" class="btn btn-sm btn-success me-2 p-ins">
+                <span class="indicator-label">Guardar</span>
+                <span class="indicator-progress">Guardando Registro... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            </button>
+        </div>
+    </div>
+    <div class="card-body pt-5">
+        <form id="kt_form_registro" class="form" asp-controller="Aceptante" asp-action="RegistroProceso" method="post" novalidate="novalidate">
+            @if (@ViewBag.IsEdit)
+            {
+                <input type="hidden" asp-for="IdAdquiriente" />
+                <div class="row g-9 mb-7">
+                    <div class="col-md-3 offset-9 fv-row">
+                        <label class="fs-6 fw-bold mb-2">Estado</label>
+                        <p class="form-control-static">@Model.NombreEstado</p>
+                    </div>
+                </div>
+            }
+            <div class="row g-9 mb-7">                
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">RUC o Registro Único</label>
+                    <input type="text" asp-for="RegUnicoEmpresa" autocomplete="off" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                </div>
+
+                <div class="col-md-6 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Razón Social</label>
+                    <input type="text" asp-for="RazonSocial" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                </div>
+            </div>
+
+            @if (@ViewBag.IsEdit)
+            {
+                <div class="row g-9 mb-7">
+                    <div class="col-md-3 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Fecha Inicio de Actividades</label>
+                        <input type="text" asp-for="FechaInicioActividades" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                    </div>
+                    <div class="col-md-6 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Actividad Economica</label>
+                        <select asp-for="IdActividadEconomica" asp-items="@(new SelectList(ViewBag.ActividadesEconomicas, "nId", "cNombre"))" data-control="select2" aria-label="Seleccionar" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                            <option value="">Seleccionar</option>
+                        </select>
+                    </div>                
+                </div>
+                <div class="row g-9 mb-7">
+                    <div class="col-md-3 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Fecha Firma de Contraro</label>
+                        <input type="text" asp-for="FechaFirmaContrato" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                    </div>
+                    <div class="col-md-6 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Antecedente</label>
+                        <textarea asp-for="Antecedente" rows="6" class="form-control form-control-solid"></textarea>
+                    </div>
+                  
+                </div>
+            }
+        </form>
+        @if (@ViewBag.IsEdit)
+        {
+            <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6 fw-bold pt-8 mb-8">
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#tab_datos_contacto">
+                        Datos de Contacto
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_ubicacion">
+                        Dirección
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_documentos">
+                        Documentos
+                    </a>
+                </li>          
+            </ul>
+            <div id="tabContentDetalle" class="tab-content">
+                <div id="tab_datos_contacto" class="tab-pane fade show active" role="tabpanel">
+                    <partial name="TabsDetalle/_Contacto" view-data="ViewData" />
+                </div>
+            
+                <div id="tab_ubicacion" class="tab-pane fade" role="tabpanel">
+                    <partial name="TabsDetalle/_Ubicacion" view-data="ViewData" />
+                </div>
+                <div id="tab_documentos" class="tab-pane fade" role="tabpanel">
+                    <partial name="TabsDetalle/_Documentos" view-data="ViewData" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    @if (@ViewBag.IsEdit)
+    {
+        <script type="text/javascript">var countUbigeo = @ViewBag.UbigeoPaisCount;</script>
+    }
+    <script src="~/assets/js/registro-aceptante.js"></script>
 }

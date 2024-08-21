@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +42,7 @@ namespace Factoring.Model.Models.Aceptante
 
     public class AceptanteResponseDatatableDto
     {
-        public int nIdAceptante { get; set; }
+        public int nIdAdquiriente { get; set; }
         public string cRegUnicoEmpresa { get; set; }
         public string cRazonSocial { get; set; }
         public string cNombreSector { get; set; }
@@ -80,6 +82,16 @@ namespace Factoring.Model.Models.Aceptante
         public int nEstado { get; set; }
         public string NombreEstado { get; set; }
         public List<string> FormatoUbigeoPais { get; set; }
+
+        public string dFechaInicioActividad { get; set; }
+
+        public int nIdActividadEconomica { get; set; }
+
+        public string dFechaFirmaContrato { get; set; }
+
+        public string cAntecedente { get; set; }
+
+
     }
 
     public class AceptanteDeleteDto
@@ -97,7 +109,16 @@ namespace Factoring.Model.Models.Aceptante
         public int IdGrupoEconomico { get; set; }
         public string UsuarioCreador { get; set; }
     }
+    public class AgregarDocumentosAceptante
+    {
+        public int IdAceptanteCabeceraDocumentos { get; set; }
 
+        [Required]
+        public int TipoDocumento { get; set; }
+
+        [Required]
+        public IFormFile FileDocumento { get; set; }
+    }
     public class AceptanteUpdateDto
     {
         public int IdAceptante { get; set; }
