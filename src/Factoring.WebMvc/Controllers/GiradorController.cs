@@ -1,4 +1,5 @@
-﻿using Factoring.Model.Models.Auth;
+﻿using Factoring.Model;
+using Factoring.Model.Models.Auth;
 using Factoring.Model.Models.Catalogo;
 using Factoring.Model.Models.ContactoGirador;
 using Factoring.Model.Models.Girador;
@@ -189,15 +190,25 @@ namespace Factoring.WebMvc.Controllers
                 }
                 else
                 {
-                    var result = await _giradorProxy.Create(new GiradorCreateDto
+                    var exists = await GetGirador(model.RegUnicoEmpresa);
+                    if (exists == null)
                     {
+                        var result = await _giradorProxy.Create(new GiradorCreateDto
+                        {
 
-                        RegUnicoEmpresa = model.RegUnicoEmpresa,
-                        RazonSocial = model.RazonSocial.ToUpper(),
-                        UsuarioCreador = userName
-                    });
+                            RegUnicoEmpresa = model.RegUnicoEmpresa,
+                            RazonSocial = model.RazonSocial.ToUpper(),
+                            UsuarioCreador = userName
+                        });
 
-                    return Json(result);
+                        return Json(result);
+                    }
+                    else
+                    {
+                        return Json(new ResponseData<int>() { Succeeded = false, Message = "El Girador " + model.RegUnicoEmpresa + " ya existe." });
+                    }
+
+                  
                 }
             }
             catch (Exception)
@@ -226,7 +237,7 @@ namespace Factoring.WebMvc.Controllers
                 GiradorCreateModel giradorData = new();
                 if (ModelState.IsValid)
                 {
-                    giradorData.IdGirador = giradorDetalle.Data.nIdGirador;
+                    /*giradorData.IdGirador = giradorDetalle.Data.nIdGirador;
                     //giradorData.NombrePais = giradorDetalle.Data.cNombrePais;
                     giradorData.RegUnicoEmpresa = giradorDetalle.Data.cRegUnicoEmpresa;
                     HttpContext.Session.SetObjectAsJson("RucGirador", giradorDetalle.Data.cRegUnicoEmpresa);
@@ -237,6 +248,23 @@ namespace Factoring.WebMvc.Controllers
                     //giradorData.Compra = giradorDetalle.Data.nCompra;
                     giradorData.Estado = giradorDetalle.Data.nEstado;
                     giradorData.NombreEstado = giradorDetalle.Data.NombreEstado;
+                    */
+                    var ActividadesEconomicas = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 120, Tipo = 1, Valor = "1" });
+
+
+                    giradorData.IdGirador = giradorDetalle.Data.nIdGirador;
+                    giradorData.IdActividadEconomica = giradorDetalle.Data.nIdActividadEconomica;
+                    giradorData.FechaInicioActividades = giradorDetalle.Data.dFechaInicioActividad == "01/01/1900" ? string.Empty : giradorDetalle.Data.dFechaInicioActividad; ;
+                    giradorData.RegUnicoEmpresa = giradorDetalle.Data.cRegUnicoEmpresa;
+                    HttpContext.Session.SetObjectAsJson("RucGirador", giradorDetalle.Data.cRegUnicoEmpresa);
+                    giradorData.RazonSocial = giradorDetalle.Data.cRazonSocial;
+                    giradorData.FechaFirmaContrato = giradorDetalle.Data.dFechaFirmaContrato == "01/01/1900" ? string.Empty : giradorDetalle.Data.dFechaFirmaContrato;
+                    giradorData.Antecedente = giradorDetalle.Data.cAntecedente;
+                    giradorData.Estado = giradorDetalle.Data.nEstado;
+                    giradorData.NombreEstado = giradorDetalle.Data.NombreEstado;
+                    giradorData.ActividadEconomica = ActividadesEconomicas.Data.Where(x => x.nId == giradorDetalle.Data.nIdActividadEconomica).ToList().FirstOrDefault().cNombre;
+
+
                 }
                 return View(giradorData);
             }
@@ -378,6 +406,30 @@ namespace Factoring.WebMvc.Controllers
             var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var result = await _giradorUbicacionProxy.Delete(giradorUbicacionId, userName);
             return Json(result.Succeeded);
+        }
+
+        private async Task<GiradorResponseDatatableDto> GetGirador(string sRUC)
+        {
+            GiradorResponseDatatableDto oRecord = null;
+            try
+            {
+                var requestData = new GiradorRequestDatatableDto();
+                requestData.Pageno = 0;
+                requestData.PageSize = 5;
+                requestData.Sorting = "nIdGirador";
+                requestData.SortOrder = "asc";
+                requestData.FilterRuc = sRUC;
+                var data = await _giradorProxy.GetAllListGirador(requestData);
+
+                if (data.Data.Count > 0)
+                    oRecord = data.Data[0];
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRecord;
         }
 
 

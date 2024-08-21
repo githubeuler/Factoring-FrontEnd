@@ -42,7 +42,36 @@
                     <p class="form-control-static">@Model.RazonSocial</p>
                 </div>
             </div>
+
+               <div class="row g-9 mb-7">
+                <div class="col-md-3 fv-row">
+                    <label class="fs-6 fw-bold mb-2">Fecha Inicio de Actividades</label>
+                    <p class="form-control-static">@Model.FechaInicioActividades</p>
+                </div>
+                <div class="col-md-3 fv-row">
+                    <label class="fs-6 fw-bold mb-2">Actividad Economica</label>
+                    <p class="form-control-static">@Model.ActividadEconomica</p>
+                </div>
+
+            </div>
+
+
+
             <div class="row g-9 mb-7">
+
+                <div class="col-md-3 fv-row">
+                    <label class="fs-6 fw-bold mb-2">Fecha Firma de Contrato</label>
+                    <p class="form-control-static">@Model.FechaFirmaContrato</p>
+                </div>
+                <div class="col-md-3 fv-row">
+                    <label class="fs-6 fw-bold mb-2">Antecedente</label>
+                    <p class="form-control-static">@Model.Antecedente</p>
+                </div>
+            </div>
+
+
+
+            @* <div class="row g-9 mb-7"> *@
                @*  <div class="col-md-3 fv-row">
                     <label class="fs-6 fw-bold mb-2">Sector</label>
                     <p class="form-control-static">@Model.NombreSector</p>
@@ -59,7 +88,7 @@
                     <label class="fs-6 fw-bold mb-2">Compras (6 Últ. Meses)</label>
                     <p class="form-control-static">@Model.Compra</p>
                 </div> *@
-            </div>
+            @* </div> *@
             <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6 fw-bold pt-8 mb-8">
                 <li class="nav-item">
                     <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#tab_datos_contacto">
