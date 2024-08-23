@@ -210,7 +210,7 @@ var Fondeo = function () {
                 return false;
             }
             console.log(tipoProducto)
-            if (tipoProducto == 1) {
+            if (tipoProducto == 2) {
                 var PorTasaMensual = $('#PorTasaMensual').val().trim();
                 var PorComisionFactura = $('#PorComisionFactura').val().trim();;
                 var PorSpread = $('#PorSpread').val().trim();;
@@ -220,7 +220,7 @@ var Fondeo = function () {
                     messageError('Por favor, ingrese los campos requeridos y vuelve a intentarlo.');
                     return false;
                 }
-            } else if (tipoProducto == 2) {
+            } else if (tipoProducto == 1) {
                 var PorCapitalFinanciado = $('#PorCapitalFinanciado').val();
                 var PorTasaAnualFondeo = $('#PorTasaAnualFondeo').val();
                 var PorTasaMoraFondeo = $('#PorTasaMoraFondeo').val();
@@ -517,10 +517,10 @@ var Fondeo = function () {
         $('#IdFondeadorVal').val($('#IdFondeador').val());
         console.log('Tipo de Producto seleccionado:', tipoProducto);
         if (tipoProducto !== undefined) {
-            if (tipoProducto == 1) {
+            if (tipoProducto == 2) {
                 $('#sec-cobranzaLibre').show();
                 $('#sec-factoring').hide();
-            } else if (tipoProducto == 2) {
+            } else if (tipoProducto == 1) {
                 $('#sec-factoring').show();
                 $('#sec-cobranzaLibre').hide();
             } else {
