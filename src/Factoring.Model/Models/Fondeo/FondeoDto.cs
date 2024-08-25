@@ -28,6 +28,8 @@
         public string? dFechaDesembolsoFondeador { get; set; }
         public string? dFechaCobranzaFondeador { get; set; }
 
+        public string nMontoADesembolsarFondeador { get; set; }
+
     }
     public class FondeoRequestDatatableDto
     {
@@ -36,7 +38,7 @@
         public string FilterFondeadorAsignado { get; set; }
         public string FilterGirador { get; set; }
         public string FilterFechaRegistro { get; set; }
-        public string FilterEstadoFondeo { get; set; }
+        public int FilterEstadoFondeo { get; set; }
         public int PageSize { get; set; }
         public string Sorting { get; set; }
         public string SortOrder { get; set; }

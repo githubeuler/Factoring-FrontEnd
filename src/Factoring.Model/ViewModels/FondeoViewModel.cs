@@ -21,6 +21,7 @@
         public int PorCapitalFinanciado { get; set; }
         public int PorTasaAnualFondeo { get; set; }
         public int PorTasaMoraFondeo { get; set; }
+        public int IdEstadoFondeo{ get; set; }
 
     }
 }

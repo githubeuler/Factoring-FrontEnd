@@ -38,13 +38,13 @@ namespace Factoring.WebMvc.Controllers
                 {
                     Pageno = (Convert.ToInt32(Request.Form["start"].FirstOrDefault())) == 0 ? 0 : (Convert.ToInt32(Request.Form["start"].FirstOrDefault())),
                     PageSize = (Convert.ToInt32(Request.Form["length"].FirstOrDefault())) == 0 ? 10 : (Convert.ToInt32(Request.Form["length"].FirstOrDefault())),
-                    Sorting = "nIdFondeador",
+                    Sorting = "dFechaCreacion",
                     SortOrder = "desc",
                     FilterNroOperacion = fondeo.NroOperacion,
                     FilterFondeadorAsignado = fondeo.Fondeador,
                     FilterGirador = fondeo.Girador,
                     FilterFechaRegistro = fondeo.FechaRegistro,
-                    FilterEstadoFondeo = fondeo.EstadoFondeo,
+                    FilterEstadoFondeo = fondeo.IdEstadoFondeo,
                     IdEstado = 1
 
                 };
@@ -84,6 +84,7 @@ namespace Factoring.WebMvc.Controllers
 
 
             });
+
             if (_registroFondeo.Succeeded)
             {
                 if (!string.IsNullOrEmpty(model.FechaDesembolso))
