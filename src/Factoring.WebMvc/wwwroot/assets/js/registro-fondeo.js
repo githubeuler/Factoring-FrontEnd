@@ -79,8 +79,12 @@ var Fondeo = function () {
                         var buttonAction = ``;
                         console.log(data)
                         if (data.nEstadoFondeo == 5 && data.nIdFondeador != 0) { //ANULADO Y CON FONDEADOR ASIGNADO
-                            buttonAction = `<a href="javascript:;" class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-act" data-bs-toggle="modal" data-bs-target="#kt_modal_registro_datos_fondeo" data-n-accion="ver" data-n-operacion=${data.nIdOperaciones} data-n-tipo-fondeo=${data.nIdTipoFondeo} data-n-fondeador-factura=${data.nIdFondeadorFactura} data-n-data=${JSON.stringify(data).replace(/\s+/g, "")} title="Ver"><i class="las la-search fs-2"></i></a> 
-                              <button data-add-table="add_row" data-row= ${data.nIdFondeadorFactura}  class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-eli" title="Agregar"><i class="las la-plus fs-2"></i></button> `
+                            buttonAction = `<a href="javascript:;" class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-act" data-bs-toggle="modal" data-bs-target="#kt_modal_registro_datos_fondeo" data-n-accion="ver" data-n-operacion=${data.nIdOperaciones} data-n-tipo-fondeo=${data.nIdTipoFondeo} data-n-fondeador-factura=${data.nIdFondeadorFactura} data-n-data=${JSON.stringify(data).replace(/\s+/g, "")} title="Ver"><i class="las la-search fs-2"></i></a> `
+
+                            if (data.nIdEstadoOperacion != 0) {
+                                buttonAction += ` <button data-add-table="add_row" data-row= ${data.nIdFondeadorFactura}  class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-eli" title="Agregar"><i class="las la-plus fs-2"></i></button> `
+                            }
+                               
                         } else if (data.nEstadoFondeo == 1) {//PENDIENTE ASIGNAR
                             buttonAction += `
 
@@ -112,9 +116,12 @@ var Fondeo = function () {
                                 <a href="javascript:;" class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-act" data-bs-toggle="modal" data-bs-target="#kt_modal_registro_datos_fondeo" data-n-accion="ver" data-n-operacion=${data.nIdOperaciones} data-n-tipo-fondeo=${data.nIdTipoFondeo} data-n-fondeador-factura=${data.nIdFondeadorFactura} data-n-data=${JSON.stringify(data).replace(/\s+/g, "")} title="Ver"><i class="las la-search fs-2"></i></a> 
 
 
-                                <button data-add-table="add_row" data-row= ${data.nIdFondeadorFactura}  class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-eli" title="Agregar"><i class="las la-plus fs-2"></i></button> 
-
+                               
                                 `;
+
+                            if (data.nIdEstadoOperacion != 0) {
+                                buttonAction += ` <button data-add-table="add_row" data-row= ${data.nIdFondeadorFactura}  class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-eli" title="Agregar"><i class="las la-plus fs-2"></i></button>  `
+                            }
 
                         } else {
                             buttonAction += `

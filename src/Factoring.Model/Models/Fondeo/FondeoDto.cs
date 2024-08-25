@@ -2,6 +2,7 @@
 {
     public class FondeoResponseDatatableDto
     {
+        public int nIdEstadoOperacion { get; set; }
         public int nIdFondeadorFactura { get; set; }
         public int nIdOperaciones { get; set; }
         public string cNroOperacion { get; set; }
