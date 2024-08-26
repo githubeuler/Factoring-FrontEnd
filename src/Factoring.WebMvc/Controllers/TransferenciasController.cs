@@ -193,7 +193,11 @@ namespace Factoring.WebMvc.Controllers
                         return Json(MensajeRetorno.Data);
                     else
                     {
-                        return Json("No se procesaron las facturas.");
+                        MensajeRetorno.Succeeded = false;
+                        MensajeRetorno.Data.Mensaje = "No se procesaron las facturas.";
+                        MensajeRetorno.Message = "No se procesaron las facturas.";
+                        //return Json(MensajeRetorno.Data);
+                        return Json(MensajeRetorno);
                     }
                 }
                 else if (InversionistaAccion == 2)
@@ -204,7 +208,7 @@ namespace Factoring.WebMvc.Controllers
                     var resultEval = await _facturaOperacionesProxy.ObtenerValidacionAsignaciones(new RequestOperacionesFacturaValidacion
                     {
                         nLstIdFacturas = IdFacturasAccion,
-                        nTipo = InversionistaAccion
+                        nTipo = 3
                     });
 
                     var listaFacturas = resultEval.Data.listaFacturas;
@@ -212,6 +216,20 @@ namespace Factoring.WebMvc.Controllers
                     if (listaFacturas.Count > 0)
                     {
                         int nCantidadConfecha = listaFacturas.Count(x => x.dFechaDesembolso != "" && x.dFechaDesembolsoFondeador != "");
+
+                        if (nCantidadConfecha == 0)
+                        {
+                            ResponseCavaliInvoice4012 responseCavaliInvoice4012 = new()
+                            {
+                                Mensaje = "El fondeador no tiene fecha de Desembolso."
+                            };
+                            MensajeRetorno.Message = "El fondeador no tiene fecha de Desembolso.";
+                            MensajeRetorno.Succeeded = false;
+                            MensajeRetorno.Data.Mensaje = "El fondeador no tiene fecha de Desembolso";
+                            MensajeRetorno.Data= responseCavaliInvoice4012;
+                            return Json(MensajeRetorno.Message);
+                            //return Json("El fondeador no tiene fecha de Desembolso.");
+                        }
 
                         if (listaFacturas.Count == 1)
                         {
@@ -284,7 +302,10 @@ namespace Factoring.WebMvc.Controllers
                     }
                     else
                     {
-                        return Json("No se procesaron las facturas.");
+                        MensajeRetorno.Succeeded = false;
+                        MensajeRetorno.Message = "No se procesaron las facturas.";
+                        MensajeRetorno.Data.Mensaje= "No se procesaron las facturas.";
+                        return Json(MensajeRetorno);
                     }
 
                 }
@@ -315,7 +336,10 @@ namespace Factoring.WebMvc.Controllers
                     }
                     else
                     {
-                        return Json("No se procesaron las facturas.");
+                        MensajeRetorno.Succeeded = false;
+                        MensajeRetorno.Message = "No se procesaron las facturas.";
+                        MensajeRetorno.Data.Mensaje = "No se procesaron las facturas.";
+                        return Json(MensajeRetorno);
                     }
 
                 }

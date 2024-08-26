@@ -110,9 +110,9 @@ namespace Factoring.WebMvc.Controllers
                 return Redirect("~/Account/Logout");
             }
 
-            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 103, Valor = "0" });
+            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 5, Codigo = 103, Valor = "0" });
             ViewBag.Estados = _Estados.Data.ToList();
-            var _EstadosAprobacion = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 3, Codigo = 103, Valor = "0" });
+            var _EstadosAprobacion = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 5, Codigo = 103, Valor = "0" });
             ViewBag.EstadoEvaluacion = _EstadosAprobacion.Data.ToList();
             return View();
         }

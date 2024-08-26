@@ -611,6 +611,100 @@ var Transferencias = function () {
     }
 
 
+
+
+
+    var handleFormEnviarCavai = function () {
+        var form = document.getElementById('kt_modal_accion_form');
+        if (!form) {
+            return;
+        }
+        var saveButton = document.getElementById('kt_save_button_Accion');
+        var validator;
+        validator = FormValidation.formValidation(
+            form,
+            {
+                fields: {
+                    'InversionistaAccion': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Debe elegir que operación desea realizar'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap5({
+                        rowSelector: '.fv-row',
+                        eleValidClass: '',
+                        eleInvalidClass: '',
+                    })
+                }
+            }
+        );
+        Transferencias.getRevalidateFormElement(form, 'InversionistaAccion', validator);
+        saveButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            validator.validate().then(function (status) {
+                if (status == 'Valid') {
+                    saveButton.setAttribute('data-kt-indicator', 'on');
+                    saveButton.disabled = true;
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'POST',
+                            dataType: 'json',
+                            url: $(form).attr('action'),
+                            xhrFields: {
+                                withCredentials: true
+                            },
+                            data: {
+                                IdFacturasAccion: $('input:hidden[name="IdFacturasAccion[]"]').val().split(','),
+                                InversionistaAccionRemover: $('#InversionistaAccionRemover').val(),
+                                InversionistaAccion: $('#InversionistaAccion').val()
+
+                            },
+                            success: function (data) {
+                                if (typeof data.processId != 'undefined') {
+                                    if (data.processId !== 0) {
+                                        Swal.fire({
+                                            text: data.message,
+                                            icon: 'success',
+                                            buttonsStyling: false,
+                                            confirmButtonText: 'Listo',
+                                            customClass: {
+                                                confirmButton: 'btn btn-primary'
+                                            }
+                                        }).then(function (result) {
+                                            $(window).attr('location', globalPath + 'Transferencias');
+                                        });
+                                    } else {
+                                        saveButton.removeAttribute('data-kt-indicator');
+                                        saveButton.disabled = false;
+                                        messageError('El servicio no esta disponible, intentar nuevamente.');
+                                    }
+                                }
+                                else {
+                                    saveButton.removeAttribute('data-kt-indicator');
+                                    saveButton.disabled = false;
+                                    messageError(data);
+                                }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                saveButton.removeAttribute('data-kt-indicator');
+                                saveButton.disabled = false;
+                                messageError(errorThrown);
+                            }
+                        });
+                    }, 2000);
+                } else {
+                    messageError('Lo sentimos, parece que se han detectado algunos errores. Vuelve a intentarlo.');
+                }
+            });
+
+        });
+    }
+
     var handleFormTraspasar = function () {
         var form = document.getElementById('kt_modal_traspasar_form');
         if (!form) {
@@ -814,6 +908,7 @@ var Transferencias = function () {
             handleFormTransferir();
             handleFormTraspasar();
             handleFormRemover();
+            handleFormEnviarCavai();
         },
         getRevalidateFormElement: function (form, elem, val) {
             handleRevalidateFormElement(form, elem, val);
