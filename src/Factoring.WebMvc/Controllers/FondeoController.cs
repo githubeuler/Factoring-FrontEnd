@@ -1,5 +1,6 @@
 ﻿using Factoring.Model.Models.EvaluacionOperacion;
 using Factoring.Model.Models.Fondeo;
+using Factoring.Model.Models.Operaciones;
 using Factoring.Model.ViewModels;
 using Factoring.Service.Proxies;
 using Microsoft.AspNetCore.Authorization;
@@ -189,6 +190,22 @@ namespace Factoring.WebMvc.Controllers
 
             return Json(_registroFondeo);//Json(_estadoOperaciones);
         }
+        public async Task<IActionResult> DescargarRegistroFondeoArchivo(string operacion, string fondeador, string girador, string fecha, string estado)
+        {
+            var response = await _fondeoProxy.GetReporteRegistroFondeoDonwload(new FondeoRequestDatatableDto
+            {
+                FilterNroOperacion = operacion,
+                FilterFondeadorAsignado = fondeador,
+                FilterGirador = girador,
+                FilterFechaRegistro = fecha,
+                FilterEstadoFondeo = Convert.ToInt32(estado),
+                IdEstado = 1
+            });
 
+            string base64data = response.Data;
+            string fileName = DateTime.Now.ToString() + "_reporte_registro_fondeo.xlsx";
+            byte[] bytes = Convert.FromBase64String(base64data);
+            return File(bytes, "application/octet-stream", fileName);
+        }
     }
 }

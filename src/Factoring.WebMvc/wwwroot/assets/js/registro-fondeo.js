@@ -463,6 +463,31 @@ var Fondeo = function () {
         });
     }
 
+    var handleDescarga = function () {
+        var form = document.getElementById('kt_search_form');
+        if (!form) {
+            return;
+        }
+        var exportButton = document.getElementById('kt_export_button');
+
+
+        if (!exportButton) {
+            return;
+        }
+        exportButton.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var operacion = $('#NroOperacion').val();
+            var fondeador = $('#Fondeador').val();
+            var girador = $('#Girador').val();
+            var fecha = $('#FechaCreacion').val();
+            var estado = $('#IdEstadoFondeo').val();
+
+            window.open(globalPath + `Fondeo/DescargarRegistroFondeoArchivo?operacion=${operacion}&fondeador=${fondeador}&girador=${girador}&fecha=${fecha}&estado=${estado}`, '_self');
+
+        });
+    }
+
     $('#kt_modal_registro_datos_fondeo').on('show.bs.modal', function (event) {
         $.fn.modal.Constructor.prototype.enforceFocus = function () { };
 
@@ -600,6 +625,8 @@ var Fondeo = function () {
             handleModalRegistroDatos();
             handleDeleteFondeoForm();
             handleAddFondeoForm();
+
+            handleDescarga();
            
         }
     }
