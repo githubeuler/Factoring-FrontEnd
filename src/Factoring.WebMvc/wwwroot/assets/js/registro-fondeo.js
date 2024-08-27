@@ -590,7 +590,7 @@ var Fondeo = function () {
 
 
         $('#IdOperacion').val(nOpe);
-        $('#IdTipoProducto').val(nTipoFondeo);
+        //$('#IdTipoProducto').val(nTipoFondeo);
         $('#IdFondeadorFactura').val(nFondeadorFactura);
 
 
@@ -616,7 +616,7 @@ var Fondeo = function () {
             $('#sec-factoring').hide();
             $('#sec-cobranzaLibre').hide();
         }
-
+        $('#IdTipoProducto').val(tipoProducto);
     });
     return {
         init: function () {
