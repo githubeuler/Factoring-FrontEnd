@@ -25,11 +25,11 @@ var Fondeo = function () {
                 { data: 'nIdFondeadorFactura', name: 'nIdFondeador', 'autoWidth': true, class: 'text-center' },
                 { data: 'cNroOperacion', 'autoWidth': true, class: 'text-center' },
                 { data: 'cGirador', 'autoWidth': true, class: 'text-center' },
-                { data: 'cNumeroAsignacion', 'autoWidth': true, class: 'text-left' },
-                { data: 'cFondeadorAsignado', 'autoWidth': true, class: 'text-left' },
-                { data: 'nMontoADesembolsarFondeador', 'autoWidth': true, class: 'text-left' },
-                { data: 'cEstadoFondeo', 'autoWidth': true, class: 'text-left' },
-                { data: 'cMoneda', 'autoWidth': true, class: 'text-left' },
+                { data: 'cNumeroAsignacion', 'autoWidth': true, class: 'text-center' },
+                { data: 'cFondeadorAsignado', 'autoWidth': true, class: 'text-center' },
+                { data: 'nMontoADesembolsarFondeador', 'autoWidth': true, class: 'text-center' },
+                { data: 'cEstadoFondeo', 'autoWidth': true, class: 'text-center' },
+                { data: 'cMoneda', 'autoWidth': true, class: 'text-center' },
                 { data: null, 'autoWidth': true, class: 'text-center', responsivePriority: -1 }
             ],
             columnDefs: [
@@ -103,15 +103,15 @@ var Fondeo = function () {
 
                         }
                         else if (data.nEstadoFondeo == 3 ) {//DESEMBOLSADO
-                            buttonAction += `
+                            buttonAction += 
 
                          
 
                       
 
-                        <a href="javascript:;" class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-act" data-bs-toggle="modal" data-bs-target="#kt_modal_registro_datos_fondeo" data-n-accion="editar" data-n-operacion=${data.nIdOperaciones} data-n-tipo-fondeo=${data.nIdTipoFondeo} data-n-fondeador-factura=${data.nIdFondeadorFactura} data-n-data=${JSON.stringify(data).replace(/\s+/g, "")} title="Editar"><i class="las la-pen fs-2"></i></a>
+                        //<a href="javascript:;" class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-act" data-bs-toggle="modal" data-bs-target="#kt_modal_registro_datos_fondeo" data-n-accion="editar" data-n-operacion=${data.nIdOperaciones} data-n-tipo-fondeo=${data.nIdTipoFondeo} data-n-fondeador-factura=${data.nIdFondeadorFactura} data-n-data=${JSON.stringify(data).replace(/\s+/g, "")} title="Editar"><i class="las la-pen fs-2"></i></a>
 
-                                
+                                `
 
                                 <a href="javascript:;" class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-act" data-bs-toggle="modal" data-bs-target="#kt_modal_registro_datos_fondeo" data-n-accion="ver" data-n-operacion=${data.nIdOperaciones} data-n-tipo-fondeo=${data.nIdTipoFondeo} data-n-fondeador-factura=${data.nIdFondeadorFactura} data-n-data=${JSON.stringify(data).replace(/\s+/g, "")} title="Ver"><i class="las la-search fs-2"></i></a> 
 
@@ -583,7 +583,7 @@ var Fondeo = function () {
         });
 
 
-        $('#nIdEstadoEvaluacion').select2({
+        $('#IdFondeador').select2({
             allowClear: true,
             dropdownParent: $('#kt_modal_registro_datos_fondeo')
         });
