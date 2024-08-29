@@ -90,8 +90,8 @@ namespace Factoring.Service.Proxies
             var client = _proxyHttpClient.GetHttp();
             client.Timeout = TimeSpan.FromMinutes(5);
             var response = await client.GetAsync($"Fondeo/get-registro-fondeo-base64?&FilterNroOperacion={model.FilterNroOperacion}" +
-                $"&FilterRazonFondeador={model.FilterFondeadorAsignado}&FilterRazonGirador={model.FilterGirador}&FilterFecCrea={model.FilterFechaRegistro}" +
-                $"&Estado={model.FilterEstadoFondeo}");
+                $"&FilterFondeadorAsignado={model.FilterFondeadorAsignado}&FilterGirador={model.FilterGirador}&FilterFechaRegistro={model.FilterFechaRegistro}" +
+                $"&FilterEstadoFondeo={model.FilterEstadoFondeo}");
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<ResponseData<string>>(json);
             return data;

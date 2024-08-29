@@ -197,7 +197,7 @@ namespace Factoring.WebMvc.Controllers
                 FilterNroOperacion = operacion,
                 FilterFondeadorAsignado = fondeador,
                 FilterGirador = girador,
-                FilterFechaRegistro = fecha,
+                FilterFechaRegistro = (fecha == "undefined" ? null : fecha),
                 FilterEstadoFondeo = Convert.ToInt32(estado),
                 IdEstado = 1
             });

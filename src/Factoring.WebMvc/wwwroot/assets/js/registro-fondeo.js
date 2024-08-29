@@ -266,11 +266,11 @@ var Fondeo = function () {
             } else if (tipoProducto == 1) {
                 var PorCapitalFinanciado = $('#PorCapitalFinanciado').val();
                 var PorTasaAnualFondeo = $('#PorTasaAnualFondeo').val();
-                //var PorTasaMoraFondeo = $('#PorTasaMoraFondeo').val();
+                var PorTasaMoraFondeo = $('#PorTasaMoraFondeo').val();
                 //console.log(PorCapitalFinanciado, PorTasaAnualFondeo, PorTasaMoraFondeo)
 
-                /*  if (PorCapitalFinanciado == '' || PorTasaAnualFondeo == '' || PorTasaMoraFondeo == '') {*/
-                if (PorCapitalFinanciado == '' || PorTasaAnualFondeo == '') {
+                  if (PorCapitalFinanciado == '' || PorTasaAnualFondeo == '' || PorTasaMoraFondeo == '') {
+                //if (PorCapitalFinanciado == '' || PorTasaAnualFondeo == '') {
                     messageError('Por favor, ingrese los campos requeridos y vuelve a intentarlo.');
                     return false;
                 }
@@ -503,7 +503,7 @@ var Fondeo = function () {
 
         $('#PorCapitalFinanciado').attr('readonly', flg);
         $('#PorTasaAnualFondeo').attr('readonly', flg);
-        //$('#PorTasaMoraFondeo').attr('readonly', flg);
+        $('#PorTasaMoraFondeo').attr('readonly', flg);
         $('#PorTasaMensual').attr('readonly', flg);
         $('#PorComisionFactura').attr('readonly', flg);
         $('#PorSpread').attr('readonly', flg);
@@ -564,7 +564,7 @@ var Fondeo = function () {
 
                 $('#PorCapitalFinanciado').val(nData.nPorcentajeCapitalFinanciado)
                 $('#PorTasaAnualFondeo').val(nData.nPorcentajeTasaAnualFondeo)
-                //$('#PorTasaMoraFondeo').val(nData.nPorcentajeTasaMoraFondeo)
+                $('#PorTasaMoraFondeo').val(nData.nPorcentajeTasaMoraFondeo)
                 $('#PorTasaMensual').val(nData.nPorcentajeTasaMensual)
                 $('#PorComisionFactura').val(nData.nPorcentajeComisionFactura)
                 $('#PorSpread').val(nData.nPorcentajeSpread)
