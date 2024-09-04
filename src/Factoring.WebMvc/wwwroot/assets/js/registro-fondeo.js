@@ -25,11 +25,11 @@ var Fondeo = function () {
                 { data: 'nIdFondeadorFactura', name: 'nIdFondeador', 'autoWidth': true, class: 'text-center' },
                 { data: 'cNroOperacion', 'autoWidth': true, class: 'text-center' },
                 { data: 'cGirador', 'autoWidth': true, class: 'text-center' },
-                { data: 'cNumeroAsignacion', 'autoWidth': true, class: 'text-left' },
-                { data: 'cFondeadorAsignado', 'autoWidth': true, class: 'text-left' },
-                { data: 'nMontoADesembolsarFondeador', 'autoWidth': true, class: 'text-left' },
-                { data: 'cEstadoFondeo', 'autoWidth': true, class: 'text-left' },
-                { data: 'cMoneda', 'autoWidth': true, class: 'text-left' },
+                { data: 'cNumeroAsignacion', 'autoWidth': true, class: 'text-center' },
+                { data: 'cFondeadorAsignado', 'autoWidth': true, class: 'text-center' },
+                { data: 'nMontoADesembolsarFondeador', 'autoWidth': true, class: 'text-center' },
+                { data: 'cEstadoFondeo', 'autoWidth': true, class: 'text-center' },
+                { data: 'cMoneda', 'autoWidth': true, class: 'text-center' },
                 { data: null, 'autoWidth': true, class: 'text-center', responsivePriority: -1 }
             ],
             columnDefs: [
@@ -103,15 +103,15 @@ var Fondeo = function () {
 
                         }
                         else if (data.nEstadoFondeo == 3 ) {//DESEMBOLSADO
-                            buttonAction += `
+                            buttonAction += 
 
                          
 
                       
 
-                        <a href="javascript:;" class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-act" data-bs-toggle="modal" data-bs-target="#kt_modal_registro_datos_fondeo" data-n-accion="editar" data-n-operacion=${data.nIdOperaciones} data-n-tipo-fondeo=${data.nIdTipoFondeo} data-n-fondeador-factura=${data.nIdFondeadorFactura} data-n-data=${JSON.stringify(data).replace(/\s+/g, "")} title="Editar"><i class="las la-pen fs-2"></i></a>
+                        //<a href="javascript:;" class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-act" data-bs-toggle="modal" data-bs-target="#kt_modal_registro_datos_fondeo" data-n-accion="editar" data-n-operacion=${data.nIdOperaciones} data-n-tipo-fondeo=${data.nIdTipoFondeo} data-n-fondeador-factura=${data.nIdFondeadorFactura} data-n-data=${JSON.stringify(data).replace(/\s+/g, "")} title="Editar"><i class="las la-pen fs-2"></i></a>
 
-                                
+                                `
 
                                 <a href="javascript:;" class="btn btn-sm btn-icon btn-light-dark open-modal edit-row me-2 p-act" data-bs-toggle="modal" data-bs-target="#kt_modal_registro_datos_fondeo" data-n-accion="ver" data-n-operacion=${data.nIdOperaciones} data-n-tipo-fondeo=${data.nIdTipoFondeo} data-n-fondeador-factura=${data.nIdFondeadorFactura} data-n-data=${JSON.stringify(data).replace(/\s+/g, "")} title="Ver"><i class="las la-search fs-2"></i></a> 
 
@@ -266,11 +266,11 @@ var Fondeo = function () {
             } else if (tipoProducto == 1) {
                 var PorCapitalFinanciado = $('#PorCapitalFinanciado').val();
                 var PorTasaAnualFondeo = $('#PorTasaAnualFondeo').val();
-                //var PorTasaMoraFondeo = $('#PorTasaMoraFondeo').val();
+                var PorTasaMoraFondeo = $('#PorTasaMoraFondeo').val();
                 //console.log(PorCapitalFinanciado, PorTasaAnualFondeo, PorTasaMoraFondeo)
 
-                /*  if (PorCapitalFinanciado == '' || PorTasaAnualFondeo == '' || PorTasaMoraFondeo == '') {*/
-                if (PorCapitalFinanciado == '' || PorTasaAnualFondeo == '') {
+                  if (PorCapitalFinanciado == '' || PorTasaAnualFondeo == '' || PorTasaMoraFondeo == '') {
+                //if (PorCapitalFinanciado == '' || PorTasaAnualFondeo == '') {
                     messageError('Por favor, ingrese los campos requeridos y vuelve a intentarlo.');
                     return false;
                 }
@@ -463,6 +463,31 @@ var Fondeo = function () {
         });
     }
 
+    var handleDescarga = function () {
+        var form = document.getElementById('kt_search_form');
+        if (!form) {
+            return;
+        }
+        var exportButton = document.getElementById('kt_export_button');
+
+
+        if (!exportButton) {
+            return;
+        }
+        exportButton.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var operacion = $('#NroOperacion').val();
+            var fondeador = $('#Fondeador').val();
+            var girador = $('#Girador').val();
+            var fecha = $('#FechaCreacion').val();
+            var estado = $('#IdEstadoFondeo').val();
+
+            window.open(globalPath + `Fondeo/DescargarRegistroFondeoArchivo?operacion=${operacion}&fondeador=${fondeador}&girador=${girador}&fecha=${fecha}&estado=${estado}`, '_self');
+
+        });
+    }
+
     $('#kt_modal_registro_datos_fondeo').on('show.bs.modal', function (event) {
         $.fn.modal.Constructor.prototype.enforceFocus = function () { };
 
@@ -478,7 +503,7 @@ var Fondeo = function () {
 
         $('#PorCapitalFinanciado').attr('readonly', flg);
         $('#PorTasaAnualFondeo').attr('readonly', flg);
-        //$('#PorTasaMoraFondeo').attr('readonly', flg);
+        $('#PorTasaMoraFondeo').attr('readonly', flg);
         $('#PorTasaMensual').attr('readonly', flg);
         $('#PorComisionFactura').attr('readonly', flg);
         $('#PorSpread').attr('readonly', flg);
@@ -539,7 +564,7 @@ var Fondeo = function () {
 
                 $('#PorCapitalFinanciado').val(nData.nPorcentajeCapitalFinanciado)
                 $('#PorTasaAnualFondeo').val(nData.nPorcentajeTasaAnualFondeo)
-                //$('#PorTasaMoraFondeo').val(nData.nPorcentajeTasaMoraFondeo)
+                $('#PorTasaMoraFondeo').val(nData.nPorcentajeTasaMoraFondeo)
                 $('#PorTasaMensual').val(nData.nPorcentajeTasaMensual)
                 $('#PorComisionFactura').val(nData.nPorcentajeComisionFactura)
                 $('#PorSpread').val(nData.nPorcentajeSpread)
@@ -558,14 +583,14 @@ var Fondeo = function () {
         });
 
 
-        $('#nIdEstadoEvaluacion').select2({
+        $('#IdFondeador').select2({
             allowClear: true,
             dropdownParent: $('#kt_modal_registro_datos_fondeo')
         });
 
 
         $('#IdOperacion').val(nOpe);
-        $('#IdTipoProducto').val(nTipoFondeo);
+        //$('#IdTipoProducto').val(nTipoFondeo);
         $('#IdFondeadorFactura').val(nFondeadorFactura);
 
 
@@ -591,7 +616,7 @@ var Fondeo = function () {
             $('#sec-factoring').hide();
             $('#sec-cobranzaLibre').hide();
         }
-
+        $('#IdTipoProducto').val(tipoProducto);
     });
     return {
         init: function () {
@@ -600,6 +625,8 @@ var Fondeo = function () {
             handleModalRegistroDatos();
             handleDeleteFondeoForm();
             handleAddFondeoForm();
+
+            handleDescarga();
            
         }
     }

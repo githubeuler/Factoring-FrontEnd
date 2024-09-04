@@ -1,5 +1,6 @@
 ﻿using Factoring.Model;
 using Factoring.Model.Models.Fondeo;
+using Factoring.Model.Models.Operaciones;
 using Factoring.Service.Common;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -15,6 +16,7 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<int>> Update(FondeoUpdateDto model);
         Task<ResponseData<int>> Insert(FondeoInsertDto model);
         Task<ResponseData<int>> UpdateState(FondeoUpdateStateDto model);
+        Task<ResponseData<string>> GetReporteRegistroFondeoDonwload(FondeoRequestDatatableDto model);
     }
 
     public class FondeoProxy : IFondeoProxy
@@ -81,6 +83,18 @@ namespace Factoring.Service.Proxies
             var response = await client.PostAsync("Fondeo/update-state", requestContent);
             var json = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<ResponseData<int>>(json);
+        }
+
+        public async Task<ResponseData<string>> GetReporteRegistroFondeoDonwload(FondeoRequestDatatableDto model)
+        {
+            var client = _proxyHttpClient.GetHttp();
+            client.Timeout = TimeSpan.FromMinutes(5);
+            var response = await client.GetAsync($"Fondeo/get-registro-fondeo-base64?&FilterNroOperacion={model.FilterNroOperacion}" +
+                $"&FilterFondeadorAsignado={model.FilterFondeadorAsignado}&FilterGirador={model.FilterGirador}&FilterFechaRegistro={model.FilterFechaRegistro}" +
+                $"&FilterEstadoFondeo={model.FilterEstadoFondeo}");
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<ResponseData<string>>(json);
+            return data;
         }
     }
 }

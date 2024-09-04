@@ -171,7 +171,7 @@ namespace Factoring.WebMvc.Controllers
                                 IdProducto = fondeador.IdProducto,
                                 IdInteresCalculado = fondeador.IdInteresCalculado,
                                 IdTipoFondeo = fondeador.IdTipoFondeo,
-                                DistribucionFondeador = fondeador.IdProducto == 2 ? string.Empty : fondeador.DistribucionFondeador
+                                DistribucionFondeador = fondeador.IdProducto == 1 ? string.Empty : fondeador.DistribucionFondeador
                             });
                             return Json(result);
                         }
