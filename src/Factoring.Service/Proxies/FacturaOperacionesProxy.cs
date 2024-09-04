@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
 using System.Text;
 using Factoring.Model.Models.Cavali;
+using System.Threading.Tasks;
 
 namespace Factoring.Service.Proxies
 {
@@ -24,6 +25,10 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<FondeadorGetPermisosCabecera>> ObtenerAsignaciones(OperacionesFacturaValidaAsignacion model);
         Task<ResponseData<ResponseCavaliRedeem4007>> OperacionCavaliRedeem4007(OperacionesFacturaRemoveCavali model);
         Task<ResponseData<FacturasGetCabeceraRegistro>> ObtenerValidacionAsignaciones(RequestOperacionesFacturaValidacion model);
+        Task<ResponseData<int>> CreateSolcitudDocumento(DocumentosSolicitudperacionesInsertDto model);
+        Task<ResponseData<List<DocumentoSolicitudOperacionListDto>>> GetAllListDocumentoSolicitudByIdOperaciones(int id);
+        Task<ResponseData<List<DocumentoSolicitudOperacionListIdDto>>> GetAllDocumentoSolicitudByOperaciones(int id);
+        Task<ResponseData<int>> DeleteDocumento(OperacionesSolicitudDeleteDto model);
     }
     public class FacturaOperacionesProxy : IFacturaOperacionesProxy
     {
@@ -273,6 +278,79 @@ namespace Factoring.Service.Proxies
                 var response = await client.PostAsync("OperacionesFactura/validate-envio-cavali", requestContent);
                 var json = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<ResponseData<FacturasGetCabeceraRegistro>>(json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ResponseData<int>> CreateSolcitudDocumento(DocumentosSolicitudperacionesInsertDto model)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var us = JsonConvert.SerializeObject(model);
+                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+                var response = await client.PostAsync("OperacionesFactura/add-documento-solicitud", requestContent);
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ResponseData<int>>(json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<ResponseData<List<DocumentoSolicitudOperacionListDto>>> GetAllListDocumentoSolicitudByIdOperaciones(int id)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var response = await client.GetAsync($"OperacionesFactura/get-documentosolicitud/{id}");
+                var json = await response.Content.ReadAsStringAsync();
+                var data = JsonConvert.DeserializeObject<ResponseData<List<DocumentoSolicitudOperacionListDto>>>(json);
+                //data.Data.ForEach(m => m.nMontoTotal = data.Data.Sum(x => x.nMonto));
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<ResponseData<List<DocumentoSolicitudOperacionListIdDto>>> GetAllDocumentoSolicitudByOperaciones(int id)
+        {
+            try
+            {
+                DocumentoSolicitudOperacionListIdDto operacionesFacturas = new DocumentoSolicitudOperacionListIdDto();
+                operacionesFacturas.IdSolEvalOperacion = id;
+
+                var client = _proxyHttpClient.GetHttp();
+                client.Timeout = TimeSpan.FromMinutes(15);
+
+                var us = JsonConvert.SerializeObject(operacionesFacturas);
+                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+                var response = await client.PostAsync("OperacionesFactura/consulta-documento-solicitud", requestContent);
+                var json = await response.Content.ReadAsStringAsync();
+                var data = JsonConvert.DeserializeObject<ResponseData<List<DocumentoSolicitudOperacionListIdDto>>>(json);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ResponseData<int>> DeleteDocumento(OperacionesSolicitudDeleteDto model)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var us = JsonConvert.SerializeObject(model);
+                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+                var response = await client.PostAsync("OperacionesFactura/delete-documento", requestContent);
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ResponseData<int>>(json);
+
             }
             catch (Exception ex)
             {

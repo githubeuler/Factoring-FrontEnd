@@ -1,0 +1,53 @@
+﻿@if (ViewData["Action"] == "Editar")
+{
+    <form id="kt_form_add_documentos" class="form" asp-controller="Operacion" asp-action="AgregarDocumentoSolicitud" enctype="multipart/form-data" method="post" novalidate="novalidate">
+        <input type="hidden" id="IdOperacionCabeceraFacturas" name="IdOperacionCabeceraFacturas" />
+        <div class="row g-9 mb-7">
+            <div class="col-md-12 fv-row">
+                <div class="d-flex align-items-center rounded py-5 px-5 bg-light-primary">
+                    <i class="fas fa-info-circle fs-2x text-primary me-2"></i>
+                    <div class="text-gray-700 fw-bold fs-6">
+                        Los archivos permitidos son Word, Excel, PDFs, Imágenes y Archivos de Texto.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Tipo Documento</label>
+                <select id="TipoDocumento" name="TipoDocumento" asp-items="@(new SelectList(ViewBag.TipoDocumento, "nId", "cNombre"))" aria-label="Seleccionar" data-control="select2" data-placeholder="Seleccionar" class="form-select form-select-solid fw-bolder">
+                    <option value="">Seleccionar</option>
+                </select>
+            </div>
+            <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Documento</label>
+                <input type="file" id="fileDocumento" name="fileDocumento" class="form-control form-control-solid" required="required" data-fv-not-empty___message="documento es obligatorio" />
+            </div>
+            <div class="col-md-3 fv-row d-flex justify-content-center align-items-center">
+                <div>
+                    <button id="kt_add_documento" type="button" class="btn btn-sm btn-primary btn-ins">
+                        <span class="indicator-label">Agregar</span>
+                        <span class="indicator-progress">Agregando Registro... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <input type="hidden" id="Action" value="@ViewData["Action"]" />
+}
+<table id="kt_documento_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+    <thead>
+        <tr class="text-center fw-bolder fs-8 text-uppercase gs-0">
+            <th class="text-center" style="display:none">nIdDocumentoSolEvalOperacion</th>
+            <th class="text-center" style="display:none">idSolEvalOperacion</th>
+            <th class="text-center">Tipo Documento</th>
+            <th class="text-center">Documento</th>
+            <th class="text-center">Fecha Registro</th>
+            <th class="text-center" style="display:none">cRutaDocumento</th>
+            <th class="text-center">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

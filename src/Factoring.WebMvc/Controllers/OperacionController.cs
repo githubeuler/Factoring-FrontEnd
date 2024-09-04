@@ -196,6 +196,10 @@ namespace Factoring.WebMvc.Controllers
             ViewBag.IsEdit = operacionId != null;
             ViewBag.ListGirador = await _giradorProxy.GetAllListGiradorlista();
             ViewBag.ListAdquiriente = await _adquirienteProxy.GetAllListAdquirientelista();
+
+            var _TipoDocumento = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 131, Valor = "0" });
+            ViewBag.TipoDocumento = _TipoDocumento.Data.ToList();
+
             if (operacionId == null)
             {
                 ViewBag.DireccionGirador = "";
@@ -550,8 +554,9 @@ namespace Factoring.WebMvc.Controllers
 
         public async Task<IActionResult> GetAllDocumentoSolicitud(int operacionId)
         {
-            return Json(null);
+            return Json(await _facturaOperacionesProxy.GetAllListDocumentoSolicitudByIdOperaciones(operacionId));
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -893,25 +898,87 @@ namespace Factoring.WebMvc.Controllers
         [HttpGet]
         public async Task<IActionResult> DownloadFileSolicitud(string nIdSolicitudEvaluacion)
         {
-            //string filename = string.Empty;
-            //ResponseData<List<DocumentoSolicitudOperacionListIdDto>> lst = new ResponseData<List<DocumentoSolicitudOperacionListIdDto>>();
-            //lst = await _facturaOperacionesProxy.GetAllDocumentoSolicitudByOperaciones(Convert.ToInt32(nIdSolicitudEvaluacion));
-            //if (lst.Data != null)
-            //{
-            //    if (lst.Data.Count > 0)
-            //        filename = lst.Data[0].cRutaDocumento;
+            string filename = string.Empty;
+            ResponseData<List<DocumentoSolicitudOperacionListIdDto>> lst = new ResponseData<List<DocumentoSolicitudOperacionListIdDto>>();
+            lst = await _facturaOperacionesProxy.GetAllDocumentoSolicitudByOperaciones(Convert.ToInt32(nIdSolicitudEvaluacion));
+            if (lst.Data != null)
+            {
+                if (lst.Data.Count > 0)
+                    filename = lst.Data[0].cRutaDocumento;
 
-            //}
-            //var bytesFile = await _filesProxy.DownloadFile(filename);
-            //string[] words = filename.Split(@"\");
-            //for (int i = 1; i < words.Length; i++)
-            //{
-            //    if (i == words.Length - 1)
-            //    {
-            //        filename = words[i].ToString();
-            //    }
-            //}
-            return File("", "application/octet-stream", "");
+            }
+            var bytesFile = await _filesProxy.DownloadFile(filename);
+            string[] words = filename.Split(@"\");
+            for (int i = 1; i < words.Length; i++)
+            {
+                if (i == words.Length - 1)
+                {
+                    filename = words[i].ToString();
+                }
+            }
+            return File(bytesFile, "application/octet-stream", filename);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AgregarDocumentoSolicitud(AgregarDocumentoSolicitud model)
+        {
+            string nroOperacion = string.Empty;
+            int nIdSolicitud = 0;
+            if (ModelState.IsValid)
+            {
+                var operacionDetalle = await _operacionProxy.GetOperaciones(model.IdOperacionCabeceraFacturas);
+                if (operacionDetalle != null)
+                {
+                    nroOperacion = operacionDetalle.Data.nNroOperacion;
+                    nIdSolicitud = operacionDetalle.Data.IdSolEvalOperacion;
+                }
+                string randon = RandomString(10);
+                var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var path = _configuration[$"PathDocumentos:{Operaciones}"].ToString() + "\\" + nroOperacion + _configuration[$"PathDocumentos:{TipoDocumento}"].ToString();
+                var archivoXML = await _filesProxy.UploadFile(model.fileDocumentoXml, randon + "_" + model.fileDocumentoXml.FileName, path);
+
+                if (archivoXML.Succeeded)
+                {
+                    var result = await _facturaOperacionesProxy.CreateSolcitudDocumento(new DocumentosSolicitudperacionesInsertDto
+                    {
+                        nIdSolEvalOperaciones = nIdSolicitud,
+                        nTipoDocumento = model.nTipoDocumento,
+                        cNombreDocumento = model.fileDocumentoXml.FileName,
+                        cRutaDocumento = Path.Combine(path, randon + "_" + model.fileDocumentoXml.FileName),
+                        cUsuarioCreador = userName
+                    });
+                    return Json(result);
+                }
+                else
+                {
+                    return Json(new { succeeded = false, message = "El archivo no se cargo, intente nuevamente..." });
+                }
+            }
+            else
+            {
+                return Json(new { succeeded = false, message = "Ocurrió un error, intente nuevamente..." });
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EliminarDocumentoSolicitud(EliminarDocumentoSolicitud model)
+        {
+            var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var archivoXML = await _filesProxy.DeleteFiles(model.filePath);
+            if (archivoXML.Succeeded)
+            {
+                OperacionesSolicitudDeleteDto obj = new OperacionesSolicitudDeleteDto() { nIdDocumentoSolEvalOperaciones = model.nIdDocumentoSolEvalOperacion, UsuarioActualizacion = userName };
+                var result = await _facturaOperacionesProxy.DeleteDocumento(obj);
+                return Json(result);
+            }
+            else
+            {
+                return Json(new { succeeded = false, message = "El archivo no se elimino, intente nuevamente..." });
+            }
+
         }
 
     }

@@ -160,19 +160,19 @@
                     Facturas
                 </a>
             </li>
-           @* <li class="nav-item">
-                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_cavali">
-                    Cavali
+           <li class="nav-item">
+                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#tab_documentos">
+                    Documentos
                 </a>
-            </li>*@
+            </li>
         </ul>
         <div id="tabContentDetalle" class="tab-content">
             <div id="tab_facturas" class="tab-pane fade show active" role="tabpanel">
                 <partial name="TabsDetalle/_Facturas" view-data="ViewData" />
             </div>
-            @*<div id="tab_cavali" class="tab-pane fade show" role="tabpanel">
-                <partial name="TabsDetalle/_Cavali" view-data="ViewData" />
-            </div>*@
+            <div id="tab_documentos" class="tab-pane fade show" role="tabpanel">
+                <partial name="TabsDetalle/_SolicitudDocumentos" view-data="ViewData" />
+            </div>
         </div>
     </div>
 </div>
