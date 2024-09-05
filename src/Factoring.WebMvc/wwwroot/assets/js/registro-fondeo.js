@@ -568,6 +568,7 @@ var Fondeo = function () {
                 $('#PorTasaMensual').val(nData.nPorcentajeTasaMensual)
                 $('#PorComisionFactura').val(nData.nPorcentajeComisionFactura)
                 $('#PorSpread').val(nData.nPorcentajeSpread)
+                $('#Igv').val(nData.nIgv)
 
 
                 $('#FechaDesembolso').val(nData.dFechaDesembolsoFondeador)
@@ -605,16 +606,22 @@ var Fondeo = function () {
             if (tipoProducto == 2) {
                 $('#sec-cobranzaLibre').show();
                 $('#sec-factoring').hide();
+
+                $('#sec-igv').show();
+
             } else if (tipoProducto == 1) {
                 $('#sec-factoring').show();
                 $('#sec-cobranzaLibre').hide();
+                $('#sec-igv').show();
             } else {
                 $('#sec-factoring').hide();
                 $('#sec-cobranzaLibre').hide();
+                $('#sec-igv').hide();
             }
         } else {
             $('#sec-factoring').hide();
             $('#sec-cobranzaLibre').hide();
+            $('#sec-igv').hide();
         }
         $('#IdTipoProducto').val(tipoProducto);
     });

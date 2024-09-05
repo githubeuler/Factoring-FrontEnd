@@ -30,6 +30,7 @@
         public string? dFechaCobranzaFondeador { get; set; }
 
         public string nMontoADesembolsarFondeador { get; set; }
+        public decimal nIgv { get; set; }
 
     }
     public class FondeoRequestDatatableDto
@@ -72,6 +73,7 @@
         public decimal PorTasaMoraFondeo { get; set; }
         public string? UsuarioCreacion { get; set; }
         public string? UsuarioModificacion { get; set; }
+        public decimal Igv { get; set; }
     }
 
 

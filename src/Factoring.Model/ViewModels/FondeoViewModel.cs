@@ -22,6 +22,7 @@
         public decimal PorTasaAnualFondeo { get; set; }
         public decimal PorTasaMoraFondeo { get; set; }
         public int IdEstadoFondeo{ get; set; }
+        public decimal Igv { get; set; }
 
     }
 }

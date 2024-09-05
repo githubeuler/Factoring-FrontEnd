@@ -81,7 +81,8 @@ namespace Factoring.WebMvc.Controllers
                 PorTasaMoraFondeo = model.PorTasaMoraFondeo,
                 FechaDesembolso = model.FechaDesembolso,
                 FechaCobranza = model.FechaCobranza,
-                UsuarioModificacion = userName
+                UsuarioModificacion = userName,
+                Igv = model.Igv
 
 
             });
