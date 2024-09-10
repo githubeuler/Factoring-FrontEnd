@@ -511,10 +511,12 @@ var Fondeo = function () {
         $('#FechaCobranza').attr('readonly', flg);
         $('#FechaDesembolso').attr('readonly', flg);
         $('#FechaCobranza').attr('readonly', flg);
+        $('#Igv').attr('readonly', flg);
 
         $('#IdFondeador').prop('disabled', flg);
         $('#FechaDesembolso').prop('disabled', flg);
         $('#FechaCobranza').prop('disabled', flg);
+       
 
       
 
