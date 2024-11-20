@@ -262,7 +262,7 @@ namespace Factoring.WebMvc.Controllers
                     giradorData.Antecedente = giradorDetalle.Data.cAntecedente;
                     giradorData.Estado = giradorDetalle.Data.nEstado;
                     giradorData.NombreEstado = giradorDetalle.Data.NombreEstado;
-                    giradorData.ActividadEconomica = ActividadesEconomicas.Data.Where(x => x.nId == giradorDetalle.Data.nIdActividadEconomica).ToList().FirstOrDefault().cNombre;
+                    giradorData.ActividadEconomica = giradorDetalle.Data.nIdActividadEconomica == 0 ? string.Empty : ActividadesEconomicas.Data.Where(x => x.nId == giradorDetalle.Data.nIdActividadEconomica).ToList().FirstOrDefault().cNombre;
 
 
                 }
