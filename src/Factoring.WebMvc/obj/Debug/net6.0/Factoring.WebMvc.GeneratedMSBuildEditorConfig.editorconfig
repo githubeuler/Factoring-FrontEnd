@@ -10,6 +10,8 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Factoring.WebMvc
 build_property.RootNamespace = Factoring.WebMvc
 build_property.ProjectDir = C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.WebMvc\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
@@ -36,16 +38,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNlcHRhbnRlXFRhYnNEZXRhbGxlXF9Db250YWN0by5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Aceptante/TabsDetalle/_Linea.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNlcHRhbnRlXFRhYnNEZXRhbGxlXF9MaW5lYS5jc2h0bWw=
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Aceptante/TabsDetalle/_Documentos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNlcHRhbnRlXFRhYnNEZXRhbGxlXF9Eb2N1bWVudG9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Aceptante/TabsDetalle/_Ubicacion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNlcHRhbnRlXFRhYnNEZXRhbGxlXF9VYmljYWNpb24uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Aceptante/_PartialDetalle.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNlcHRhbnRlXF9QYXJ0aWFsRGV0YWxsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/CargaMasiva/Index.cshtml]
@@ -70,6 +68,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Fondeador/TabsDetalle/_Documentos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9uZGVhZG9yXFRhYnNEZXRhbGxlXF9Eb2N1bWVudG9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Fondeo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9uZGVvXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Girador/Detalle.cshtml]
@@ -118,6 +120,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Operacion/TabsDetalle/_Facturas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmFjaW9uXFRhYnNEZXRhbGxlXF9GYWN0dXJhcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Operacion/TabsDetalle/_SolicitudDocumentos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmFjaW9uXFRhYnNEZXRhbGxlXF9Tb2xpY2l0dWREb2N1bWVudG9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Rafael/FuenteFactoring/RamaDesarrollo/Factoring-FrontEnd/src/Factoring.WebMvc/Views/Shared/Error.cshtml]

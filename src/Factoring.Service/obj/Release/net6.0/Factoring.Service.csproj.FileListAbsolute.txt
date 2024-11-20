@@ -8,8 +8,9 @@ C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Servic
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Service\obj\Release\net6.0\Factoring.Service.AssemblyInfoInputs.cache
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Service\obj\Release\net6.0\Factoring.Service.AssemblyInfo.cs
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Service\obj\Release\net6.0\Factoring.Service.csproj.CoreCompileInputs.cache
-C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Service\obj\Release\net6.0\Factoring.Service.csproj.CopyComplete
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Service\obj\Release\net6.0\Factoring.Service.dll
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Service\obj\Release\net6.0\refint\Factoring.Service.dll
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Service\obj\Release\net6.0\Factoring.Service.pdb
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Service\obj\Release\net6.0\ref\Factoring.Service.dll
+C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Service\obj\Release\net6.0\Factoring.Service.sourcelink.json
+C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Service\obj\Release\net6.0\Factorin.320EDAA5.Up2Date

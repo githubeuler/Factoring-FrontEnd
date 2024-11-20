@@ -185,6 +185,22 @@
       "PackagePath": "staticwebassets\\assets\\js\\login.js"
     },
     {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\registro-aceptante.js",
+      "PackagePath": "staticwebassets\\assets\\js\\registro-aceptante.js"
+    },
+    {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\registro-fondeador.js",
+      "PackagePath": "staticwebassets\\assets\\js\\registro-fondeador.js"
+    },
+    {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\registro-fondeo.js",
+      "PackagePath": "staticwebassets\\assets\\js\\registro-fondeo.js"
+    },
+    {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\registro-girador.js",
+      "PackagePath": "staticwebassets\\assets\\js\\registro-girador.js"
+    },
+    {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\registro-operacion.js",
       "PackagePath": "staticwebassets\\assets\\js\\registro-operacion.js"
     },
@@ -199,6 +215,10 @@
     {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\site.jss",
       "PackagePath": "staticwebassets\\assets\\js\\site.jss"
+    },
+    {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\transferencias.js",
+      "PackagePath": "staticwebassets\\assets\\js\\transferencias.js"
     },
     {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\lib\\bootstrap\\LICENSE",
@@ -725,12 +745,32 @@
       "PackagePath": "staticwebassets\\assets\\plugins\\plugins.bundle.js.map"
     },
     {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\upload\\20608445294-01-F001-121.xml",
+      "PackagePath": "staticwebassets\\assets\\upload\\20608445294-01-F001-121.xml"
+    },
+    {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\upload\\20608445294-01-F001-210.xml",
+      "PackagePath": "staticwebassets\\assets\\upload\\20608445294-01-F001-210.xml"
+    },
+    {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\upload\\20611541555-01-F001-00000051.xml",
       "PackagePath": "staticwebassets\\assets\\upload\\20611541555-01-F001-00000051.xml"
     },
     {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\upload\\20611541555-01-F001-00000054.xml",
       "PackagePath": "staticwebassets\\assets\\upload\\20611541555-01-F001-00000054.xml"
+    },
+    {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\upload\\5FOS5ZIT5F_FACTURAE001-61120607043311.XML",
+      "PackagePath": "staticwebassets\\assets\\upload\\5FOS5ZIT5F_FACTURAE001-61120607043311.XML"
+    },
+    {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\upload\\FACTURAE001-26020600479891.XML",
+      "PackagePath": "staticwebassets\\assets\\upload\\FACTURAE001-26020600479891.XML"
+    },
+    {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\upload\\FACTURAE001-28720600479891.XML",
+      "PackagePath": "staticwebassets\\assets\\upload\\FACTURAE001-28720600479891.XML"
     },
     {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\favicon.ico",

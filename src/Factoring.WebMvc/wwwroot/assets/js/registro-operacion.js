@@ -1946,6 +1946,8 @@ var RegistroOperacion = function () {
                 dataType: 'json',
                 url: globalPath + 'Operacion/GetAllDocumentoSolicitud?operacionId=' + $(idOperacion).val(),
                 dataSrc: function (data) {
+                    console.log('data:', data);
+                
                     return data.data;
                 }
             },

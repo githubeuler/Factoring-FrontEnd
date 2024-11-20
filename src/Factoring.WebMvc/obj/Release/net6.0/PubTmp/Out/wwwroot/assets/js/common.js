@@ -95,8 +95,10 @@ var acciones = [
         "NOMBRE": "TRASPASAR",
         "CODIGO": 19,
         "CLASE": ".p-traspa"
-    }, 
+    },
 ];
+
+
 var Common = function () {
     var HideShowButtom = function () {
 
@@ -137,7 +139,7 @@ var Common = function () {
         for (var i = 0; i < acciones.length; i++) {
             Common.validarElemento(men_per, acciones[i].CODIGO, acciones[i].CLASE)
         }
-
+       
         for (var i = 0; i < _menuHijo.length; i++) {
             if (!_menuHijo[i].cUrl.includes('/')) {
                 for (var i = 0; i < acciones.length; i++) {

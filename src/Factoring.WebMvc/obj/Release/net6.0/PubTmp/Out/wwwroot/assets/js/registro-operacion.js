@@ -105,7 +105,7 @@ var RegistroOperacion = function () {
                             buttonAction += `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperaciones} title="Evaluar"><i class="las la-check-square fs-2"></i></a>
                                 
                                 <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row p-con"><i class="las la-search fs-2"></i></a> 
-                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-trash fs-2"></i></button> `;
+                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-ban fs-2"></i></button> `;
                         }
 
                         else {
@@ -116,7 +116,7 @@ var RegistroOperacion = function () {
                                 <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperaciones} title="Evaluar"><i class="las la-check-square fs-2"></i></a>
                                 
                                 <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row p-con"><i class="las la-search fs-2"></i></a> 
-                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-trash fs-2"></i></button> `;
+                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-ban fs-2"></i></button> `;
                         }
 
                         return buttonAction;
@@ -935,7 +935,7 @@ var RegistroOperacion = function () {
                     render: function (data, type, row) {
                         montoFacturaTotal = data.nMontoTotal;
                         var buttonDownload = ((data.cNombreDocumentoXML == null || data.cNombreDocumentoXML == '') ? `` : `<a href="javascript:;" class="btn btn-icon btn-sm btn-outline btn-outline-solid btn-outline-default me-2 p-des" data-kt-factura-table-filter="download_file" data-filename="` + data.cNombreDocumentoXML + `" onclick="RegistroOperacion.fnDownloadOperaciones(` + data.nIdOperacionesFacturas + `)" title="` + data.cNombreDocumentoXML + `" data-id="` + data.nIdOperacionesFacturas + `"><i class="las la-download fs-2"></i></a>`);
-                        var buttonDelete = ((tableFacturaAction == 'Detalle') ? `` : `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt-factura-table-filter="delete_row" data-parent="` + $(idOperacion).val() + `" data-id="` + data.nIdOperacionesFacturas + `" data-path="` + data.cRutaDocumentoXML + `" data-Operacion="` + data.nroOperacion + `"><i class="las la-trash fs-2"></i></a>`);
+                        var buttonDelete = ((tableFacturaAction == 'Detalle') ? `` : `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt-factura-table-filter="delete_row" data-parent="` + $(idOperacion).val() + `" data-id="` + data.nIdOperacionesFacturas + `" data-path="` + data.cRutaDocumentoXML + `" data-Operacion="` + data.nroOperacion + `"><i class="las la-ban fs-2"></i></a>`);
                         //var buttoEdit = `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-edit" data-bs-toggle="modal" data-bs-target="#kt_factura_monto_modal" data-n-operacion="' + data.nIdOperaciones + '" title="Editar"><i class="las la-check-square fs-2"></i></a>`;
                         var buttonEdit = '<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-edit" data-bs-toggle="modal" data-bs-target="#kt_factura_monto_modal" data-n-operacion="' + $(idOperacion).val() + `" data-idfactura="` + data.nIdOperacionesFacturas + `" data-monto="` + data.nMonto + '" title="Editar"><i class="las la-pen fs-2"></i></a>';
                         return buttonDownload + buttonDelete + buttonEdit;
@@ -1990,7 +1990,7 @@ var RegistroOperacion = function () {
                         /*var buttonDownload = '';*/
                         if (typeof data != 'undefined') {
                             var buttonDownload = ((data.nombreDocumento == null || data.nombreDocumento == '') ? `` : `<a href="javascript:;" class="btn btn-icon btn-sm btn-outline btn-outline-solid btn-outline-default me-2 p-des" data-kt_documento_table-filter="download_file" data-filename="` + data.nombreDocumento + `" onclick="RegistroOperacion.fnDownloadSolicitudOperaciones(` + data.nIdDocumentoSolEvalOperacion + `)" title="` + data.nombreDocumento + `" data-id="` + data.nIdDocumentoSolEvalOperacion + `"><i class="las la-download fs-2"></i></a>`);
-                            var buttonDelete = ((tableDocumentoSolicitudAction == 'Detalle') ? `` : `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt_documento_table-filter="delete_row" data-id="` + data.nIdDocumentoSolEvalOperacion + `" data-path="` + data.cRutaDocumento + `" ><i class="las la-trash fs-2"></i></a>`);
+                            var buttonDelete = ((tableDocumentoSolicitudAction == 'Detalle') ? `` : `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt_documento_table-filter="delete_row" data-id="` + data.nIdDocumentoSolEvalOperacion + `" data-path="` + data.cRutaDocumento + `" ><i class="las la-ban fs-2"></i></a>`);
                         }
                         return buttonDownload + buttonDelete;
                     }

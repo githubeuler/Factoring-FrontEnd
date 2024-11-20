@@ -42,6 +42,7 @@ C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Model\
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Model\obj\Debug\net6.0\Factoring.Model.AssemblyInfoInputs.cache
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Model\obj\Debug\net6.0\Factoring.Model.AssemblyInfo.cs
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Model\obj\Debug\net6.0\Factoring.Model.csproj.CoreCompileInputs.cache
+C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Model\obj\Debug\net6.0\Factoring.Model.sourcelink.json
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Model\obj\Debug\net6.0\Factoring.Model.dll
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Model\obj\Debug\net6.0\refint\Factoring.Model.dll
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.Model\obj\Debug\net6.0\Factoring.Model.pdb
