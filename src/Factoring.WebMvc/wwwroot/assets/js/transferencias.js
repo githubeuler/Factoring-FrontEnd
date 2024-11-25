@@ -476,7 +476,7 @@ var Transferencias = function () {
                 mensaje = 'Las facturas seleccionadas deben estar en estado Registrado.'
             }
             else if (pnIdOpcionOperacion == 2) {
-                mensaje = 'Las facturas seleccionadas deben estar en estado Registrado.'
+                mensaje = 'Las facturas seleccionadas deben estar en estado Desembolsado.'
             }
             else {
                 //3
@@ -491,7 +491,7 @@ var Transferencias = function () {
                         withCredentials: true
                     },
                     data: {
-                        IdFacturas: $("#IdFacturasAccion").val(),
+                        IdFacturas: $("#IdFacturasAccion").val().split(','),
                         nIdOpcionOperacion: pnIdOpcionOperacion
                     },
                     success: function (data) {
@@ -500,7 +500,7 @@ var Transferencias = function () {
                         console.log('data_lista::', data.listaFacturas);
                         if (data.data.listaFacturas.length > 0) {
                             console.log(data);
-                            if (pnIdOpcionOperacion == 1 || pnIdOpcionOperacion == 3) {
+                            if (pnIdOpcionOperacion == 1 || pnIdOpcionOperacion == 2) {
                                 if (data.data.nActivarTransferencia == 0 && data.data.nActivarTransferencia != null  ) {
                                     messageError(mensaje);
                                 }
@@ -519,7 +519,8 @@ var Transferencias = function () {
                             }
                         }
                         else {
-                            messageError(data.mensaje);
+                           
+                            messageError(data.message);
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -653,6 +654,7 @@ var Transferencias = function () {
                     })
                 }
             }
+
         );
         Transferencias.getRevalidateFormElement(form, 'InversionistaAccion', validator);
         saveButton.addEventListener('click', function (e) {
