@@ -209,7 +209,8 @@ namespace Factoring.WebMvc.Controllers
                 {
                     var MensajeRetorno = new ResponseData<ResponseCavaliInvoice4012>();
                     int nIdFondeador = 0;
-                    int nCategoriaFondeador = 0;
+                    int nCategoriaFondeador = 0, nCantidadAsignaciones=0,nIdGiradorPlus=0;
+                    bool bFondeadorPlus = false;
                     var resultEval = await _facturaOperacionesProxy.ObtenerValidacionAsignaciones(new RequestOperacionesFacturaValidacion
                     {
                         nLstIdFacturas = IdFacturasAccion,
@@ -222,11 +223,16 @@ namespace Factoring.WebMvc.Controllers
                         int cantidad = listaFacturas.Count;
                         if (cantidad == 1)
                         {
-                            int nCantidadConfechaNew = listaFacturas.Count(x => x.dFechaDesembolso != "");
+                            //--nNumeroAsignaciones
+                            //bFondeadorPlus
+                            int nCantidadConfechaNew = listaFacturas.Count(x => x.dFechaDesembolso != "" && x.nEstadoFactura == 10);
                             if (nCantidadConfechaNew > 0)
                             {
                                 nIdFondeador = listaFacturas[0].nIdFondeador;
                                 nCategoriaFondeador = listaFacturas[0].nIdCategoria;
+                                nCantidadAsignaciones = 1;
+                                nIdGiradorPlus = listaFacturas[0].nCodFondeadorPlus;
+                                bFondeadorPlus = listaFacturas[0].bFondeadorPlus;
                             }
                             else
                             {
@@ -242,17 +248,26 @@ namespace Factoring.WebMvc.Controllers
                             }
                         }
                         else
-                        {
-                            if ((listaFacturas[0].dFechaDesembolso != null || listaFacturas[0].dFechaDesembolso != "") && listaFacturas[0].dFechaDesembolsoFondeador == "")
-                            {
-                                nIdFondeador = listaFacturas[0].nIdFondeador;
-                                nCategoriaFondeador = listaFacturas[0].nIdCategoria;
-                            }
-                            else if (listaFacturas[0].dFechaDesembolsoFondeador == "")
+                        {//  if ((listaFacturas[0].dFechaDesembolso != null || listaFacturas[0].dFechaDesembolso != "") && listaFacturas[0].dFechaDesembolsoFondeador == "")
+
+                            if ((listaFacturas[0].dFechaDesembolso != null || listaFacturas[0].dFechaDesembolso != "") && listaFacturas[0].nNumeroAsignaciones == 1 && listaFacturas[0].nEstadoFactura==9 )                            
                             {
                                 nIdFondeador = listaFacturas[1].nIdFondeador;
                                 nCategoriaFondeador = listaFacturas[1].nIdCategoria;
+                                nIdGiradorPlus = listaFacturas[1].nCodFondeadorPlus;
+                                nCantidadAsignaciones = 2;
+                                bFondeadorPlus = listaFacturas[0].bFondeadorPlus;
                             }
+                            // if ((listaFacturas[0].dFechaDesembolso != null || listaFacturas[0].dFechaDesembolso != "") && listaFacturas[0].dFechaDesembolsoFondeador == "")
+                            //{
+                            //    nIdFondeador = listaFacturas[0].nIdFondeador;
+                            //    nCategoriaFondeador = listaFacturas[0].nIdCategoria;
+                            //}
+                            //else if (listaFacturas[0].dFechaDesembolsoFondeador == "")
+                            //{
+                            //    nIdFondeador = listaFacturas[1].nIdFondeador;
+                            //    nCategoriaFondeador = listaFacturas[1].nIdCategoria;
+                            //}
                             else
                             {
                                 ResponseCavaliInvoice4012 responseCavaliInvoice4012 = new()
@@ -290,7 +305,9 @@ namespace Factoring.WebMvc.Controllers
                             UsuarioCreador = userName,
                             InvoicesFactura = factura,
                             Invoices = IdFacturasAccion,
-                            nCategoriaFondeador = nCategoriaFondeador
+                            nCategoriaFondeador = nCategoriaFondeador,
+                            nCantidadAsignacion= nCantidadAsignaciones,
+                            nIdGiradorPlus=nIdGiradorPlus
                         });
                         nNumeroProcesados++;
                         MensajeRetorno = result;

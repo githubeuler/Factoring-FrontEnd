@@ -36,6 +36,8 @@ namespace Factoring.Model.Models.OperacionesFactura
         public List<int> Invoices { get; set; }
         public int InvoicesFactura { get; set; }
         public int nCategoriaFondeador { get; set; }
+        public int? nCantidadAsignacion { get; set; }
+        public int? nIdGiradorPlus { get; set; }
     }
     public class OperacionesFacturaValidaAsignacion
     {
@@ -66,6 +68,10 @@ namespace Factoring.Model.Models.OperacionesFactura
         public int nCantOperacion { get; set; }
         public int nCantFacturasRecepcionada { get; set; }
         public int nCantFacturasEvaluada { get; set; }
+        public bool bFondeadorPlus { get; set; }
+        public int nNumeroAsignaciones { get; set; }
+        public int nIdEstadoOperacionFactura { get; set; }
+        public int nCodFondeadorPlus { get; set; }
     }
 
     public class FacturasGetCabeceraRegistro
