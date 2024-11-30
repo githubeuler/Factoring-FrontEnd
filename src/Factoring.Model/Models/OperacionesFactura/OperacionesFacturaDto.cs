@@ -38,6 +38,8 @@ namespace Factoring.Model.Models.OperacionesFactura
         public int nCategoriaFondeador { get; set; }
         public int? nCantidadAsignacion { get; set; }
         public int? nIdGiradorPlus { get; set; }
+        public bool bFondeadorPlus { get; set; }
+        public bool bSegundoFlagDiferente { get; set; }
     }
     public class OperacionesFacturaValidaAsignacion
     {
