@@ -210,7 +210,7 @@ namespace Factoring.WebMvc.Controllers
                     var MensajeRetorno = new ResponseData<ResponseCavaliInvoice4012>();
                     int nIdFondeador = 0;
                     int nCategoriaFondeador = 0, nCantidadAsignaciones=0,nIdGiradorPlus=0;
-                    bool bFondeadorPlus = false;
+                    bool bFondeadorPlus = false,bSegundoFlagDiferente=false;
                     var resultEval = await _facturaOperacionesProxy.ObtenerValidacionAsignaciones(new RequestOperacionesFacturaValidacion
                     {
                         nLstIdFacturas = IdFacturasAccion,
@@ -233,6 +233,7 @@ namespace Factoring.WebMvc.Controllers
                                 nCantidadAsignaciones = 1;
                                 nIdGiradorPlus = listaFacturas[0].nCodFondeadorPlus;
                                 bFondeadorPlus = listaFacturas[0].bFondeadorPlus;
+                                bSegundoFlagDiferente = false;
                             }
                             else
                             {
@@ -257,6 +258,20 @@ namespace Factoring.WebMvc.Controllers
                                 nIdGiradorPlus = listaFacturas[1].nCodFondeadorPlus;
                                 nCantidadAsignaciones = 2;
                                 bFondeadorPlus = listaFacturas[0].bFondeadorPlus;
+                                if (listaFacturas[0].nIdCategoria != listaFacturas[1].nIdCategoria)
+                                {
+                                    bSegundoFlagDiferente = true;
+                                }
+                                else {
+                                    ResponseCavaliInvoice4012 responseCavaliInvoice4012 = new()
+                                    {
+                                        Mensaje = "El segundo fondeador es igual al primer transferido.",
+                                    };
+                                    MensajeRetorno.Message = "El segundo fondeador es igual al primer transferido.";
+                                    MensajeRetorno.Succeeded = false;
+                                    MensajeRetorno.Data = responseCavaliInvoice4012;
+                                    return Json(MensajeRetorno);
+                                }
                             }
                             // if ((listaFacturas[0].dFechaDesembolso != null || listaFacturas[0].dFechaDesembolso != "") && listaFacturas[0].dFechaDesembolsoFondeador == "")
                             //{
@@ -307,7 +322,9 @@ namespace Factoring.WebMvc.Controllers
                             Invoices = IdFacturasAccion,
                             nCategoriaFondeador = nCategoriaFondeador,
                             nCantidadAsignacion= nCantidadAsignaciones,
-                            nIdGiradorPlus=nIdGiradorPlus
+                            nIdGiradorPlus=nIdGiradorPlus,
+                            bFondeadorPlus=bFondeadorPlus,
+                            bSegundoFlagDiferente= bSegundoFlagDiferente
                         });
                         nNumeroProcesados++;
                         MensajeRetorno = result;
