@@ -160,7 +160,7 @@ var CargaMasiva = function () {
             $("#txtMonto").val(nMontoPlanilla.toFixed(2));
             var oControl = document.getElementById('txtMonto');
             oControl.disabled = true;
-
+            setComboCategoria()
             $("#kt_register_modal").modal("show");
         });
 
