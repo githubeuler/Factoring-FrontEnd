@@ -52,11 +52,16 @@ var RegistroOperacion = function () {
         //});
     }
     var initDatatable = function () {
-        var table = document.getElementById('kt_operaciones_table');
+        var table = $('#kt_operaciones_table');
         if (!table) {
             return;
         }
-        $(table).DataTable({ ordering: false }).clear().destroy();
+        // Verifica si el DataTable ya está inicializado
+        if ($.fn.DataTable.isDataTable(table)) {
+            table.DataTable().destroy();
+        }
+
+        //$(table).DataTable({ ordering: false }).clear().destroy();
         $.fn.dataTable.ext.errMode = 'none';
         datatable = $(table).DataTable({
             searchDelay: 500,
@@ -100,8 +105,7 @@ var RegistroOperacion = function () {
                         if (data.nEstado == '0') {
                             buttonAction += ``;
                         } // else if (data.nEditar == '10' || data.nEstado == '5')
-                        else if (data.nEditar > 0 )
-                        {
+                        else if (data.nEditar > 0) {
                             buttonAction += `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperaciones} title="Evaluar"><i class="las la-check-square fs-2"></i></a>
                                 
                                 <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row p-con"><i class="las la-search fs-2"></i></a> 
@@ -155,7 +159,7 @@ var RegistroOperacion = function () {
             handleModalControlEvaluacion();
             searchButton.disabled = false;
 
-         /*   handleAnularEvaluacion2();*/
+            /*   handleAnularEvaluacion2();*/
 
             $(searchClear).show();
             KTMenu.createInstances();
@@ -355,7 +359,7 @@ var RegistroOperacion = function () {
             toolbarSelected.classList.remove('d-none');
         } else {
             toolbarBase.classList.remove('d-none');
-           /* toolbarSelected.classList.add('d-none');*/
+            /* toolbarSelected.classList.add('d-none');*/
         }
     }
     var handleRegisterForm = function (e) {
@@ -408,10 +412,10 @@ var RegistroOperacion = function () {
         }
 
         $('#IdCategoria').on('change', function (e) {
-                $('#InteresMoratorio').attr("disabled", "true");
-                $('#InteresMoratorio').val('');
-                $('#InteresMoratorio').attr('placeholder', '0.00');
-                $("#InteresMoratorio").removeAttr("disabled")
+            $('#InteresMoratorio').attr("disabled", "true");
+            $('#InteresMoratorio').val('');
+            $('#InteresMoratorio').attr('placeholder', '0.00');
+            $("#InteresMoratorio").removeAttr("disabled")
         });
 
         var PICKER_VENCIMIENTO = flatpickr('#fechaVencimiento', {
@@ -906,7 +910,7 @@ var RegistroOperacion = function () {
                             ? moment(value).format('DD/MM/YYYY')
                             : (row.cIdEstadoFacturaHistorico.includes('4')
                                 ? moment(value).format('DD/MM/YYYY')
-                                : '<div> <input style="text-align: center" kt-t-fv="' + row.dFechaVencimiento + '" data-fv="' + row.dFechaVencimiento +'" type="text" data-id="' + row.nIdOperacionesFacturas + '" id="date_' + row.nIdOperacionesFacturas + '" class="form-control form-control flatpickr-input date-fnego" value="' + moment(value).format('DD/MM/YYYY') + '"></input> <span style="display:none" id="span_' + row.nIdOperacionesFacturas + '" class="spinner-border spinner-border-sm align-middle ms-2"></span></div>');
+                                : '<div> <input style="text-align: center" kt-t-fv="' + row.dFechaVencimiento + '" data-fv="' + row.dFechaVencimiento + '" type="text" data-id="' + row.nIdOperacionesFacturas + '" id="date_' + row.nIdOperacionesFacturas + '" class="form-control form-control flatpickr-input date-fnego" value="' + moment(value).format('DD/MM/YYYY') + '"></input> <span style="display:none" id="span_' + row.nIdOperacionesFacturas + '" class="spinner-border spinner-border-sm align-middle ms-2"></span></div>');
                     }
                 },
                 { data: 'cNombreDocumentoXML', 'autoWidth': true, class: 'text-center' },
@@ -1127,18 +1131,10 @@ var RegistroOperacion = function () {
     }
 
     $('#kt_modal_evaluacion_operacion').on('show.bs.modal', function (event) {
-        $.fn.modal.Constructor.prototype.enforceFocus = function () { };
+        var button = $(event.relatedTarget); // Botón que abrió el modal
+        var nOperacion = button.data('n-operacion');
 
-        var button = $(event.relatedTarget); // Botón que activó el modal
-        var nOpe = button.data('n-operacion'); // Obtener el valor data-n-pago
-        console.log('Valor data-n-nOpe:', nOpe);
-
-        $('#nIdEstadoEvaluacion').select2({
-            allowClear: true,
-            dropdownParent: $('#kt_modal_evaluacion_operacion') 
-        });
-
-        $('#nIdOperacionEval').val(nOpe);
+        $('#nIdOperacionEval').val(nOperacion);
 
     });
 
@@ -1148,8 +1144,8 @@ var RegistroOperacion = function () {
         var nOperacion = button.data('n-operacion'); // Extrae la información de los datos del botón
         var nOperacionFactura = button.data('idfactura');
         var nmonto = button.data('monto');
-      /*  var modal = $(this);*/
-       // var nOpe = button.data('n-operacion'); // Obtener el valor data-n-pago
+        /*  var modal = $(this);*/
+        // var nOpe = button.data('n-operacion'); // Obtener el valor data-n-pago
         console.log('Valor data-n-nOpe:', nOperacion);
         console.log('Valor data-idfactura:', nOperacionFactura);
         console.log('Valor data-monto: ', nmonto);
@@ -1246,7 +1242,7 @@ var RegistroOperacion = function () {
                                         }
                                     }).then(function (result) {
                                         if (result.isConfirmed) {
-                                            $(window).attr('location', globalPath + 'Operacion/Registro?operacionId=' + $('#nIdOperaciones').val() );
+                                            $(window).attr('location', globalPath + 'Operacion/Registro?operacionId=' + $('#nIdOperaciones').val());
                                         }
                                     });
                                 } else {
@@ -1280,7 +1276,7 @@ var RegistroOperacion = function () {
             return;
         }
 
-        var saveButton = document.getElementById('kt_save_estado_button');
+        var saveButton = $('#kt_save_estado_button');
         var validator;
 
         validator = FormValidation.formValidation(
@@ -1293,7 +1289,7 @@ var RegistroOperacion = function () {
                                 message: 'Estado es obligatorio'
                             }
                         }
-                    },                    
+                    },
                 },
                 plugins: {
                     trigger: new FormValidation.plugins.Trigger(),
@@ -1306,12 +1302,13 @@ var RegistroOperacion = function () {
             });
         RegistroOperacion.getRevalidateFormElement(form, 'nIdEstadoEvaluacion', validator);
         RegistroOperacion.getRevalidateFormElement(form, 'cComentario', validator);
-        saveButton.addEventListener('click', function (e) {
+        saveButton.off('click');
+        saveButton.on('click', function (e) {
             e.preventDefault();
             validator.validate().then(function (status) {
                 if (status == 'Valid') {
-                    saveButton.setAttribute('data-kt-indicator', 'on');
-                    saveButton.disabled = true;
+                    saveButton.attr('data-kt-indicator', 'on');
+                    saveButton.prop('disabled', true);
                     setTimeout(function () {
                         $.ajax({
                             type: 'POST',
@@ -1337,14 +1334,14 @@ var RegistroOperacion = function () {
                                         }
                                     });
                                 } else {
-                                    saveButton.removeAttribute('data-kt-indicator');
-                                    saveButton.disabled = false;
+                                    saveButton.removeAttr('data-kt-indicator');
+                                    saveButton.prop('disabled', false);
                                     messageError(data.message);
                                 }
                             },
                             error: function (jqXHR, textStatus, errorThrown) {
-                                saveButton.removeAttribute('data-kt-indicator');
-                                saveButton.disabled = false;
+                                saveButton.removeAttr('data-kt-indicator');
+                                saveButton.prop('disabled', false);
                                 messageError(errorThrown);
                             }
                         });
@@ -1443,8 +1440,8 @@ var RegistroOperacion = function () {
                 $('#kt_factura_monto_modal').show();
             });
         });
-       
-    
+
+
     }
 
 
@@ -1454,7 +1451,7 @@ var RegistroOperacion = function () {
 
 
     var handleEditFacturaForm = function () {
-        
+
 
         var tableFacturas = document.querySelectorAll('#kt_facturas_table tbody tr');
         if (!tableFacturas) {
@@ -1463,7 +1460,7 @@ var RegistroOperacion = function () {
 
         tableFacturas.forEach(f => {
             var inputsFv = f.querySelectorAll('[data-fv]');
-           // console.log(inputsFv)
+            // console.log(inputsFv)
             inputsFv.forEach(d => {
 
                 //console.log($(d))
@@ -1478,7 +1475,7 @@ var RegistroOperacion = function () {
         });
 
 
-       
+
 
         //flatpickr('.date-fnego', {
         //    dateFormat: 'd/m/Y',
@@ -1793,7 +1790,7 @@ var RegistroOperacion = function () {
     var handleDownloadFile = function (nIdOperacionFactura) {
         window.open(globalPath + 'Operacion/DownloadFile?nIdOperacionFactura=' + encodeURIComponent(nIdOperacionFactura), '_blank');
     }
-  
+
     var handleDescarga = function () {
         var form = document.getElementById('kt_search_form');
         if (!form) {
@@ -1947,7 +1944,7 @@ var RegistroOperacion = function () {
                 url: globalPath + 'Operacion/GetAllDocumentoSolicitud?operacionId=' + $(idOperacion).val(),
                 dataSrc: function (data) {
                     console.log('data:', data);
-                
+
                     return data.data;
                 }
             },
@@ -2181,9 +2178,9 @@ var RegistroOperacion = function () {
             handleUploadFacturas();
             initToggleToolbarModal();
             handOpenFacturaForm();
-           // handleAnularEvaluacion2();
-           /* handleFormEvaluarOperacion();*/
-          /*  handleComentarios();*/
+            // handleAnularEvaluacion2();
+            /* handleFormEvaluarOperacion();*/
+            /*  handleComentarios();*/
             handleDescarga();
 
             //****************************INI-21-01-2023****************************//
