@@ -17,4 +17,10 @@ namespace Factoring.Model.Models.Comunes
         public int nIdGrupoEconomico { get; set; }
         public string cNombreGrupoEconomico { get; set; }
     }
+
+    public class PaisListDto
+    {
+        public int nIdPais { get; set; }
+        public string cNombrePais { get; set; }
+    }
 }

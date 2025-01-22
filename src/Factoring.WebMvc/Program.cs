@@ -51,6 +51,8 @@ builder.Services.AddTransient<IAceptanteProxy, AceptanteProxy>();
 builder.Services.AddTransient<IDocumentosAceptanteProxy, DocumentosAceptanteProxy>();
 builder.Services.AddTransient<IDataProxy, DataProxy>();
 builder.Services.AddTransient<IFondeoProxy, FondeoProxy>();
+builder.Services.AddTransient<IUsuarioProxy, UsuarioProxy>();
+
 var app = builder.Build();
 
 // Configuración de la aplicación

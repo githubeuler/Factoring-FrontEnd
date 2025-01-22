@@ -1,0 +1,80 @@
+﻿@model UsuarioCreateModel
+@{
+    ViewData["Action"] = "Editar";
+}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="fw-bolder mb-0">Datos Básicos</h3>
+        </div>
+        <div class="card-toolbar">
+            <a asp-controller="Usuario" asp-action="Index" class="btn btn-sm btn-flex btn-light btn-active-primary me-2">
+                <i class="las la-arrow-left fs-3"></i> Regresar
+            </a>
+            <button id="kt_save_button" type="submit" class="btn btn-sm btn-success me-2 p-ins">
+                <span class="indicator-label">Guardar</span>
+                <span class="indicator-progress">Guardando Registro... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            </button>
+        </div>
+    </div>
+    <div class="card-body pt-5">
+        <form id="kt_form_add" class="form" asp-controller="Usuario" asp-action="RegistrarUsuario" method="post" novalidate="novalidate">
+            @* <input type="hidden" name="hDOI" id="hDOI" value="@ViewBag.DOI" /> *@
+            @if (@ViewBag.IsEdit)
+            {
+                <input type="hidden" asp-for="IdUsuario" />
+                <input type="hidden" asp-for="IdEstado" />
+                <input type="hidden" asp-for="IdRol" />
+                @* <input type="hidden" asp-for="CodigoUsuario" />  *@
+            }
+            <div class="row g-9 mb-7">
+
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Pais</label>
+                        <select asp-for="IdPais" asp-items="@(new SelectList(ViewBag.Pais, "nIdPais", "cNombrePais"))" data-control="select2" aria-label="Pais" data-placeholder="Pais" class="form-select form-select-solid fw-bolder">
+                            <option value="">Seleccionar</option>
+                        </select>
+                    
+                </div>
+              @*   @if (@ViewBag.IsEdit)
+                {
+                    <div class="col-md-3 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Codigo</label>
+                        <label class="form-control form-control-solid">@Model.CodigoUsuario</label>
+                    </div>
+                }else
+                { *@
+                    <div class="col-md-3 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Codigo</label>
+                        <input type="text" asp-for="CodigoUsuario" autocomplete="off" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                    </div>
+                @* } *@
+                
+
+                <div class="col-md-4 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Nombres y Apellidos</label>
+                    <input type="text" asp-for="NombreUsuario" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                </div>
+
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Correo</label>
+                    <input type="text" asp-for="Correo" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                </div>
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Contraseña</label>
+                    <input type="text" asp-for="Contrasena" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+   
+    @if (@ViewBag.IsEdit)
+    {
+        
+    }
+    <script src="~/assets/js/registro-usuario.js"></script>
+}

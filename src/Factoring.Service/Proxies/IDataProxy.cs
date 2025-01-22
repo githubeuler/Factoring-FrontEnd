@@ -15,6 +15,7 @@ namespace Factoring.Service.Proxies
         //Task<List<PaisListDto>> GetAllListPais();
         Task<List<SectorListDto>> GetAllListSector();
         Task<List<GrupoListDto>> GetAllListGrupo();
+        Task<List<PaisListDto>> GetAllListPais();
     }
 
     public class DataProxy : IDataProxy
@@ -42,6 +43,15 @@ namespace Factoring.Service.Proxies
             var response = await client.GetAsync($"Pais/get-grupo?idTipo=1");
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<List<GrupoListDto>>(json);
+            return data;
+        }
+
+        public async Task<List<PaisListDto>> GetAllListPais()
+        {
+            var client = _proxyHttpClient.GetHttp();
+            var response = await client.GetAsync($"Pais/get-pais");
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<List<PaisListDto>>(json);
             return data;
         }
     }
