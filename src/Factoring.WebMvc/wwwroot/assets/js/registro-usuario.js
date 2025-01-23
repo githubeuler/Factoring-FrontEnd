@@ -54,7 +54,7 @@ var RegistroUsuario = function () {
                     orderable: false,
                     className: 'text-end',
                     render: function (data, type, row) {
-                       
+                        
                         var buttonAction = ``;
                         //if (data.nEstado == '0') {
                         //    buttonAction += ``;
@@ -74,9 +74,18 @@ var RegistroUsuario = function () {
                         //        <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row p-con"><i class="las la-search fs-2"></i></a>
                         //        <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-ban fs-2"></i></button> `;
                         //}
-                        buttonAction += `<a href="${globalPath}Usuario/Registro?usuarioId=${data.nIdUsuario}" title="Editar" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a>
+                        if (data.cActivo == 'ACTIVO') {
+                            buttonAction += `<div style="display:inline-flex"><a href="${globalPath}Usuario/Registro?usuarioId=${data.nIdUsuario}" title="Editar" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a>
                          <button data-delete-table="delete_row" data-id="` + row.nIdUsuario + `" data-row= ${data.nIdUsuario} title="Inactivar"  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-ban fs-2"></i></button> 
+                         <button data-reset-password-table="resete-password_row" data-id="` + row.nIdUsuario + `" data-codigo="` + row.cCodigoUsuario + `" data-row= ${data.nIdUsuario} title="Resetear contraseña"  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-reset-pwd"><i class="las la la-refresh fs-2"></i></button>
+                         </div>
                          `
+                        } else {
+                            buttonAction += `<a href="${globalPath}Usuario/Registro?usuarioId=${data.nIdUsuario}" title="Editar" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a>
+                         <button data-reset-password-table="resete-password_row" data-id="` + row.nIdUsuario + `" data-codigo="` + row.cCodigoUsuario + `" data-row= ${data.nIdUsuario} title="Resetear contraseña"  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-reset-pwd"><i class="las la la-refresh fs-2"></i></button>
+                         `
+                        }
+                       
 
                         return buttonAction;
                         //if (data.nEstado == '1') {
@@ -116,6 +125,7 @@ var RegistroUsuario = function () {
 
             /*   handleAnularEvaluacion2();*/
             handleDeleteUsuarioForm();
+            handleResetPwdUsuarioForm();
             $(searchClear).show();
             KTMenu.createInstances();
             //Common.init();
@@ -144,13 +154,13 @@ var RegistroUsuario = function () {
                 //var idFondeador = $(this).data('parent');
                 var idUsuario = $(this).data('id');
                 var parent = e.target.closest('tr');
-                var name = parent.querySelectorAll('td')[0].innerText + ' ' + parent.querySelectorAll('td')[1].innerText;
+                var name = parent.querySelectorAll('td')[0].innerText + ' ' + parent.querySelectorAll('td')[2].innerText;
                 Swal.fire({
-                    text: '¿Estás seguro de que quieres eliminar a ' + name + '?',
+                    text: '¿Estás seguro de que quieres inactivar a ' + name + '?',
                     icon: 'warning',
                     showCancelButton: true,
                     buttonsStyling: false,
-                    confirmButtonText: 'Sí, eliminar!',
+                    confirmButtonText: 'Sí, inactivar!',
                     cancelButtonText: 'Cancelar',
                     customClass: {
                         confirmButton: 'btn fw-bold btn-danger',
@@ -172,7 +182,7 @@ var RegistroUsuario = function () {
                             success: function (data) {
                                 if (data) {
                                     Swal.fire({
-                                        text: 'Eliminaste correctamente a ' + name + '.',
+                                        text: 'Inactivaste correctamente a ' + name + '.',
                                         icon: 'success',
                                         buttonsStyling: false,
                                         confirmButtonText: 'Listo',
@@ -184,7 +194,7 @@ var RegistroUsuario = function () {
                                         initDatatable();
                                     });
                                 } else {
-                                    messageError(name + ' no fue eliminado.');
+                                    //messageError(name + ' no fue inactivado.');
                                 }
                             },
                             error: function (jqXHR, textStatus, errorThrown) {
@@ -192,7 +202,77 @@ var RegistroUsuario = function () {
                             }
                         });
                     } else if (result.dismiss === 'cancel') {
-                        messageError(name + ' no fue eliminado.');
+                        //messageError(name + ' no fue inactivado.');
+                    }
+                });
+            });
+        });
+    }
+
+    var handleResetPwdUsuarioForm = function () {
+        var tableUsuario = document.querySelector('#kt_usuarios_table');
+        if (!tableUsuario) {
+            return;
+        }
+        var resetPwdUsuarioButton = tableUsuario.querySelectorAll('[data-reset-password-table="resete-password_row"]');
+        resetPwdUsuarioButton.forEach(d => {
+            d.addEventListener('click', function (e) {
+                e.preventDefault();
+                debugger;
+                //var idFondeador = $(this).data('parent');
+                var idUsuario = $(this).data('id');
+                var codigoUsuario = $(this).data('codigo');
+                var parent = e.target.closest('tr');
+                var name = parent.querySelectorAll('td')[0].innerText + ' ' + parent.querySelectorAll('td')[2].innerText;
+                Swal.fire({
+                    text: '¿Estás seguro de resetear la contraseña de ' + name + '?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    buttonsStyling: false,
+                    confirmButtonText: 'Sí, resetear!',
+                    cancelButtonText: 'Cancelar',
+                    customClass: {
+                        confirmButton: 'btn fw-bold btn-danger',
+                        cancelButton: 'btn fw-bold btn-active-light-primary'
+                    }
+                }).then(function (result) {
+                    if (result.value) {
+                        var token = $('input[name="__RequestVerificationToken"]').val();
+                        $.ajax({
+                            type: 'POST',
+                            dataType: 'json',
+                            url: globalPath + 'Account/ResetPassword',
+                            data: {
+                                IdUsuario: idUsuario,
+                                CodigoUsuario: codigoUsuario
+                            },
+                            headers: {
+                                'RequestVerificationToken': token
+                            },
+                            success: function (data) {
+                                if (data) {
+                                    Swal.fire({
+                                        html: data.message,
+                                        icon: 'success',
+                                        buttonsStyling: false,
+                                        confirmButtonText: 'Listo',
+                                        customClass: {
+                                            confirmButton: 'btn fw-bold btn-primary',
+                                        }
+                                    }).then(function () {
+                                        //datatableFondeo.row($(parent)).remove().draw();
+                                        //initDatatable();
+                                    });
+                                } else {
+                                    //messageError(name + ' no fue reseteado.');
+                                }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                messageError(errorThrown);
+                            }
+                        });
+                    } else if (result.dismiss === 'cancel') {
+                        //messageError(name + ' no fue reseteado.');
                     }
                 });
             });
@@ -355,8 +435,9 @@ var RegistroUsuario = function () {
                             saveButton.removeAttribute('data-kt-indicator');
                             saveButton.disabled = false;
                             if (data.succeeded) {
+                                console.log(data)
                                 Swal.fire({
-                                    text: data.message,
+                                    html: data.message,
                                     icon: 'success',
                                     buttonsStyling: false,
                                     confirmButtonText: 'Listo',
@@ -446,6 +527,7 @@ var RegistroUsuario = function () {
             handleFilterTable();
             handleAddForm();
             handleDeleteUsuarioForm();
+            handleResetPwdUsuarioForm()
         }
     }
 }();

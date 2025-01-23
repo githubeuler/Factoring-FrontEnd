@@ -2,6 +2,11 @@
 @{
     ViewData["Action"] = "Editar";
 }
+<style>
+    input {
+        text-transform: uppercase;
+    }
+</style>
 <div class="card">
     <div class="card-header">
         <div class="card-title">
@@ -20,10 +25,11 @@
     <div class="card-body pt-5">
         <form id="kt_form_add" class="form" asp-controller="Usuario" asp-action="RegistrarUsuario" method="post" novalidate="novalidate">
             @* <input type="hidden" name="hDOI" id="hDOI" value="@ViewBag.DOI" /> *@
+            
             @if (@ViewBag.IsEdit)
             {
                 <input type="hidden" asp-for="IdUsuario" />
-                <input type="hidden" asp-for="IdEstado" />
+                @* <input type="hidden" asp-for="IdEstado" /> *@
                 <input type="hidden" asp-for="IdRol" />
                 @* <input type="hidden" asp-for="CodigoUsuario" />  *@
             }
@@ -60,10 +66,20 @@
                     <label class="required fs-6 fw-bold mb-2">Correo</label>
                     <input type="text" asp-for="Correo" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
                 </div>
-                <div class="col-md-3 fv-row">
+               @*  <div class="col-md-3 fv-row">
                     <label class="required fs-6 fw-bold mb-2">Contraseña</label>
                     <input type="text" asp-for="Contrasena" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                </div> *@
+                 @if (@ViewBag.IsEdit)
+            {
+                 <div class="col-md-3 fv-row">
+                <label class="required fs-6 fw-bold mb-2">Estado</label>
+                    <div class="form-check">
+                        <input type="checkbox" asp-for="IdEstado" class="form-check-input" />
+                        
+                    </div>
                 </div>
+            }
             </div>
 
         </form>
@@ -74,7 +90,18 @@
    
     @if (@ViewBag.IsEdit)
     {
-        
+        <script>
+
+            const idUsuario = document.getElementById("IdUsuario").value.trim();
+            const codigoUsuario = document.getElementById("CodigoUsuario");
+
+            if (idUsuario) {
+                codigoUsuario.readOnly = true; // Establecer como solo lectura
+            } else {
+                codigoUsuario.readOnly = false; // Permitir editar
+            }
+        </script>
     }
     <script src="~/assets/js/registro-usuario.js"></script>
+    
 }

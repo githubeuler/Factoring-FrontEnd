@@ -14,10 +14,12 @@ namespace Factoring.Model.Models.Auth
         public int nIdPais { get; set; }
         public string cNombrePais { get; set; }
         public string JWToken { get; set; }
-
+        public int MustChangePassword { get; set; }
+        public int nIdUsuario { get; set; }
         [JsonIgnore]
         public string RefreshToken { get; set; }
-
         public List<MenuResponse> Menu { get; set; }
+
+
     }
 }

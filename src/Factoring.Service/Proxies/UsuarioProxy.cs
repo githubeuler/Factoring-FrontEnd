@@ -15,6 +15,7 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<int>> Create(UsuarioRegistroRequestDto request);
         Task<ResponseData<int>> Update(UsuarioUpdateRequestDto model);
         Task<ResponseData<int>> Delete(int idUsuario, string usuario);
+        
     }
     public class UsuarioProxy : IUsuarioProxy
     {
@@ -29,6 +30,8 @@ namespace Factoring.Service.Proxies
             _configuration = configuration;
             _proxyHttpClient = proxyHttpClient;
         }
+
+        
 
         public async Task<ResponseData<int>> Create(UsuarioRegistroRequestDto request)
         {

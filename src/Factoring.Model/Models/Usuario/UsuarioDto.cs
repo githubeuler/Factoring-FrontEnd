@@ -52,7 +52,6 @@
         public string? Password { get; set; }
         public int IdPais { get; set; }
         public int IdRol { get; set; }
-        public int IdEstado { get; set; }
         public string? UsuarioCreador { get; set; }
     }
     public class UsuarioUpdateRequestDto
@@ -61,11 +60,13 @@
         public string? CodigoUsuario { get; set; }
         public string? NombreUsuario { get; set; }
         public string? Correo { get; set; }
-        public string? Password { get; set; }
+        //public string? Password { get; set; }
         public int IdPais { get; set; }
         public int IdRol { get; set; }
-        public int IdEstado { get; set; }
+        public int Activo { get; set; }
         public string? UsuarioModificacion { get; set; }
 
     }
+
+    
 }

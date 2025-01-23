@@ -37,10 +37,10 @@ namespace Factoring.Model.ViewModels
         [Required]
         public string? Correo { get; set; }
 
+        //[Required]
+        //public string? Contrasena { get; set; }
         [Required]
-        public string? Contrasena { get; set; }
-        [Required]
-        public int IdEstado { get; set; }
+        public bool IdEstado { get; set; }
 
 
 

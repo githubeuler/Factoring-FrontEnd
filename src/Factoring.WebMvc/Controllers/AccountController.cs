@@ -62,6 +62,68 @@ namespace Factoring.WebMvc.Controllers
                 Username = model.Username,
                 Password = model.Password
             });
+
+            if (result.Succeeded)
+            {
+                //***********************************************************************
+                //  <I OAV - 21/12/2022>
+                //  LIMPIEZA DE CACHE
+                //***********************************************************************
+                _memoryCache.Remove(CacheKeys.Entry);
+                //  <F OAV>
+                if (result.Data.MustChangePassword == 0)
+                {
+                    var claims = new List<Claim> {
+                    new Claim(ClaimTypes.NameIdentifier, result.Data.cCodigoUsuario),
+                    new Claim(ClaimTypes.Name, result.Data.cNombreUsuario),
+                    new Claim("country_claim", result.Data.cNombrePais),
+                    new Claim("access_token", result.Data.JWToken)
+                };
+                    var claimsIdentity = new ClaimsIdentity(
+                        claims, CookieAuthenticationDefaults.AuthenticationScheme
+                    );
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity),
+                        new AuthenticationProperties
+                        {
+                            IsPersistent = true
+                        }
+                    );
+                  
+                }
+                HttpContext.Session.SetObjectAsJson("ApplicationMenu", result.Data.Menu);
+
+            }
+            return Ok(result);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.Clear();
+            await HttpContext.SignOutAsync();
+            return Redirect("~/");
+        }
+
+        public IActionResult ChangePassword(string token)
+        {
+            ChangePasswordViewModel model = new ChangePasswordViewModel() {
+                Token = token
+            };
+            return View("ChangePassword");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            model.Token = model.Token.Replace(".AM", "");
+            var result = await _authProxy.ChangePassword(new ChangeAuthModel
+            {
+                NewPassword = model.NewPassword,
+                CurrentPassword = model.CurrentPassword,
+                Token = model.Token
+            });
             if (result.Succeeded)
             {
                 //***********************************************************************
@@ -75,7 +137,7 @@ namespace Factoring.WebMvc.Controllers
                     new Claim(ClaimTypes.NameIdentifier, result.Data.cCodigoUsuario),
                     new Claim(ClaimTypes.Name, result.Data.cNombreUsuario),
                     new Claim("country_claim", result.Data.cNombrePais),
-                    new Claim("access_token", result.Data.JWToken)
+                    new Claim("access_token", model.Token)
                 };
                 var claimsIdentity = new ClaimsIdentity(
                     claims, CookieAuthenticationDefaults.AuthenticationScheme
@@ -88,16 +150,27 @@ namespace Factoring.WebMvc.Controllers
                         IsPersistent = true
                     }
                 );
-                HttpContext.Session.SetObjectAsJson("ApplicationMenu", result.Data.Menu);
             }
             return Ok(result);
         }
 
-        public async Task<IActionResult> Logout()
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(int IdUsuario,string CodigoUsuario)
         {
-            HttpContext.Session.Clear();
-            await HttpContext.SignOutAsync();
-            return Redirect("~/");
+
+            var result = await _authProxy.ResetPassword(new ResetPasswordModel
+            {
+                CodigoUsuario = CodigoUsuario,
+                IdUsuario = IdUsuario
+            });
+            //if (result.Succeeded)
+            //{
+                
+            //}
+            return Ok(result);
         }
+
+
     }
 }

@@ -52,11 +52,21 @@ var AccountSignin = function () {
                             data: $('#kt_sign_in_form').serializeObject(),
                             success: function (data) {
                                 if (data.succeeded) {
+                                    
                                     //$(window).attr('location', globalPath);
                                     /*
                                      * Permite que el navegador no pueda dar click en el boton atras e ir nuevamente al login
                                      */
-                                    window.location.replace(globalPath)
+                                    if (data.data.mustChangePassword == 1) {
+                                   
+                                        window.location.replace(globalPath + 'Account/ChangePassword?token=' + data.data.jwToken + '.AM')
+
+                                        $('#IdUsuario').val(data.data.idUsuario)
+                                    } else {
+                                        window.location.replace(globalPath)
+                                    }
+                                    
+
                                 } else {
                                     submitButton.removeAttribute('data-kt-indicator');
                                     submitButton.disabled = false;
@@ -77,6 +87,7 @@ var AccountSignin = function () {
             });
         });
     }
+
     return {
         init: function () {
             handleForm();

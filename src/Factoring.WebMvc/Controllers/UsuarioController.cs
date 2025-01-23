@@ -88,10 +88,10 @@ namespace Factoring.WebMvc.Controllers
                     usuarioData.NombreUsuario = usuarioDetalle.Data.NombreUsuario; //adquirienteDetalle.Data.dFechaInicioActividad == "01/01/1900" ? string.Empty : adquirienteDetalle.Data.dFechaInicioActividad; ;
                     usuarioData.Correo = usuarioDetalle.Data.Correo;
                     //HttpContext.Session.SetObjectAsJson("RucAceptante", adquirienteDetalle.Data.cRegUnicoEmpresa);
-                    usuarioData.Contrasena = usuarioDetalle.Data.Contrasena;
+                    //usuarioData.Contrasena = usuarioDetalle.Data.Contrasena;
                     usuarioData.IdPais = usuarioDetalle.Data.IdPais;
                     usuarioData.IdRol = usuarioDetalle.Data.IdRol;
-                    usuarioData.IdEstado = usuarioDetalle.Data.IdEstado;
+                    usuarioData.IdEstado = Convert.ToBoolean(usuarioDetalle.Data.IdEstado);
                 }
                 return View(usuarioData);
             }
@@ -147,13 +147,13 @@ namespace Factoring.WebMvc.Controllers
                             var result = await _usuarioProxy.Update(new UsuarioUpdateRequestDto
                             {
                                 IdUsuario = usuarioId,
-                                NombreUsuario = usuario.NombreUsuario,
-                                Correo = usuario.Correo,
-                                Password = usuario.Contrasena,
+                                NombreUsuario = usuario.NombreUsuario.ToUpper(),
+                                Correo = usuario.Correo.ToUpper(),
+                                //Password = usuario.Contrasena,
                                 UsuarioModificacion = userName,
                                 IdPais = usuario.IdPais,
                                 IdRol = usuario.IdRol,// cambiarE
-                                IdEstado = usuario.IdEstado
+                                Activo = Convert.ToInt32(usuario.IdEstado)
                             });
                             result.Message = "Usuario actualizado correctamente.";
                             return Json(result);
@@ -165,16 +165,15 @@ namespace Factoring.WebMvc.Controllers
                             {
                                 var response = await _usuarioProxy.Create(new UsuarioRegistroRequestDto()
                                 {
-                                    CodigoUsuario = usuario.CodigoUsuario,
-                                    NombreUsuario = usuario.NombreUsuario,
-                                    Correo = usuario.Correo,
-                                    Password = usuario.Contrasena,
+                                    CodigoUsuario = usuario.CodigoUsuario.ToUpper(),
+                                    NombreUsuario = usuario.NombreUsuario.ToUpper(),
+                                    Correo = usuario.Correo.ToUpper(),
+                                    //Password = usuario.Contrasena,
                                     UsuarioCreador = userName,
                                     IdPais = usuario.IdPais,
                                     IdRol = 1,// cambiarE
-                                    IdEstado =usuario.IdEstado
                                 });
-                                response.Message = "Usuario creado correctamente.";
+                                //response.Message = "Usuario creado correctamente.";
                                 return Json(response);
                             }
                             else
