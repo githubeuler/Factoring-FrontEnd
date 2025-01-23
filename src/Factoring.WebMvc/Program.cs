@@ -53,6 +53,7 @@ builder.Services.AddTransient<IDataProxy, DataProxy>();
 builder.Services.AddTransient<IFondeoProxy, FondeoProxy>();
 builder.Services.AddTransient<IUsuarioProxy, UsuarioProxy>();
 
+builder.Services.AddTransient<IAdquirienteProxy, AdquirienteProxy>();
 var app = builder.Build();
 
 // Configuración de la aplicación

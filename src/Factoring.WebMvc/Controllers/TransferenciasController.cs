@@ -251,7 +251,7 @@ namespace Factoring.WebMvc.Controllers
                         else
                         {//  if ((listaFacturas[0].dFechaDesembolso != null || listaFacturas[0].dFechaDesembolso != "") && listaFacturas[0].dFechaDesembolsoFondeador == "")
 
-                            if ((listaFacturas[0].dFechaDesembolso != null || listaFacturas[0].dFechaDesembolso != "") && listaFacturas[0].nNumeroAsignaciones == 1 && listaFacturas[0].nEstadoFactura==9 )                            
+                            if ((listaFacturas[0].dFechaDesembolso != null || listaFacturas[0].dFechaDesembolso != "") && listaFacturas[0].nNumeroAsignaciones == 1 && listaFacturas[0].nEstadoFactura==10 )                            
                             {
                                 nIdFondeador = listaFacturas[1].nIdFondeador;
                                 nCategoriaFondeador = listaFacturas[1].nIdCategoria;
