@@ -52,7 +52,7 @@ builder.Services.AddTransient<IDocumentosAceptanteProxy, DocumentosAceptanteProx
 builder.Services.AddTransient<IDataProxy, DataProxy>();
 builder.Services.AddTransient<IFondeoProxy, FondeoProxy>();
 builder.Services.AddTransient<IUsuarioProxy, UsuarioProxy>();
-
+builder.Services.AddTransient<IPerfilMenuproxy, PerfilMenuproxy>();
 builder.Services.AddTransient<IAdquirienteProxy, AdquirienteProxy>();
 var app = builder.Build();
 

@@ -10,8 +10,8 @@ namespace Factoring.Model.Models.PerfilMenu
     {
         public int Pageno { get; set; }
         public int PageSize { get; set; }
-        public string Sorting { get; set; }
-        public string SortOrder { get; set; }
-        public string cNombrePerfil { get; set; }
+        public string? Sorting { get; set; }
+        public string? SortOrder { get; set; }
+        public string? cNombrePerfil { get; set; }
     }
 }

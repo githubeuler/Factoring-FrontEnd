@@ -1,5 +1,71 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model PerfilViewModel
 @{
+    ViewData["Title"] = "Bandeja de Perfiles";
+}
+<div class="card">
+    <div class="card-header border-0 pt-6">
+        <div class="card-title">
+            <h2 class="fw-bolder">Listado de Registros</h2>
+        </div>
+        <div class="card-toolbar">
+            <div class="d-flex justify-content-end p-ins" data-kt-aceptante-table-toolbar="base">
+                <a asp-controller="Perfil" asp-action="Registro" class="btn btn-sm btn-primary me-3">
+                    <i class="las la-plus fs-3"></i> Nuevo Registro
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body pt-5">
+        <form id="kt_search_form" class="form w-100 mt-5 mb-10 align-items-center">
+            <div class="row g-9 mb-7">
+                <div class="col-lg-8">
+                    <div class="position-relative">
+                        <span class="position-absolute top-50 translate-middle ms-6">
+                            <i class="las la-filter fs-3"></i>
+                        </span>
+                        <input type="text" asp-for="cNombrePerfil" class="form-control form-control-solid ps-10" maxlength="100" placeholder="Buscar por Nombre">
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <button id="kt_search_button" type="button" class="btn btn-primary">
+                        <span class="indicator-label">Buscar</span>
+                        <span class="indicator-progress">Buscando... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                    <button id="kt_search_clear" type="button" class="btn btn-light">
+                        <span>Limpiar</span>
+                    </button>
+                </div>
+
+            </div>
+
+        </form>
+        <div class="row g-8">
+            <div class="col-lg-12">
+                <table id="kt_rol_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+                    <thead>
+                        <tr class="text-center text-muted fw-bolder fs-7 text-uppercase gs-0">
+                            <th style="background-color:#001540" class="text-center">
+                                <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                    <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_fondeo_table .form-check-input" value="1" />
+                                </div>
+                            </th>
+                            <th style="background-color:#001540" class="text-center">Nombre de Perfil</th>
+                            <th style="background-color:#001540" class="text-center">Estado</th>
+                            <th style="background-color:#001540" class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    <script src="~/assets/js/registro-perfil.js"></script>
 }

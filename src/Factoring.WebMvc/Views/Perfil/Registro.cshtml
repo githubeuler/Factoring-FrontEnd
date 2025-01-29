@@ -1,0 +1,65 @@
+﻿@model PerfilCreateModelNew
+@{
+    ViewData["Action"] = "Editar";
+}
+<style>
+    input {
+        text-transform: uppercase;
+    }
+</style>
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="fw-bolder mb-0">Datos Básicos</h3>
+            <input type="hidden" id="aBuscarGrilla" value="@ViewBag.vNuevo" />
+        </div>
+        <div class="card-toolbar">
+            <a asp-controller="Perfil" asp-action="Index" class="btn btn-sm btn-flex btn-light btn-active-primary me-2">
+                <i class="las la-arrow-left fs-3"></i> Regresar
+            </a>
+            <button id="kt_save_button" @(ViewBag.vVer == 1 ? "style='pointer-events: none; opacity: 0.6;'" : "") type="submit" class="btn btn-sm btn-success me-2 p-ins">
+                <span class="indicator-label">Guardar</span>
+                <span class="indicator-progress">Guardando Registro... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+            </button>
+        </div>
+    </div>
+    <div class="card-body pt-5" id="contenedor" @(ViewBag.vVer == 1 ? "style='pointer-events: none; opacity: 0.6;'" : "")>
+        <form id="kt_form_add" class="form" asp-controller="Perfil" asp-action="RegistrarPerfil" method="post" novalidate="novalidate">
+            @if (@ViewBag.IsEdit)
+            {
+                <input type="hidden" asp-for="nIdRol" />
+            }
+            <div class="row g-9 mb-7">
+                <div class="col-md-12 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Nombre de Rol</label>
+                    <input type="text" asp-for="cNombreRol" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                </div>
+            </div>
+
+        </form>
+
+        <div class="row g-8">
+            <div class="col-lg-12">
+                <table id="kt_menu_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+                    <thead>
+                        <tr class="text-center text-muted fw-bolder fs-7 text-uppercase gs-0">
+                           <th class="text-center" >Id Menú</th>
+                            <th class="text-center">Modulo</th>
+                            <th class="text-center">Menu</th>
+                            <th class="text-center">Insertar</th>
+                            <th class="text-center">Actualizar</th>
+                            <th class="text-center">Consultar</th>
+                            <th class="text-center">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    <script src="~/assets/js/registro-perfil.js"></script>
+}

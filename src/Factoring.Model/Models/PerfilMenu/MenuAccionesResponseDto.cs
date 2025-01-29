@@ -8,6 +8,7 @@ namespace Factoring.Model.Models.PerfilMenu
 {
     public class MenuAccionesResponseDto
     {
+        public int nIdMenuDetalle { get; set; }
         public int nIdMenu { get; set; }
         public string cModulo { get; set; }
         public int nNivel { get; set; }
