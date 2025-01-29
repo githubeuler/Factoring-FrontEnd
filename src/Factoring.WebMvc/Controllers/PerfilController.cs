@@ -70,10 +70,10 @@ namespace Factoring.WebMvc.Controllers
             ViewBag.Title = ((nRolId == null) ? "Registrar Rol" : "Editar Rol");
             ViewBag.IsEdit = nRolId != null;
             ViewBag.vVer = 0;
-            if (nOpcion == 2)
-            {
-                ViewBag.vVer = 1;
-            }
+            //if (nOpcion == 2)
+            //{
+            //    ViewBag.vNuevo = 3;
+            //}
             if (nRolId == null)
             {
                 ViewBag.vNuevo = 1;
@@ -81,8 +81,14 @@ namespace Factoring.WebMvc.Controllers
             }           
             else
             {
-                ViewBag.vNuevo = 2;
 
+                if (nOpcion == 2)
+                {
+                    ViewBag.vNuevo = 3;
+                }
+                else {
+                    ViewBag.vNuevo = 2;
+                }
                 var result = await _perfilMenuproxy.GetAllListPerfilEdit(nRolId.Value);
                 if (result.Succeeded == false)
                 {

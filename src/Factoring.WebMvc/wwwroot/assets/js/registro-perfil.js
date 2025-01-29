@@ -96,8 +96,12 @@ var Perfil = function () {
         const element = document.getElementById("aBuscarGrilla");
         const hbuscar = element ? element.value : null;
 
-        if (hbuscar != "1" && hbuscar != "2") {
+        if (hbuscar != "1" && hbuscar != "2" && hbuscar != "3") {
             return;
+        }
+        if (hbuscar == "3") {
+            document.getElementById("cNombreRol").disabled = true;
+            document.getElementById("kt_save_button").disabled = true;
         }
 
         var tableMenu = document.getElementById('kt_menu_table');
@@ -121,7 +125,6 @@ var Perfil = function () {
                 { data: 'nIdMenuDetalle', autoWidth: true, class: 'text-center' },
                 { data: 'cModulo', autoWidth: true, class: 'text-center' },
                 { data: 'cMenu', autoWidth: true, class: 'text-center' },
-                //{ data: 'nIdMenu', visible: false }, // Incluye esta columna como oculta
                 {
                     data: 'cInsertar',
                     autoWidth: true,
@@ -158,6 +161,11 @@ var Perfil = function () {
         });
         datatableRol.on('draw', function () {
             Common.init();
+            if (hbuscar == "3") {
+                document.querySelectorAll("#kt_menu_table input[type='checkbox']").forEach(element => {
+                    element.disabled = true;
+                });
+            }
         });
     };
     var getSelectedMenuDetails = function () {
