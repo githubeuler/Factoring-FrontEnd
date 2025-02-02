@@ -30,18 +30,32 @@
             {
                 <input type="hidden" asp-for="IdUsuario" />
                 @* <input type="hidden" asp-for="IdEstado" /> *@
-                <input type="hidden" asp-for="IdRol" />
+               @*  <input type="hidden" asp-for="IdRol" /> *@
                 @* <input type="hidden" asp-for="CodigoUsuario" />  *@
             }
             <div class="row g-9 mb-7">
-
                 <div class="col-md-3 fv-row">
                     <label class="required fs-6 fw-bold mb-2">Pais</label>
-                        <select asp-for="IdPais" asp-items="@(new SelectList(ViewBag.Pais, "nIdPais", "cNombrePais"))" data-control="select2" aria-label="Pais" data-placeholder="Pais" class="form-select form-select-solid fw-bolder">
-                            <option value="">Seleccionar</option>
-                        </select>
-                    
+                    <select asp-for="IdPais" asp-items="@(new SelectList(ViewBag.Pais, "nIdPais", "cNombrePais"))" data-control="select2" aria-label="Pais" data-placeholder="Pais" class="form-select form-select-solid fw-bolder">
+                        <option value="">Seleccionar</option>
+                    </select>
+
                 </div>
+                 <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Ruc</label>
+                    <input type="text" asp-for="Ruc" autocomplete="off" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                </div>
+
+                 <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Razon Social</label>
+                    <input type="text" asp-for="RazonSocial" autocomplete="off" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                </div>
+
+
+
+              
+               
+
               @*   @if (@ViewBag.IsEdit)
                 {
                     <div class="col-md-3 fv-row">
@@ -51,20 +65,51 @@
                 }else
                 { *@
                     <div class="col-md-3 fv-row">
-                        <label class="required fs-6 fw-bold mb-2">Codigo</label>
+                    <label class="required fs-6 fw-bold mb-2">Tipo de Documento</label>
+                    <select asp-for="IdTipoDocumento" asp-items="@(new SelectList(ViewBag.TipoDocumento, "nId", "cNombre"))" data-control="select2" aria-label="Tipo de Documento" data-placeholder="Tipo de Documento" class="form-select form-select-solid fw-bolder">
+                        <option value="">Seleccionar</option>
+                    </select>
+
+                </div>
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">N° de Documento</label>
+                    <input type="text" asp-for="NumeroDocumento" autocomplete="off" minlength="11" maxlength="11" class="form-control form-control-solid" />
+                </div>
+
+                    <div class="col-md-3 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Usuario</label>
                         <input type="text" asp-for="CodigoUsuario" autocomplete="off" minlength="11" maxlength="11" class="form-control form-control-solid" />
                     </div>
                 @* } *@
                 
 
-                <div class="col-md-4 fv-row">
+                <div class="col-md-3 fv-row">
                     <label class="required fs-6 fw-bold mb-2">Nombres y Apellidos</label>
                     <input type="text" asp-for="NombreUsuario" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                </div>
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Cargo</label>
+                    <input type="text" asp-for="Cargo" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
                 </div>
 
                 <div class="col-md-3 fv-row">
                     <label class="required fs-6 fw-bold mb-2">Correo</label>
                     <input type="text" asp-for="Correo" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                </div>
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Telefono</label>
+                    <input type="text" asp-for="Telefono" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                </div>  
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Celular</label>
+                    <input type="text" asp-for="Celular" autocomplete="off" minlength="5" maxlength="200" class="form-control form-control-solid" />
+                </div>
+                <div class="col-md-3 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Rol</label>
+                    <select asp-for="IdRol" asp-items="@(new SelectList(ViewBag.Roles, "nIdRoles", "cNombreRol"))" data-control="select2" aria-label="Rol" data-placeholder="Rol" class="form-select form-select-solid fw-bolder">
+                        <option value="">Seleccionar</option>
+                    </select>
+
                 </div>
                @*  <div class="col-md-3 fv-row">
                     <label class="required fs-6 fw-bold mb-2">Contraseña</label>

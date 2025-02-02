@@ -17,12 +17,16 @@ namespace Factoring.WebMvc.Controllers
         private readonly IDataProxy _dataProxy;
         private readonly IUsuarioProxy _usuarioProxy;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IPerfilMenuproxy _perfilMenuproxy;
+        private readonly ICatalogoProxy _catalogoProxy;
 
-        public UsuarioController(IDataProxy dataProxy, IUsuarioProxy usuarioProxy, IHttpContextAccessor httpContextAccessor)
+        public UsuarioController(IDataProxy dataProxy, IUsuarioProxy usuarioProxy, IPerfilMenuproxy perfilMenuproxy, ICatalogoProxy catalogoProxy, IHttpContextAccessor httpContextAccessor)
         {
             _dataProxy = dataProxy;
             _usuarioProxy = usuarioProxy;
             _httpContextAccessor = httpContextAccessor;
+            _perfilMenuproxy = perfilMenuproxy;
+            _catalogoProxy = catalogoProxy;
         }
         //public IActionResult Index()
         //{
@@ -54,6 +58,14 @@ namespace Factoring.WebMvc.Controllers
             ViewBag.IsEdit = usuarioId != null;
             var data = await _dataProxy.GetAllListPais();
             ViewBag.Pais = data.Where(x=>x.nIdPais > 0).ToList();
+
+
+            var roles = await _perfilMenuproxy.GetAllListPerfil(new Model.Models.PerfilMenu.PerfilRequestDto() {Pageno = 0,PageSize=10000,Sorting= "nIdRoles",SortOrder= "ASC",cNombrePerfil = "" });
+
+            ViewBag.Roles = roles.Data;
+
+            var TipoDocumento = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 122, Tipo = 1, Valor = "1" });
+            ViewBag.TipoDocumento = TipoDocumento.Data;
 
             //var ActividadesEconomicas = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 120, Tipo = 1, Valor = "1" });
             //ViewBag.ActividadesEconomicas = ActividadesEconomicas.Data.Select(x => new CatalogoResponseListDto { cNombre = x.nId + " - " + x.cNombre, nId = x.nId }).ToList(); ;
@@ -92,6 +104,14 @@ namespace Factoring.WebMvc.Controllers
                     usuarioData.IdPais = usuarioDetalle.Data.IdPais;
                     usuarioData.IdRol = usuarioDetalle.Data.IdRol;
                     usuarioData.IdEstado = Convert.ToBoolean(usuarioDetalle.Data.IdEstado);
+                    usuarioData.IdTipoDocumento = usuarioDetalle.Data.IdTipoDocumento;
+                    usuarioData.NumeroDocumento = usuarioDetalle.Data.NumeroDocumento;
+                    usuarioData.Cargo = usuarioDetalle.Data.Cargo;
+                    usuarioData.Telefono = usuarioDetalle.Data.Telefono;
+                    usuarioData.Celular = usuarioDetalle.Data.Celular;
+                    usuarioData.Ruc = usuarioDetalle.Data.Ruc;
+                    usuarioData.RazonSocial = usuarioDetalle.Data.RazonSocial;
+
                 }
                 return View(usuarioData);
             }
@@ -153,7 +173,15 @@ namespace Factoring.WebMvc.Controllers
                                 UsuarioModificacion = userName,
                                 IdPais = usuario.IdPais,
                                 IdRol = usuario.IdRol,// cambiarE
-                                Activo = Convert.ToInt32(usuario.IdEstado)
+                                Activo = Convert.ToInt32(usuario.IdEstado),
+                                IdTipoDocumento = usuario.IdTipoDocumento,
+                                NumeroDocumento = usuario.NumeroDocumento,
+                                Telefono = usuario.Telefono,
+                                Celular = usuario.Celular,
+                                Cargo = usuario.Cargo,
+                                Ruc = usuario.Ruc,
+                                RazonSocial = usuario.RazonSocial
+                                
                             });
                             result.Message = "Usuario actualizado correctamente.";
                             return Json(result);
@@ -171,7 +199,14 @@ namespace Factoring.WebMvc.Controllers
                                     //Password = usuario.Contrasena,
                                     UsuarioCreador = userName,
                                     IdPais = usuario.IdPais,
-                                    IdRol = 1,// cambiarE
+                                    IdRol = usuario.IdRol,// cambiarE
+                                    IdTipoDocumento = usuario.IdTipoDocumento,
+                                    NumeroDocumento = usuario.NumeroDocumento,
+                                    Telefono = usuario.Telefono,
+                                    Celular = usuario.Celular,
+                                    Cargo = usuario.Cargo,
+                                      Ruc = usuario.Ruc,
+                                    RazonSocial = usuario.RazonSocial
                                 });
                                 //response.Message = "Usuario creado correctamente.";
                                 return Json(response);

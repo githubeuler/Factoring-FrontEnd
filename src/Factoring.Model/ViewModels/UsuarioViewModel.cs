@@ -42,6 +42,20 @@ namespace Factoring.Model.ViewModels
         [Required]
         public bool IdEstado { get; set; }
 
+        [Required]
+        public int IdTipoDocumento { get; set; }
+        [Required]
+        public string? NumeroDocumento { get; set; }
+        [Required]
+        public string? Telefono { get; set; }
+        [Required]
+        public string? Celular { get; set; }
+        [Required]
+        public string? Cargo { get; set; }
+
+        public string? Ruc { get; set; }
+        public string? RazonSocial { get; set; }
+
 
 
     }

@@ -13,6 +13,14 @@
         public string? Rol { get; set; }
         public int IdEstado { get; set; }
         public string? Estado { get; set; }
+        public int IdTipoDocumento { get; set; }
+        public string? NumeroDocumento { get; set; }
+        public string? Telefono { get; set; }
+        public string? Celular { get; set; }
+        public string? Cargo { get; set; }
+        public string? Ruc { get; set; }
+        public string? RazonSocial { get; set; }
+
     }
 
     public class UsuarioResponseDataTableDto
@@ -26,6 +34,14 @@
         public string? cActivo { get; set; }
         public string? cNombrePais { get; set; }
         public string? cNombreRol { get; set; }
+        public int nIdTipoDocumento { get; set; }
+        public string? cNumeroDocumento { get; set; }
+        public string? cTelefono { get; set; }
+        public string? cCelular { get; set; }
+        public string? cCargo { get; set; }
+        public string? cRuc { get; set; }
+        public string? cRazonSocial { get; set; }
+
         public int nEditar { get; set; }
         public int TotalRecords { get; set; }
     }
@@ -53,6 +69,17 @@
         public int IdPais { get; set; }
         public int IdRol { get; set; }
         public string? UsuarioCreador { get; set; }
+        public int IdTipoDocumento { get; set; }
+
+        public string? NumeroDocumento { get; set; }
+
+        public string? Telefono { get; set; }
+
+        public string? Celular { get; set; }
+
+        public string? Cargo { get; set; }
+        public string? Ruc { get; set; }
+        public string? RazonSocial { get; set; }
     }
     public class UsuarioUpdateRequestDto
     {
@@ -65,6 +92,20 @@
         public int IdRol { get; set; }
         public int Activo { get; set; }
         public string? UsuarioModificacion { get; set; }
+
+
+        public int IdTipoDocumento { get; set; }
+
+        public string? NumeroDocumento { get; set; }
+
+        public string? Telefono { get; set; }
+
+        public string? Celular { get; set; }
+
+        public string? Cargo { get; set; }
+        public string? Ruc { get; set; }
+        public string? RazonSocial { get; set; }
+
 
     }
 

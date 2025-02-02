@@ -54,7 +54,7 @@ namespace Factoring.WebMvc.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             var result = await _authProxy.Authenticate(new LoginAuthModel
