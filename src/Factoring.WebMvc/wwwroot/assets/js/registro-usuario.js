@@ -444,9 +444,9 @@ var RegistroUsuario = function () {
 
                     'Telefono': {
                         validators: {
-                            notEmpty: {
-                                message: 'Telefono es obligatorio'
-                            },
+                            //notEmpty: {
+                            //    message: 'Telefono es obligatorio'
+                            //},
                             //stringLength: {
                             //    min: 11,
                             //    max: 11,

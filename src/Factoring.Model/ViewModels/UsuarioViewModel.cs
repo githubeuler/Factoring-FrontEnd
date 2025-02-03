@@ -46,7 +46,7 @@ namespace Factoring.Model.ViewModels
         public int IdTipoDocumento { get; set; }
         [Required]
         public string? NumeroDocumento { get; set; }
-        [Required]
+        //[Required]
         public string? Telefono { get; set; }
         [Required]
         public string? Celular { get; set; }
