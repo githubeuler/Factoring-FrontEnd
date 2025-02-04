@@ -24,8 +24,14 @@ namespace Factoring.Model.ViewModels
     public class PerfilCreateModelNew
     {
         public int nIdRol { get; set; }
+        public int nIdMenu { get; set; }
+
+        public int nIdRolAccion { get; set; }
+        public int nIdMenuAccion { get; set; }
         public string? cNombreRol { get; set; }
+        public string? cIdAccion { get; set; }
         public List<MenuModuloModelNew>? ListaMenu { get; set; }
+        public List<MenuModuloModelAccionesNew>? ListaAcciones { get; set; }
     }
 
     public class MenuModuloModelNew
@@ -38,5 +44,17 @@ namespace Factoring.Model.ViewModels
         public bool Eliminar { get; set; }
     }
 
+    public class PerfilCreateModelAccionesNew
+    {
+        public int nIdMenu { get; set; }
+        public int nIdRol { get; set; }
+        public List<MenuModuloModelAccionesNew>? ListaAcciones { get; set; }
+    }
+    public class MenuModuloModelAccionesNew
+    {
+        public int nIdRolMenuAccion { get; set; }
+        public int nIdAccion { get; set; }
+        public bool bAccion { get; set; }
+    }
 
 }

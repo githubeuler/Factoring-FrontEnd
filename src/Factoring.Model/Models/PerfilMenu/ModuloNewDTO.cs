@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Factoring.Model.Models.PerfilMenu
 {
-    public class ModuloDTO
+    public class ModuloNewDTO
     {
-        public int? nIdMenu { get; set; }
-        public int? nIdRol { get; set; }
-        public string? cRol { get; set; }
+        public int nIdMenu { get; set; }
+        public int nIdRol { get; set; }
         public string? filter_Acciones { get; set; }
     }
 }

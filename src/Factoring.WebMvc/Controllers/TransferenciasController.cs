@@ -225,7 +225,7 @@ namespace Factoring.WebMvc.Controllers
                         {
                             //--nNumeroAsignaciones
                             //bFondeadorPlus
-                            int nCantidadConfechaNew = listaFacturas.Count(x => x.dFechaDesembolso != "" && x.nEstadoFactura == 10);
+                            int nCantidadConfechaNew = listaFacturas.Count(x => x.dFechaDesembolso != "" && x.nEstadoFactura == 9);
                             if (nCantidadConfechaNew > 0)
                             {
                                 nIdFondeador = listaFacturas[0].nIdFondeador;

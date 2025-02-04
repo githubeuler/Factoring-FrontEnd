@@ -1,6 +1,7 @@
 ﻿using Factoring.Model;
 using Factoring.Model.Models.Adquiriente;
 using Factoring.Model.Models.AdquirienteUbicacion;
+using Factoring.Model.Models.Operaciones;
 using Factoring.Model.Models.PerfilMenu;
 using Factoring.Service.Common;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +18,8 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<int>> Create(ModuloDTO model);
         Task<ResponseData<PerfilResponseEditDto>> GetAllListPerfilEdit(int nIdRol);
         Task<ResponseData<int>> Update(RequestMenuDto model);
+        Task<ResponseData<List<AccionesResponseDto>>> GetAllMenuAcciones(AccionesRequestDto model);
+        Task<ResponseData<int>> CreateAccion(ModuloNewDTO model);
 
     }
     public class PerfilMenuproxy : IPerfilMenuproxy
@@ -63,6 +66,25 @@ namespace Factoring.Service.Proxies
             }
         }
 
+
+        public async Task<ResponseData<int>> CreateAccion(ModuloNewDTO model)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var us = JsonConvert.SerializeObject(model);
+                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+                var response = await client.PostAsync("ModuloMenu/add-accion", requestContent);
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ResponseData<int>>(json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
         public async Task<ResponseData<int>> Update(RequestMenuDto model)
         {
             try
@@ -87,6 +109,13 @@ namespace Factoring.Service.Proxies
             var data = JsonConvert.DeserializeObject<ResponseData<PerfilResponseEditDto>>(json);
             return data;
         }
-
+        public async Task<ResponseData<List<AccionesResponseDto>>> GetAllMenuAcciones(AccionesRequestDto model)
+        {
+            var client = _proxyHttpClient.GetHttp();
+            var response = await client.GetAsync($"ModuloMenu/get-menu-acciones?nIdRol={model.nIdRol}&nIdMenu={model.nIdMenu}");
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<ResponseData<List<AccionesResponseDto>>>(json);
+            return data;
+        }
     }
 }

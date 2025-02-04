@@ -38,18 +38,15 @@
 
         </form>
 
-        <div class="row g-8">
+        <div class="row g-8" id="dvListaModulo" name="dvListaModulo">
             <div class="col-lg-12">
                 <table id="kt_menu_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
                     <thead>
                         <tr class="text-center text-muted fw-bolder fs-7 text-uppercase gs-0">
-                           <th class="text-center" >Id Menú</th>
-                            <th class="text-center">Modulo</th>
-                            <th class="text-center">Menu</th>
-                            <th class="text-center">Insertar</th>
-                            <th class="text-center">Actualizar</th>
-                            <th class="text-center">Consultar</th>
-                            <th class="text-center">Eliminar</th>
+                            <th style="background-color:#001540"  class="text-center">Id Menú</th>
+                            <th style="background-color:#001540"  class="text-center">Modulo</th>
+                            <th style="background-color:#001540" class="text-center">Menu</th>
+                            <th style="background-color:#001540"  class="text-center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,6 +56,54 @@
         </div>
     </div>
 </div>
+
+<div id="kt_modal_menu_acciones" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_modal_menu_acciones_form" class="form" asp-controller="Perfil" asp-action="RegistrarPerfilAccion" novalidate="novalidate">
+                <input type="hidden" id="nIdMenuAccion" name="nIdMenuAccion" />
+                <input type="hidden" id="nIdRolAccion" name="nIdRolAccion" />
+                <input type="hidden" id="nIdRol" name="nIdRol" />
+                <input type="hidden" id="ListaAcciones" name="ListaAcciones[]" />
+                <input type="hidden" id="cIdAccion" name="cIdAccion" />
+                
+                <div class="modal-header">
+                    <h2>Agregar Acciones Menú</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <div class="row g-8">
+                        <div class="col-lg-12">
+                            <table id="kt_acciones_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+                                <thead>
+                                    <tr class="text-center text-muted fw-bolder fs-7 text-uppercase gs-0">
+                                        <th style="background-color:#001540"  class="text-center">Id</th>
+                                        <th style="background-color:#001540"  class="text-center">Nombre</th>
+                                        <th style="background-color:#001540"  class="text-center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_save_acciones_button" type="submit" class="btn btn-primary">
+                        <span class="indicator-label">Grabar</span>
+                        <span class="indicator-progress">Registrando registros... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
 @section Scripts {
     <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
     <script src="~/assets/js/registro-perfil.js"></script>

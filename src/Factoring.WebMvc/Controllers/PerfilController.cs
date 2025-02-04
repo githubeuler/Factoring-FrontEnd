@@ -61,7 +61,7 @@ namespace Factoring.WebMvc.Controllers
                 throw;
             }
         }
-        public async Task<IActionResult> Registro(int? nRolId,int? nOpcion)
+        public async Task<IActionResult> Registro(int? nRolId, int? nOpcion)
         {
             if (_httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<MenuResponse>>("ApplicationMenu") == null)
             {
@@ -78,7 +78,7 @@ namespace Factoring.WebMvc.Controllers
             {
                 ViewBag.vNuevo = 1;
                 return View();
-            }           
+            }
             else
             {
 
@@ -86,7 +86,8 @@ namespace Factoring.WebMvc.Controllers
                 {
                     ViewBag.vNuevo = 3;
                 }
-                else {
+                else
+                {
                     ViewBag.vNuevo = 2;
                 }
                 var result = await _perfilMenuproxy.GetAllListPerfilEdit(nRolId.Value);
@@ -109,35 +110,73 @@ namespace Factoring.WebMvc.Controllers
         {
             return Json(await _perfilMenuproxy.GetAllMenuModulo(nIdRol));
         }
+        //[HttpPost]
+        //public async Task<IActionResult> RegistrarPerfil([FromBody] PerfilCreateModelNew model)
+        //{
+        //    if (model == null || model.ListaMenu == null || !model.ListaMenu.Any())
+        //    {
+        //        return BadRequest("No se recibieron datos válidos.");
+        //    }
+        //    ResponseData<int> resultado = new ResponseData<int>();
+
+        //    foreach (var item in model.ListaMenu)
+        //    {
+        //        var acciones = new List<string>();
+        //        if (item.Insertar) acciones.Add("INSERTAR");
+        //        if (item.Actualizar) acciones.Add("ACTUALIZAR");
+        //        if (item.Consultar) acciones.Add("CONSULTAR");
+        //        if (item.Eliminar) acciones.Add("ELIMINAR");
+        //        string sMenu = string.Join(",", acciones);
+        //        if (sMenu.Length > 0)
+        //        {
+        //            ModuloDTO moduloDTO = new()
+        //            {
+        //                cRol = model.cNombreRol,
+        //                nIdMenu = item.nIdMenuDetalle,
+        //                filter_Acciones = sMenu
+        //            };
+        //            var result2 = await _perfilMenuproxy.Create(moduloDTO);
+        //            resultado = result2;
+        //        }
+        //    }
+        //    return Json(resultado);
+        //}
         [HttpPost]
         public async Task<IActionResult> RegistrarPerfil([FromBody] PerfilCreateModelNew model)
         {
-            if (model == null || model.ListaMenu == null || !model.ListaMenu.Any())
+            if (model == null)
             {
                 return BadRequest("No se recibieron datos válidos.");
             }
             ResponseData<int> resultado = new ResponseData<int>();
 
-            foreach (var item in model.ListaMenu)
+            //foreach (var item in model.ListaMenu)
+            //{
+            //    var acciones = new List<string>();
+            //    if (item.Insertar) acciones.Add("INSERTAR");
+            //    if (item.Actualizar) acciones.Add("ACTUALIZAR");
+            //    if (item.Consultar) acciones.Add("CONSULTAR");
+            //    if (item.Eliminar) acciones.Add("ELIMINAR");
+            //    string sMenu = string.Join(",", acciones);
+            //    if (sMenu.Length > 0)
+            //    {
+            //        ModuloDTO moduloDTO = new()
+            //        {
+            //            cRol = model.cNombreRol,
+            //            nIdMenu = item.nIdMenuDetalle,
+            //            filter_Acciones = sMenu
+            //        };
+            //        var result2 = await _perfilMenuproxy.Create(moduloDTO);
+            //        resultado = result2;
+            //    }
+            //}
+            ModuloDTO moduloDTO = new()
             {
-                var acciones = new List<string>();
-                if (item.Insertar) acciones.Add("INSERTAR");
-                if (item.Actualizar) acciones.Add("ACTUALIZAR");
-                if (item.Consultar) acciones.Add("CONSULTAR");
-                if (item.Eliminar) acciones.Add("ELIMINAR");
-                string sMenu = string.Join(",", acciones);
-                if (sMenu.Length > 0)
-                {
-                    ModuloDTO moduloDTO = new()
-                    {
-                        cRol = model.cNombreRol,
-                        nIdMenu = item.nIdMenuDetalle,
-                        filter_Acciones = sMenu
-                    };
-                    var result2 = await _perfilMenuproxy.Create(moduloDTO);
-                    resultado = result2;
-                }
-            }
+                cRol = model.cNombreRol,
+                nIdRol= model.nIdRol
+            };
+            var result2 = await _perfilMenuproxy.Create(moduloDTO);
+            resultado = result2;
             return Json(resultado);
         }
 
@@ -151,6 +190,33 @@ namespace Factoring.WebMvc.Controllers
             var result = await _perfilMenuproxy.Update(obj);
             return Json(result.Succeeded);
         }
+
+        //[HttpPost]
+        public async Task<IActionResult> RegistrarPerfilAccion(PerfilCreateModelNew model)
+        {
+            ResponseData<int> resultado = new ResponseData<int>();
+            ModuloNewDTO request = new()
+            {
+                nIdMenu = model.nIdMenuAccion,
+                nIdRol = model.nIdRolAccion,
+                filter_Acciones = model.cIdAccion
+            };
+            var result2 = await _perfilMenuproxy.CreateAccion(request);
+            resultado = result2;
+            return Json(resultado);
+        }
+
+        public async Task<IActionResult> GetAllMenuAcciones(int nIdRol, int nIdMenu)
+        {
+            AccionesRequestDto request = new()
+            {
+                nIdRol = nIdRol,
+                nIdMenu = nIdMenu
+            };
+            return Json(await _perfilMenuproxy.GetAllMenuAcciones(request));
+        }
+
+
 
     }
 
