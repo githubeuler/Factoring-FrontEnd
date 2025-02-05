@@ -69,6 +69,7 @@ namespace Factoring.WebMvc.Controllers
 
         public async Task<JsonResult> GetAceptanteAllList(AceptanteViewModel model)
         {
+            string userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             try
             {
                 var requestData = new AceptanteRequestDatatableDto();
@@ -82,6 +83,7 @@ namespace Factoring.WebMvc.Controllers
                 requestData.FilterFecCrea = model.Fecha;
                 requestData.FilterIdSector = model.Sector;
                 requestData.FilterIdGrupoEconomico = model.GrupoEconomico;
+                requestData.Usuario = userName;
                 var data = await _aceptanteProxy.GetAllListAceptante(requestData);
                 var recordsTot = data.Data.Count > 0 ? data.Data[0].TotalRecords : 0;
                 return Json(new { data = data.Data, recordsTotal = recordsTot, recordsFiltered = recordsTot });

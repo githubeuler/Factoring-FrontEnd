@@ -168,7 +168,7 @@ namespace Factoring.Service.Proxies
         {
             var client = _proxyHttpClient.GetHttp();
             var response = await client.GetAsync($"OperacionesFactura/bandeja-factura?Pageno={model.Pageno}&PageSize={model.PageSize}&FechaCreacion={model.FechaCreacion}" +
-                $"&nEstado={model.Estado}&Sorting={model.Sorting}&SortOrder={model.SortOrder}&FilterNroOperacion={model.FilterNroOperacion}");
+                $"&nEstado={model.Estado}&Sorting={model.Sorting}&SortOrder={model.SortOrder}&FilterNroOperacion={model.FilterNroOperacion}&Usuario={model.Usuario}");
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<ResponseData<List<OperacionesFacturaResponseDataTable>>>(json);
             return data;

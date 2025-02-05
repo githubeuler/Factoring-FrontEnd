@@ -4,6 +4,7 @@ using Factoring.Model.Models.Operaciones;
 using Factoring.Service.Common;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System.Reflection;
 using System.Text;
 
 namespace Factoring.Service.Proxies
@@ -35,7 +36,7 @@ namespace Factoring.Service.Proxies
             var client = _proxyHttpClient.GetHttp();
             var response = await client.GetAsync($"Fondeo?Pageno={request.Pageno}&PageSize={request.PageSize}" +
                 $"&Sorting={request.Sorting}&SortOrder={request.SortOrder}&FilterNroOperacion={request.FilterNroOperacion}&FilterFondeadorAsignado={request.FilterFondeadorAsignado}&FilterGirador={request.FilterGirador}&FilterNroOperacion={request.FilterNroOperacion}" +
-                $"&FilterFechaRegistro={request.FilterFechaRegistro}&FilterEstadoFondeo={request.FilterEstadoFondeo}&IdEstado={request.IdEstado}");
+                $"&FilterFechaRegistro={request.FilterFechaRegistro}&FilterEstadoFondeo={request.FilterEstadoFondeo}&IdEstado={request.IdEstado}&Usuario={request.Usuario}");
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<ResponseData<List<FondeoResponseDatatableDto>>>(json);
             return data;

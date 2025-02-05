@@ -102,6 +102,7 @@ namespace Factoring.WebMvc.Controllers
         }
         public async Task<JsonResult> ListadoRegistros(FondeadorViewModel fondeador)
         {
+            string userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             try
             {
                 var requestData = new FondeadorRequestDatatableDto
@@ -113,7 +114,9 @@ namespace Factoring.WebMvc.Controllers
                     FilterDoi = fondeador.FilterDoi,
                     FilterRazon = fondeador.FilterRazon,
                     FilterFecCrea = fondeador.FilterFecCrea,
-                    IdEstado = fondeador.IdEstado
+                    IdEstado = fondeador.IdEstado,
+                    Usuario = userName
+
 
                 };
                 var data = await _fondeadorProxy.GetAllLisFondeador(requestData);

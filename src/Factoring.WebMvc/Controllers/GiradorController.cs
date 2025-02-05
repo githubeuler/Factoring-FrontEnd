@@ -62,6 +62,7 @@ namespace Factoring.WebMvc.Controllers
 
         public async Task<JsonResult> GetGiradorAllList(GiradorViewModel model)
         {
+            string userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             try
             {
                 var requestData = new GiradorRequestDatatableDto();
@@ -75,6 +76,7 @@ namespace Factoring.WebMvc.Controllers
                 requestData.FilterFecCrea = model.Fecha;
                 requestData.FilterIdGrupoEconomico = model.GrupoEconomico;
                 requestData.FilterIdSector = model.Sector;
+                requestData.Usuario = userName;
                 var data = await _giradorProxy.GetAllListGirador(requestData);
                 var recordsTotal = data.Data.Count > 0 ? data.Data[0].TotalRecords : 0;
                 return Json(new { data = data.Data, recordsTotal = recordsTotal, recordsFiltered = recordsTotal });
@@ -410,6 +412,7 @@ namespace Factoring.WebMvc.Controllers
 
         private async Task<GiradorResponseDatatableDto> GetGirador(string sRUC)
         {
+            string userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             GiradorResponseDatatableDto oRecord = null;
             try
             {
@@ -419,6 +422,7 @@ namespace Factoring.WebMvc.Controllers
                 requestData.Sorting = "nIdGirador";
                 requestData.SortOrder = "asc";
                 requestData.FilterRuc = sRUC;
+                requestData.Usuario = userName;
                 var data = await _giradorProxy.GetAllListGirador(requestData);
 
                 if (data.Data.Count > 0)

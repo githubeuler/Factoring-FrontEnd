@@ -279,18 +279,18 @@ var Perfil = function () {
                         if (hbuscar == "1" || hbuscar == "2") {
                             if (data.nExiste > 0) {
                                 buttonAction += `<div style="display:inline-flex">                               
-                             <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_menu_acciones"  data-n-nIdRolMenuAccion=${data.nIdRolMenuAccion} data-n-menu=${data.nIdMenu} data-n-rol=${$(nIdRol).val()} title="Editar"><i class="las la-pen fs-2"></i></a>
+                             <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_menu_acciones"  data-n-nIdRolMenuAccion=${data.nIdRolMenuAccion} data-n-menu=${data.nIdMenuDetalle} data-n-rol=${$(nIdRol).val()} title="Editar"><i class="las la-pen fs-2"></i></a>
                         </div>`
                             } else {
                                 buttonAction += `<div style="display:inline-flex">                            
-                        <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_menu_acciones"  data-n-nIdRolMenuAccion=${data.nIdRolMenuAccion} data-n-menu=${data.nIdMenu} data-n-rol=${$(nIdRol).val()} title="Agregar"><i class="la la-chevron-circle-right fs-2"></i></a>
+                        <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_menu_acciones"  data-n-nIdRolMenuAccion=${data.nIdRolMenuAccion} data-n-menu=${data.nIdMenuDetalle} data-n-rol=${$(nIdRol).val()} title="Agregar"><i class="la la-chevron-circle-right fs-2"></i></a>
 
                         </div>`
                             }
                         }
                         else {
                             buttonAction += `<div style="display:inline-flex">                            
-                        <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_menu_acciones"  data-n-nIdRolMenuAccion=${data.nIdRolMenuAccion} data-n-menu=${data.nIdMenu} data-n-rol=${$(nIdRol).val()} title="Agregar"><i class="las la-search fs-2"></i></a>
+                        <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_menu_acciones"  data-n-nIdRolMenuAccion=${data.nIdRolMenuAccion} data-n-menu=${data.nIdMenuDetalle} data-n-rol=${$(nIdRol).val()} title="Agregar"><i class="las la-search fs-2"></i></a>
 
                         </div>`
                         }
@@ -531,6 +531,8 @@ var Perfil = function () {
 
         var datatableAcciones = tableAcciones.DataTable({
             ordering: false,
+            paging: false,
+            scrollCollapse:true,
             ajax: {
                 type: 'GET',
                 dataType: 'json',
@@ -564,6 +566,7 @@ var Perfil = function () {
 
         // Ejecutar lógica solo cuando la tabla haya sido renderizada
         datatableAcciones.on('draw', function () {
+           
             console.log("Tabla cargada correctamente.");
 
             if (typeof Common !== 'undefined' && typeof Common.init === 'function') {
@@ -635,6 +638,22 @@ var Perfil = function () {
         console.log("Checkbox cambiado:", $(this).data('id'));
         getSelectedAcciones();
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const selectAllCheckbox = document.getElementById("select_all");
+       
+
+        selectAllCheckbox.addEventListener("change", function () {
+            const checkboxes = document.querySelectorAll(".checkbox-accion");
+            console.log('entroooo')
+            checkboxes.forEach(checkbox => {
+                console.log('aaaaaaaaaaaa')
+                checkbox.checked = selectAllCheckbox.checked;
+                getSelectedAcciones();
+            });
+        });
+    });
+
     var getSelectedAcciones = function () {
         var selectedAcciones = [];
 

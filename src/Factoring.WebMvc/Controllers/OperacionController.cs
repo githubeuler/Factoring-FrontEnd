@@ -757,6 +757,7 @@ namespace Factoring.WebMvc.Controllers
         }
         private async Task<GiradorResponseDatatableDto> GetGirador(string sRUC)
         {
+            string userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             GiradorResponseDatatableDto oRecord = null;
             try
             {
@@ -766,6 +767,7 @@ namespace Factoring.WebMvc.Controllers
                 requestData.Sorting = "nIdGirador";
                 requestData.SortOrder = "asc";
                 requestData.FilterRuc = sRUC;
+                requestData.Usuario = userName;
                 var data = await _giradorProxy.GetAllListGirador(requestData);
 
                 if (data.Data.Count > 0)

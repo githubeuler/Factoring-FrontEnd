@@ -16,6 +16,7 @@
         public string FilterDoi { get; set; }
         public string FilterRazon { get; set; }
         public string FilterFecCrea { get; set; }
+        public string Usuario { get; set; }
         public int PageSize { get; set; }
         public string Sorting { get; set; }
         public string SortOrder { get; set; }

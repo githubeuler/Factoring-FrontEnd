@@ -192,6 +192,7 @@ namespace Factoring.Model.Models.OperacionesFactura
         public string? NroOperacion { get; set; }
         public int? Estado { get; set; }
         public string? FechaCreacion { get; set; }
+        public string Usuario { get; set; }
     }
 
 

@@ -67,6 +67,7 @@ namespace Factoring.WebMvc.Controllers
 
         public async Task<JsonResult> GetOperacionAllList(OperacionesFacturaRequestDataTableDto model)
         {
+            string userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             try
             {
                 var requestData = new OperacionesFacturaRequestDataTableDto();
@@ -78,6 +79,7 @@ namespace Factoring.WebMvc.Controllers
                 requestData.Estado = model.Estado;
                 requestData.FechaCreacion = model.FechaCreacion;
                 requestData.FilterNroOperacion = model.NroOperacion;
+                requestData.Usuario = userName;
                 var data = await _facturaOperacionesProxy.GetBandejaFacturas(requestData);
                 var recordsTotal = data.Data.Count > 0 ? data.Data[0].totalRecords : 0;
                 return Json(new { data = data.Data, recordsTotal, recordsFiltered = recordsTotal });

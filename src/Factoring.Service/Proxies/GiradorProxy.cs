@@ -55,7 +55,7 @@ namespace Factoring.Service.Proxies
             var response = await client.GetAsync($"Girador?Pageno={model.Pageno}&PageSize={model.PageSize}" +
             $"&Sorting={model.Sorting}&SortOrder={model.SortOrder}&FilterRuc={model.FilterRuc}" +
             $"&FilterRazon={model.FilterRazon}&FilterIdPais={model.FilterIdPais}&FilterFecCrea={model.FilterFecCrea}" +
-                $"&FilterIdSector={model.FilterIdSector}&FilterIdGrupoEconomico={model.FilterIdGrupoEconomico}");
+                $"&FilterIdSector={model.FilterIdSector}&FilterIdGrupoEconomico={model.FilterIdGrupoEconomico}&Usuario={model.Usuario}");
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<ResponseData<List<GiradorResponseDatatableDto>>>(json);
             return data;
