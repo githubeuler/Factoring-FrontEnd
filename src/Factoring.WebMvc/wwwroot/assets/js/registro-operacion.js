@@ -109,7 +109,9 @@ var RegistroOperacion = function () {
                             buttonAction += `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperaciones} title="Evaluar"><i class="las la-check-square fs-2"></i></a>
                                 
                                 <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row p-con"><i class="las la-search fs-2"></i></a> 
-                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-ban fs-2"></i></button> `;
+                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-ban fs-2"></i></button> 
+                                  <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_calcular_operacion" data-n-operacion=${data.nIdOperaciones} data-n-nroperacion=${data.nNroOperacion} title="Calcular"><i class="las la-calculator fs-2"></i></a>
+                                `;
                         }
 
                         else {
@@ -120,7 +122,9 @@ var RegistroOperacion = function () {
                                 <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_evaluacion_operacion" data-n-operacion=${data.nIdOperaciones} title="Evaluar"><i class="las la-check-square fs-2"></i></a>
                                 
                                 <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row p-con"><i class="las la-search fs-2"></i></a> 
-                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-ban fs-2"></i></button> `;
+                                <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-ban fs-2"></i></button>
+                                  <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_calcular_operacion" data-n-operacion=${data.nIdOperaciones} data-n-nroperacion=${data.nNroOperacion} title="Calcular"><i class="las la-calculator fs-2"></i></a>
+                                `;
                         }
 
                         return buttonAction;
@@ -157,6 +161,7 @@ var RegistroOperacion = function () {
             var searchClear = document.getElementById('kt_search_clear');
             searchButton.removeAttribute('data-kt-indicator');
             handleModalControlEvaluacion();
+            handleModalControlCalculo();
             searchButton.disabled = false;
 
             /*   handleAnularEvaluacion2();*/
@@ -1135,6 +1140,20 @@ var RegistroOperacion = function () {
         var nOperacion = button.data('n-operacion');
 
         $('#nIdOperacionEval').val(nOperacion);
+
+    });
+
+    $('#kt_modal_calcular_operacion').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Botón que abrió el modal
+        var nOperacion = button.data('n-operacion');
+        var nroOperacion = button.data('n-nroperacion');
+        
+        $('#nIdOperacionCal').val(nOperacion);
+        $('#nNroOperacionCal').val(nroOperacion);
+        $('#cFechaCalculo').flatpickr({
+            dateFormat: 'd/m/Y',
+            defaultDate: 'today'
+        });
 
     });
 
@@ -2160,7 +2179,110 @@ var RegistroOperacion = function () {
     }
     //****************************FIN-21-01-2023****************************//
 
+    var handleModalControlCalculo = function () {
+        var table = document.getElementById('kt_operaciones_table');
+        if (!table) {
+            return;
+        }
 
+        var form = document.getElementById('kt_modal_calcular_operacion_form');
+        if (!form) {
+            return;
+        }
+
+        var saveButton = $('#kt_save_calculo_button');
+        var validator;
+
+        validator = FormValidation.formValidation(
+            form,
+            {
+                fields: {
+                    'nIdOperacionCal': {
+                        validators: {
+                            notEmpty: {
+                                message: 'el codigo es obligatorio'
+                            }
+                        }
+                    },
+                    'nNroOperacionCal': {
+                        validators: {
+                            notEmpty: {
+                                message: 'el nro de operació es obligatorio'
+                            }
+                        }
+                    },
+
+                    'cFechaCalculo': {
+                        validators: {
+                            notEmpty: {
+                                message: 'La fecha es obligatorio'
+                            }
+                        }
+                    },
+
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap5({
+                        rowSelector: '.fv-row',
+                        eleValidClass: '',
+                        eleInvalidClass: '',
+                    })
+                }
+            });
+        RegistroOperacion.getRevalidateFormElement(form, 'nIdOperacionCal', validator);
+        RegistroOperacion.getRevalidateFormElement(form, 'nNroOperacionCal', validator);
+        RegistroOperacion.getRevalidateFormElement(form, 'cFechaCalculo', validator);
+        saveButton.off('click');
+        saveButton.on('click', function (e) {
+            e.preventDefault();
+            validator.validate().then(function (status) {
+                if (status == 'Valid') {
+                    saveButton.attr('data-kt-indicator', 'on');
+                    saveButton.prop('disabled', true);
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'POST',
+                            dataType: 'json',
+                            url: $(form).attr('action'),
+                            xhrFields: {
+                                withCredentials: true
+                            },
+                            data: $(form).serializeObject(),
+                            success: function (data) {
+                                if (data.succeeded) {
+                                    Swal.fire({
+                                        text: data.message,
+                                        icon: 'success',
+                                        buttonsStyling: false,
+                                        confirmButtonText: 'Listo',
+                                        customClass: {
+                                            confirmButton: 'btn btn-primary'
+                                        }
+                                    }).then(function (result) {
+                                        if (result.isConfirmed) {
+                                            $(window).attr('location', globalPath + 'Operacion');
+                                        }
+                                    });
+                                } else {
+                                    saveButton.removeAttr('data-kt-indicator');
+                                    saveButton.prop('disabled', false);
+                                    messageError(data.message);
+                                }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                saveButton.removeAttr('data-kt-indicator');
+                                saveButton.prop('disabled', false);
+                                messageError(errorThrown);
+                            }
+                        });
+                    }, 2000);
+                } else {
+                    messageError('Lo sentimos, parece que se han detectado algunos errores. Vuelve a intentarlo.');
+                }
+            });
+        });
+    }
 
     return {
         init: function () {

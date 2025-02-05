@@ -489,6 +489,31 @@ namespace Factoring.WebMvc.Controllers
             return Json(_estadoOperaciones);
         }
 
+
+        public async Task<IActionResult> CalcularMonto(OperacionViewModel model)
+        {
+            ResponseData<int> oresult= new ResponseData<int>();
+            var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var resultLista = await _facturaOperacionesProxy.GetBandejaFacturaxOperacion(model.nIdOperacionCal.Value);
+            if (resultLista.Data.Count > 0)
+            {
+                foreach (var item in resultLista.Data)
+                {
+                  var result= await _evaluacionOperacionesProxy.UpdateCalculoFactura(new EvaluacionOperacionesCalculoInsertDto
+                    {
+                        IdOperaciones = model.nIdOperacionCal.Value,
+                        IdOperacionesFactura = item.nIdOperacionesFacturas,
+                        IdCatalogoEstado = item.nEstadoFactura,
+                        UsuarioCreador = userName,
+                        cFecha = model.cFechaCalculo
+                    });
+                    oresult = result;
+                }
+            }
+            return Json(oresult);
+        }
+
+
         public async Task<IActionResult> ActualizarMontoFactura(OperacionViewModel model)
         {
             var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;

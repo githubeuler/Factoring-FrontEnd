@@ -20,6 +20,12 @@ namespace Factoring.Model.ViewModels
         public int? nIdOperacionesFacturas { get; set; }
         public decimal? nMonto { get; set; }
 
+        public string? nNroOperacionCal { get; set; }
+        public string? cFechaCalculo { get; set; }
+
+        public int? nIdOperacionCal { get; set; }
+        
+
     }
 
     public class OperacionSingleViewModel

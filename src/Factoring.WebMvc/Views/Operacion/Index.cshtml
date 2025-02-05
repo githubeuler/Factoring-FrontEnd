@@ -144,6 +144,63 @@
     </div>
 </div>
 
+
+
+<div id="kt_modal_calcular_operacion" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <form id="kt_modal_calcular_operacion_form" class="form" asp-controller="Operacion" asp-action="CalcularMonto" novalidate="novalidate">
+            @*     <input type="hidden" id="nIdOperacionCal" name="nIdOperacionCal" /> *@
+                <div class="modal-header">
+                    <h2>Calcular Montos de facturas</h2>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="las la-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body py-lg-10 px-lg-10">
+                    <div class="flex-row-fluid">
+                        <div class="w-100">
+
+                            <div class="fv-row mb-5">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Código Operación</span>
+                                </label>
+                                <input asp-for="nIdOperacionCal" class="form-control form-control-solid ps-10" readonly>
+                            </div>
+
+                            <div class="fv-row mb-5">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span class="required">Nro Operación</span>
+                                </label>
+                                <input asp-for="nNroOperacionCal" class="form-control form-control-solid ps-10" readonly>
+                            </div>
+                            <div class="fv-row mb-5">
+                                    <div class="position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span class="required">Fecha</span>
+                                    </label>
+                                        <span class="position-absolute top-50 translate-middle ms-6">
+                                            <i class="las la-filter fs-3"></i>
+                                        </span>
+                                    <input type="text" asp-for="cFechaCalculo" class="form-control form-control-solid ps-10" placeholder="Buscar por Fecha de Calculo">
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="kt_save_calculo_button" type="submit" class="btn btn-primary">
+                        <span class="indicator-label">Calcular</span>
+                        <span class="indicator-progress">calculando montos... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 @*<div id="kt_factura_monto_modal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
