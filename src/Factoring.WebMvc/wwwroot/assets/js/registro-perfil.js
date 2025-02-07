@@ -316,9 +316,19 @@ var Perfil = function () {
         var button = $(event.relatedTarget);
         var nIdMenu = button.data('n-menu');
         var nIdRol = button.data('n-rol');
-
-        $('#nIdMenuAccion').val(nIdMenu);
-        $('#nIdRolAccion').val(nIdRol);
+        //if ($(nIdRol).val() != null || $(nIdRol).val() != "")
+        //{
+        // $('#nIdRolAccion').val(nIdRol);
+        //}
+        if (!isNaN(nIdRol) && nIdRol > 0) {
+           /* console.log("Los valores son correctos.nIdRol:", nIdRol);*/
+            // Aquí puedes continuar con la lógica
+            $('#nIdRolAccion').val(nIdRol);
+        }
+        //else {
+        //    console.error("Error: nIdRol no es un número válido o es menor o igual a 0.", nIdRol);
+        //}
+        $('#nIdMenuAccion').val(nIdMenu);       
         var tableAcciones = $('#kt_acciones_table');
 
         if (tableAcciones.length === 0) {
@@ -391,20 +401,37 @@ var Perfil = function () {
         console.log("Checkbox cambiado:", $(this).data('id'));
         getSelectedAcciones();
     });
+    //document.addEventListener("DOMContentLoaded", function () {
+    //    const selectAllCheckbox = document.getElementById("select_all");
+
+
+    //    selectAllCheckbox.addEventListener("change", function () {
+    //        const checkboxes = document.querySelectorAll(".checkbox-accion");
+    //        console.log('entroooo')
+    //        checkboxes.forEach(checkbox => {
+    //            console.log('aaaaaaaaaaaa')
+    //            checkbox.checked = selectAllCheckbox.checked;
+    //            getSelectedAcciones();
+    //        });
+    //    });
+    //});
     document.addEventListener("DOMContentLoaded", function () {
         const selectAllCheckbox = document.getElementById("select_all");
-       
-
-        selectAllCheckbox.addEventListener("change", function () {
-            const checkboxes = document.querySelectorAll(".checkbox-accion");
-            console.log('entroooo')
-            checkboxes.forEach(checkbox => {
-                console.log('aaaaaaaaaaaa')
-                checkbox.checked = selectAllCheckbox.checked;
-                getSelectedAcciones();
+        if (selectAllCheckbox) {
+            selectAllCheckbox.addEventListener("change", function () {
+                const checkboxes = document.querySelectorAll(".checkbox-accion");
+                console.log('entroooo');
+                checkboxes.forEach(checkbox => {
+                    console.log('aaaaaaaaaaaa');
+                    checkbox.checked = selectAllCheckbox.checked;
+                    getSelectedAcciones();
+                });
             });
-        });
+        } else {
+            console.error('El checkbox con id "select_all" no se encontró en el DOM.');
+        }
     });
+
     var getSelectedAcciones = function () {
         var selectedAcciones = [];
 
@@ -432,6 +459,11 @@ var Perfil = function () {
     };
     var handleModalControlAsignacion = function () {
         var nIdRol = document.getElementById('nIdRol');
+        var pnIdRolAccion = $("#nIdRolAccion").val();
+        if (nIdRol != null || nIdRol != "") {
+            nIdRol = pnIdRolAccion;
+        }
+            //nIdRolAccion
         const element = document.getElementById("aBuscarGrilla");
         const hbuscar = element ? element.value : null;
         var table = document.getElementById('kt_acciones_table');
