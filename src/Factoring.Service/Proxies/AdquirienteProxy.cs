@@ -58,7 +58,7 @@ namespace Factoring.Service.Proxies
             $"&Sorting={model.Sorting}&SortOrder={model.SortOrder}&FilterRuc={model.FilterRuc}" +
             $"&FilterRazon={model.FilterRazon}" +
             $"&FilterIdPais={model.FilterIdPais}&FilterFecCrea={model.FilterFecCrea}" +
-                $"&FilterIdSector={model.FilterIdSector}&FilterIdGrupoEconomico={model.FilterIdGrupoEconomico}");
+                $"&FilterIdSector={model.FilterIdSector}&FilterIdGrupoEconomico={model.FilterIdGrupoEconomico}&Usuario={model.Usuario}");
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<ResponseData<List<AdquirienteResponseDatatableDto>>>(json);
             return data;

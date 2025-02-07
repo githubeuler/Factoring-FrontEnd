@@ -78,7 +78,7 @@ var CargaMasiva = function () {
                             success: function (data) {
                                 if (data.succeeded) {
                                     Swal.fire({
-                                        text: data.message,
+                                        html: data.message,
                                         icon: 'success',
                                         buttonsStyling: false,
                                         confirmButtonText: 'Listo',
@@ -269,7 +269,7 @@ var CargaMasiva = function () {
 
                             if (data.succeeded) {
                                 Swal.fire({
-                                    text: data.message,
+                                    html: data.message,
                                     icon: 'success',
                                     buttonsStyling: false,
                                     confirmButtonText: 'Listo',

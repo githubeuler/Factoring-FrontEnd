@@ -78,6 +78,9 @@ namespace Factoring.WebMvc.Controllers
             string userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             int nIdGirador = 0;
 
+            string SinUbigeoGirador = "";
+            string SinUbigeoAceptante = "";
+
             try
             {
                 var countFilesXML = Request.Form.Files.Count();
@@ -109,6 +112,7 @@ namespace Factoring.WebMvc.Controllers
                     string cAdquirienteRUT = string.Empty;
                     string cAdquirienteDireccion = string.Empty;
                     string cAdquirienteUbigeo = string.Empty;
+
 
                     string cMoneda = string.Empty;
                     string cFieldName = string.Empty;
@@ -171,6 +175,8 @@ namespace Factoring.WebMvc.Controllers
                         }
                     }
 
+                  
+
                     var oGirador = GetGirador(cGiradorRUT).Result;
                     if (oGirador == null)
                     {
@@ -187,14 +193,21 @@ namespace Factoring.WebMvc.Controllers
                         });
 
                         oGirador = GetGirador(cGiradorRUT).Result;
-
-                        var resultGU = await _giradorUbicacionProxy.Create(new UbicacionGiradorInsertDto
+                        if (!string.IsNullOrEmpty(cGiradorUbigeo))
                         {
-                            IdGirador = oGirador.nIdGirador,
-                            FormatoUbigeo = $"{{\"Departamento\":\"{cGiradorUbigeo.Substring(0,2)}\",\"Provincia\":\"{cGiradorUbigeo.Substring(0, 4)}\",\"Distrito\":\"{cGiradorUbigeo}\"}}" ,
-                            Direccion = cGiradorDireccion,
-                            IdTipoDireccion = 1
-                        });
+                            var resultGU = await _giradorUbicacionProxy.Create(new UbicacionGiradorInsertDto
+                            {
+                                IdGirador = oGirador.nIdGirador,
+                                FormatoUbigeo = $"{{\"Departamento\":\"{cGiradorUbigeo.Substring(0, 2)}\",\"Provincia\":\"{cGiradorUbigeo.Substring(0, 4)}\",\"Distrito\":\"{cGiradorUbigeo}\"}}",
+                                Direccion = cGiradorDireccion,
+                                IdTipoDireccion = 1
+                            });
+                        }
+                        else
+                        {
+                            SinUbigeoGirador = "<br/> El Girador no tiene direccion.";
+                        }
+
                     }
 
                         //throw new Exception($"Girador {cGirador} con RUC {cGiradorRUT} NO REGISTRADO.");
@@ -214,14 +227,21 @@ namespace Factoring.WebMvc.Controllers
                         });
 
                         oAdquiriente = GetAdquiriente(cAdquirienteRUT).Result;
-
-                        var resultAU = await _adquirienteUbicacionProxy.Create(new UbicacionAdquirienteInsertDto
+                        if (!string.IsNullOrEmpty(cAdquirienteUbigeo))
                         {
-                            IdAdquiriente = oAdquiriente.nIdAdquiriente,
-                            FormatoUbigeo = $"{{\"Departamento\":\"{cAdquirienteUbigeo.Substring(0, 2)}\",\"Provincia\":\"{cAdquirienteUbigeo.Substring(0, 4)}\",\"Distrito\":\"{cAdquirienteUbigeo}\"}}",
-                            Direccion = cAdquirienteDireccion,
-                            IdTipoDireccion = 1
-                        });
+                            var resultAU = await _adquirienteUbicacionProxy.Create(new UbicacionAdquirienteInsertDto
+                            {
+                                IdAdquiriente = oAdquiriente.nIdAdquiriente,
+                                FormatoUbigeo = $"{{\"Departamento\":\"{cAdquirienteUbigeo.Substring(0, 2)}\",\"Provincia\":\"{cAdquirienteUbigeo.Substring(0, 4)}\",\"Distrito\":\"{cAdquirienteUbigeo}\"}}",
+                                Direccion = cAdquirienteDireccion,
+                                IdTipoDireccion = 1
+                            });
+                        }
+                        else
+                        {
+                            SinUbigeoGirador = "<br/> El Aceptante no tiene direccion.";
+                        }
+                        
                     }
                         //throw new Exception($"Adquiriente {cAdquiriente} con RUC {cAdquirienteRUT} NO REGISTRADO.");
 
@@ -283,7 +303,7 @@ namespace Factoring.WebMvc.Controllers
             //lst.Add(new CategoriaGiradorDto() { Categoria = "VENTA DE CARTERA",nCategoria = 1 });
             //lst.Add(new CategoriaGiradorDto() { Categoria = "FONDOS PROPIOS", nCategoria = 2 });
             var lstCategoria = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Codigo = 102, Tipo = 1, Valor = "1" }); //_Categorias.Data.ToList();
-            return Json(new { succeeded = true, message = $"Se {(lstAuxiliar.Count > 1 ? "cargaron" : "cargo")} {lstAuxiliar.Count} {(lstAuxiliar.Count > 1 ? "archivos" : "archivo")} XML.", data = lstAuxiliar, comboCategoria = lstCategoria.Data.OrderByDescending(x=> x.nId) });
+            return Json(new { succeeded = true, message = $"Se {(lstAuxiliar.Count > 1 ? "cargaron" : "cargo")} {lstAuxiliar.Count} {(lstAuxiliar.Count > 1 ? "archivos" : "archivo")} XML.{SinUbigeoGirador} {SinUbigeoAceptante}", data = lstAuxiliar, comboCategoria = lstCategoria.Data.OrderByDescending(x=> x.nId) });
         }
 
         private async Task<ResponseData<OperacionesFacturaListDto>> GetFactura(int IdGirador, int IdAdquiriente, string NroFactura)
@@ -329,6 +349,7 @@ namespace Factoring.WebMvc.Controllers
 
         private async Task<AdquirienteResponseDatatableDto> GetAdquiriente(string sRUC)
         {
+            string userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             AdquirienteResponseDatatableDto oRecord = null;
             try
             {
@@ -338,6 +359,7 @@ namespace Factoring.WebMvc.Controllers
                 requestData.Sorting = "nIdAdquiriente";
                 requestData.SortOrder = "asc";
                 requestData.FilterRuc = sRUC;
+                requestData.Usuario = userName;
                 var data = await _adquirienteProxy.GetAllListAdquiriente(requestData);
                 if (data.Data.Count > 0)
                     oRecord = data.Data[0];

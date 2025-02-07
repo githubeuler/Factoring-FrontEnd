@@ -31,6 +31,7 @@ namespace Factoring.Model.Models.Adquiriente
         public int PageSize { get; set; }
         public string Sorting { get; set; }
         public string SortOrder { get; set; }
+        public string Usuario { get; set; }
     }
 
     public class AdquirienteResponseDatatableDto

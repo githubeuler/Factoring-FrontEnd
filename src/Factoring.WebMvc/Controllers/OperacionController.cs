@@ -760,6 +760,7 @@ namespace Factoring.WebMvc.Controllers
         }
         private async Task<AdquirienteResponseDatatableDto> GetAdquiriente(string sRUC)
         {
+            string userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             AdquirienteResponseDatatableDto oRecord = null;
             try
             {
@@ -769,6 +770,7 @@ namespace Factoring.WebMvc.Controllers
                 requestData.Sorting = "nIdAdquiriente";
                 requestData.SortOrder = "asc";
                 requestData.FilterRuc = sRUC;
+                requestData.Usuario = userName;
                 var data = await _adquirienteProxy.GetAllListAdquiriente(requestData);
                 if (data.Data.Count > 0)
                     oRecord = data.Data[0];
