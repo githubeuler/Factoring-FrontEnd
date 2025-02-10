@@ -154,25 +154,7 @@ namespace Factoring.WebMvc.Controllers
             try
             {
                 var userName = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                var nNumeroProcesados = 0;
-
-                var nValidarEstado = 0;
-
-
-                //foreach (int factura in IdFacturas)
-                //{
-                //    var _validarEstado = await _facturaOperacionesProxy.ValidarEstadoFactura(new OperacionesFacturaListDto
-                //    {
-                //        nIdOperacionesFacturas = factura,
-                //        nEstado = 1
-                //    });
-
-                //    if (!_validarEstado.Succeeded)
-                //        nValidarEstado++;
-
-                //}
-                //if (nValidarEstado == 0)
-                //{
+                var nNumeroProcesados = 0; var nValidarEstado = 0;
                 if (InversionistaAccion == 1)
                 {
                     var MensajeRetorno = new ResponseData<ResponseCavaliInvoice4012>();
@@ -211,106 +193,99 @@ namespace Factoring.WebMvc.Controllers
                 {
                     var MensajeRetorno = new ResponseData<ResponseCavaliInvoice4012>();
                     int nIdFondeador = 0;
-                    int nCategoriaFondeador = 0, nCantidadAsignaciones=0,nIdGiradorPlus=0;
-                    bool bFondeadorPlus = false,bSegundoFlagDiferente=false;
+                    int nCategoriaFondeador = 0, nCantidadAsignaciones = 0, nIdGiradorPlus = 0;
+                    bool bFondeadorPlus = false, bSegundoFlagDiferente = false;
                     var resultEval = await _facturaOperacionesProxy.ObtenerValidacionAsignaciones(new RequestOperacionesFacturaValidacion
                     {
                         nLstIdFacturas = IdFacturasAccion,
                         nTipo = InversionistaAccion
                     });
-
-                    var listaFacturas = resultEval.Data.listaFacturas;
-                    if (listaFacturas.Count > 0)
+                    List<FacturasGetRegistro> listaFacturas;
+                    if (resultEval.Data.listaFacturas.Count > 0)
                     {
-                        int cantidad = listaFacturas.Count;
-                        if (cantidad == 1)
+                        foreach (var item in IdFacturasAccion)
                         {
-                            //--nNumeroAsignaciones
-                            //bFondeadorPlus
-                            int nCantidadConfechaNew = listaFacturas.Count(x => x.dFechaDesembolso != "" && x.nEstadoFactura == 9);
-                            if (nCantidadConfechaNew > 0)
+                            listaFacturas = new List<FacturasGetRegistro>();
+                            listaFacturas = resultEval.Data.listaFacturas.Where(x => x.nIdFactura == item).ToList();
+                            if (listaFacturas.Count > 0)
                             {
-                                nIdFondeador = listaFacturas[0].nIdFondeador;
-                                nCategoriaFondeador = listaFacturas[0].nIdCategoria;
-                                nCantidadAsignaciones = 1;
-                                nIdGiradorPlus = listaFacturas[0].nCodFondeadorPlus;
-                                bFondeadorPlus = listaFacturas[0].bFondeadorPlus;
-                                bSegundoFlagDiferente = false;
-                            }
-                            else
-                            {
-                                ResponseCavaliInvoice4012 responseCavaliInvoice4012 = new()
+                                int cantidad = listaFacturas.Count;
+                                if (cantidad == 1)
                                 {
-                                    Mensaje = "El girador no tiene fecha de Desembolso.",
-                                };
-
-                                MensajeRetorno.Message = "El girador no tiene fecha de Desembolso.";
-                                MensajeRetorno.Succeeded = false;
-                                MensajeRetorno.Data = responseCavaliInvoice4012;
-                                return Json(MensajeRetorno);
-                            }
-                        }
-                        else
-                        {//  if ((listaFacturas[0].dFechaDesembolso != null || listaFacturas[0].dFechaDesembolso != "") && listaFacturas[0].dFechaDesembolsoFondeador == "")
-
-                            if ((listaFacturas[0].dFechaDesembolso != null || listaFacturas[0].dFechaDesembolso != "") && listaFacturas[0].nNumeroAsignaciones == 1 && listaFacturas[0].nEstadoFactura==10 )                            
-                            {
-                                nIdFondeador = listaFacturas[1].nIdFondeador;
-                                nCategoriaFondeador = listaFacturas[1].nIdCategoria;
-                                nIdGiradorPlus = listaFacturas[1].nCodFondeadorPlus;
-                                nCantidadAsignaciones = 2;
-                                bFondeadorPlus = listaFacturas[0].bFondeadorPlus;
-                                if (listaFacturas[0].nIdCategoria != listaFacturas[1].nIdCategoria)
-                                {
-                                    bSegundoFlagDiferente = true;
-                                }
-                                else {
-                                    ResponseCavaliInvoice4012 responseCavaliInvoice4012 = new()
+                                    int nCantidadConfechaNew = listaFacturas.Count(x => x.dFechacAsignacion != "" && (x.nEstadoFactura == 13 || x.nEstadoFactura == 16));
+                                    if (nCantidadConfechaNew > 0)
                                     {
-                                        Mensaje = "El segundo fondeador es igual al primer transferido.",
-                                    };
-                                    MensajeRetorno.Message = "El segundo fondeador es igual al primer transferido.";
-                                    MensajeRetorno.Succeeded = false;
-                                    MensajeRetorno.Data = responseCavaliInvoice4012;
-                                    return Json(MensajeRetorno);
+                                        nIdFondeador = listaFacturas[0].nIdFondeador;
+                                        nCategoriaFondeador = listaFacturas[0].nIdCategoria;
+                                        nCantidadAsignaciones = 1;
+                                        nIdGiradorPlus = listaFacturas[0].nCodFondeadorPlus;
+                                        bFondeadorPlus = listaFacturas[0].bFondeadorPlus;
+                                        bSegundoFlagDiferente = false;
+                                    }
+                                    else
+                                    {
+                                        ResponseCavaliInvoice4012 responseCavaliInvoice4012 = new()
+                                        {
+                                            Mensaje = "El girador no tiene fecha de Desembolso.",
+                                        };
+                                        MensajeRetorno.Message = "El girador no tiene fecha de Desembolso.";
+                                        MensajeRetorno.Succeeded = false;
+                                        MensajeRetorno.Data = responseCavaliInvoice4012;
+                                        return Json(MensajeRetorno);
+                                    }
+                                }
+                                else
+                                {
+                                    if (!string.IsNullOrWhiteSpace(listaFacturas[0].dFechaDesembolsoFondeador) && listaFacturas[0].nNumeroAsignaciones == 1 && !string.IsNullOrWhiteSpace(listaFacturas[1].dFechacAsignacion) && (listaFacturas[1].nEstadoFactura == 13 || listaFacturas[1].nEstadoFactura == 16))
+                                    {
+                                        nIdFondeador = listaFacturas[1].nIdFondeador;
+                                        nCategoriaFondeador = listaFacturas[1].nIdCategoria;
+                                        nIdGiradorPlus = listaFacturas[1].nCodFondeadorPlus;
+                                        nCantidadAsignaciones = 2;
+                                        bFondeadorPlus = listaFacturas[0].bFondeadorPlus;
+                                        if (listaFacturas[0].nIdCategoria != listaFacturas[1].nIdCategoria)
+                                        {
+                                            bSegundoFlagDiferente = true;
+                                        }
+                                        else
+                                        {
+                                            ResponseCavaliInvoice4012 responseCavaliInvoice4012 = new()
+                                            {
+                                                Mensaje = "El segundo fondeador es igual al primer transferido.",
+                                            };
+                                            MensajeRetorno.Message = "El segundo fondeador es igual al primer transferido.";
+                                            MensajeRetorno.Succeeded = false;
+                                            MensajeRetorno.Data = responseCavaliInvoice4012;
+                                            return Json(MensajeRetorno);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ResponseCavaliInvoice4012 responseCavaliInvoice4012 = new()
+                                        {
+                                            Mensaje = "El fondeador no tiene fecha de Desembolso.",
+                                        };
+                                        MensajeRetorno.Message = "El fondeador no tiene fecha de Desembolso.";
+                                        MensajeRetorno.Succeeded = false;
+                                        MensajeRetorno.Data = responseCavaliInvoice4012;
+                                        return Json(MensajeRetorno);
+
+                                    }
                                 }
                             }
-                            // if ((listaFacturas[0].dFechaDesembolso != null || listaFacturas[0].dFechaDesembolso != "") && listaFacturas[0].dFechaDesembolsoFondeador == "")
-                            //{
-                            //    nIdFondeador = listaFacturas[0].nIdFondeador;
-                            //    nCategoriaFondeador = listaFacturas[0].nIdCategoria;
-                            //}
-                            //else if (listaFacturas[0].dFechaDesembolsoFondeador == "")
-                            //{
-                            //    nIdFondeador = listaFacturas[1].nIdFondeador;
-                            //    nCategoriaFondeador = listaFacturas[1].nIdCategoria;
-                            //}
                             else
                             {
                                 ResponseCavaliInvoice4012 responseCavaliInvoice4012 = new()
                                 {
-                                    Mensaje = "El fondeador no tiene fecha de Desembolso.",
+                                    Mensaje = "No hay facturas en estado desembolsado.",
                                 };
-                                MensajeRetorno.Message = "El fondeador no tiene fecha de Desembolso.";
+                                MensajeRetorno.Message = "No hay facturas en estado desembolsado.";
                                 MensajeRetorno.Succeeded = false;
                                 MensajeRetorno.Data = responseCavaliInvoice4012;
                                 return Json(MensajeRetorno);
-
                             }
                         }
-
                     }
-                    else {
-                        ResponseCavaliInvoice4012 responseCavaliInvoice4012 = new()
-                        {
-                            Mensaje = "No hay facturas en estado desembolsado.",
-                        };
-                        MensajeRetorno.Message = "No hay facturas en estado desembolsado.";
-                        MensajeRetorno.Succeeded = false;
-                        MensajeRetorno.Data = responseCavaliInvoice4012;
-                        return Json(MensajeRetorno);
-                    }
-
                     foreach (int factura in IdFacturasAccion)
                     {
                         var result = await _facturaOperacionesProxy.OperacionCavaliInvoicesSend4012(new OperacionesFacturaLoteCavali
@@ -323,10 +298,10 @@ namespace Factoring.WebMvc.Controllers
                             InvoicesFactura = factura,
                             Invoices = IdFacturasAccion,
                             nCategoriaFondeador = nCategoriaFondeador,
-                            nCantidadAsignacion= nCantidadAsignaciones,
-                            nIdGiradorPlus=nIdGiradorPlus,
-                            bFondeadorPlus=bFondeadorPlus,
-                            bSegundoFlagDiferente= bSegundoFlagDiferente
+                            nCantidadAsignacion = nCantidadAsignaciones,
+                            nIdGiradorPlus = nIdGiradorPlus,
+                            bFondeadorPlus = bFondeadorPlus,
+                            bSegundoFlagDiferente = bSegundoFlagDiferente
                         });
                         nNumeroProcesados++;
                         MensajeRetorno = result;

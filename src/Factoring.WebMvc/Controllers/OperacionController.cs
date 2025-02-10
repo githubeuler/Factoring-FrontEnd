@@ -109,10 +109,24 @@ namespace Factoring.WebMvc.Controllers
             {
                 return Redirect("~/Account/Logout");
             }
+            var nOpcionRol = HttpContext.Session.GetObjectFromJson<int>("nIdAccionMenuOpe");
+            var opcionesCodigo = new Dictionary<int, (int Codigo, string Titulo)>
+            {
+                { 12, (6, "Evaluación") },
+                { 23, (7, "Evaluación Comercial") },
+                { 24, (8, "Evaluación Riesgos") }
+            };
 
-            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 5, Codigo = 103, Valor = "0" });
+
+            var (nCodigoTipo, tituloModal) = opcionesCodigo.TryGetValue(nOpcionRol, out var valores)
+                ? valores
+                : (5, "Evaluación General");
+
+            ViewBag.TituloModal = tituloModal;
+
+            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = nCodigoTipo, Codigo = 103, Valor = "0" });
             ViewBag.Estados = _Estados.Data.ToList();
-            var _EstadosAprobacion = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 5, Codigo = 103, Valor = "0" });
+            var _EstadosAprobacion = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = nCodigoTipo, Codigo = 103, Valor = "0" });
             ViewBag.EstadoEvaluacion = _EstadosAprobacion.Data.ToList();
             return View();
         }
@@ -428,15 +442,15 @@ namespace Factoring.WebMvc.Controllers
 
             var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 4, Codigo = 103, Valor = "0" });
             var nCant = _Estados.Data.Where(n => n.nId == model.nIdEstadoEvaluacion).ToList();
-            bool pRegistro=false;
-           
+            bool pRegistro = false;
+
             var _estadoOperaciones = await _evaluacionOperacionesProxy.Create(new EvaluacionOperacionesInsertDto
             {
                 IdOperaciones = model.nIdOperacionEval,
                 IdCatalogoEstado = model.nIdEstadoEvaluacion,
                 UsuarioCreador = userName,
                 Comentario = model.cComentario,
-                bRegistro=pRegistro
+                bRegistro = pRegistro
 
             });
 
@@ -466,7 +480,7 @@ namespace Factoring.WebMvc.Controllers
                             await _evaluacionOperacionesProxy.UpdateCalculoFactura(new EvaluacionOperacionesCalculoInsertDto
                             {
                                 IdOperaciones = model.nIdOperacionEval,
-                                IdOperacionesFactura= item.nIdOperacionesFacturas,
+                                IdOperacionesFactura = item.nIdOperacionesFacturas,
                                 IdCatalogoEstado = model.nIdEstadoEvaluacion,
                                 UsuarioCreador = userName,
                                 cFecha = item.dFechaRegistro.ToString()
@@ -492,14 +506,14 @@ namespace Factoring.WebMvc.Controllers
 
         public async Task<IActionResult> CalcularMonto(OperacionViewModel model)
         {
-            ResponseData<int> oresult= new ResponseData<int>();
+            ResponseData<int> oresult = new ResponseData<int>();
             var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var resultLista = await _facturaOperacionesProxy.GetBandejaFacturaxOperacion(model.nIdOperacionCal.Value);
             if (resultLista.Data.Count > 0)
             {
                 foreach (var item in resultLista.Data)
                 {
-                  var result= await _evaluacionOperacionesProxy.UpdateCalculoFactura(new EvaluacionOperacionesCalculoInsertDto
+                    var result = await _evaluacionOperacionesProxy.UpdateCalculoFactura(new EvaluacionOperacionesCalculoInsertDto
                     {
                         IdOperaciones = model.nIdOperacionCal.Value,
                         IdOperacionesFactura = item.nIdOperacionesFacturas,
@@ -518,7 +532,7 @@ namespace Factoring.WebMvc.Controllers
         {
             var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-        
+
             var _estadoOperaciones = await _facturaOperacionesProxy.EditarMonto(new OperacionesFacturaEditMontoDto
             {
                 nIdOperaciones = model.nIdOperaciones.Value,
@@ -677,7 +691,7 @@ namespace Factoring.WebMvc.Controllers
                 if (oGirador == null)
                 {
                     //throw new Exception($"Girador {cGiradorRUT} tiene que ser igual que la operación.");
-                    return Json(new { succeeded = false, message = string.Format(mensajeErrorG,"Girador", cGirador) });
+                    return Json(new { succeeded = false, message = string.Format(mensajeErrorG, "Girador", cGirador) });
 
                 }
 
