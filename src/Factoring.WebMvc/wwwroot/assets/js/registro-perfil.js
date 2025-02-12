@@ -517,7 +517,9 @@ var Perfil = function () {
                             },
                             data: $(form).serializeObject(),
                             success: function (data) {
+                               
                                 if (data.succeeded) {
+                                    saveButton.removeAttr('data-kt-indicator');
                                     Swal.fire({
                                         text: data.message,
                                         icon: 'success',

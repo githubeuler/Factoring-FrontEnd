@@ -19,6 +19,12 @@
     <link rel="shortcut icon" href="@(BaseURL + "assets/images/logos/favicon.ico")" />
     @await RenderSectionAsync("Styles", required: false)
     <base href="@BaseURL">
+
+    <style>
+        .oculto-acci {
+            display: none !important;
+        }
+    </style>
 </head>
 <body id="kt_body" class="page-loading-enabled header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
     <div class="page-loader flex-column">
