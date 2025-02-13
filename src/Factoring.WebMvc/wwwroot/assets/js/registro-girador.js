@@ -148,10 +148,10 @@ var RegistroGirador = function () {
                             </span>
                         </a>
                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                            <div class="menu-item px-3">
+                            <div class="menu-item px-3  oculto-acci p-act">
                                 <a href="` + globalPath + `Girador/Registro?giradorId=` + data.nIdGirador + `" class="menu-link px-3">Editar</a>
                             </div>
-                            <div class="menu-item px-3">
+                            <div class="menu-item px-3 oculto-acci p-con">
                                 <a href="` + globalPath + `Girador/Detalle?giradorId=` + data.nIdGirador + `" class="menu-link px-3">Detalle</a>
                             </div>
                         </div>`;
@@ -433,7 +433,7 @@ var RegistroGirador = function () {
                     orderable: false,
                     className: 'text-end',
                     render: function (data, type, row) {
-                        return `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt-contact-table-filter="delete_row" data-parent="` + $(idGirador).val() + `" data-id="` + data.nIdGiradorContacto + `"><i class="las la-trash fs-2"></i></a>`;
+                        return `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm oculto-acci p-eli" data-kt-contact-table-filter="delete_row" data-parent="` + $(idGirador).val() + `" data-id="` + data.nIdGiradorContacto + `"><i class="las la-trash fs-2"></i></a>`;
                     }
                 }
             ]
@@ -1349,7 +1349,7 @@ var RegistroGirador = function () {
                     orderable: false,
                     className: 'text-end',
                     render: function (data, type, row) {
-                        return `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt-ubicacion-table-filter="delete_row" data-parent="` + $(idGirador).val() + `" data-id="` + data.nIdGiradorDireccion + `"><i class="las la-trash fs-2"></i></a>`;
+                        return `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm oculto-acci p-eli" data-kt-ubicacion-table-filter="delete_row" data-parent="` + $(idGirador).val() + `" data-id="` + data.nIdGiradorDireccion + `"><i class="las la-trash fs-2"></i></a>`;
                     }
                 }
             ]
@@ -1560,8 +1560,8 @@ var RegistroGirador = function () {
                     orderable: false,
                     className: 'text-end',
                     render: function (data, type, row) {
-                        var buttonDownload = ((data.cNombreDocumento == null || data.cNombreDocumento == '') ? `` : `<a href="javascript:;" class="btn btn-icon btn-sm btn-outline btn-outline-solid btn-outline-default me-2 p-des" data-kt-documento-table-filter="download_file" data-filename="` + data.cNombreDocumento + `" onclick="RegistroGirador.fnDownloadDocumentos(` + data.nIdGiradorDocumento + `)" title="` + data.cNombreDocumento + `" data-id="` + data.nIdGiradorDocumento + `"><i class="las la-download fs-2"></i></a>`);
-                        var buttonDelete = ((tableDocumentosAction == 'Detalle') ? `` : `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt-documento-table-filter="delete_row" data-parent="` + $(idGirador).val() + `" data-path="` + data.cRuta + `" data-id="` + data.nIdGiradorDocumento + `"><i class="las la-trash fs-2"></i></a>`);
+                        var buttonDownload = ((data.cNombreDocumento == null || data.cNombreDocumento == '') ? `` : `<a href="javascript:;" class="btn btn-icon btn-sm btn-outline btn-outline-solid btn-outline-default me-2 oculto-acci p-des" data-kt-documento-table-filter="download_file" data-filename="` + data.cNombreDocumento + `" onclick="RegistroGirador.fnDownloadDocumentos(` + data.nIdGiradorDocumento + `)" title="` + data.cNombreDocumento + `" data-id="` + data.nIdGiradorDocumento + `"><i class="las la-download fs-2"></i></a>`);
+                        var buttonDelete = ((tableDocumentosAction == 'Detalle') ? `` : `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm oculto-acci p-eli" data-kt-documento-table-filter="delete_row" data-parent="` + $(idGirador).val() + `" data-path="` + data.cRuta + `" data-id="` + data.nIdGiradorDocumento + `"><i class="las la-trash fs-2"></i></a>`);
                         return buttonDownload + buttonDelete;
                     }
                 }
@@ -1569,6 +1569,7 @@ var RegistroGirador = function () {
         });
         datatableDocumentos.on('draw', function () {
             handleDeleteDocumentosForm();
+            debugger;
             Common.init();
         });
     }

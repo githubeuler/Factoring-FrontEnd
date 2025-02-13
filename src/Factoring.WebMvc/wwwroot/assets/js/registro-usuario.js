@@ -75,13 +75,15 @@ var RegistroUsuario = function () {
                         //        <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-ban fs-2"></i></button> `;
                         //}
                         if (data.cActivo == 'ACTIVO') {
-                            buttonAction += `<div style="display:inline-flex"><a href="${globalPath}Usuario/Registro?usuarioId=${data.nIdUsuario}" title="Editar" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i style="color:blue" class="las la-pen fs-2"></i></a>
-                         <button  data-delete-table="delete_row" data-id="` + row.nIdUsuario + `" data-row= ${data.nIdUsuario} title="Inactivar"  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i style="color:red" class="las la-ban fs-2"></i></button> 
-                         <button data-reset-password-table="resete-password_row" data-id="` + row.nIdUsuario + `" data-codigo="` + row.cCodigoUsuario + `" data-row= ${data.nIdUsuario} title="Resetear contraseña"  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-reset-pwd"><i style="color:green" class="las la la-refresh fs-2"></i></button>
+                            buttonAction += `
+                         <div style="display:inline-flex">
+                         <a href="${globalPath}Usuario/Registro?usuarioId=${data.nIdUsuario}" title="Editar" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 oculto-acci p-act"><i style="color:blue" class="las la-pen fs-2"></i></a>
+                         <button  data-delete-table="delete_row" data-id="` + row.nIdUsuario + `" data-row= ${data.nIdUsuario} title="Inactivar"  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 oculto-acci p-anu"><i style="color:red" class="las la-ban fs-2"></i></button> 
+                         <button data-reset-password-table="resete-password_row" data-id="` + row.nIdUsuario + `" data-codigo="` + row.cCodigoUsuario + `" data-row= ${data.nIdUsuario} title="Resetear contraseña"  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 oculto-acci p-rese p-reset-pwd"><i style="color:green" class="las la la-refresh fs-2"></i></button>
                          </div>
                          `
                         } else {
-                            buttonAction += `<a href="${globalPath}Usuario/Registro?usuarioId=${data.nIdUsuario}" title="Editar" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i style="color:blue" class="las la-pen fs-2"></i></a>
+                            buttonAction += `<a href="${globalPath}Usuario/Registro?usuarioId=${data.nIdUsuario}" title="Editar" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 oculto-acci p-act"><i style="color:blue" class="las la-pen fs-2"></i></a>
                          
                          `
                         }
@@ -129,7 +131,7 @@ var RegistroUsuario = function () {
             handleResetPwdUsuarioForm();
             $(searchClear).show();
             KTMenu.createInstances();
-            //Common.init();
+            Common.init();
         });
         $(document).on('click', '.open-masivo-factura', function () {
             var operacionId = $(this).data('id');

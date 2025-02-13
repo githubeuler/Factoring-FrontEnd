@@ -389,7 +389,7 @@ var RegistroAceptante = function () {
                     orderable: false,
                     className: 'text-end',
                     render: function (data, type, row) {
-                        return `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt-contact-table-filter="delete_row" data-parent="` + $(idAceptante).val() + `" data-id="` + data.nIdAdquirienteContacto + `"><i class="las la-trash fs-2"></i></a>`;
+                        return `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm oculto-acci p-eli" data-kt-contact-table-filter="delete_row" data-parent="` + $(idAceptante).val() + `" data-id="` + data.nIdAdquirienteContacto + `"><i class="las la-trash fs-2"></i></a>`;
                     }
                 }
             ]
@@ -651,7 +651,7 @@ var RegistroAceptante = function () {
                     orderable: false,
                     className: 'text-end',
                     render: function (data, type, row) {
-                        return `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt-ubicacion-table-filter="delete_row" data-parent="` + $(idAceptante).val() + `" data-id="` + data.nIdAdquirienteDireccion + `"><i class="las la-trash fs-2"></i></a>`;
+                        return `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm oculto-acci p-eli" data-kt-ubicacion-table-filter="delete_row" data-parent="` + $(idAceptante).val() + `" data-id="` + data.nIdAdquirienteDireccion + `"><i class="las la-trash fs-2"></i></a>`;
                     }
                 }
             ]
@@ -862,8 +862,8 @@ var RegistroAceptante = function () {
                     orderable: false,
                     className: 'text-end',
                     render: function (data, type, row) {
-                        var buttonDownload = ((data.cNombreDocumento == null || data.cNombreDocumento == '') ? `` : `<a href="javascript:;" class="btn btn-icon btn-sm btn-outline btn-outline-solid btn-outline-default me-2 p-des" data-kt-documento-table-filter="download_file" data-filename="` + data.cNombreDocumento + `" onclick="RegistroAceptante.fnDownloadDocumentos(` + data.nIdAceptanteDocumento + `)" title="` + data.cNombreDocumento + `" data-id="` + data.nIdAceptanteDocumento + `"><i class="las la-download fs-2"></i></a>`);
-                        var buttonDelete = ((tableDocumentosAction == 'Detalle') ? `` : `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm p-eli" data-kt-documento-table-filter="delete_row" data-parent="` + $(idAceptante).val() + `" data-path="` + data.cRuta + `" data-id="` + data.nIdAceptanteDocumento + `"><i class="las la-trash fs-2"></i></a>`);
+                        var buttonDownload = ((data.cNombreDocumento == null || data.cNombreDocumento == '') ? `` : `<a href="javascript:;" class="btn btn-icon btn-sm btn-outline btn-outline-solid btn-outline-default me-2 oculto-acci p-des" data-kt-documento-table-filter="download_file" data-filename="` + data.cNombreDocumento + `" onclick="RegistroAceptante.fnDownloadDocumentos(` + data.nIdAceptanteDocumento + `)" title="` + data.cNombreDocumento + `" data-id="` + data.nIdAceptanteDocumento + `"><i class="las la-download fs-2"></i></a>`);
+                        var buttonDelete = ((tableDocumentosAction == 'Detalle') ? `` : `<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm  oculto-acci p-eli" data-kt-documento-table-filter="delete_row" data-parent="` + $(idAceptante).val() + `" data-path="` + data.cRuta + `" data-id="` + data.nIdAceptanteDocumento + `"><i class="las la-trash fs-2"></i></a>`);
                         return buttonDownload + buttonDelete;
                     }
                 }

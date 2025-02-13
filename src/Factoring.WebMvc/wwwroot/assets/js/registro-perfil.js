@@ -46,9 +46,11 @@ var Perfil = function () {
                     orderable: false,
                     className: 'text-center',
                     render: function (data, type, row) {
-                        var buttonAction = `<div style="display:inline-flex"><a href="${globalPath}Perfil/Registro?nRolId=${data.nIdRoles}&nOpcion=1" title="Editar" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-pen fs-2"></i></a>
-                        <button data-delete-table="delete_row" data-id="` + row.nIdRoles + `" data-row= ${data.nIdRoles} title="Eliminar"  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 p-eli"><i class="las la-ban fs-2"></i></button>
-                        <div style="display:inline-flex"><a href="${globalPath}Perfil/Registro?nRolId=${data.nIdRoles}&nOpcion=2" title="Ver" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2"><i class="las la-search fs-2"></i></a>`;
+                        var buttonAction = `
+                        <div style="display:inline-flex">
+                        <a href="${globalPath}Perfil/Registro?nRolId=${data.nIdRoles}&nOpcion=1" title="Editar" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 oculto-acci p-act"><i class="las la-pen fs-2"></i></a>
+                        <button data-delete-table="delete_row" data-id="` + row.nIdRoles + `" data-row= ${data.nIdRoles} title="Eliminar"  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 oculto-acci p-eli"><i class="las la-ban fs-2"></i></button>
+                        <div style="display:inline-flex"><a href="${globalPath}Perfil/Registro?nRolId=${data.nIdRoles}&nOpcion=2" title="Ver" class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 oculto-acci p-con"><i class="las la-search fs-2"></i></a>`;
                         return buttonAction;
                     }
                 }
@@ -63,6 +65,7 @@ var Perfil = function () {
             handleDeletePerfilForm();
             $(searchClear).show();
             KTMenu.createInstances();
+            Common.init();
         });
     }
     var handleFilterTable = function () {
