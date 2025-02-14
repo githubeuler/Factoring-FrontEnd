@@ -110,7 +110,7 @@ var RegistroOperacion = function () {
                                 
                                 <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row oculto-acci p-con"><i class="las la-search fs-2"></i></a> 
                                 <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 oculto-acci p-anu"><i class="las la-ban fs-2"></i></button> 
-                                  <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal" data-bs-toggle="modal" data-bs-target="#kt_modal_calcular_operacion" data-n-operacion=${data.nIdOperaciones} data-n-nroperacion=${data.nNroOperacion} title="Calcular"><i class="las la-calculator fs-2"></i></a>
+                                  <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal oculto-acci p-cal" data-bs-toggle="modal" data-bs-target="#kt_modal_calcular_operacion" data-n-operacion=${data.nIdOperaciones} data-n-nroperacion=${data.nNroOperacion} title="Calcular"><i class="las la-calculator fs-2"></i></a>
                                 `;
                         }
 
@@ -123,7 +123,7 @@ var RegistroOperacion = function () {
                                 
                                 <a href="${globalPath}Operacion/Detalle?operacionId=${data.nIdOperaciones}" class="btn btn-sm btn-icon btn-light btn-active-light-primary detail-row oculto-acci p-con"><i class="las la-search fs-2"></i></a> 
                                 <button data-delete-table="delete_row" data-row= ${data.nIdOperaciones}  class="btn btn-sm btn-icon btn-light btn-active-light-primary edit-row me-2 oculto-acci p-anu"><i class="las la-ban fs-2"></i></button>
-                                  <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-eva" data-bs-toggle="modal" data-bs-target="#kt_modal_calcular_operacion" data-n-operacion=${data.nIdOperaciones} data-n-nroperacion=${data.nNroOperacion} title="Calcular"><i class="las la-calculator fs-2"></i></a>
+                                  <a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal oculto-acci p-cal" data-bs-toggle="modal" data-bs-target="#kt_modal_calcular_operacion" data-n-operacion=${data.nIdOperaciones} data-n-nroperacion=${data.nNroOperacion} title="Calcular"><i class="las la-calculator fs-2"></i></a>
                                 `;
                         }
 

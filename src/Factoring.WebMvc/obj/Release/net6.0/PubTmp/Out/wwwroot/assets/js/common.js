@@ -67,9 +67,9 @@ var acciones = [
         "CLASE": ".p-car"
     },
  {
-        "NOMBRE": "CERRAR",
+     "NOMBRE": "RESETEAR",
         "CODIGO": 14,
-        "CLASE": ".p-cer"
+        "CLASE": ".p-rese"
     },
  {
         "NOMBRE": "OBSERVAR",
@@ -96,6 +96,16 @@ var acciones = [
         "CODIGO": 19,
         "CLASE": ".p-traspa"
     },
+    {
+        "NOMBRE": "CARGAR XML",
+        "CODIGO": 20,
+        "CLASE": ".p-carxml"
+    },
+    {
+        "NOMBRE": "CALCULAR",
+        "CODIGO": 25,
+        "CLASE": ".p-cal"
+    },
 ];
 
 
@@ -117,11 +127,12 @@ var Common = function () {
         var _menuItem = null;
        
         for (var i = 0; i < _menu.length; i++) {
-            var cc = _menu[i].cUrl.includes('/Index') ? _menu[i].cUrl.replace('/Index', '') : _menu[i].cUrl
-            var dd = _pathname
+            var cc = _menu[i].cUrl.replace(/\/Index$/, '');
+            var dd = _pathname.split('/')[0]
             if (cc == dd) {
                 men_per = _menu[i].cMenuPermisos;
                 _menuItem = _menu[i]
+                break
             }
         }
 
@@ -139,7 +150,7 @@ var Common = function () {
         for (var i = 0; i < acciones.length; i++) {
             Common.validarElemento(men_per, acciones[i].CODIGO, acciones[i].CLASE)
         }
-       
+        
         for (var i = 0; i < _menuHijo.length; i++) {
             if (!_menuHijo[i].cUrl.includes('/')) {
                 for (var i = 0; i < acciones.length; i++) {
@@ -154,18 +165,31 @@ var Common = function () {
             
         },
         validarElemento: function (menu, accion, clase) {
-            var elem_consulta = $(clase);
-            if (menu.indexOf(accion) == -1) {
-                elem_consulta.hide()
+            //debugger;
+            let numeros = menu.split(",").map(Number);
+
+            //var elem_consulta = $(clase);
+            if (numeros.includes(accion)) {
+                /* elem_consulta.hide()*/
+                document.querySelectorAll(clase).forEach(elemento => {
+                    /* elemento.setAttribute("style", "display: none !important;");*/
+                    elemento.classList.remove("oculto-acci"); // Mostrar solo si tiene permiso
+                });
             }
         },
         validarElementoTab: function (div, menu, accion, clase) {
-            debugger;
-            var elem_consulta = $("#" + div).find(clase);
-            if (menu.indexOf(accion) == -1) {
-                $(elem_consulta).hide()
+            //debugger;
+            //var elem_consulta = $("#" + div).find(clase);
+            let numeros = menu.split(",").map(Number);
+
+            if (numeros.includes(accion)) {
+                document.querySelectorAll(clase).forEach(elemento => {
+                    elemento.classList.remove("oculto-acci"); // Mostrar solo si tiene permiso
+                });
             } else {
-                $(elem_consulta).show()
+                document.querySelectorAll(clase).forEach(elemento => {
+                    elemento.classList.add("oculto-acci"); // No Nostrar 
+                });
             }
         },
 

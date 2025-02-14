@@ -35,6 +35,7 @@ using Factoring.Model.Models.GiradorUbicacion;
 using Factoring.Model.Models.ReporteGiradorOperaciones;
 using System.Xml.XPath;
 using System.Xml;
+using Factoring.Model.Models.Usuario;
 
 namespace Factoring.WebMvc.Controllers
 {
@@ -109,24 +110,11 @@ namespace Factoring.WebMvc.Controllers
             {
                 return Redirect("~/Account/Logout");
             }
-            var nOpcionRol = HttpContext.Session.GetObjectFromJson<int>("nIdAccionMenuOpe");
-            var opcionesCodigo = new Dictionary<int, (int Codigo, string Titulo)>
-            {
-                { 12, (6, "Evaluación") },
-                { 23, (7, "Evaluación Comercial") },
-                { 24, (8, "Evaluación Riesgos") }
-            };
-
-
-            var (nCodigoTipo, tituloModal) = opcionesCodigo.TryGetValue(nOpcionRol, out var valores)
-                ? valores
-                : (5, "Evaluación General");
-
-            ViewBag.TituloModal = tituloModal;
-
-            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = nCodigoTipo, Codigo = 103, Valor = "0" });
+            var objOpcionRol = HttpContext.Session.GetObjectFromJson<AccionRol>("nIdAccionMenuOpe");
+            ViewBag.TituloModal = objOpcionRol != null ?objOpcionRol.cDescripcion:"";
+            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = objOpcionRol != null ? objOpcionRol.nOpcion : 0, Codigo = 103, Valor = "0" });
             ViewBag.Estados = _Estados.Data.ToList();
-            var _EstadosAprobacion = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = nCodigoTipo, Codigo = 103, Valor = "0" });
+            var _EstadosAprobacion = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = objOpcionRol != null ? objOpcionRol.nOpcion : 0, Codigo = 103, Valor = "0" });
             ViewBag.EstadoEvaluacion = _EstadosAprobacion.Data.ToList();
             return View();
         }

@@ -18,6 +18,7 @@ namespace Factoring.Model.Models.Auth
         public int nIdUsuario { get; set; }
         [JsonIgnore]
         public string RefreshToken { get; set; }
+        public int nIdRol { get; set; }
         public List<MenuResponse> Menu { get; set; }
 
 

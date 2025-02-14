@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\obj\\Release\\net6.0\\scopedcss\\projectbundle\\Factoring.WebMvc.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Factoring.WebMvc.bundle.scp.css"
+      "PackagePath": "staticwebassets\\Factoring.WebMvc.4a3e7ug14u.bundle.scp.css"
     },
     {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\css\\site_1.css",
@@ -177,6 +177,10 @@
       "PackagePath": "staticwebassets\\assets\\js\\carga-masiva.js"
     },
     {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\change-password.js",
+      "PackagePath": "staticwebassets\\assets\\js\\change-password.js"
+    },
+    {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\common.js",
       "PackagePath": "staticwebassets\\assets\\js\\common.js"
     },
@@ -203,6 +207,14 @@
     {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\registro-operacion.js",
       "PackagePath": "staticwebassets\\assets\\js\\registro-operacion.js"
+    },
+    {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\registro-perfil.js",
+      "PackagePath": "staticwebassets\\assets\\js\\registro-perfil.js"
+    },
+    {
+      "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\registro-usuario.js",
+      "PackagePath": "staticwebassets\\assets\\js\\registro-usuario.js"
     },
     {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\assets\\js\\scripts.bundle.js",
@@ -775,6 +787,10 @@
     {
       "Id": "C:\\Rafael\\FuenteFactoring\\RamaDesarrollo\\Factoring-FrontEnd\\src\\Factoring.WebMvc\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.Factoring.WebMvc.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.Factoring.WebMvc.Microsoft.AspNetCore.StaticWebAssets.props",

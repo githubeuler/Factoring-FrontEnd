@@ -9,7 +9,7 @@
         </div>
         <div class="card-toolbar">
             <div class="d-flex justify-content-end" data-kt-girador-table-toolbar="base">
-                <button id="kt_export_button" type="button" class="btn btn-sm btn-primary me-3 p-exp-exc">Exportar Registros</button>
+                <button id="kt_export_button" type="button" class="btn btn-sm btn-primary me-3 p-exp-exc  oculto-acci  p-con">Exportar Registros</button>
 
             </div>
             <div class="d-flex justify-content-end align-items-center d-none" data-kt-transferencias-table-toolbar="selected">
@@ -21,7 +21,7 @@
                 <button type="button" id="btn_traspaso" class="btn btn-sm btn-facebook" data-kt-transferencias-table-select="traspasar_selected">Traspasar</button> *@
                 @* <button type="button" id="btn_remover" class="btn btn-sm btn-google" data-kt-transferencias-table-select="remover_selected">Remover</button> *@
 
-                <button type="button" id="btn_accion" class="btn btn-sm btn-success" data-kt-transferencias-table-select="accion_selected">Realizar Acción</button>
+                <button type="button" id="btn_accion" class="btn btn-sm btn-success  oculto-acci  p-con" data-kt-transferencias-table-select="accion_selected">Realizar Acción</button>
             </div>
         </div>
     </div>
@@ -258,7 +258,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
-                    <button id="kt_save_button_Accion" type="submit" class="btn btn-primary">
+                    <button id="kt_save_button_Accion" type="submit" class="btn btn-primary oculto-acci p-ins">
                         <span class="indicator-label">Guardar</span>
                         <span class="indicator-progress">Guardar información... <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                     </button>

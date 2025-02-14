@@ -96,6 +96,16 @@ var acciones = [
         "CODIGO": 19,
         "CLASE": ".p-traspa"
     },
+    {
+        "NOMBRE": "CARGAR XML",
+        "CODIGO": 20,
+        "CLASE": ".p-carxml"
+    },
+    {
+        "NOMBRE": "CALCULAR",
+        "CODIGO": 25,
+        "CLASE": ".p-cal"
+    },
 ];
 
 

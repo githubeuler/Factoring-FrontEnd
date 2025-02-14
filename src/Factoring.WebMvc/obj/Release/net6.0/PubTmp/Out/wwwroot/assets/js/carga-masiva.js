@@ -78,7 +78,7 @@ var CargaMasiva = function () {
                             success: function (data) {
                                 if (data.succeeded) {
                                     Swal.fire({
-                                        text: data.message,
+                                        html: data.message,
                                         icon: 'success',
                                         buttonsStyling: false,
                                         confirmButtonText: 'Listo',
@@ -160,7 +160,7 @@ var CargaMasiva = function () {
             $("#txtMonto").val(nMontoPlanilla.toFixed(2));
             var oControl = document.getElementById('txtMonto');
             oControl.disabled = true;
-
+            setComboCategoria()
             $("#kt_register_modal").modal("show");
         });
 
@@ -269,7 +269,7 @@ var CargaMasiva = function () {
 
                             if (data.succeeded) {
                                 Swal.fire({
-                                    text: data.message,
+                                    html: data.message,
                                     icon: 'success',
                                     buttonsStyling: false,
                                     confirmButtonText: 'Listo',
@@ -392,9 +392,11 @@ var CargaMasiva = function () {
                     var oRecCat = lstCategoria[i];
                     dropdown.options[i] = new Option(oRecCat.cNombre, oRecCat.nId);
                 }
+                $("#comboCategoria").val(2).trigger('change');
 
                 //$("#comboCategoria").prepend('<option selected="selected" value="0"> Seleccione Categoría </option>');
             }
+           
         }
 
         $("#comboCategoria")

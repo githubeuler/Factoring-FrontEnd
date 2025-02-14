@@ -8,6 +8,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Factoring.Model.Models.Usuario;
+using Factoring.Model.Models.Girador;
+using System.Reflection;
 
 namespace Factoring.Service.Proxies
 {
@@ -16,6 +18,7 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<AccessTokenAuthModel>> Authenticate(LoginAuthModel model);
         Task<ResponseData<AccessTokenAuthModel>> ChangePassword(ChangeAuthModel model);
         Task<ResponseData<int>> ResetPassword(ResetPasswordModel model);
+        Task<ResponseData<AccionRol>> GetAcctionRol(string cAccion, int nOpcion);
 
     }
 
@@ -77,6 +80,16 @@ namespace Factoring.Service.Proxies
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+       
+        public async Task<ResponseData<AccionRol>> GetAcctionRol(string cAccion,int nOpcion)
+        {
+            var client = _proxyHttpClient.GetHttp();
+            var response = await client.GetAsync($"Account/get-acction?cAccion={cAccion}&nOpcion={nOpcion}");
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<ResponseData<AccionRol>>(json);
+            return data;
         }
     }
 }
