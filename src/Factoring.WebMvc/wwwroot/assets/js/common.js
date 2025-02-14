@@ -110,7 +110,8 @@ var Common = function () {
         } else {
             var split = window.location.pathname.substring(1).split('/')
             //_pathname = split[split.length - 2] + '/' + split[split.length - 1];
-            _pathname = split.length == 3 ? split[split.length - 2] + '/' + split[split.length - 1] : split[split.length - 1];
+            //_pathname = split.length == 3 ? split[split.length - 2] + '/' + split[split.length - 1] : split[split.length - 1];
+            _pathname = split[0]
         }
         console.log(_pathname)
         var men_per = ''
