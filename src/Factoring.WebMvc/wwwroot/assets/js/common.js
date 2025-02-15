@@ -212,7 +212,9 @@ const acciones = [
     { "NOMBRE": "RECHAZAR", "CODIGO": 16, "CLASE": ".p-rec" },
     { "NOMBRE": "APROBAR", "CODIGO": 17, "CLASE": ".p-apr" },
     { "NOMBRE": "REMOVER", "CODIGO": 18, "CLASE": ".p-rem" },
-    { "NOMBRE": "TRASPASAR", "CODIGO": 19, "CLASE": ".p-traspa" }
+    { "NOMBRE": "ANOTAR_EN_CUENTA","CODIGO": 19,"CLASE": ".p-anotar"},
+    { "NOMBRE": "CARGAR_XML","CODIGO": 20,"CLASE": ".p-carxml"},
+    { "NOMBRE": "CALCULAR", "CODIGO": 25, "CLASE": ".p-cal" }
 ];
 
 const Common = (function () {
