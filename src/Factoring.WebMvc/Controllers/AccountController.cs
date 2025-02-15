@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Collections;
+using Factoring.Model.Models.Usuario;
 
 namespace Factoring.WebMvc.Controllers
 {
@@ -93,8 +94,10 @@ namespace Factoring.WebMvc.Controllers
                     );
                 }
 
-                int accion = GetAccionOperacion(result.Data.Menu);
-                HttpContext.Session.SetObjectAsJson("nIdAccionMenuOpe", accion);
+                var accionOperacion = await GetAccionOperacion(result.Data.Menu,"3",1);
+                HttpContext.Session.SetObjectAsJson("nIdAccionMenuOpe", accionOperacion);
+                var accionOperacionCavl = await GetAccionOperacion(result.Data.Menu, "7",2);
+                HttpContext.Session.SetObjectAsJson("nIdAccionMenuOpeCavl", accionOperacionCavl);
                 HttpContext.Session.SetObjectAsJson("ApplicationMenu", result.Data.Menu);
 
             }
@@ -107,57 +110,20 @@ namespace Factoring.WebMvc.Controllers
             await HttpContext.SignOutAsync();
             return Redirect("~/");
         }
-        private int GetAccionOperacion(List<MenuResponse> lista)
+        private async Task<AccionRol> GetAccionOperacion(List<MenuResponse> lista, string nIdMenu,int nIdOpcion)
         {
-            int nAccionEvaluacion = 0;
-            nAccionEvaluacion= lista
-                .Where(item => item.nIdMenu == "3")
-                .SelectMany(item => item.cMenuPermisos
-                    .Split(',', StringSplitOptions.RemoveEmptyEntries)
-                    .Select(int.Parse))
-                .FirstOrDefault(valor => valor == 12 || valor == 23 || valor == 24);
-            return nAccionEvaluacion;
+            AccionRol accionRol = new();
+            var result = lista.Where(item => item.nIdMenu == nIdMenu)
+                .Select(item => item.cMenuPermisos)
+                .FirstOrDefault();
+
+            if (!string.IsNullOrEmpty(result))
+            {
+               var acction= await _authProxy.GetAcctionRol(result, nIdOpcion);
+                accionRol = acction.Data;
+            }
+            return accionRol;
         }
-
-        //private int getAccionOperacion(List<MenuResponse> lista)
-        //{
-        //    int nAccionEvaluacion = 0;
-        //    if (lista.Count > 0)
-        //    {
-        //        foreach (var item in lista)
-        //        {
-        //            if (item.nIdMenu == "3")
-        //            {
-        //                List<int> lsAccion = item.cMenuPermisos
-        //                .Split(',', StringSplitOptions.RemoveEmptyEntries) 
-        //                .Select(int.Parse) 
-        //                .ToList();
-        //                foreach (var item2 in lsAccion)
-        //                {
-        //                    if (item2 == 12)
-        //                    {
-        //                        nAccionEvaluacion = item2;
-        //                        break;
-        //                    }
-        //                    if (item2 == 23)
-        //                    {
-        //                        nAccionEvaluacion = item2;
-        //                        break;
-        //                    }
-        //                    if (item2 == 24)
-        //                    {
-        //                        nAccionEvaluacion = item2;
-        //                        break;
-        //                    }
-        //                }
-
-        //                break;
-        //            }
-        //        }
-        //    }
-        //    return nAccionEvaluacion;
-        //}
-
         public IActionResult ChangePassword(string token)
         {
             ChangePasswordViewModel model = new ChangePasswordViewModel() {

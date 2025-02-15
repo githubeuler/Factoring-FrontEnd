@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Factoring.Model")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a56963d6257aa34a3637917ccf40fba5652f3bce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56bb29667127bedad7e70eb712289d8f82530a63")]
 [assembly: System.Reflection.AssemblyProductAttribute("Factoring.Model")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Factoring.Model")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

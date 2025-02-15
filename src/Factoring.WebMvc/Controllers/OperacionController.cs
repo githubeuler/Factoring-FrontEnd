@@ -35,6 +35,8 @@ using Factoring.Model.Models.GiradorUbicacion;
 using Factoring.Model.Models.ReporteGiradorOperaciones;
 using System.Xml.XPath;
 using System.Xml;
+using Factoring.Model.Models.Usuario;
+using Factoring.Model.Models.PerfilMenu;
 
 namespace Factoring.WebMvc.Controllers
 {
@@ -109,24 +111,11 @@ namespace Factoring.WebMvc.Controllers
             {
                 return Redirect("~/Account/Logout");
             }
-            var nOpcionRol = HttpContext.Session.GetObjectFromJson<int>("nIdAccionMenuOpe");
-            var opcionesCodigo = new Dictionary<int, (int Codigo, string Titulo)>
-            {
-                { 12, (6, "Evaluación") },
-                { 23, (7, "Evaluación Comercial") },
-                { 24, (8, "Evaluación Riesgos") }
-            };
-
-
-            var (nCodigoTipo, tituloModal) = opcionesCodigo.TryGetValue(nOpcionRol, out var valores)
-                ? valores
-                : (5, "Evaluación General");
-
-            ViewBag.TituloModal = tituloModal;
-
-            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = nCodigoTipo, Codigo = 103, Valor = "0" });
+            var objOpcionRol = HttpContext.Session.GetObjectFromJson<AccionRol>("nIdAccionMenuOpe");
+            ViewBag.TituloModal = objOpcionRol != null ?objOpcionRol.cDescripcion:"";
+            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = objOpcionRol != null ? objOpcionRol.nOpcion : 0, Codigo = 103, Valor = "0" });
             ViewBag.Estados = _Estados.Data.ToList();
-            var _EstadosAprobacion = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = nCodigoTipo, Codigo = 103, Valor = "0" });
+            var _EstadosAprobacion = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = objOpcionRol != null ? objOpcionRol.nOpcion : 0, Codigo = 103, Valor = "0" });
             ViewBag.EstadoEvaluacion = _EstadosAprobacion.Data.ToList();
             return View();
         }
@@ -200,8 +189,6 @@ namespace Factoring.WebMvc.Controllers
 
         public async Task<IActionResult> GetListCategoriaByGirador(int idGirador)
         {
-            //CatalogoListDto obj = new CatalogoListDto { Codigo = idGirador };
-            //var listaCategoriaGirador = await _catalogoProxy.GetGategoriaGirador(obj);
             return Json(null);
         }
         public async Task<IActionResult> Registro(int? operacionId)
@@ -211,7 +198,7 @@ namespace Factoring.WebMvc.Controllers
             ViewBag.ListGirador = await _giradorProxy.GetAllListGiradorlista();
             ViewBag.ListAdquiriente = await _adquirienteProxy.GetAllListAdquirientelista();
 
-            var _TipoDocumento = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 131, Valor = "0" });
+            var _TipoDocumento = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 18, Codigo = 131, Valor = "0" });
             ViewBag.TipoDocumento = _TipoDocumento.Data.ToList();
 
             if (operacionId == null)
@@ -316,57 +303,11 @@ namespace Factoring.WebMvc.Controllers
                 return View(operacionData);
             }
         }
-
         public async Task<IActionResult> GetPartial(int paramId)
         {
-            //var operacionDetalle = await _operacionProxy.GetOperaciones((int)paramId);
-            OperacionSingleViewModel operacionData = new();
-            //if (operacionDetalle.Succeeded == false)
-            //{
-            //    ViewBag.ErrorMsg = "No se encontro información para mostrar.";
-            //}
-            //else
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-            //        var _TipoDocumento = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 118 });
-            //        ViewBag.TipoDocumento = _TipoDocumento.Data.ToList();
-            //        ViewBag.nEstadoDetalle = operacionDetalle.Data.nEstado;
-            //        operacionData.IdOperacion = operacionDetalle.Data.nIdOperaciones;
-            //        operacionData.IdGirador = operacionDetalle.Data.nIdGirador;
-            //        operacionData.IdAdquiriente = operacionDetalle.Data.nIdAdquiriente;
-            //        //operacionData.IdInversionista = operacionDetalle.Data.nIdInversionista;
-            //        //operacionData.NombreInversionista = operacionDetalle.Data.cNombreInversionista;
-            //        operacionData.IdGiradorDireccion = operacionDetalle.Data.nIdGiradorDireccion;
-            //        operacionData.IdAdquirienteDireccion = operacionDetalle.Data.nIdAdquirienteDireccion;
-            //        operacionData.TEM = operacionDetalle.Data.nTEM;
-            //        operacionData.PorcentajeFinanciamiento = operacionDetalle.Data.nPorcentajeFinanciamiento;
-            //        operacionData.MontoOperacion = operacionDetalle.Data.nMontoOperacion;
-            //        operacionData.DescContrato = operacionDetalle.Data.nDescContrato;
-            //        operacionData.DescFactura = operacionDetalle.Data.nDescFactura;
-            //        operacionData.DescCobranza = operacionDetalle.Data.nDescCobranza;
-            //        operacionData.IdTipoMoneda = operacionDetalle.Data.nIdTipoMoneda;
-            //        operacionData.Moneda = operacionDetalle.Data.Moneda;
-            //        operacionData.PorcentajeRetencion = operacionDetalle.Data.nPorcentajeRetencion;
-            //        operacionData.RazonSocialGirador = operacionDetalle.Data.cRazonSocialGirador;
-            //        operacionData.RazonSocialAdquiriente = operacionDetalle.Data.cRazonSocialAdquiriente;
-            //        operacionData.RegUnicoEmpresaAdquiriente = operacionDetalle.Data.cRegUnicoEmpresaAdquiriente;
-            //        operacionData.RegUnicoEmpresaGirador = operacionDetalle.Data.cRegUnicoEmpresaGirador;
-            //        operacionData.DireccionAdquiriente = operacionDetalle.Data.DireccionAdquiriente;
-            //        operacionData.DireccionGirador = operacionDetalle.Data.DireccionGirador;
-            //        operacionData.NombreEstado = operacionDetalle.Data.NombreEstado;
-            //        operacionData.InteresMoratorio = operacionDetalle.Data.InteresMoratorio;
-            //        operacionData.cDesCategoria = operacionDetalle.Data.cDesCategoria;
-            //        operacionData.MotivoTransaccion = operacionDetalle.Data.MotivoTransaccion;
-            //        operacionData.SustentoComercial = operacionDetalle.Data.SustentoComercial;
-            //        operacionData.Plazo = operacionDetalle.Data.Plazo;
-            //        operacionData.IdCategoria = operacionDetalle.Data.IdCategoria;
-            //    }
-            //}
+            OperacionSingleViewModel operacionData = new();          
             return PartialView("_PartialDetalle", operacionData);
         }
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistroProceso(int operacionId, string operacionFlat, OperacionCreateModel model)
@@ -434,8 +375,6 @@ namespace Factoring.WebMvc.Controllers
             }
             return Redirect("~/Operacion/Index");
         }
-
-
         public async Task<IActionResult> ResultadoEvaluacion(OperacionViewModel model)
         {
             var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -453,11 +392,6 @@ namespace Factoring.WebMvc.Controllers
                 bRegistro = pRegistro
 
             });
-
-            //if (nCant.Count > 0 && model.nIdEstadoEvaluacion != 11)
-            //{
-            //    pRegistro = true;
-            //}
 
             if (_estadoOperaciones.Succeeded && nCant.Count > 0)
             {
@@ -488,22 +422,10 @@ namespace Factoring.WebMvc.Controllers
                         }
                     }
                 }
-                //if (model.nIdEstadoEvaluacion == 11)
-                //{
-                //    await _evaluacionOperacionesProxy.UpdateCalculoFactura(new EvaluacionOperacionesCalculoInsertDto
-                //    {
-                //        IdOperaciones = model.nIdOperacionEval,
-                //        IdOperacionesFactura = 0,
-                //        IdCatalogoEstado = model.nIdEstadoEvaluacion,
-                //        UsuarioCreador = userName,
-                //    });
-                //}
             }
 
             return Json(_estadoOperaciones);
         }
-
-
         public async Task<IActionResult> CalcularMonto(OperacionViewModel model)
         {
             ResponseData<int> oresult = new ResponseData<int>();
@@ -517,7 +439,8 @@ namespace Factoring.WebMvc.Controllers
                     {
                         IdOperaciones = model.nIdOperacionCal.Value,
                         IdOperacionesFactura = item.nIdOperacionesFacturas,
-                        IdCatalogoEstado = item.nEstadoFactura,
+                        //IdCatalogoEstado = item.nEstadoFactura,
+                        IdCatalogoEstado = 10,
                         UsuarioCreador = userName,
                         cFecha = model.cFechaCalculo
                     });
@@ -526,8 +449,6 @@ namespace Factoring.WebMvc.Controllers
             }
             return Json(oresult);
         }
-
-
         public async Task<IActionResult> ActualizarMontoFactura(OperacionViewModel model)
         {
             var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -543,17 +464,8 @@ namespace Factoring.WebMvc.Controllers
 
             return Json(_estadoOperaciones);
         }
-
-        //return Json(new { succeeded = true, message = "Registros eliminados correctamente..." });
         public async Task<IActionResult> AnularOperacion(int operacionId)
         {
-            //var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //var _estadoAnulacion = await _evaluacionOperacionesProxy.Create(new EvaluacionOperacionesInsertDto
-            //{
-            //    IdOperaciones = operacionId,
-            //    IdCatalogoEstado = 0,
-            //    UsuarioCreador = userName
-            //});
             return Json(null);
         }
 
@@ -561,42 +473,20 @@ namespace Factoring.WebMvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LevantarObservacionAsync(OperacionCreateModel model)
         {
-            //var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //var _estadoOperacion = await _evaluacionOperacionesProxy.Create(new EvaluacionOperacionesInsertDto
-            //{
-            //    IdOperaciones = model.IdOperacion,
-            //    IdCatalogoEstado = 18,
-            //    UsuarioCreador = userName
-            //});
-            //if (_estadoOperacion.Succeeded)
-            //{
-            //    await _evaluacionOperacionesProxy.CreateComment(new EvaluacionOperacionesComentariosInsertDto
-            //    {
-            //        IdEvaluacionOperaciones = _estadoOperacion.Data,
-            //        Comentario = model.ComentarioOperaciones,
-            //        IdCatalogoTipoComentario = 1,
-            //        UsuarioCreador = userName
-            //    });
-            //}
             return Json(null);
         }
         public async Task<IActionResult> GetAllFacturas(int operacionId)
         {
             return Json(await _facturaOperacionesProxy.GetAllListFacturaByIdOperaciones(operacionId));
         }
-
         public async Task<IActionResult> GetAllCavali(int operacionId)
         {
             return Json(null);
         }
-
-
         public async Task<IActionResult> GetAllDocumentoSolicitud(int operacionId)
         {
             return Json(await _facturaOperacionesProxy.GetAllListDocumentoSolicitudByIdOperaciones(operacionId));
         }
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AgregarFacturas(AgregarFactura model)
@@ -821,8 +711,6 @@ namespace Factoring.WebMvc.Controllers
 
             return oRecord;
         }
-
-
         private async Task<ResponseData<OperacionesFacturaListDto>> GetFactura(int IdGirador, int IdAdquiriente, string NroFactura)
         {
             ResponseData<OperacionesFacturaListDto> oRecord;
@@ -837,8 +725,6 @@ namespace Factoring.WebMvc.Controllers
 
             return oRecord;
         }
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarFactura(EliminarFactura model)
@@ -856,21 +742,19 @@ namespace Factoring.WebMvc.Controllers
             }
 
         }
-
-
         public async Task<IActionResult> GetAllComentariosOperacion(int operacionId)
         {
-            //var comentarios = await _comentariosProxy.GetAllListComentarios(3, operacionId);
             return Json(null);
         }
-
         public async Task<IActionResult> GetAllCondiciones(int operacionId)
         {
-            //var comentarios = await _comentariosProxy.GetAllListCondiciones(operacionId);
-            /*f()*/
             return Json(null);
         }
 
+        public async Task<IActionResult> GetAllFacturasCalculo(int nIdOperacion)
+        {
+            return Json(await _facturaOperacionesProxy.GetFacturaxOperacionCalculo(nIdOperacion));
+        }
         [HttpGet]
         public async Task<IActionResult> DownloadFile(string nIdOperacionFactura)
         {
@@ -901,7 +785,6 @@ namespace Factoring.WebMvc.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
         private DataSet SetAsDataSet(IExcelDataReader reader)
         {
             var result = reader.AsDataSet(new ExcelDataSetConfiguration()
@@ -913,7 +796,6 @@ namespace Factoring.WebMvc.Controllers
             });
             return result;
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditarFactura(EditarFactura model)
@@ -937,7 +819,6 @@ namespace Factoring.WebMvc.Controllers
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-
         [HttpGet]
         public async Task<IActionResult> DownloadFileSolicitud(string nIdSolicitudEvaluacion)
         {
@@ -961,8 +842,6 @@ namespace Factoring.WebMvc.Controllers
             }
             return File(bytesFile, "application/octet-stream", filename);
         }
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AgregarDocumentoSolicitud(AgregarDocumentoSolicitud model)
@@ -1004,7 +883,6 @@ namespace Factoring.WebMvc.Controllers
                 return Json(new { succeeded = false, message = "Ocurrió un error, intente nuevamente..." });
             }
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarDocumentoSolicitud(EliminarDocumentoSolicitud model)

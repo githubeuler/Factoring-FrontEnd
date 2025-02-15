@@ -150,7 +150,6 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <form id="kt_modal_calcular_operacion_form" class="form" asp-controller="Operacion" asp-action="CalcularMonto" novalidate="novalidate">
-            @*     <input type="hidden" id="nIdOperacionCal" name="nIdOperacionCal" /> *@
                 <div class="modal-header">
                     <h2>Calcular Montos de facturas</h2>
                     <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -188,6 +187,29 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="modal-body py-lg-10 px-lg-10" id="dvListaCalculo" name="dvListaCalculo">
+                    <div class="row g-8">
+                        <div class="col-lg-12">
+                            <table id="kt_monto_calculado_table" class="table table-striped border table-row-bordered gy-2 gs-4 align-middle">
+                                <thead>
+                                    <tr class="text-center text-muted fw-bolder fs-7 text-uppercase gs-0">
+                                        <th style="background-color:#001540" class="text-center">Factura</th>
+                                        <th style="background-color:#001540" class="text-center">Desembolso</th>
+                                        <th style="background-color:#001540" class="text-center">Interés</th>
+                                        <th style="background-color:#001540" class="text-center">Igv</th>
+                                        <th style="background-color:#001540" class="text-center">Moratorio</th>
+                                        <th style="background-color:#001540" class="text-center">Devolución</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
                     <button id="kt_save_calculo_button" type="submit" class="btn btn-primary">

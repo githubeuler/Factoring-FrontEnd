@@ -16,6 +16,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.IO.Pipes;
+using Factoring.Model.Models.Usuario;
 
 namespace Factoring.WebMvc.Controllers
 {
@@ -54,11 +55,14 @@ namespace Factoring.WebMvc.Controllers
                 return Redirect("~/Account/Logout");
             }
             // var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 103, Valor = "0" });
+            // HttpContext.Session.SetObjectAsJson("nIdAccionMenuOpeCavl", accionOperacionCavl);
 
+            var objOpcionRol = HttpContext.Session.GetObjectFromJson<AccionRol>("nIdAccionMenuOpeCavl");
+            //if (objOpcionRol!=null)
             ViewBag.ListInversionista = await _fondeadorProxy.GetAllListFondeadoreslista();
             var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 114, Valor = "0" });
             var _Motivos = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 115, Valor = "0" });
-            var _Acciones = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 1, Codigo = 123, Valor = "0" });
+            var _Acciones = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = objOpcionRol != null ? objOpcionRol.nOpcion : 0, Codigo = 123, Valor = "0" });
             ViewBag.Estados = _Estados.Data.ToList();
             ViewBag.Motivos = _Motivos.Data.ToList();
             ViewBag.Acciones = _Acciones.Data.ToList();
@@ -203,6 +207,7 @@ namespace Factoring.WebMvc.Controllers
                     List<FacturasGetRegistro> listaFacturas;
                     if (resultEval.Data.listaFacturas.Count > 0)
                     {
+                        OperacionesFacturaLoteCavali objTramaOperacion = new();
                         foreach (var item in IdFacturasAccion)
                         {
                             listaFacturas = new List<FacturasGetRegistro>();
@@ -221,6 +226,23 @@ namespace Factoring.WebMvc.Controllers
                                         nIdGiradorPlus = listaFacturas[0].nCodFondeadorPlus;
                                         bFondeadorPlus = listaFacturas[0].bFondeadorPlus;
                                         bSegundoFlagDiferente = false;
+                                        objTramaOperacion = new()
+                                        {
+                                            FlagRegisterProcess = 0,
+                                            FlagAcvProcess = 0,
+                                            FlagTransferProcess = 1,
+                                            CodParticipante = nIdFondeador,
+                                            UsuarioCreador = userName,
+                                            InvoicesFactura = item,
+                                            Invoices = IdFacturasAccion,
+                                            nCategoriaFondeador = nCategoriaFondeador,
+                                            nCantidadAsignacion = nCantidadAsignaciones,
+                                            nIdGiradorPlus = nIdGiradorPlus,
+                                            bFondeadorPlus = bFondeadorPlus,
+                                            bSegundoFlagDiferente = bSegundoFlagDiferente
+                                        };
+                                       var resultado = await EnviarTransferencia(objTramaOperacion);
+                                        MensajeRetorno = resultado;
                                     }
                                     else
                                     {
@@ -246,6 +268,23 @@ namespace Factoring.WebMvc.Controllers
                                         if (listaFacturas[0].nIdCategoria != listaFacturas[1].nIdCategoria)
                                         {
                                             bSegundoFlagDiferente = true;
+                                            objTramaOperacion = new()
+                                            {
+                                                FlagRegisterProcess = 0,
+                                                FlagAcvProcess = 0,
+                                                FlagTransferProcess = 1,
+                                                CodParticipante = nIdFondeador,
+                                                UsuarioCreador = userName,
+                                                InvoicesFactura = item,
+                                                Invoices = IdFacturasAccion,
+                                                nCategoriaFondeador = nCategoriaFondeador,
+                                                nCantidadAsignacion = nCantidadAsignaciones,
+                                                nIdGiradorPlus = nIdGiradorPlus,
+                                                bFondeadorPlus = bFondeadorPlus,
+                                                bSegundoFlagDiferente = bSegundoFlagDiferente
+                                            };
+                                            var resultado= await EnviarTransferencia(objTramaOperacion);
+                                            MensajeRetorno = resultado;
                                         }
                                         else
                                         {
@@ -285,48 +324,9 @@ namespace Factoring.WebMvc.Controllers
                                 return Json(MensajeRetorno);
                             }
                         }
+                        //return Json(MensajeRetorno);
                     }
-                    foreach (int factura in IdFacturasAccion)
-                    {
-                        var result = await _facturaOperacionesProxy.OperacionCavaliInvoicesSend4012(new OperacionesFacturaLoteCavali
-                        {
-                            FlagRegisterProcess = 0,
-                            FlagAcvProcess = 0,
-                            FlagTransferProcess = 1,
-                            CodParticipante = nIdFondeador,
-                            UsuarioCreador = userName,
-                            InvoicesFactura = factura,
-                            Invoices = IdFacturasAccion,
-                            nCategoriaFondeador = nCategoriaFondeador,
-                            nCantidadAsignacion = nCantidadAsignaciones,
-                            nIdGiradorPlus = nIdGiradorPlus,
-                            bFondeadorPlus = bFondeadorPlus,
-                            bSegundoFlagDiferente = bSegundoFlagDiferente
-                        });
-                        nNumeroProcesados++;
-                        MensajeRetorno = result;
-                    }
-
-                    if (MensajeRetorno != null)
-                    {
-                        //return Json(MensajeRetorno.Data.Valores.body);
-                        if (MensajeRetorno.Data.Valores != null)
-                            return Json(MensajeRetorno);
-                        else
-                            return Json(MensajeRetorno.Data.Mensaje);
-                    }
-                    else
-                    {
-                        ResponseCavaliInvoice4012 responseCavaliInvoice4012 = new()
-                        {
-                            Mensaje = "No se procesaron las facturas.",
-                        };
-                        MensajeRetorno.Succeeded = false;
-                        MensajeRetorno.Message = "No se procesaron las facturas.";
-                        MensajeRetorno.Data = responseCavaliInvoice4012;
-                        return Json(MensajeRetorno);
-                    }
-
+                    return Json(MensajeRetorno);
                 }
                 else
                 {
@@ -366,12 +366,7 @@ namespace Factoring.WebMvc.Controllers
                     }
 
                 }
-                //}
-                //else
-                //{
-                //    return Json("No se procesaron las facturas, ya que existen estados no permitidos.");
-                //}
-
+                //return Json(MensajeRetorno);
             }
             catch (Exception ex)
             {
@@ -603,27 +598,30 @@ namespace Factoring.WebMvc.Controllers
             }
         }
 
+        private async Task<ResponseData<ResponseCavaliInvoice4012>> EnviarTransferencia(OperacionesFacturaLoteCavali request)
+        {
+            var MensajeRetorno = new ResponseData<ResponseCavaliInvoice4012>();
+            var result = await _facturaOperacionesProxy.OperacionCavaliInvoicesSend4012(request);
+            if (result != null)
+            {
+                if (result.Data.Valores != null)
+                    MensajeRetorno.Data.Valores = result.Data.Valores;
+                else
+                    MensajeRetorno.Data.Mensaje = result.Data.Mensaje;
+            }
+            else
+            {
+                ResponseCavaliInvoice4012 responseCavaliInvoice4012 = new()
+                {
+                    Mensaje = "No se procesaron las facturas.",
+                };
+                MensajeRetorno.Succeeded = false;
+                MensajeRetorno.Message = "No se procesaron las facturas.";
+                MensajeRetorno.Data = responseCavaliInvoice4012;
+            }
+            return MensajeRetorno;
 
+        }
 
-        //public async Task<IActionResult> ObtenerAsignacionesCavali(List<int> IdFacturas, int nIdOpcionOperacion)
-        //{
-        //    try
-        //    {
-        //        var result = await _facturaOperacionesProxy.ObtenerAsignaciones(new OperacionesFacturaValidaAsignacion
-        //        {
-        //            nLstIdFacturas = IdFacturas,
-        //            nIdOpcionOperacion = nIdOpcionOperacion
-        //        });
-        //        if (result != null)
-        //        {
-        //            return Json(result);
-        //        }
-        //        return Json("No se procesaron las facturas.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //}
     }
 }

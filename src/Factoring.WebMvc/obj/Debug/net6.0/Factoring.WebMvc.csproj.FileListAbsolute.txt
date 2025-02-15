@@ -2080,3 +2080,7 @@ C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.WebMvc
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.WebMvc\obj\Debug\net6.0\Factoring.WebMvc.pdb
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.WebMvc\obj\Debug\net6.0\Factoring.WebMvc.genruntimeconfig.cache
 C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.WebMvc\obj\Debug\net6.0\ref\Factoring.WebMvc.dll
+C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.WebMvc\bin\Debug\net6.0\Factoring.WebMvc.staticwebassets.endpoints.json
+C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.WebMvc\obj\Debug\net6.0\staticwebassets.build.endpoints.json
+C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.WebMvc\obj\Debug\net6.0\staticwebassets\msbuild.Factoring.WebMvc.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Rafael\FuenteFactoring\RamaDesarrollo\Factoring-FrontEnd\src\Factoring.WebMvc\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt

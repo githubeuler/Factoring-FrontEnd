@@ -2631,7 +2631,10 @@
           "Microsoft.AspNetCore.Http.Features": "5.0.17"
         },
         "runtime": {
-          "Factoring.Model.dll": {}
+          "Factoring.Model.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         },
         "compile": {
           "Factoring.Model.dll": {}
@@ -2646,7 +2649,10 @@
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
-          "Factoring.Service.dll": {}
+          "Factoring.Service.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         },
         "compile": {
           "Factoring.Service.dll": {}
