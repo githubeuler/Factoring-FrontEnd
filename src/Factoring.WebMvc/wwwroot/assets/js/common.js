@@ -92,9 +92,9 @@ var acciones = [
         "CLASE": ".p-rem"
     },
  {
-        "NOMBRE": "TRASPASAR",
+     "NOMBRE": "ANOTAR_EN_CUENTA",
         "CODIGO": 19,
-        "CLASE": ".p-traspa"
+        "CLASE": ".p-anotar"
     },
     {
         "NOMBRE": "CARGAR XML",

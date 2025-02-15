@@ -31,6 +31,7 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<List<DocumentoSolicitudOperacionListIdDto>>> GetAllDocumentoSolicitudByOperaciones(int id);
         Task<ResponseData<int>> DeleteDocumento(OperacionesSolicitudDeleteDto model);
         Task<ResponseData<List<OperacionFacturaResponseDto>>> GetBandejaFacturaxOperacion(int nIdOperacion);
+        Task<ResponseData<List<OperacionesFacturaCalculoDto>>> GetFacturaxOperacionCalculo(int nIdOperacion);
     }
     public class FacturaOperacionesProxy : IFacturaOperacionesProxy
     {
@@ -365,6 +366,15 @@ namespace Factoring.Service.Proxies
             var response = await client.GetAsync($"OperacionesFactura/get-factura-x-operaciones?nIdOperacion={nIdOperacion}");
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<ResponseData<List<OperacionFacturaResponseDto>>>(json);
+            return data;
+        }
+
+        public async Task<ResponseData<List<OperacionesFacturaCalculoDto>>> GetFacturaxOperacionCalculo(int nIdOperacion)
+        {
+            var client = _proxyHttpClient.GetHttp();
+            var response = await client.GetAsync($"OperacionesFactura/get-factura-calculada?nIdOperacion={nIdOperacion}");
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<ResponseData<List<OperacionesFacturaCalculoDto>>>(json);
             return data;
         }
 
