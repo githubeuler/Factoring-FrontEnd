@@ -97,7 +97,7 @@ var acciones = [
         "CLASE": ".p-anotar"
     },
     {
-        "NOMBRE": "CARGAR XML",
+        "NOMBRE": "CARGAR_XML",
         "CODIGO": 20,
         "CLASE": ".p-carxml"
     },
