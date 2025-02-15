@@ -217,7 +217,7 @@ namespace Factoring.WebMvc.Controllers
                                 int cantidad = listaFacturas.Count;
                                 if (cantidad == 1)
                                 {
-                                    int nCantidadConfechaNew = listaFacturas.Count(x => x.dFechacAsignacion != "" && (x.nEstadoFactura == 13 || x.nEstadoFactura == 16));
+                                    int nCantidadConfechaNew = listaFacturas.Count(x => x.dFechacAsignacion != "" && (x.nEstadoFactura == 8 || x.nEstadoFactura == 10 || x.nEstadoFactura == 16));
                                     if (nCantidadConfechaNew > 0)
                                     {
                                         nIdFondeador = listaFacturas[0].nIdFondeador;
@@ -258,7 +258,7 @@ namespace Factoring.WebMvc.Controllers
                                 }
                                 else
                                 {
-                                    if (!string.IsNullOrWhiteSpace(listaFacturas[0].dFechaDesembolsoFondeador) && listaFacturas[0].nNumeroAsignaciones == 1 && !string.IsNullOrWhiteSpace(listaFacturas[1].dFechacAsignacion) && (listaFacturas[1].nEstadoFactura == 13 || listaFacturas[1].nEstadoFactura == 16))
+                                    if (!string.IsNullOrWhiteSpace(listaFacturas[0].dFechaDesembolsoFondeador) && listaFacturas[0].nNumeroAsignaciones == 1 && !string.IsNullOrWhiteSpace(listaFacturas[1].dFechacAsignacion) && (listaFacturas[1].nEstadoFactura == 13 || listaFacturas[1].nEstadoFactura == 10 || listaFacturas[1].nEstadoFactura==16))
                                     {
                                         nIdFondeador = listaFacturas[1].nIdFondeador;
                                         nCategoriaFondeador = listaFacturas[1].nIdCategoria;

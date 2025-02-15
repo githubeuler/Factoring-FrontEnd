@@ -7,6 +7,7 @@ var RegistroOperacion = function () {
     var datatableFacturas;
     var datatableCavali;
     var datatableDocumentoSolicitud;
+    var datatableFacturaCalculo;
     var handleFilterTable = function () {
         var searchButton = document.getElementById('kt_search_button');
         if (!searchButton) {
@@ -268,11 +269,6 @@ var RegistroOperacion = function () {
         //    });
         //});
     }
-
-
-
-
-
     var handleDeleteOperacionForm = function () {
         var deleteRow = document.querySelectorAll('[data-delete-table="delete_row"]');
         if (!deleteRow) {
@@ -338,12 +334,6 @@ var RegistroOperacion = function () {
             });
         });
     }
-
-
-
-
-
-
     var toggleToolbars = function () {
         var container = document.querySelector('#kt_operaciones_table');
         var toolbarBase = document.querySelector('[data-kt-operaciones-table-toolbar="base"]');
@@ -732,7 +722,6 @@ var RegistroOperacion = function () {
             });
         });
     }
-
     var handleRegisteLevantarrForm = function (e) {
         $('.comment').click(function (e) {
             e.preventDefault;
@@ -1128,13 +1117,11 @@ var RegistroOperacion = function () {
             });
         });
     }
-
     var initToggleToolbarModal = function () {
         $('#nIdOperacionEval').val($('#IdOperacion').val());
         //var container = document.querySelector('#kt_pago_table');
         //var container2 = document.querySelector('n-pago');    
     }
-
     $('#kt_modal_evaluacion_operacion').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Botón que abrió el modal
         var nOperacion = button.data('n-operacion');
@@ -1142,12 +1129,11 @@ var RegistroOperacion = function () {
         $('#nIdOperacionEval').val(nOperacion);
 
     });
-
     $('#kt_modal_calcular_operacion').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Botón que abrió el modal
         var nOperacion = button.data('n-operacion');
         var nroOperacion = button.data('n-nroperacion');
-        
+        $('#dvListaCalculo').hide();
         $('#nIdOperacionCal').val(nOperacion);
         $('#nNroOperacionCal').val(nroOperacion);
         $('#cFechaCalculo').flatpickr({
@@ -1156,7 +1142,6 @@ var RegistroOperacion = function () {
         });
 
     });
-
     //var buttonEdit = '<a href="javascript:;" class="btn btn-icon btn-light-dark btn-sm open-modal p-edit" data-bs-toggle="modal" data-bs-target="#kt_factura_monto_modal" data-n-operacion="' + data.nIdOperaciones + `" data-idfactura="` + data.nIdOperacionesFacturas + `" data-monto="` + data.nMonto + '" title="Editar"><i class="las la-pen fs-2"></i></a>';
     $('#kt_factura_monto_modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Botón que activa el modal
@@ -1172,9 +1157,6 @@ var RegistroOperacion = function () {
         $('#nIdOperacionesFacturas').val(nOperacionFactura);
         $('#nMonto').val(nmonto);
     });
-
-
-
     var handleDownloadFactura = function () {
         var tableFacturas = document.querySelector('#kt_facturas_table');
         if (!tableFacturas) {
@@ -1192,7 +1174,6 @@ var RegistroOperacion = function () {
             });
         });
     }
-
     var handleModalEditarMonto = function () {
         var form = document.getElementById('kt_factura_monto_form');
         if (!form) {
@@ -1283,7 +1264,6 @@ var RegistroOperacion = function () {
             });
         });
     }
-
     var handleModalControlEvaluacion = function () {
         var table = document.getElementById('kt_operaciones_table');
         if (!table) {
@@ -1371,7 +1351,6 @@ var RegistroOperacion = function () {
             });
         });
     }
-
     var handleDeleteFacturaForm = function () {
         var tableFacturas = document.querySelector('#kt_facturas_table');
         if (!tableFacturas) {
@@ -1441,11 +1420,6 @@ var RegistroOperacion = function () {
             });
         });
     }
-
-
-
-
-
     var handOpenFacturaForm = function () {
         var tableFacturas = document.querySelector('#kt_facturas_table');
         if (!tableFacturas) {
@@ -1462,13 +1436,6 @@ var RegistroOperacion = function () {
 
 
     }
-
-
-
-
-
-
-
     var handleEditFacturaForm = function () {
 
 
@@ -1809,7 +1776,6 @@ var RegistroOperacion = function () {
     var handleDownloadFile = function (nIdOperacionFactura) {
         window.open(globalPath + 'Operacion/DownloadFile?nIdOperacionFactura=' + encodeURIComponent(nIdOperacionFactura), '_blank');
     }
-
     var handleDescarga = function () {
         var form = document.getElementById('kt_search_form');
         if (!form) {
@@ -1834,14 +1800,10 @@ var RegistroOperacion = function () {
 
         });
     }
-
     //****************************INI-21-01-2023****************************//
-
-
     var handleDownloadFileSolicitud = function (nIdSolicitudEvaluacion) {
         window.open(globalPath + 'Operacion/DownloadFileSolicitud?nIdSolicitudEvaluacion=' + encodeURIComponent(nIdSolicitudEvaluacion), '_blank');
     }
-
     var handleAddDocumentoSolicitudForm = function () {
         var formAddDocumento = document.getElementById('kt_form_add_documentos');
         if (!formAddDocumento) {
@@ -1941,8 +1903,6 @@ var RegistroOperacion = function () {
             });
         });
     }
-
-
     var initDataTableDocumentoSolicitud = function () {
         var idOperacion = document.getElementById('IdOperacion');
         if (!idOperacion) {
@@ -2021,8 +1981,6 @@ var RegistroOperacion = function () {
             Common.init();
         });
     }
-
-
     var handleDeleteDocumentoSolicitudForm = function () {
         var tableDocumentoSolicitud = document.querySelector('#kt_documento_table');
         if (!tableDocumentoSolicitud) {
@@ -2092,8 +2050,6 @@ var RegistroOperacion = function () {
             });
         });
     }
-
-
     var handleDownloadDocumentoSolicitud = function () {
         var tableFacturas = document.querySelector('#kt_documento_table');
         if (!tableFacturas) {
@@ -2111,7 +2067,6 @@ var RegistroOperacion = function () {
             });
         });
     }
-
     var handleEditDocumentSolicitudForm = function () {
         //flatpickr('.date-fnego', {
         //    dateFormat: 'd/m/Y',
@@ -2178,7 +2133,6 @@ var RegistroOperacion = function () {
         //});
     }
     //****************************FIN-21-01-2023****************************//
-
     var handleModalControlCalculo = function () {
         var table = document.getElementById('kt_operaciones_table');
         if (!table) {
@@ -2261,7 +2215,10 @@ var RegistroOperacion = function () {
                                         }
                                     }).then(function (result) {
                                         if (result.isConfirmed) {
-                                            $(window).attr('location', globalPath + 'Operacion');
+                                            $('#dvListaCalculo').show();
+                                            initDataTableCalculo();//$(window).attr('location', globalPath + 'Operacion');
+                                            saveButton.removeAttr('data-kt-indicator');
+                                            saveButton.prop('disabled', false);
                                         }
                                     });
                                 } else {
@@ -2283,6 +2240,39 @@ var RegistroOperacion = function () {
             });
         });
     }
+
+    var initDataTableCalculo = function () {
+        var nIdOperacion = $('#nIdOperacionCal').val();  
+        var tableCalculo = document.getElementById('kt_monto_calculado_table');
+        if (!tableCalculo) {
+            return;
+        }
+
+        $(tableCalculo).DataTable({ ordering: false }).clear().destroy();
+        $.fn.dataTable.ext.errMode = 'none';
+        datatableFacturaCalculo = $(tableCalculo).DataTable({
+            ordering: false,
+            ajax: {
+                type: 'GET',
+                dataType: 'json',
+                url: globalPath + 'Operacion/GetAllFacturasCalculo?nIdOperacion=' + nIdOperacion,
+                dataSrc: function (data) {
+                    return data.data;
+                }
+            },
+            columns: [
+                { data: 'cNroDocumento', autoWidth: true, class: 'text-center' },
+                { data: 'nMontoADesembolsar', autoWidth: true, class: 'text-center' },
+                { data: 'nMontoInteres', autoWidth: true, class: 'text-center' },
+                { data: 'nMontoIgvServicios', autoWidth: true, class: 'text-center' },
+                { data: 'nInteresMoratorio', autoWidth: true, class: 'text-center' },
+                { data: 'nDevolucionEstimada', autoWidth: true, class: 'text-center' }
+            ]
+        });
+        datatableFacturaCalculo.on('draw', function () {
+            Common.init();
+        });
+    };
 
     return {
         init: function () {
@@ -2331,7 +2321,6 @@ var RegistroOperacion = function () {
             handleDownloadFileSolicitud(nIdSolicitudEvaluacion);
         },
     }
-
 }();
 KTUtil.onDOMContentLoaded(function () {
     RegistroOperacion.init();
