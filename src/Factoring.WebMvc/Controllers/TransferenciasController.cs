@@ -604,10 +604,11 @@ namespace Factoring.WebMvc.Controllers
             var result = await _facturaOperacionesProxy.OperacionCavaliInvoicesSend4012(request);
             if (result != null)
             {
-                if (result.Data.Valores != null)
-                    MensajeRetorno.Data.Valores = result.Data.Valores;
-                else
-                    MensajeRetorno.Data.Mensaje = result.Data.Mensaje;
+                MensajeRetorno = result;
+                //if (result.Data.Valores != null)
+                //    MensajeRetorno.Data.Valores = result.Data.Valores;
+                //else
+                //    MensajeRetorno.Data.Mensaje = result.Data.Mensaje;
             }
             else
             {
