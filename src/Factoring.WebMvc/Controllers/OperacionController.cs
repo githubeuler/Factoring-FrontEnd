@@ -110,10 +110,10 @@ namespace Factoring.WebMvc.Controllers
             if (_httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<MenuResponse>>("ApplicationMenu") == null)
             {
                 return Redirect("~/Account/Logout");
-            }
+            }//objOpcionRol != null ? objOpcionRol.nOpcion : 0
             var objOpcionRol = HttpContext.Session.GetObjectFromJson<AccionRol>("nIdAccionMenuOpe");
             ViewBag.TituloModal = objOpcionRol != null ?objOpcionRol.cDescripcion:"";
-            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = objOpcionRol != null ? objOpcionRol.nOpcion : 0, Codigo = 103, Valor = "0" });
+            var _Estados = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = 5, Codigo = 103, Valor = "0" });
             ViewBag.Estados = _Estados.Data.ToList();
             var _EstadosAprobacion = await _catalogoProxy.GetCatalogoList(new Model.Models.Catalogo.CatalogoListDto { Tipo = objOpcionRol != null ? objOpcionRol.nOpcion : 0, Codigo = 103, Valor = "0" });
             ViewBag.EstadoEvaluacion = _EstadosAprobacion.Data.ToList();
@@ -435,7 +435,7 @@ namespace Factoring.WebMvc.Controllers
             {
                 foreach (var item in resultLista.Data)
                 {
-                    var result = await _evaluacionOperacionesProxy.UpdateCalculoFactura(new EvaluacionOperacionesCalculoInsertDto
+                    var result = await _evaluacionOperacionesProxy.GenerateCalculoFactura(new EvaluacionOperacionesCalculoInsertDto
                     {
                         IdOperaciones = model.nIdOperacionCal.Value,
                         IdOperacionesFactura = item.nIdOperacionesFacturas,

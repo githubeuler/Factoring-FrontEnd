@@ -16,6 +16,7 @@ namespace Factoring.Service.Proxies
         Task<ResponseData<int>> Create(EvaluacionOperacionesInsertDto model);
         Task<ResponseData<int>> CreateEstadoFactura(EvaluacionOperacionesEstadoInsertDto model);
         Task<ResponseData<int>> UpdateCalculoFactura(EvaluacionOperacionesCalculoInsertDto model);
+        Task<ResponseData<int>> GenerateCalculoFactura(EvaluacionOperacionesCalculoInsertDto model);
     }
    public class EvaluacionOperacionesProxy : IEvaluacionOperacionesProxy
     {
@@ -69,6 +70,23 @@ namespace Factoring.Service.Proxies
                 var us = JsonConvert.SerializeObject(model);
                 var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
                 var response = await client.PostAsync("EstadosOperacion/update-facura-calculo", requestContent);
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ResponseData<int>>(json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ResponseData<int>> GenerateCalculoFactura(EvaluacionOperacionesCalculoInsertDto model)
+        {
+            try
+            {
+                var client = _proxyHttpClient.GetHttp();
+                var us = JsonConvert.SerializeObject(model);
+                var requestContent = new StringContent(us, Encoding.UTF8, _configuration["ContentTypeRequest"].ToString());
+                var response = await client.PostAsync("EstadosOperacion/generate-facura-calculo", requestContent);
                 var json = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<ResponseData<int>>(json);
             }
