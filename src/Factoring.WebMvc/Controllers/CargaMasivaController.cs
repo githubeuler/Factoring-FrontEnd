@@ -191,6 +191,10 @@ namespace Factoring.WebMvc.Controllers
                             Compra = 100,
                             UsuarioCreador = userName
                         });
+                        if (!result.Succeeded)
+                        {
+                            return Json(new { succeeded = false, message = result.Message });
+                        }
 
                         oGirador = GetGirador(cGiradorRUT).Result;
                         if (!string.IsNullOrEmpty(cGiradorUbigeo))
@@ -225,6 +229,10 @@ namespace Factoring.WebMvc.Controllers
                             IdGrupoEconomico = 1,
                             UsuarioCreador = userName
                         });
+                        if (!result.Succeeded)
+                        {
+                            return Json(new { succeeded = false, message = result.Message });
+                        }
 
                         oAdquiriente = GetAdquiriente(cAdquirienteRUT).Result;
                         if (!string.IsNullOrEmpty(cAdquirienteUbigeo))

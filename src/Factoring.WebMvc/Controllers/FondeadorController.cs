@@ -291,6 +291,7 @@ namespace Factoring.WebMvc.Controllers
 
         private async Task<FondedorResponseDatatableDto> GetFondeaor(string sRUC)
         {
+            var userName = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             FondedorResponseDatatableDto oRecord = null;
             try
             {
@@ -301,6 +302,7 @@ namespace Factoring.WebMvc.Controllers
                 requestData.SortOrder = "asc";
                 requestData.FilterDoi = sRUC;
                 requestData.IdEstado = 1;
+                requestData.Usuario = userName;
                 var data = await _fondeadorProxy.GetAllLisFondeador(requestData);
 
                 if (data.Data.Count > 0)
