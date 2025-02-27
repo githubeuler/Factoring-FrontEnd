@@ -345,6 +345,6 @@
 
 
 @section Scripts {
-    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
-    <script src="~/assets/js/registro-fondeo.js"></script>
+    @* <script src="~/assets/plugins/datatables/datatables.bundle.js?v=" + DateTime.Now.Ticks></script> *@
+    <script src="@(Url.Content("~/assets/js/registro-fondeo.js")+"?v=" + DateTime.Now.Ticks)"></script>
 }

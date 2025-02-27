@@ -198,8 +198,9 @@
 </div>
 
 @section Scripts {
-    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
-    <script src="~/assets/js/carga-masiva.js"></script>
+    @* <script src="~/assets/plugins/datatables/datatables.bundle.js?v=" + DateTime.Now.Ticks></script> *@
+    <script src="@(Url.Content("~/assets/js/carga-masiva.js")+"?v=" + DateTime.Now.Ticks)"></script>
+
 
     <script language="javascript">
         var sRoleName = "@RoleName";

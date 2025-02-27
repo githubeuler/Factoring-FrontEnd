@@ -1384,6 +1384,8 @@ var RegistroOperacion = function () {
                                         }
                                     }).then(function () {
                                         datatableFacturas.row($(parent)).remove().draw();
+                                        location.reload();
+
                                     });
                                 } else {
                                     messageError('La Factura no fue eliminada (' + data.message + ')');

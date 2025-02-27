@@ -72,10 +72,11 @@
         </span>
     </div>
     <script>var hostUrl = '@(BaseURL + "assets/")';</script>
-    <script src="@(BaseURL + "assets/plugins/plugins.bundle.js")"></script>
-    <script src="@(BaseURL + "assets/js/scripts.bundle.js")"></script>
-    <script src="@(BaseURL + "assets/js/app.js")"></script>
-    <script src="@(BaseURL + "assets/js/common.js")"></script>
+    <script src="@(BaseURL + "assets/plugins/plugins.bundle.js?v=" + DateTime.Now.Ticks)"></script>
+    <script src="@(BaseURL + "assets/js/scripts.bundle.js?v=" + DateTime.Now.Ticks)"></script>
+    <script src="@(BaseURL + "assets/js/app.js?v=" + DateTime.Now.Ticks)"></script>
+    <script src="@(BaseURL + "assets/js/common.js?v=" + DateTime.Now.Ticks)"></script>
+    <script src="@(BaseURL + "assets/plugins/datatables/datatables.bundle.js?v=" + DateTime.Now.Ticks)"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

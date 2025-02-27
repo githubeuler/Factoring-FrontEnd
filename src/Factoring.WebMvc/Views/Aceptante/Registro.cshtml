@@ -103,10 +103,12 @@
     </div>
 </div>
 @section Scripts {
-    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    @* <script src="~/assets/plugins/datatables/datatables.bundle.js?v=" + DateTime.Now.Ticks></script> *@
     @if (@ViewBag.IsEdit)
     {
         <script type="text/javascript">var countUbigeo = @ViewBag.UbigeoPaisCount;</script>
     }
-    <script src="~/assets/js/registro-aceptante.js"></script>
+    @* <script src="~/assets/js/registro-aceptante.js?v=" + DateTime.Now.Ticks></script> *@
+    <script src="@(Url.Content("~/assets/js/registro-aceptante.js")+"?v=" + DateTime.Now.Ticks)"></script>
+}
 }

@@ -269,6 +269,6 @@
 </div>
 
 @section Scripts {
-    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
-    <script src="~/assets/js/transferencias.js"></script>
+    @* <script src="~/assets/plugins/datatables/datatables.bundle.js?v=" + DateTime.Now.Ticks></script> *@
+    <script src="@(Url.Content("~/assets/js/transferencias.js")+"?v=" + DateTime.Now.Ticks)"></script>
 }

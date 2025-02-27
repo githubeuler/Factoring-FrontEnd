@@ -81,8 +81,8 @@
         </div>
     </div>
     <script>var hostUrl = 'assets/';</script>
-    <script src="@(BaseURL + "assets/plugins/plugins.bundle.js")"></script>
-    <script src="@(BaseURL + "assets/js/scripts.bundle.js")"></script>
-    <script src="@(BaseURL + "assets/js/login.js")"></script>
+    <script src="@(BaseURL + "assets/plugins/plugins.bundle.js?v=" + DateTime.Now.Ticks)"></script>
+    <script src="@(BaseURL + "assets/js/scripts.bundle.js?v=" + DateTime.Now.Ticks)"></script>
+    <script src="@(BaseURL + "assets/js/login.js?v=" + DateTime.Now.Ticks)"></script>
 </body>
 </html>

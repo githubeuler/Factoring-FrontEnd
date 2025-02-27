@@ -144,12 +144,12 @@
 
 
 @section Scripts {
-    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
+    @* <script src="~/assets/plugins/datatables/datatables.bundle.js?v=" + DateTime.Now.Ticks></script> *@
     @if (@ViewBag.IsEdit)
     {
         @* <script type="text/javascript">var countUbigeo = @ViewBag.UbigeoPaisCount;</script> *@
         <script type="text/javascript">var countUbigeo = 0;</script>
 
     }
-    <script src="~/assets/js/registro-fondeador.js"></script>
+    <script src="@(Url.Content("~/assets/js/registro-fondeador.js")+"?v=" + DateTime.Now.Ticks)"></script>
 }

@@ -78,6 +78,6 @@ else
     </div>
 </div>
 @section Scripts {
-    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
-    <script src="~/assets/js/registro-operacion.js"></script>
+    @* <script src="~/assets/plugins/datatables/datatables.bundle.js?v=" + DateTime.Now.Ticks></script> *@
+    <script src="@(Url.Content("~/assets/js/registro-operacion.js")+"?v=" + DateTime.Now.Ticks)"></script>
 }

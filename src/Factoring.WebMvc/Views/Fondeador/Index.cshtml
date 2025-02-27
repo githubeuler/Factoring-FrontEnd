@@ -108,6 +108,6 @@
     </div>
 </div>
 @section Scripts {
-    <script src="~/assets/plugins/datatables/datatables.bundle.js"></script>
-    <script src="~/assets/js/registro-fondeador.js"></script>
+    @* <script src="~/assets/plugins/datatables/datatables.bundle.js?v=" + DateTime.Now.Ticks></script> *@
+    <script src="@(Url.Content("~/assets/js/registro-fondeador.js")+"?v=" + DateTime.Now.Ticks)"></script>
 }

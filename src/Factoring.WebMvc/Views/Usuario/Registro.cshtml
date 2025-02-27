@@ -147,6 +147,6 @@
             }
         </script>
     }
-    <script src="~/assets/js/registro-usuario.js"></script>
+    <script src="@(Url.Content("~/assets/js/registro-usuario.js")+"?v=" + DateTime.Now.Ticks)"></script>
     
 }
