@@ -14,5 +14,6 @@ function timerIncrement() {
     idleTime = idleTime + 1;
     if (idleTime > 5) {
         window.location.href = globalPath + 'Account/Logout';
+
     }
 }
